@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="891" viewBox="0 0 800 891" role="img" aria-labelledby="t d" font-family="-apple-system,&quot;Segoe UI&quot;,Helvetica,Arial,sans-serif">
+<title id="t">Sid Meier's Civilization 64bit: recovery coverage of civ.exe</title>
+<desc id="d">All 1,065 functions of civ.exe recovered to C; all 699 live game functions ported into civ64 (91.5% of the code bytes) and verified; 3.6% run-time library replaced by rt; 4.9% dead code not ported.</desc>
+<rect width="800" height="891" rx="12" fill="#1a1a19"/>
+<text x="24" y="42" font-size="20" font-weight="600" fill="#f0efec" text-anchor="start">Sid Meier's Civilization 64bit</text>
+<text x="24" y="64" font-size="13" font-weight="400" fill="#a9a79e" text-anchor="start">How much of the Windows 3.1 civ.exe was recovered: every function to C, every live function ported or replaced</text>
+<rect x="24.0" y="82" width="179.0" height="82" rx="8" fill="#262624"/>
+<text x="38.0" y="104" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">Recovered to C</text>
+<text x="38.0" y="134" font-size="26" font-weight="600" fill="#f0efec" text-anchor="start">1,065</text>
+<text x="105.8" y="134" font-size="13" font-weight="400" fill="#a9a79e" text-anchor="start">/ 1,065</text>
+<text x="38.0" y="154" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">67,014 lines, 89 files</text>
+<rect x="215.0" y="82" width="179.0" height="82" rx="8" fill="#262624"/>
+<text x="229.0" y="104" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">Live game functions ported</text>
+<text x="229.0" y="134" font-size="26" font-weight="600" fill="#f0efec" text-anchor="start">699</text>
+<text x="277.6" y="134" font-size="13" font-weight="400" fill="#a9a79e" text-anchor="start">/ 699</text>
+<text x="229.0" y="154" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">91.5% of all code bytes</text>
+<rect x="406.0" y="82" width="179.0" height="82" rx="8" fill="#262624"/>
+<text x="420.0" y="104" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">Translations verified</text>
+<text x="420.0" y="134" font-size="26" font-weight="600" fill="#f0efec" text-anchor="start">699</text>
+<text x="468.6" y="134" font-size="13" font-weight="400" fill="#a9a79e" text-anchor="start">PASS</text>
+<text x="420.0" y="154" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">137,887 instructions</text>
+<rect x="597.0" y="82" width="179.0" height="82" rx="8" fill="#262624"/>
+<text x="611.0" y="104" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">Live code covered</text>
+<text x="611.0" y="134" font-size="26" font-weight="600" fill="#f0efec" text-anchor="start">100%</text>
+<text x="611.0" y="154" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">ported or replaced by rt</text>
+<text x="24" y="200" font-size="13" font-weight="400" fill="#f0efec" text-anchor="start">Where every byte of civ.exe went (416,385 code bytes)</text>
+<rect x="24.00" y="210" width="685.98" height="22" rx="3" fill="#B5D4F4"/>
+<rect x="711.98" y="210" width="25.08" height="22" rx="3" fill="#378ADD"/>
+<rect x="739.06" y="210" width="34.94" height="22" rx="3" fill="#4a4a47"/>
+<rect x="24" y="244" width="11" height="11" rx="2" fill="#B5D4F4"/>
+<text x="42" y="254" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Ported into civ64: 699 functions, 380,936 bytes (91.5%)</text>
+<rect x="24" y="263" width="11" height="11" rx="2" fill="#378ADD"/>
+<text x="42" y="273" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Borland runtime, replaced by rt: 155 functions, 14,993 bytes (3.6%)</text>
+<rect x="24" y="282" width="11" height="11" rx="2" fill="#4a4a47"/>
+<text x="42" y="292" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Dead code, not ported: 211 functions, 20,456 bytes (4.9%)</text>
+<rect x="24" y="305" width="752" height="80" rx="8" fill="#262624"/>
+<text x="38" y="323" font-size="12" font-weight="600" fill="#f0efec" text-anchor="start">About dead code</text>
+<text x="38" y="341" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">In civ.exe but never run: 178 functions have no reference at all, and 33 are reached only from those.</text>
+<text x="38" y="358" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">51 unused run-time library routines, 68 empty or constant stubs and 92 unused game routines (diagnostics, Mac-port leftovers,</text>
+<text x="38" y="375" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">unused helpers). Recovered to C and documented, but not ported because nothing can call them.</text>
+<text x="24" y="421" font-size="13" font-weight="400" fill="#f0efec" text-anchor="start">Every function, in address order 1000:0000 to 1220:1936 (width = size; grey = dead code; each strip is 33.9 KB)</text>
+<rect x="24.00" y="433" width="7.72" height="14" fill="#378ADD"/>
+<rect x="31.72" y="433" width="3.34" height="14" fill="#4a4a47"/>
+<rect x="35.05" y="433" width="9.54" height="14" fill="#378ADD"/>
+<rect x="44.59" y="433" width="20.07" height="14" fill="#4a4a47"/>
+<rect x="64.66" y="433" width="18.01" height="14" fill="#378ADD"/>
+<rect x="82.67" y="433" width="7.98" height="14" fill="#4a4a47"/>
+<rect x="90.64" y="433" width="2.34" height="14" fill="#378ADD"/>
+<rect x="92.98" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="93.29" y="433" width="26.29" height="14" fill="#378ADD"/>
+<rect x="119.57" y="433" width="1.04" height="14" fill="#4a4a47"/>
+<rect x="120.61" y="433" width="3.60" height="14" fill="#378ADD"/>
+<rect x="124.21" y="433" width="1.43" height="14" fill="#4a4a47"/>
+<rect x="125.64" y="433" width="3.66" height="14" fill="#378ADD"/>
+<rect x="129.31" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="129.89" y="433" width="5.11" height="14" fill="#378ADD"/>
+<rect x="135.01" y="433" width="0.72" height="14" fill="#4a4a47"/>
+<rect x="135.72" y="433" width="0.60" height="14" fill="#378ADD"/>
+<rect x="135.87" y="433" width="3.68" height="14" fill="#4a4a47"/>
+<rect x="139.56" y="433" width="0.65" height="14" fill="#378ADD"/>
+<rect x="140.21" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="140.34" y="433" width="1.97" height="14" fill="#378ADD"/>
+<rect x="142.31" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="142.72" y="433" width="6.91" height="14" fill="#378ADD"/>
+<rect x="149.63" y="433" width="1.93" height="14" fill="#4a4a47"/>
+<rect x="151.56" y="433" width="3.73" height="14" fill="#378ADD"/>
+<rect x="155.29" y="433" width="1.00" height="14" fill="#4a4a47"/>
+<rect x="156.29" y="433" width="4.03" height="14" fill="#378ADD"/>
+<rect x="160.32" y="433" width="1.43" height="14" fill="#4a4a47"/>
+<rect x="161.75" y="433" width="1.95" height="14" fill="#378ADD"/>
+<rect x="163.70" y="433" width="0.61" height="14" fill="#4a4a47"/>
+<rect x="164.31" y="433" width="33.27" height="14" fill="#378ADD"/>
+<rect x="197.57" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="197.98" y="433" width="42.74" height="14" fill="#378ADD"/>
+<rect x="240.72" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="241.29" y="433" width="5.20" height="14" fill="#378ADD"/>
+<rect x="246.49" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="246.75" y="433" width="6.57" height="14" fill="#378ADD"/>
+<rect x="253.31" y="433" width="1.58" height="14" fill="#4a4a47"/>
+<rect x="254.90" y="433" width="16.60" height="14" fill="#378ADD"/>
+<rect x="271.50" y="433" width="23.71" height="14" fill="#4a4a47"/>
+<rect x="295.21" y="433" width="28.95" height="14" fill="#378ADD"/>
+<rect x="324.16" y="433" width="0.78" height="14" fill="#4a4a47"/>
+<rect x="324.94" y="433" width="18.64" height="14" fill="#378ADD"/>
+<rect x="343.58" y="433" width="11.23" height="14" fill="#4a4a47"/>
+<rect x="354.81" y="433" width="35.30" height="14" fill="#378ADD"/>
+<rect x="390.11" y="433" width="0.67" height="14" fill="#4a4a47"/>
+<rect x="390.78" y="433" width="12.03" height="14" fill="#378ADD"/>
+<rect x="402.81" y="433" width="1.89" height="14" fill="#4a4a47"/>
+<rect x="404.69" y="433" width="11.01" height="14" fill="#378ADD"/>
+<rect x="415.70" y="433" width="1.89" height="14" fill="#4a4a47"/>
+<rect x="417.59" y="433" width="7.82" height="14" fill="#378ADD"/>
+<rect x="425.41" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="425.89" y="433" width="5.72" height="14" fill="#378ADD"/>
+<rect x="431.61" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="432.05" y="433" width="5.42" height="14" fill="#378ADD"/>
+<rect x="437.46" y="433" width="5.53" height="14" fill="#4a4a47"/>
+<rect x="442.99" y="433" width="55.31" height="14" fill="#B5D4F4"/>
+<rect x="498.30" y="433" width="0.91" height="14" fill="#4a4a47"/>
+<rect x="499.21" y="433" width="3.66" height="14" fill="#B5D4F4"/>
+<rect x="502.87" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="503.26" y="433" width="1.17" height="14" fill="#B5D4F4"/>
+<rect x="504.43" y="433" width="1.19" height="14" fill="#4a4a47"/>
+<rect x="505.62" y="433" width="11.14" height="14" fill="#B5D4F4"/>
+<rect x="516.76" y="433" width="0.61" height="14" fill="#4a4a47"/>
+<rect x="517.37" y="433" width="3.34" height="14" fill="#B5D4F4"/>
+<rect x="520.71" y="433" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="521.05" y="433" width="6.09" height="14" fill="#B5D4F4"/>
+<rect x="527.14" y="433" width="5.59" height="14" fill="#4a4a47"/>
+<rect x="532.73" y="433" width="0.60" height="14" fill="#B5D4F4"/>
+<rect x="533.08" y="433" width="2.43" height="14" fill="#4a4a47"/>
+<rect x="535.51" y="433" width="240.49" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="452" width="130.69" height="14" fill="#B5D4F4"/>
+<rect x="154.69" y="452" width="1.00" height="14" fill="#4a4a47"/>
+<rect x="155.69" y="452" width="620.31" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="471" width="229.74" height="14" fill="#B5D4F4"/>
+<rect x="253.74" y="471" width="1.26" height="14" fill="#4a4a47"/>
+<rect x="254.99" y="471" width="521.01" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="490" width="3.98" height="14" fill="#B5D4F4"/>
+<rect x="27.98" y="490" width="48.20" height="14" fill="#4a4a47"/>
+<rect x="76.18" y="490" width="32.66" height="14" fill="#B5D4F4"/>
+<rect x="108.84" y="490" width="2.77" height="14" fill="#4a4a47"/>
+<rect x="111.62" y="490" width="157.15" height="14" fill="#B5D4F4"/>
+<rect x="268.76" y="490" width="13.00" height="14" fill="#4a4a47"/>
+<rect x="281.76" y="490" width="9.62" height="14" fill="#B5D4F4"/>
+<rect x="291.39" y="490" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="291.78" y="490" width="176.43" height="14" fill="#B5D4F4"/>
+<rect x="468.21" y="490" width="13.13" height="14" fill="#4a4a47"/>
+<rect x="481.34" y="490" width="294.66" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="509" width="131.51" height="14" fill="#B5D4F4"/>
+<rect x="155.51" y="509" width="5.83" height="14" fill="#4a4a47"/>
+<rect x="161.34" y="509" width="360.60" height="14" fill="#B5D4F4"/>
+<rect x="521.94" y="509" width="2.90" height="14" fill="#4a4a47"/>
+<rect x="524.85" y="509" width="0.89" height="14" fill="#B5D4F4"/>
+<rect x="525.73" y="509" width="6.09" height="14" fill="#4a4a47"/>
+<rect x="531.82" y="509" width="26.40" height="14" fill="#B5D4F4"/>
+<rect x="558.22" y="509" width="9.99" height="14" fill="#4a4a47"/>
+<rect x="568.21" y="509" width="6.87" height="14" fill="#B5D4F4"/>
+<rect x="575.08" y="509" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="575.65" y="509" width="14.13" height="14" fill="#B5D4F4"/>
+<rect x="589.78" y="509" width="12.29" height="14" fill="#4a4a47"/>
+<rect x="602.06" y="509" width="25.18" height="14" fill="#B5D4F4"/>
+<rect x="627.25" y="509" width="3.10" height="14" fill="#4a4a47"/>
+<rect x="630.35" y="509" width="3.29" height="14" fill="#B5D4F4"/>
+<rect x="633.64" y="509" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="634.03" y="509" width="4.72" height="14" fill="#B5D4F4"/>
+<rect x="638.76" y="509" width="3.03" height="14" fill="#4a4a47"/>
+<rect x="641.79" y="509" width="2.86" height="14" fill="#B5D4F4"/>
+<rect x="644.65" y="509" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="645.06" y="509" width="21.80" height="14" fill="#B5D4F4"/>
+<rect x="666.86" y="509" width="2.93" height="14" fill="#4a4a47"/>
+<rect x="669.79" y="509" width="36.93" height="14" fill="#B5D4F4"/>
+<rect x="706.72" y="509" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="707.11" y="509" width="34.11" height="14" fill="#B5D4F4"/>
+<rect x="741.22" y="509" width="0.69" height="14" fill="#4a4a47"/>
+<rect x="741.91" y="509" width="3.14" height="14" fill="#B5D4F4"/>
+<rect x="745.06" y="509" width="1.32" height="14" fill="#4a4a47"/>
+<rect x="746.38" y="509" width="4.36" height="14" fill="#B5D4F4"/>
+<rect x="750.74" y="509" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="751.04" y="509" width="3.01" height="14" fill="#B5D4F4"/>
+<rect x="754.05" y="509" width="1.24" height="14" fill="#4a4a47"/>
+<rect x="755.29" y="509" width="20.71" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="528" width="0.60" height="14" fill="#B5D4F4"/>
+<rect x="24.59" y="528" width="0.91" height="14" fill="#4a4a47"/>
+<rect x="25.50" y="528" width="5.42" height="14" fill="#B5D4F4"/>
+<rect x="30.92" y="528" width="0.72" height="14" fill="#4a4a47"/>
+<rect x="31.63" y="528" width="1.41" height="14" fill="#B5D4F4"/>
+<rect x="33.04" y="528" width="0.69" height="14" fill="#4a4a47"/>
+<rect x="33.74" y="528" width="5.29" height="14" fill="#B5D4F4"/>
+<rect x="39.02" y="528" width="4.05" height="14" fill="#4a4a47"/>
+<rect x="43.08" y="528" width="3.01" height="14" fill="#B5D4F4"/>
+<rect x="46.09" y="528" width="35.17" height="14" fill="#4a4a47"/>
+<rect x="81.26" y="528" width="156.80" height="14" fill="#B5D4F4"/>
+<rect x="238.06" y="528" width="0.85" height="14" fill="#4a4a47"/>
+<rect x="238.91" y="528" width="12.09" height="14" fill="#B5D4F4"/>
+<rect x="251.00" y="528" width="3.38" height="14" fill="#4a4a47"/>
+<rect x="254.38" y="528" width="135.32" height="14" fill="#B5D4F4"/>
+<rect x="389.70" y="528" width="5.61" height="14" fill="#4a4a47"/>
+<rect x="395.32" y="528" width="96.81" height="14" fill="#B5D4F4"/>
+<rect x="492.13" y="528" width="2.43" height="14" fill="#4a4a47"/>
+<rect x="494.55" y="528" width="74.86" height="14" fill="#B5D4F4"/>
+<rect x="569.41" y="528" width="1.00" height="14" fill="#4a4a47"/>
+<rect x="570.41" y="528" width="39.96" height="14" fill="#B5D4F4"/>
+<rect x="610.37" y="528" width="11.10" height="14" fill="#4a4a47"/>
+<rect x="621.47" y="528" width="19.81" height="14" fill="#B5D4F4"/>
+<rect x="641.27" y="528" width="4.12" height="14" fill="#4a4a47"/>
+<rect x="645.39" y="528" width="17.45" height="14" fill="#B5D4F4"/>
+<rect x="662.84" y="528" width="1.60" height="14" fill="#4a4a47"/>
+<rect x="664.44" y="528" width="111.56" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="547" width="350.10" height="14" fill="#B5D4F4"/>
+<rect x="374.10" y="547" width="2.73" height="14" fill="#4a4a47"/>
+<rect x="376.84" y="547" width="4.72" height="14" fill="#B5D4F4"/>
+<rect x="381.56" y="547" width="1.02" height="14" fill="#4a4a47"/>
+<rect x="382.58" y="547" width="7.15" height="14" fill="#B5D4F4"/>
+<rect x="389.73" y="547" width="1.06" height="14" fill="#4a4a47"/>
+<rect x="390.79" y="547" width="0.72" height="14" fill="#B5D4F4"/>
+<rect x="391.51" y="547" width="1.08" height="14" fill="#4a4a47"/>
+<rect x="392.59" y="547" width="3.34" height="14" fill="#B5D4F4"/>
+<rect x="395.93" y="547" width="1.11" height="14" fill="#4a4a47"/>
+<rect x="397.03" y="547" width="11.81" height="14" fill="#B5D4F4"/>
+<rect x="408.84" y="547" width="2.36" height="14" fill="#4a4a47"/>
+<rect x="411.21" y="547" width="5.83" height="14" fill="#B5D4F4"/>
+<rect x="417.04" y="547" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="417.45" y="547" width="2.86" height="14" fill="#B5D4F4"/>
+<rect x="420.31" y="547" width="1.00" height="14" fill="#4a4a47"/>
+<rect x="421.31" y="547" width="55.29" height="14" fill="#B5D4F4"/>
+<rect x="476.59" y="547" width="6.78" height="14" fill="#4a4a47"/>
+<rect x="483.38" y="547" width="133.72" height="14" fill="#B5D4F4"/>
+<rect x="617.09" y="547" width="1.24" height="14" fill="#4a4a47"/>
+<rect x="618.33" y="547" width="22.00" height="14" fill="#B5D4F4"/>
+<rect x="640.33" y="547" width="0.87" height="14" fill="#4a4a47"/>
+<rect x="641.19" y="547" width="2.73" height="14" fill="#B5D4F4"/>
+<rect x="643.92" y="547" width="5.53" height="14" fill="#4a4a47"/>
+<rect x="649.45" y="547" width="126.55" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="566" width="88.74" height="14" fill="#B5D4F4"/>
+<rect x="112.74" y="566" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="113.05" y="566" width="50.50" height="14" fill="#B5D4F4"/>
+<rect x="163.54" y="566" width="3.23" height="14" fill="#4a4a47"/>
+<rect x="166.77" y="566" width="1.37" height="14" fill="#B5D4F4"/>
+<rect x="168.14" y="566" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="168.53" y="566" width="11.98" height="14" fill="#B5D4F4"/>
+<rect x="180.51" y="566" width="2.36" height="14" fill="#4a4a47"/>
+<rect x="182.87" y="566" width="1.08" height="14" fill="#B5D4F4"/>
+<rect x="183.96" y="566" width="7.22" height="14" fill="#4a4a47"/>
+<rect x="191.17" y="566" width="0.60" height="14" fill="#B5D4F4"/>
+<rect x="191.48" y="566" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="191.78" y="566" width="0.60" height="14" fill="#B5D4F4"/>
+<rect x="192.08" y="566" width="4.68" height="14" fill="#4a4a47"/>
+<rect x="196.77" y="566" width="579.23" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="585" width="152.16" height="14" fill="#B5D4F4"/>
+<rect x="176.16" y="585" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="176.55" y="585" width="575.14" height="14" fill="#B5D4F4"/>
+<rect x="751.69" y="585" width="2.54" height="14" fill="#4a4a47"/>
+<rect x="754.22" y="585" width="1.30" height="14" fill="#B5D4F4"/>
+<rect x="755.53" y="585" width="4.18" height="14" fill="#4a4a47"/>
+<rect x="759.71" y="585" width="16.29" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="604" width="55.27" height="14" fill="#B5D4F4"/>
+<rect x="79.27" y="604" width="8.39" height="14" fill="#4a4a47"/>
+<rect x="87.66" y="604" width="164.28" height="14" fill="#B5D4F4"/>
+<rect x="251.93" y="604" width="18.75" height="14" fill="#4a4a47"/>
+<rect x="270.68" y="604" width="505.32" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="623" width="213.85" height="14" fill="#B5D4F4"/>
+<rect x="237.85" y="623" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="238.24" y="623" width="74.38" height="14" fill="#B5D4F4"/>
+<rect x="312.62" y="623" width="4.59" height="14" fill="#4a4a47"/>
+<rect x="317.21" y="623" width="79.78" height="14" fill="#B5D4F4"/>
+<rect x="396.99" y="623" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="397.29" y="623" width="56.39" height="14" fill="#B5D4F4"/>
+<rect x="453.68" y="623" width="13.05" height="14" fill="#4a4a47"/>
+<rect x="466.73" y="623" width="6.46" height="14" fill="#B5D4F4"/>
+<rect x="473.19" y="623" width="7.89" height="14" fill="#4a4a47"/>
+<rect x="481.08" y="623" width="34.37" height="14" fill="#B5D4F4"/>
+<rect x="515.45" y="623" width="1.60" height="14" fill="#4a4a47"/>
+<rect x="517.05" y="623" width="6.46" height="14" fill="#B5D4F4"/>
+<rect x="523.51" y="623" width="5.63" height="14" fill="#4a4a47"/>
+<rect x="529.15" y="623" width="246.85" height="14" fill="#B5D4F4"/>
+<rect x="24.00" y="642" width="220.01" height="14" fill="#B5D4F4"/>
+<rect x="244.01" y="642" width="1.69" height="14" fill="#4a4a47"/>
+<rect x="245.70" y="642" width="3.14" height="14" fill="#B5D4F4"/>
+<rect x="248.84" y="642" width="3.40" height="14" fill="#4a4a47"/>
+<rect x="252.25" y="642" width="7.91" height="14" fill="#B5D4F4"/>
+<rect x="260.16" y="642" width="2.12" height="14" fill="#4a4a47"/>
+<rect x="262.28" y="642" width="0.74" height="14" fill="#B5D4F4"/>
+<rect x="263.02" y="642" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="263.32" y="642" width="2.08" height="14" fill="#B5D4F4"/>
+<rect x="265.40" y="642" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="265.71" y="642" width="0.91" height="14" fill="#B5D4F4"/>
+<rect x="266.62" y="642" width="0.60" height="14" fill="#4a4a47"/>
+<rect x="266.92" y="642" width="0.60" height="14" fill="#B5D4F4"/>
+<rect x="267.22" y="642" width="1.30" height="14" fill="#4a4a47"/>
+<rect x="268.52" y="642" width="98.07" height="14" fill="#B5D4F4"/>
+<rect x="366.59" y="642" width="2.36" height="14" fill="#4a4a47"/>
+<rect x="368.95" y="642" width="80.95" height="14" fill="#B5D4F4"/>
+<rect x="449.90" y="642" width="2.99" height="14" fill="#4a4a47"/>
+<rect x="452.89" y="642" width="6.37" height="14" fill="#B5D4F4"/>
+<rect x="459.26" y="642" width="1.86" height="14" fill="#4a4a47"/>
+<rect x="461.12" y="642" width="33.46" height="14" fill="#B5D4F4"/>
+<rect x="494.59" y="642" width="0.67" height="14" fill="#4a4a47"/>
+<rect x="495.26" y="642" width="106.22" height="14" fill="#B5D4F4"/>
+<rect x="601.47" y="642" width="3.51" height="14" fill="#4a4a47"/>
+<rect x="604.98" y="642" width="122.14" height="14" fill="#B5D4F4"/>
+<rect x="727.13" y="642" width="2.75" height="14" fill="#4a4a47"/>
+<rect x="729.88" y="642" width="46.12" height="14" fill="#B5D4F4"/>
+<text x="24" y="691" font-size="13" font-weight="400" fill="#f0efec" text-anchor="start">Recovery stages</text>
+<text x="24" y="715" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Code bytes disassembled</text>
+<rect x="234" y="705" width="366" height="12" rx="4" fill="#4a4a47"/>
+<rect x="234" y="705" width="365.75" height="12" rx="4" fill="#B5D4F4"/>
+<text x="614" y="715" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">416,095 / 416,385 (99.93%)</text>
+<text x="24" y="739" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Functions recovered to C</text>
+<rect x="234" y="729" width="366" height="12" rx="4" fill="#4a4a47"/>
+<rect x="234" y="729" width="366.00" height="12" rx="4" fill="#B5D4F4"/>
+<text x="614" y="739" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">1,065 / 1,065 (100%)</text>
+<text x="24" y="763" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Functions given names</text>
+<rect x="234" y="753" width="366" height="12" rx="4" fill="#4a4a47"/>
+<rect x="234" y="753" width="365.31" height="12" rx="4" fill="#B5D4F4"/>
+<text x="614" y="763" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">1,063 / 1,065 (99.81%)</text>
+<text x="24" y="787" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Live game functions ported</text>
+<rect x="234" y="777" width="366" height="12" rx="4" fill="#4a4a47"/>
+<rect x="234" y="777" width="366.00" height="12" rx="4" fill="#B5D4F4"/>
+<text x="614" y="787" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">699 / 699 (100%)</text>
+<text x="24" y="811" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Ported functions verified</text>
+<rect x="234" y="801" width="366" height="12" rx="4" fill="#4a4a47"/>
+<rect x="234" y="801" width="366.00" height="12" rx="4" fill="#B5D4F4"/>
+<text x="614" y="811" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">699 / 699 PASS (100%)</text>
+<text x="24" y="835" font-size="12" font-weight="400" fill="#f0efec" text-anchor="start">Feature rows reached headless</text>
+<rect x="234" y="825" width="366" height="12" rx="4" fill="#4a4a47"/>
+<rect x="234" y="825" width="366.00" height="12" rx="4" fill="#B5D4F4"/>
+<text x="614" y="835" font-size="12" font-weight="400" fill="#a9a79e" text-anchor="start">108 / 108 (100%)</text>
+<text x="24" y="869" font-size="11" font-weight="400" fill="#a9a79e" text-anchor="start">Sources: claude/docs/db/functions.json, claude/port/docs/TRACE.md and the port's records; generated by claude/tools/recovery_coverage.py</text>
+</svg>
