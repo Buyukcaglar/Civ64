@@ -49,7 +49,7 @@ copies, read at run time.
 
 ## 2. Installation
 
-1. Download `civ64.exe` from the [latest release](https://github.com/Buyukcaglar/Civ1/releases/latest)
+1. Download `civ64.exe` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
    and put it in a folder of its own, for example `C:\Games\civ64`.
 2. Give civ64 the Windows game, in one of these ways:
    * a ZIP file of your Civilization for Windows files next to `civ64.exe`, named `CivWin.zip`,
