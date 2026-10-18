@@ -1,4 +1,4 @@
-# Sid Meier's Civilization x64
+# Sid Meier's Civilization 64bit (civ64)
 
 <table>
   <tr>
