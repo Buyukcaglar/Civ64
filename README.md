@@ -25,6 +25,14 @@
     <td align="center"><sub>Game play, Windows graphics</sub></td>
     <td align="center"><sub>Game play, DOS graphics</sub></td>
   </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/Civ64-07-WindowlessPlay-Windows.png" alt="Windowless play with the Windows graphics"></td>
+    <td width="50%"><img src="docs/screenshots/Civ64-08-WindowlessPlay-DOS.png" alt="Windowless play with the DOS graphics"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Windowless play, Windows graphics</sub></td>
+    <td align="center"><sub>Windowless play, DOS graphics</sub></td>
+  </tr>
 </table>
 
 <p align="center">
