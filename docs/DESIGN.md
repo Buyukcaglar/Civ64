@@ -1929,6 +1929,22 @@ STATUS.md; gate records `ext-<phase>-acceptance.md`). This section grows phase b
   differs from the answer (see "Chord, menu and Locate" in 12.5). The app's dark mode applies to the submenus as to
   the window menu (inferred; user check HM-8). The keyboard rules are unchanged: the menu opens by the mouse, and
   Alt, Alt+Space and F10 stay the game's (SC_KEYMENU refused).
+
+  **Since WL, A43, CRT and AMS** (session E5, 2026-10-18/19; records [ext-WL-record.md](ext-WL-record.md),
+  [ext-A43-record.md](ext-A43-record.md), [ext-CRT-record.md](ext-CRT-record.md),
+  [ext-AMS-record.md](ext-AMS-record.md); FIDELITY F325, F326, F327, F329, F332) Display holds 12 entries:
+  "&Windowless play" (0x1110, `SC_CIV_WINDOWLESS`, check; WL) and a separator first; HM's "&Integer scaling (whole
+  steps)", "&Fit to window", a separator, "&Nearest-pixel filter" and "&Sharp filter"; a separator, "&CRT scanlines"
+  (0x1130, `SC_CIV_CRT`, check; CRT), a separator; then "4:3 &aspect ratio for 320 x 200 DOS intro screens" (0x1060,
+  HM's "Correct 320 × 200 to 4:3" renamed by A43, its scope unchanged) and "4:3 aspect ratio for 320 x 200 DOS
+  &gameplay" (0x1120, `SC_CIV_ASPECT_PLAY`, check; A43). The top level gains "A&lternative music/soundfx" (0x1140,
+  `SC_CIV_ALT_SOUNDS`, check; AMS) between Graphics and the separator above About… (15 items). Display's mnemonics are
+  w, i, f, n, s, c, a, g; the top level's f, d, z, g, l, a, c. Each id is the next free multiple of 16 (the id audits
+  of WL, A43, CRT and AMS: 0x1010..0x1140 in use, 0x1030 retired). Each new item calls its own hook
+  (`hw_set_windowless_hook`, `hw_set_aspect_play_hook`, the CRT and sound hooks), then the settings hook; civ64 writes
+  its key (`windowless`, `aspect_play_4_3`, `crt_scanlines`, `alt_sounds`) only after the player's choice. Without the
+  observer (`CIV_OBSERVER 0`) Windowless play and the gameplay 4:3 item are grayed; "Alternative music/soundfx" is
+  grayed without a valid MusicSfx source. The sections 12.12..12.15 below describe the four features.
 * **Full screen**: WS_POPUP (the WS_OVERLAPPEDWINDOW bits removed) over `rcMonitor` of
   `MonitorFromWindow(MONITOR_DEFAULTTONEAREST)`, `HWND_NOTOPMOST`, the cursor not clipped; leaving restores
   the style and the `GetWindowPlacement` record (maximized stays maximized; a hidden window stays hidden).
@@ -5618,6 +5634,32 @@ of 2.1..2.7 is closed, and every FEATURES row is reached headless in its DOS for
   ext_replay's V1 quiz, research and research2 draws 22, 1, 1 -> 0; `EXT_G1_OK runs 77 (amended 1)`; NODOS_OK 1,850 files,
   0 hits; 310 portable sources, 67 test programs.
 
+**As implemented (D7g3; areas B and C).** Record [ext-D7g3-record.md](ext-D7g3-record.md) (session E5, 2026-10-19;
+`verify/BRIEF-e5rev.md` "Unit D7g3", the user's direction of 2026-10-18 about 23:20 UTC). Landed after CRT2 (the
+copy-in at 02:07:59 UTC, 7 files; the three-step cycle ALL_GREEN 02:40:29 UTC, `build/d7g3-status.txt`; Release
+02:43:38 UTC, user build `build/user-builds/d7g3/`); FIDELITY F336, superseding F319's place.
+
+* **The place** (`pdos_reskin.c`): `AT_STATUS` replaces D7g2's `DOS_KEEP` for the recommendation
+  (`PDOS_R_PAIR_ADVICE`). `at_status` reads the Status window (g_statusWindowPort 12B0:0034, the port `wl.c` reads;
+  shown, not iconic): its window rectangle, or in windowless play its client rectangle (`pdos_reskin_set_windowless`,
+  which `pdos_profile.c` sets from `present_windowless_showing` at each present, since present/dos may not include
+  `wl.h`). The place's x is its left, its y its bottom (`PdosRPlace.bottom`: `pdos_r_place_xy` puts the box's bottom
+  there); the box's width `PdosRSpec.fix_w` is the width / 2 DOS pixels (the A element is 2x). The canvas clamp of
+  11.3 still applies.
+* **The lines** (`draw`): with `fix_w` on A each DOS line (DOS breaks the recommendation at its line feeds) is wrapped
+  by R:1F4D:0088's rule (`wrap_piece`: before the word that would pass the width, at the last space) at the width the
+  frame leaves (the extent less the widest line: 11 DOS pixels for the plain box), then the box's right side is moved
+  out so its extent is exactly `fix_w`. Font 2, colours, frame and texture unchanged; no header.
+* **Following the Status window** (`place_all`, each present): the live box is re-placed through `a_place_of` and
+  drawn again when the Status width changed; the held one (`PDOS_R_HELD_ID`) follows by `restatus`. Diagnostics:
+  preskin2's `st_l st_t st_r st_b st_moves`.
+* **The second box** was windowless play's composition (12.12): a DOS box straddling the Status and map pieces was
+  copied by the map piece at its own translation besides the float; `wl.c` now leaves such a float's rectangle black
+  in the pieces (`PwlScene.flbox`, `PwlFloat.box`).
+* No core read beyond the window port and w16q's window rectangles, no core call, no input change (P0). Tests:
+  `test_wl` (51 -> 60, `dos_box`), `ext_adapt.py`'s d7g runs (the held box's left, bottom and width on preskin2's
+  Status rectangle; the four DOS/Windows pairs equal).
+
 ### 12.8 DOS clock, timelines, sequencing, adapters, I4 and I5 (D1 area C; phases D4..D7)
 
 Design of extension 5.5 T1..T7, 5.6 I1 and I3..I6, I8, 7.7, 7.8 and section 8's "Birth inside world
@@ -8379,3 +8421,147 @@ inputs under `--game-screen view`, by the user's direction. Decision K1 scopes P
   instant, F313), each the input a Windows player gives the same dialog; each unit's DOS-form pairs equal their Windows
   forms in `ext_adapt.py`. In each landing's cycle `P0_OK checks 476`, `MIRROR_OK runs 29` and
   `EXT_G1_OK runs 77 (amended 1)` are unchanged.
+* **WL, A43, CRT, AMS, CRT2, D7g3 and WL2 (session E5, 2026-10-18/19): no new exception.** Windowless play (12.12)
+  reads the core through `w16q_*` inside the guard and only rearranges the shown picture; host clicks are mapped back
+  to the windowed points of what they hit, the input a windowed player gives (`ext_wl.py`'s pairs equal). `ext_p0.py`
+  gains V9, V9d and V9t (WL on from the start, in the DOS graphics, and toggled during the runs: every core output
+  equal to V0's; `P0_OK checks 577`, D7o's 477 plus WL's). The 4:3 gameplay item (12.13) never reaches the game screen
+  (`present_game_screen(_follow)` reads only the intro bit). The CRT filter (12.14) works on the host's scaled image
+  after the presentation. The alternative sounds (12.15) are chosen in the Win32 back end's `host_play_sound` after the
+  core's call, its return value unchanged. D7g3 reads one more window port through `w16q_*`. In each landing's cycle
+  `P0_OK checks 577`, `MIRROR_OK runs 29` and `EXT_G1_OK runs 77 (amended 1)` are unchanged.
+
+### 12.12 Windowless play (WL, WL2; session E5)
+
+Records [ext-WL-record.md](ext-WL-record.md) (design note `verify/BRIEF-wl.md` with the orchestrator's answers 1..5 and
+the user's direction of 2026-10-18 about 06:20 UTC; landed 2026-10-18, ALL_GREEN 21:53:07 UTC, `build/wl-status.txt`)
+and [ext-WL2-record.md](ext-WL2-record.md) (`verify/BRIEF-e5rev.md` "Unit WL2"; landed 2026-10-19, ALL_GREEN 03:34:16
+UTC, `build/wl2-status.txt`); FIDELITY F322..F325, F337, F338; D7g3's black rule F336, F324. Display's first item
+"Windowless play" (12.2) switches the mode at any time in both graphics.
+
+* **The scene** (`present/wl.c`, `wl.h`, portable C, prefix `pwl_`): read inside the observer's guard at every core
+  present and tick (`pwl_read`): the three windows by their ports (g_mapWindowPort 12B0:0004, class "CIV", created by
+  WdwMapOpen 1208:0AF1 at 1208:0B4E with style 0x02FF0000, which includes WS_HSCROLL and WS_VSCROLL;
+  g_worldMapWindowPort 12B0:001C, WdwSmMapOpen 1210:025B; g_statusWindowPort 12B0:0034, WdwStatusOpen 1218:0386),
+  their clients' visible regions (in the DOS graphics without the windows the DOS art hides), the map window's menu
+  bar (`w16q_menu_bar`) and the floats: the other shown top-level windows, the menu loop's popups with their shadows
+  (`w16q_menu_saved`), the move or size outline (`w16q_sys_track`) and, in the DOS graphics, the A canvas's DOS boxes
+  and drop-downs (`pdos_reskin_a_rects`, `pdos_reskin_a_rects_drop`).
+* **The arrangement** (`pwl_arrange`, pure; since WL2): the bar piece B (`PWL_B` 3, `PWL_PART_BAR`) is the map window's
+  menu bar at canvas (0, 0); the canvas is the column's width plus the map client's (at least the bar's width), and
+  beyond the bar's own width its rows repeat its last column. The map piece M is the client alone, below the bar (its
+  translation as in WL, so the map layer is unchanged); the World Map W and the Status S form one column below the
+  bar, on the side of their windows' mean centre, ordered by their tops. Only the clients' and the bar's visible pixels
+  are copied, so the scroll bars are never shown (F323); covered parts are black (F324). WL2's start-up layout: canvas
+  613x439, B at (0, 0), W at (0, 18), S at (0, 120) grown by 12 rows, M at (160, 18). (WL before WL2: M was the bar's
+  rectangle down to the client's bottom, the column from canvas y 0; canvas 629x439.)
+* **S grown** (WL2, `s_cut`, `s_ext`): when S is the column's last piece and the canvas is taller than the column,
+  `s_ext` rows are inserted at frame row `s_cut` (`PWL_FOOT` 12 rows above the client's bottom), filled with the band
+  of `PWL_BAND` 32 rows above the cut repeated; the rows below the cut and the floats anchored at S below it move down;
+  a float over the band moves the cut up in steps of 2 (at most to S's middle). F338.
+* **Floats**: anchored by their centre (W, S, else M; the Windows popups and the DOS drop-downs at B since WL2,
+  `PwlScene.flbar`), moved by the anchor's translation and clamped inside the canvas; a float larger than the canvas
+  pauses windowless play. A DOS re-skin box is not a window, so no piece's visible region excludes it: since D7g3 a
+  piece leaves a DOS float's rectangle black where the float moves otherwise than the piece (`PwlScene.flbox`,
+  `PwlFloat.box`); the float alone shows the box.
+* **The canvas and points**: `pwl_frame` / `pwl_peek` make the canvas from the visible frame, translating the frame's
+  damage piece by piece (`piece_cv`, `cv_to_frame`, `dmg_piece`, `put_part` through the bar fill and S's inserted
+  rows); `pwl_point` is the inverse map (topmost float, else piece; a black part or a gap returns 0 and a press there
+  is not delivered, F100; a latched press keeps its part for drags); `pwl_check` checks the canvas against its
+  definition (every canvas pixel the arranged frame pixel or black).
+* **The seams**: `present.c` passes the visible frame through `pwl_frame`/`pwl_peek` while windowless play shows,
+  re-lays out when its showing changes, maps `present_view_point` through `pwl_point`, takes the pointer factors from
+  the canvas's layout (`present_set_windowless`, `present_windowless`, `present_windowless_showing`; `wl_due()` at the
+  tick for a scene change or base-frame damage between core presents, such as MZW's World Map rectangle); `arrive.c`'s
+  press latch keeps the part; the map layer (`pmap_layer.c`, `pmap_input.c`, `pmap_zoom.c`, `pmap_dos.c`) follows M (the
+  canvas's layout, M's translation, the floats as cuts, the wheel anchor through the view point); `host_win32.c` the
+  item, its mark, `hw_set_windowless`, `hw_set_windowless_hook`; `win64` `--windowless 0|1` and the key `windowless`.
+* **Harness**: `--windowless 0|1` and the script command `windowless on|off`; presented.log's ` wl CWxCH` and
+  ` wl MISMATCH` marks, the `wl shows S pauses P arranges A mismatches M` line, and the fact lines `wl arrange` (since
+  WL2 with `barpiece on l t r b dx dy sext cut ext`), `wl bar`, `wl popup`, `wl windows`, `wl view` that `ext_wl.py`
+  builds its input pairs from. Tests `test_wl` (78 checks since WL2), `ext_wl.py` (section `ext_wl`; `WL_PAIRS_OK
+  checks 15`), `ext_p0.py` V9, V9d, V9t.
+
+### 12.13 4:3 for the DOS gameplay (A43; session E5)
+
+Record [ext-A43-record.md](ext-A43-record.md) (the user's request in `verify/BRIEF-extras.md`; landed 2026-10-18,
+ALL_GREEN 22:34:29 UTC, `build/a43-status.txt`); FIDELITY F326..F328.
+
+* **The aspect is a bit set** (`present/scale.h`): `PRESENT_ASPECT_4_3` (1, the intro item, UX3's meaning: a 320x200
+  frame gets the pixel aspect 6/5 outside play) and `PRESENT_ASPECT_PLAY` (2, the gameplay item: a frame of any size
+  gets 6/5). The DOS gameplay's A frame is DOS art at 2x on the Windows layout, so its rows stretched by 6/5 give every
+  DOS pixel the DOS screen's 4:3 shape (inferred: the DOS game draws 320x200 for a 4:3 display).
+* **Layout** (`present_layout_compute`): the PLAY bit sets the pixel aspect 6/5 for any frame; under "Integer scaling"
+  the whole pairs are searched as for UX3, and a frame with no whole 6/5 pair is laid out by fit with the current filter
+  and recorded as fit (F326). Example: the 640x480 A frame in 1920x1080 is 1200x1080 at (360, 0).
+* **Which frames** (`present.c` `present_layout_aspect`, `PresentProfile.in_play`): while the visible profile is in
+  play (the DOS profile: `pdos_seq`'s core scene `PDOS_CS_PLAY`, from the setup's end or a loaded game's start to the
+  run's end) the gameplay item decides for every frame, the in-play 320x200 scenes included (F327); otherwise UX3's
+  rule with the intro item. The Windows profile has no `in_play` (NULL). A change re-lays out at the next tick.
+* **What follows the shape**: the scaler, the client-to-frame mapping of the pointer and clicks, the DOS pointer's
+  factors, the map zoom layer (`pmap_core_layout` lays the core's frame out with `present_layout_aspect`) and the
+  windowless canvas. **What does not**: the game screen's size (`present_game_screen`, `_follow`) and the Windows
+  frame's layout for the pointer factors use the intro bit only (P0; F328).
+* **civ64**: `civ64_cfg_aspect_play` / `civ64_cfg_set_aspect_play` (key `aspect_play_4_3`), `civ64_start_aspect`;
+  `--aspect gameplay` and `--aspect both` (the harness takes the same values). Tests: `test_present`
+  `profiles_in_play` (974 checks), `w32_test_host_win32`.
+
+### 12.14 CRT scanlines (CRT, CRT2; session E5)
+
+Records [ext-CRT-record.md](ext-CRT-record.md) (the user's request in `verify/BRIEF-extras.md`; landed 2026-10-18,
+ALL_GREEN 23:29:44 UTC, `build/crt-status.txt`) and [ext-CRT2-record.md](ext-CRT2-record.md) (the user's report of
+2026-10-18 about 23:50 UTC; landed 2026-10-19, ALL_GREEN 01:05:46 UTC, `build/crt2-status.txt`); FIDELITY F329..F331,
+F335.
+
+* **The source**: DOSBox Pure Unleashed's `fragment_shader_crt_src` (main.cpp, (C) Bernhard Schelling,
+  GPL-2.0-or-later, read read-only) with the user's settings, which give ShadowMask 1 (no mask, tone mask 1),
+  ScanlineThinness 0.65 and HorizontalBlur -7. civ64 copies no code: `present/crt.c` reimplements the arithmetic in
+  portable C, with the attribution and formulas in `present/crt.h`.
+* **The place** (`present.c`): a post-process of the scaled client image. With the option on, the scaler and the map
+  layer draw into a clean client buffer; `show()` filters the written rectangle into the back end's buffer and shows
+  that; core presents filter only their damage rectangles, the map zoom layer is filtered with the picture, the black
+  border is copied.
+* **The grid and aspect**: the visible frame's pixels; for the DOS A frame its DOS pixels (one scanline per DOS row),
+  for the Windows graphics one per Windows pixel row (F331); output pixels map to source rows through the laid-out
+  image, so both 4:3 items give 4:3 scanlines; no overscan border.
+* **The arithmetic since CRT2** (F335): no resampling. Each image pixel keeps its clean pixel; per image row one scan
+  weight w = own + neighbour of the shader (own = scan(a T), neighbour = scan((1 - a) T), a the row's distance from
+  its own source row's centre), which is what the shader gives a uniform area; then the shader's tonal curve. A table
+  `fac[level][brightest channel]` (256 x 256, 16.16, made once) gives w f(p) / p; a pixel is 3 decode reads, 1 factor
+  read, 3 multiplies and 3 encode reads, and a run of equal pixels reuses the result. `present_crt_expand` returns the
+  rectangle itself (no reach). A whole 3840x2160 client takes about 8 to 9 ms (CRT's resampling, two rows x four
+  columns per pixel: about 400 ms, the user's slowdown; its horizontal taps and row blend were the smoothing).
+* **Menu and settings**: Display's "&CRT scanlines" (12.2); `hw_set_crt` for the start state; civ64 `--crt 0|1`, else
+  the key `crt_scanlines` ("1" on), else off. Tests: `test_crt` (21 checks since CRT2: the scan levels, white and
+  black, sharpness, no reach, a golden SHA-256, a timing bound of 120 ms for a whole 3840x2160 client, the
+  presentation's option checks), `w32_test_host_win32`.
+
+### 12.15 Alternative music and sound effects (AMS; session E5)
+
+Record [ext-AMS-record.md](ext-AMS-record.md) (the user's request in `verify/BRIEF-extras.md`; landed 2026-10-19,
+ALL_GREEN 00:12:36 UTC, `build/ams-status.txt`); FIDELITY F332..F334.
+
+* **Where the sounds are played**: the game plays every sound through MMSYSTEM sndPlaySound
+  (`platform/w16/user_misc.c` `w16_sndPlaySound`; asynchronously at 1150:00BE, stopped with a NULL name at
+  1150:012D); the name resolves through the virtual DOS like a file and `host_play_sound(relpath, async)` plays the
+  data directory's file with PlaySoundW. The replacement sits there (`platform/win32/host_win32.c`): the core's call,
+  its return value and every state it sees stay as they are (P0).
+* **Lookup** (`win64/civ64_locate.c`, after the DOS steps): 1 `--music-sfx <dir|zip|none>`; 2 `MusicSfx.zip` next to
+  civ64.exe; 3 a `MusicSfx` subfolder there (names compared ignoring case); 4 civ64.cfg's `music_data` (a folder or a
+  ZIP); 5 the question, unless `music_ask=never`: Yes opens the file dialog for a WAV file (its folder is the source)
+  or a ZIP; No asks whether to ask again (No writes `music_ask=never`), as the DOS question does. A chosen source is
+  remembered (`music_data`) and the item checked again (`alt_sounds` removed).
+* **Valid**: at least one of the 24 names is a valid WAV file (RIFF WAVE, a "fmt " chunk of at least 16 bytes with a
+  format tag, channels and a rate, a non-empty "data" chunk: `civ64_wav_ok`); in a folder the top level (any case), in
+  a ZIP any one folder (`zip_find_base`). An invalid file of a name is ignored (the game's own plays). A source without
+  a valid file: `--music-sfx` stops civ64 with a message naming the 24 files, steps 2..4 skip it, a choice is refused
+  and asked again.
+* **In memory**: the valid files are read once at the start (a ZIP in memory, never extracted; nothing written to
+  `%LOCALAPPDATA%`) and kept for the run (F333).
+* **Playback** (`host_play_sound`): the last path component of the game's name matched to the 24 names ignoring ASCII
+  case (F334); with a replacement and the item checked, PlaySoundW plays its bytes (SND_MEMORY, the game's async/sync
+  flag, SND_NODEFAULT); otherwise the game's file. The stop (NULL name) stops either (F332).
+* **Menu**: the top-level "A&lternative music/soundfx" (12.2); grayed without a valid source; checked at the start when
+  a source is valid unless `alt_sounds` is "0". Tests: `w32_test_locate` `test_ams` (47 checks), `w32_test_host_win32`
+  (495 checks, 15 top-level items), on synthetic 48-byte WAV files; the question flow is not exercised headless (user
+  check AMS-2).

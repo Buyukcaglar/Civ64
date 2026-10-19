@@ -3,7 +3,7 @@
 The user's pending visual and behaviour checks of the extension track
 (`claude/docs/x64-port-scaling-dos-prompt.md`), grouped by the phase that makes each one possible.
 Each item names what to look at and the D1 decision it checks (`docs/verify/ext-d1-decisions.md`;
-DESIGN.md 12.5..12.11; FIDELITY F113..F321). Every item is **pending** unless its status says
+DESIGN.md 12.5..12.11; FIDELITY F113..F338). Every item is **pending** unless its status says
 **passed** (D4-4..D4-13, 2026-10-12; D4-15, D4-18, D4-19, D4-21..D4-24, 2026-10-15; D4-2, D4-14, D4-16, D4-17,
 D4-20, D4-25..D4-29 and P47-2, 2026-10-15 about 19:40 UTC; D3-1..D3-10, D4a-1, D4-1 and D5-3, 2026-10-16 about
 07:40..07:58 UTC; D5-1, D5-2, D5-4..D5-6, D5-14, D5-16, D5-18, D5-19 and D5-21..D5-23, 2026-10-16 about 09:45..10:06 UTC; D6c-1..D6c-7,
@@ -1204,7 +1204,7 @@ otherwise. D6fSd-1, -2, -3, -5, -6, D7g-1, D6fSa-2 and D5-7 are rewritten for th
 | D7g2-6 | (section "Moved boxes") Any other question or message box that appears over a DOS full screen (the city screen and the other 320 x 200 screens) in play: it stands where the DOS game shows it. The private runs met no such box besides the sale question (D7g2-5). | the user's direction of 2026-10-18 about 10:57 UTC (STATUS "User directions"); `ext-D7g2-record.md` | pending (user build `build/user-builds/d7g2/`) |
 | D7g2-7 | Event boxes, when they come up in play: a disaster in a city (the Domestic Advisor's header for your city, the Foreign Minister's for a foreign one), a civil war (the Foreign Minister's header), a diplomat's or a revolt's boxes and the population message: the DOS boxes with the DOS headers at the centre of the window, where the Windows game shows them. For a disaster in a foreign city the DOS game moves the map to that city first; the game here moves it too, perhaps not to the same position (deviation 3). | the user's direction of 2026-10-18 about 10:57 UTC (STATUS "User directions"); `ext-D7g2-record.md` | pending (user build `build/user-builds/d7g2/`) |
 | D7g2-8 | (the user's direction of 10:57, over the map) GAME > Tax Rate, Luxuries Rate, REVOLUTION!, Retire and QUIT to DOS, '/' (Find City), the "City Name..." box when a city is founded, and the science advisor's choice of the next discovery (D7g's route): each DOS box stands at the centre of the window, where the Windows game shows it (its middle at the middle of the whole window, not of the map area); its size, text, header and colours as before; the menus GAME, ORDERS and the others still open under the bar. Ctrl+Shift+Backspace to the Windows graphics and the same boxes: the Windows dialogs at about the same places. | the user's direction of 2026-10-18 about 10:57 UTC (STATUS "User directions"); `ext-D7g2-record.md` | pending (user build `build/user-builds/d7g2/`) |
-| D7g2-9 | (deviation 5, for the user's ruling) The science advisor's recommendation (CHIEF.SAV, D7g's route): the research choice stands at the centre of the window; the recommendation ("SCIENCE ADVISOR: / I RECOMMEND WE ...") does NOT follow the centre rule: it keeps the DOS game's place at the lower left, beside the research choice, over the Status window, so both are seen at once. At the centre it would lie wholly hidden under the research choice. The user rules whether to keep this or to want it otherwise. | the user's direction of 2026-10-18 about 10:57 UTC (STATUS "User directions"); `ext-D7g2-record.md` | pending (user build `build/user-builds/d7g2/`) |
+| D7g2-9 | (deviation 5, for the user's ruling) The science advisor's recommendation (CHIEF.SAV, D7g's route): the research choice stands at the centre of the window; the recommendation ("SCIENCE ADVISOR: / I RECOMMEND WE ...") does NOT follow the centre rule: it keeps the DOS game's place at the lower left, beside the research choice, over the Status window, so both are seen at once. At the centre it would lie wholly hidden under the research choice. The user rules whether to keep this or to want it otherwise. | the user's direction of 2026-10-18 about 10:57 UTC (STATUS "User directions"); `ext-D7g2-record.md` | **failed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4, with a screenshot: the recommendation box has another visible box underneath it; its left and bottom sides shall align with the Status window's left and bottom, and its width shall equal the Status window's width); the fix is the follow-up unit D7g3, the item stays pending |
 
 ## D7o: the D7 gate and its follow-ups in the DOS graphics
 
@@ -1222,10 +1222,125 @@ too). With the DOS graphics unless an item says otherwise.
 | D7o-3 | On the city screen, press c (CHANGE: the production list), then Alt+H on the list's highlighted row (the DOS list's help): the Civilopedia entry opens at once; between the list and the entry no Windows-style city window flashes up, not even for an instant. Space and Return as before. | `verify/BRIEF-d7.md` D7o; `ext-D7o-record.md`; `build/user-builds/d7o/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/d7o/`) |
 | D7o-4 | On the city screen, Alt with a letter (for example Alt+C or Alt+Q): the city screen closes, as any key the DOS city screen does not use; the letter's own action (c: CHANGE, q) does not happen, and no Windows menu opens. Alt alone does nothing; F10 closes the city screen. | `verify/BRIEF-d7.md` D7o; `ext-D7o-record.md`; `build/user-builds/d7o/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/d7o/`) |
 
-**Count:** 364 items: 181 passed (D3 10: D3-1..D3-10; D4a 1: D4a-1 (informational); D4 32: D4-1..D4-32; P47 1: P47-2;
+## WL: windowless play
+
+Unit WL (windowless play, `verify/BRIEF-wl.md`; record `ext-WL-record.md`): an optional mode, chosen on the fly in
+civ64's window menu (Display > Windowless play), that joins the map, the World Map and the Status panel into one
+picture without title bars, frames, borders or scroll bars, in both graphics. Four-step cycle green: TESTS_OK
+2026-10-18 21:53:07 UTC, RELEASE_OK 21:56:38 UTC (`build/wl-status.txt`). User build
+`claude/port/build/user-builds/wl/`, the newest build (it contains everything in "d7o" and the earlier builds;
+their items can be checked there too).
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| WL-1 | In a running game, open civ64's window menu (right-click civ64's own title bar) and then Display: its first item is "Windowless play", followed by a separator. Choosing it switches windowless play on at once (a check mark appears) and choosing it again switches it off, in the Windows graphics and in the DOS graphics (Ctrl+Shift+Backspace switches the graphics). | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-2 | With windowless play on, the map, the World Map and the Status panel form one picture without title bars, frames or borders: the World Map above the Status panel on the left, the map on the right, the menu bar on top of the map. Both graphics. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-3 | With windowless play on, no scroll bars are visible anywhere, in the Windows graphics and in the DOS graphics. (Right of the map, below the menu bar's end, a narrow black strip is where the scroll bar was.) | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-4 | With windowless play on, a click on the World Map jumps the play map to that place, as without windowless play. Both graphics. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-5 | With windowless play on, a left click on the play map moves the map to that place, as without windowless play. Both graphics. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-6 | With windowless play on, the menus of the menu bar, message boxes and dialogs open over the picture and work with the mouse and the keyboard. A dialog over the Status panel may have a black strip beside it (recorded). A click on a black area does nothing. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-7 | The setting is remembered: close civ64 with windowless play on and start it again, it is on again; switch it off, close and start again, it stays off. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-8 | Windowless play works with full screen (Alt+Enter), the Display scaling choices and the map zoom (the World Map's view rectangle follows the zoom). Under the whole-number scaling, black borders around the picture are expected. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+| WL-9 | Before the game (the intro, the title menu, the setup) and on the DOS graphics' full-screen scenes (for example the city screen), the picture is the same as without windowless play. | `verify/BRIEF-wl.md`; `ext-WL-record.md`; `build/user-builds/wl/WHAT-TO-CHECK.txt` | **passed** 2026-10-18 about 23:20 UTC, the user (in chat, session E4: "Note that WL passed all its visual inspection"; build `build/user-builds/wl/`) |
+
+## A43: 4:3 aspect ratio for the DOS gameplay
+
+Unit A43 (`verify/BRIEF-extras.md`; record `ext-A43-record.md`). User build `claude/port/build/user-builds/a43/`, the newest build at its landing (it contains the earlier builds).
+civ64.exe here is the Release build of unit A43: Display's 4:3 item is renamed "4:3 aspect ratio for 320 x 200 DOS
+intro screens", and a new item "4:3 aspect ratio for 320 x 200 DOS gameplay" below it gives the whole DOS gameplay
+the DOS screen's 4:3 shape. The Windows graphics are unchanged. The three-step cycle is ALL_GREEN
+(claude/port/build/a43-status.txt). It also contains everything in build "wl" and the earlier ones.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| A43-1 | Display's last two items read "4:3 aspect ratio for 320 x 200 DOS intro screens" (checked, as the old "Correct 320 x 200 to 4:3" was) and, directly below it, "4:3 aspect ratio for 320 x 200 DOS gameplay" (unchecked at first). The intro item behaves as before: the DOS intro, title menu and setup pages are 4:3 when it is checked. | `verify/BRIEF-extras.md`; `ext-A43-record.md`; `build/user-builds/a43/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/a43/`) |
+| A43-2 | In DOS graphics, start or load a game and check "4:3 aspect ratio for 320 x 200 DOS gameplay": the whole game picture becomes taller and narrower at once (black bars at the sides): the menu bar and its drop-downs, the World Map, the map, the Status window, popups and dialogs all have the DOS screen's 4:3 shape; the DOS pointer is slightly taller. Uncheck it: the picture returns to square pixels at once. | `verify/BRIEF-extras.md`; `ext-A43-record.md`; `build/user-builds/a43/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/a43/`) |
+| A43-3 | With the gameplay item checked, play a little: clicks and the pointer hit exactly what is under the pointer (menu items, map squares, World Map, buttons in dialogs); map zoom in and out (Ctrl+Shift+Plus/Minus) keeps the zoomed map in its window at the 4:3 shape. | `verify/BRIEF-extras.md`; `ext-A43-record.md`; `build/user-builds/a43/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/a43/`) |
+| A43-4 | With the gameplay item checked, open a full-screen DOS screen during play (a report from the Advisors menu, a city screen, the Civilopedia): it is 4:3 too, even when the intro item is unchecked. | `verify/BRIEF-extras.md`; `ext-A43-record.md`; `build/user-builds/a43/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/a43/`) |
+| A43-5 | Switch to Windows graphics (Ctrl+Shift+Backspace) with the gameplay item checked: the Windows graphics are unchanged (square pixels); switching back shows the 4:3 DOS gameplay again. | `verify/BRIEF-extras.md`; `ext-A43-record.md`; `build/user-builds/a43/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/a43/`) |
+| A43-6 | Close civ64 with the gameplay item checked and start it again: the item is still checked and the DOS gameplay 4:3. Starting with --aspect square shows both items unchecked for that run only. | `verify/BRIEF-extras.md`; `ext-A43-record.md`; `build/user-builds/a43/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/a43/`) |
+
+## CRT: CRT scanlines
+
+Unit CRT (`verify/BRIEF-extras.md`; record `ext-CRT-record.md`). User build `claude/port/build/user-builds/crt/`, the newest build at its landing (it contains the earlier builds).
+civ64.exe here is the Release build of unit CRT: a new item "CRT scanlines" in the window menu's Display submenu
+turns on DOSBox Pure Unleashed's CRT filter with your eight settings (only scanlines, normal gaps, sharpest), in
+both graphics. The three-step cycle is ALL_GREEN (claude/port/build/crt-status.txt). It also contains everything in
+build "a43" and the earlier ones.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| CRT-1 | Display shows "CRT scanlines" below "Sharp filter", between two separator lines, unchecked at first. Choose it: the picture at once shows thin dark horizontal gaps between the pixel rows, like DOSBox Pure Unleashed's "Only Scanlines" CRT filter with normal gaps; the picture stays sharp (no blur, no colour mask, no curvature, no rounded corners, no extra border) and about as bright as before. Choose it again: the plain picture returns. | `verify/BRIEF-extras.md`; `ext-CRT-record.md`; `build/user-builds/crt/WHAT-TO-CHECK.txt` | **failed** 2026-10-18 about 23:50 UTC, the user (in chat, session E4: the picture is smoothed; the user's DOSBox Pure Unleashed settings show no such effect); the fix is the follow-up unit CRT2, the item stays pending |
+| CRT-2 | In DOS graphics (title screen, intro and in play) there is one dark gap per DOS pixel row; in Windows graphics one per Windows pixel row (finer). Switch graphics with Ctrl+Shift+Backspace while it is on: it stays on. | `verify/BRIEF-extras.md`; `ext-CRT-record.md`; `build/user-builds/crt/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/crt/`) |
+| CRT-3 | With "CRT scanlines" on, try "Fit to window" and "Integer scaling", the sharp filter, full screen (Alt+Enter) and resizing the window: the scanlines follow the picture every time, with no stripes left on the black borders and no stale picture parts; with the 4:3 items checked the scanlines are spaced as the taller 4:3 rows. | `verify/BRIEF-extras.md`; `ext-CRT-record.md`; `build/user-builds/crt/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/crt/`) |
+| CRT-4 | In play, zoom the map (Ctrl+Shift+Plus/Minus) and move units: the zoomed map has the scanlines too, and the picture updates without flicker or lag that was not there before. | `verify/BRIEF-extras.md`; `ext-CRT-record.md`; `build/user-builds/crt/WHAT-TO-CHECK.txt` | **failed** 2026-10-18 about 23:50 UTC, the user (in chat, session E4: an extreme slowdown when CRT scanlines is on); the fix is the follow-up unit CRT2, the item stays pending |
+| CRT-5 | Close civ64 with "CRT scanlines" on and start it again: still on. --crt 0 starts without it for that run. | `verify/BRIEF-extras.md`; `ext-CRT-record.md`; `build/user-builds/crt/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/crt/`) |
+
+## AMS: alternative music/soundfx
+
+Unit AMS (`verify/BRIEF-extras.md`; record `ext-AMS-record.md`). User build `claude/port/build/user-builds/ams/`, the newest build at its landing (it contains the earlier builds).
+civ64.exe here is the Release build of unit AMS: civ64 plays your own music and sound effects (MusicSfx.zip or a
+MusicSfx folder next to civ64.exe, any of the game's 24 wave files) instead of the game's own, with a new item
+"Alternative music/soundfx" in the window menu. Put your MusicSfx.zip or MusicSfx folder next to civ64.exe here
+yourself. The three-step cycle is ALL_GREEN (claude/port/build/ams-status.txt). It also contains everything in build
+"crt" and the earlier ones.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| AMS-1 | Put your MusicSfx.zip (or a MusicSfx folder) next to civ64.exe and start civ64: no question is asked; the window menu (the icon at the left of the title bar) shows "Alternative music/soundfx" below "Graphics", checked. The opening music and every sound you provided play as your files (for example the opening tune, a battle's cannon, a leader's music); sounds you did not provide play as the game's own. | `verify/BRIEF-extras.md`; `ext-AMS-record.md`; `build/user-builds/ams/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/ams/`) |
+| AMS-2 | Without MusicSfx next to civ64.exe, start civ64 with a fresh settings file (or after removing the keys music_data and music_ask from civ64.cfg): after the DOS question civ64 asks "Alternative music and sound effects were not found ... Locate them now?". Yes: choose a WAV file inside your folder, or your ZIP: the item is checked and your sounds play; the next start asks nothing. No: "Ask again the next time civ64 starts?" (No: never again). | `verify/BRIEF-extras.md`; `ext-AMS-record.md`; `build/user-builds/ams/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/ams/`) |
+| AMS-3 | Uncheck "Alternative music/soundfx" while playing: the next sounds are the game's own; check it again: your sounds again. Close and restart: the item keeps your last choice. | `verify/BRIEF-extras.md`; `ext-AMS-record.md`; `build/user-builds/ams/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/ams/`) |
+| AMS-4 | File names in any case (OPENING.WAV, Opening.wav) are used; a file that is not a WAV file (rename a text file to alex.wav) is ignored and that sound is the game's own; without any valid file civ64 asks again (or, with --music-sfx, says that the source has none of the 24 files). | `verify/BRIEF-extras.md`; `ext-AMS-record.md`; `build/user-builds/ams/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/ams/`) |
+| AMS-5 | Without any source the item is grayed and cannot be checked. | `verify/BRIEF-extras.md`; `ext-AMS-record.md`; `build/user-builds/ams/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/ams/`) |
+
+## CRT2: CRT scanlines without slowdown or smoothing
+
+Unit CRT2 (`verify/BRIEF-e5rev.md`; record `ext-CRT2-record.md`). User build `claude/port/build/user-builds/crt2/`, the newest build at its landing (it contains the earlier builds).
+civ64.exe here is the Release build of unit CRT2, the fix of your report on build "crt": with "CRT scanlines" on
+civ64 is as fast as with it off, and the picture is as sharp as with it off; only the dark scanline gaps are added.
+The three-step cycle is ALL_GREEN (claude/port/build/crt2-status.txt). It also contains everything in build "ams"
+and the earlier ones.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| CRT2-1 | Turn "CRT scanlines" on (Display) and play: the intro, the title, scrolling and zooming the map, opening menus and dialogs are as fast and smooth as with it off, in both graphics and in full screen. | `verify/BRIEF-e5rev.md`; `ext-CRT2-record.md`; `build/user-builds/crt2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/crt2/`) |
+| CRT2-2 | With it on, the picture is as sharp as with it off: each pixel's edges stay hard (no soft or doubled columns at the edges of letters, units and the map squares); only the dark gaps between the pixel rows are added. | `verify/BRIEF-e5rev.md`; `ext-CRT2-record.md`; `build/user-builds/crt2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/crt2/`) |
+| CRT2-3 | Re-check CRT-1..CRT-5 of build "crt" with this build (the item, one gap per DOS row in the DOS graphics and per Windows row in the Windows graphics, scaling and the 4:3 items, zoom, the setting remembered). | `verify/BRIEF-e5rev.md`; `ext-CRT2-record.md`; `build/user-builds/crt2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/crt2/`) |
+
+## D7g3: the science advisor's recommendation at the Status window
+
+Unit D7g3 (`verify/BRIEF-e5rev.md`; record `ext-D7g3-record.md`). User build `claude/port/build/user-builds/d7g3/`, the newest build at its landing (it contains the earlier builds).
+This build fixes the DOS science advisor's recommendation box (D7g2-9): no second box under it, and it now stands on
+the Status window's bottom left at the Status window's width. The three-step cycle is ALL_GREEN
+(claude/port/build/d7g3-status.txt). It also contains everything in build "crt2" and the earlier ones.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| D7g3-1 | DOS graphics, CHIEF.SAV (D7g's route: load it, play the turn until the science advisor recommends): the recommendation box ("SCIENCE ADVISOR: I RECOMMEND WE DEVELOP ...") has no second box or frame underneath or beside it, in the normal windows and in windowless play. | `verify/BRIEF-e5rev.md`; `ext-D7g3-record.md`; `build/user-builds/d7g3/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/d7g3/`) |
+| D7g3-2 | Its left side is on the Status window's left side, its bottom side on the Status window's bottom side, and it is exactly as wide as the Status window; the DOS letters, colours and grey box stay, the text wraps inside it. | `verify/BRIEF-e5rev.md`; `ext-D7g3-record.md`; `build/user-builds/d7g3/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/d7g3/`) |
+| D7g3-3 | Repeat with the window larger or smaller, the map zoomed (Ctrl+Shift+Plus/Minus), full screen (Alt+Enter) and with Windowless play on and off: the box always stands on the Status window's bottom left at its width. | `verify/BRIEF-e5rev.md`; `ext-D7g3-record.md`; `build/user-builds/d7g3/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/d7g3/`) |
+| D7g3-4 | The research choice is still centred and works as before (Return, Escape, a click); choosing ends both boxes. | `verify/BRIEF-e5rev.md`; `ext-D7g3-record.md`; `build/user-builds/d7g3/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/d7g3/`) |
+
+## WL2: windowless play revisions
+
+Unit WL2 (`verify/BRIEF-e5rev.md`; record `ext-WL2-record.md`). User build `claude/port/build/user-builds/wl2/`, the newest build at its landing (it contains the earlier builds).
+This build revises windowless play in both graphics: the menu bar runs across the top from the left edge above the
+World Map, and the Status panel reaches the bottom of the picture. WL-1..WL-9 are to be re-checked with it (WL2-5).
+The three-step cycle is ALL_GREEN (claude/port/build/wl2-status.txt). It also contains everything in build "d7g3"
+and the earlier ones.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| WL2-1 | Windowless play on (Display), both graphics (Ctrl+Shift+Backspace switches): the menu bar runs across the very top of the picture from its left edge, above the World Map; the World Map, the Status panel and the map are below it. The menus open under their titles and work with the mouse and the keyboard. | `verify/BRIEF-e5rev.md`; `ext-WL2-record.md`; `build/user-builds/wl2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/wl2/`) |
+| WL2-2 | Windowless play on, both graphics: the Status panel reaches the bottom of the picture. It looks the same as before, only taller: the same frame, texture, letters and numbers, nothing stretched; the extra height is more of the same panel background. | `verify/BRIEF-e5rev.md`; `ext-WL2-record.md`; `build/user-builds/wl2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/wl2/`) |
+| WL2-3 | DOS graphics, windowless play, CHIEF.SAV's science advisor recommendation (D7g3-1): the recommendation stands on the Status panel's bottom left at its width, at the bottom of the picture. | `verify/BRIEF-e5rev.md`; `ext-WL2-record.md`; `build/user-builds/wl2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/wl2/`) |
+| WL2-4 | Window larger, smaller, full screen (Alt+Enter), the Display scaling choices and the map zoom (Ctrl+Shift+Plus/Minus): the bar stays at the top left and the Status panel at the bottom. | `verify/BRIEF-e5rev.md`; `ext-WL2-record.md`; `build/user-builds/wl2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/wl2/`) |
+| WL2-5 | Re-check WL-1..WL-9 of build "wl" with this build (the menu item, no scroll bars, the World Map and play-map clicks, dialogs over the picture, the setting remembered, full screen/scaling/zoom, the screens before the game unchanged). | `verify/BRIEF-e5rev.md`; `ext-WL2-record.md`; `build/user-builds/wl2/WHAT-TO-CHECK.txt` | pending (user build `build/user-builds/wl2/`) |
+
+**Count:** 401 items: 190 passed (D3 10: D3-1..D3-10; D4a 1: D4a-1 (informational); D4 32: D4-1..D4-32; P47 1: P47-2;
 UX1 6: UX1-1..UX1-6; BS 6: BS-1..BS-6; D5 22: D5-1..D5-6, D5-8..D5-23; D6 7: D6c-1..D6c-7; M 8: M-1 (the
-Windows part; its DOS sentence is item M-1d), M-1d, M-2..M-7, M-3b; LP 8: LP-1..LP-8; UX2 4: UX2-1..UX2-4; D5K 4: D5K-1..D5K-4; UX3 10: UX3-1..UX3-10; D5K2 3: D5K2-1..D5K2-3; SL 7: SL-1..SL-7; D6d 5: D6d-1..D6d-3, D6d-5, D6d-6; UX4 4: UX4-1..UX4-4; MZ 7: MZ-1..MZ-7; D5P 9: D5P-1..D5P-6, D5P-8..D5P-10; MZW 7: MZW-1..MZW-7; HM 9: HM-1..HM-9; D7l2 4: D7l2-1..D7l2-4; D7h 6: D7h-1..D7h-5, D7h-7), 180 pending
-(180 checkable: P47-1, D6-1, D5-7, D5P-7, UX5-1..UX5-7, MZI-1..MZI-7, SI-1..SI-6, MZS-1..MZS-6, MZW-8, D6e-1..D6e-7, TLD-1..TLD-7, FCE-1..FCE-5, D6f-1..D6f-8, D7a-1..D7a-3, D7b-1..D7b-6, UX5b-1..UX5b-7, D7c-1..D7c-7, DBL-1..DBL-5, D7j-1..D7j-3, D6fSa-1..D6fSa-3, D7d-1..D7d-7, D7l-1..D7l-3, D7m-1..D7m-7, D6fSb-1..D6fSb-6, D6fSc-1..D6fSc-5, D7e-1..D7e-5, D7k-1..D7k-4, D7f-1..D7f-7, D6fSd-1..D6fSd-8, D7n-1..D7n-4, D7g-1..D7g-9, D7h-6, D7i-1..D7i-6, D7h2-1..D7h2-3, D7g2-1..D7g2-9, D7o-1..D7o-4; none not yet implemented. By section: D6 2 (D6-1 and D5-7, rewritten for unit D6f 2026-10-17, failed 2026-10-17 about 06:53..07:00 UTC (the user's D6-1 answer and revision list); D5-7 rewritten for units D6fS-a and D6fS-b and D6-1 rewritten for unit D6fS-b, both pending in build "d6fsb"; D5-7 moved from D5 for a
+Windows part; its DOS sentence is item M-1d), M-1d, M-2..M-7, M-3b; LP 8: LP-1..LP-8; UX2 4: UX2-1..UX2-4; D5K 4: D5K-1..D5K-4; UX3 10: UX3-1..UX3-10; D5K2 3: D5K2-1..D5K2-3; SL 7: SL-1..SL-7; D6d 5: D6d-1..D6d-3, D6d-5, D6d-6; UX4 4: UX4-1..UX4-4; MZ 7: MZ-1..MZ-7; D5P 9: D5P-1..D5P-6, D5P-8..D5P-10; MZW 7: MZW-1..MZW-7; HM 9: HM-1..HM-9; D7l2 4: D7l2-1..D7l2-4; D7h 6: D7h-1..D7h-5, D7h-7; WL 9: WL-1..WL-9), 208 pending
+(208 checkable: P47-1, D6-1, D5-7, D5P-7, UX5-1..UX5-7, MZI-1..MZI-7, SI-1..SI-6, MZS-1..MZS-6, MZW-8, D6e-1..D6e-7, TLD-1..TLD-7, FCE-1..FCE-5, D6f-1..D6f-8, D7a-1..D7a-3, D7b-1..D7b-6, UX5b-1..UX5b-7, D7c-1..D7c-7, DBL-1..DBL-5, D7j-1..D7j-3, D6fSa-1..D6fSa-3, D7d-1..D7d-7, D7l-1..D7l-3, D7m-1..D7m-7, D6fSb-1..D6fSb-6, D6fSc-1..D6fSc-5, D7e-1..D7e-5, D7k-1..D7k-4, D7f-1..D7f-7, D6fSd-1..D6fSd-8, D7n-1..D7n-4, D7g-1..D7g-9, D7h-6, D7i-1..D7i-6, D7h2-1..D7h2-3, D7g2-1..D7g2-9, D7o-1..D7o-4, A43-1..A43-6, CRT-1..CRT-5, AMS-1..AMS-5, CRT2-1..CRT2-3, D7g3-1..D7g3-4, WL2-1..WL2-5; none not yet implemented. By section: D6 2 (D6-1 and D5-7, rewritten for unit D6f 2026-10-17, failed 2026-10-17 about 06:53..07:00 UTC (the user's D6-1 answer and revision list); D5-7 rewritten for units D6fS-a and D6fS-b and D6-1 rewritten for unit D6fS-b, both pending in build "d6fsb"; D5-7 moved from D5 for a
 named screen and build in D6's user checks), P47 1 (P47-1), D5P 1 (D5P-7, pending in build "d5p"), MZW 1 (MZW-8,
 failed 2026-10-16 about 20:16 UTC: a shadow over the main map when a menu opens at -1 and +1; rework unit MZS, landed 2026-10-17
 about 00:25 UTC, pending in build "mzs"), UX5 7 (UX5-1..UX5-7, new with unit UX5 2026-10-16 about 21:30 UTC, added by the orchestrator; user
@@ -1257,9 +1372,15 @@ orchestrator; user build `build/user-builds/mzi/`), SI 6 (SI-1..SI-6, new with u
 `build/user-builds/d7g/`), D7h 1 (D7h-6, new with unit D7h 2026-10-18 about 10:00 UTC, failed 2026-10-18 about 10:50 UTC (the user: the production menu stays on the Civilopedia screen in the DOS graphics), the fix is unit D7h2, added by the orchestrator; user build
 `build/user-builds/d7h/`), D7i 6 (D7i-1..D7i-6, new with unit D7i 2026-10-18 about 11:10 UTC, added by the orchestrator; user build
 `build/user-builds/d7i/`), D7h2 3 (D7h2-1..D7h2-3, new with unit D7h2 2026-10-18 about 13:25 UTC, added by the orchestrator; user build
-`build/user-builds/d7h2/`), D7g2 9 (D7g2-1..D7g2-9, new with unit D7g2 2026-10-18 about 15:05 UTC, added by the orchestrator; user build
+`build/user-builds/d7h2/`), D7g2 9 (D7g2-1..D7g2-9, new with unit D7g2 2026-10-18 about 15:05 UTC; D7g2-9 failed 2026-10-18 about 23:20 UTC (the user: a second box shows under the recommendation; place it at the Status window's left and bottom, as wide as the Status window), the fix is unit D7g3, added by the orchestrator; user build
 `build/user-builds/d7g2/`), D7o 4 (D7o-1..D7o-4, new with unit D7o 2026-10-18 about 18:15 UTC, added by the orchestrator; user build
-`build/user-builds/d7o/`); M-3b (new with unit UX4b 2026-10-16 about 17:10 UTC) and UX3-6 (failed 2026-10-16 about 13:56 UTC in build
+`build/user-builds/d7o/`), A43 6 (A43-1..A43-6, new with unit A43 2026-10-18 about 22:40 UTC, added by the orchestrator; user build
+`build/user-builds/a43/`), CRT 5 (CRT-1..CRT-5, new with unit CRT 2026-10-18 about 23:35 UTC, added by the orchestrator; user build
+`build/user-builds/crt/`), AMS 5 (AMS-1..AMS-5, new with unit AMS 2026-10-19 about 00:20 UTC, added by the orchestrator; user build
+`build/user-builds/ams/`), CRT2 3 (CRT2-1..CRT2-3, new with unit CRT2 2026-10-19 about 01:10 UTC, added by the orchestrator; user build
+`build/user-builds/crt2/`), D7g3 4 (D7g3-1..D7g3-4, new with unit D7g3 2026-10-19 about 02:45 UTC, added by the orchestrator; user build
+`build/user-builds/d7g3/`), WL2 5 (WL2-1..WL2-5, new with unit WL2 2026-10-19 about 03:38 UTC, added by the orchestrator; user build
+`build/user-builds/wl2/`); M-3b (new with unit UX4b 2026-10-16 about 17:10 UTC) and UX3-6 (failed 2026-10-16 about 13:56 UTC in build
 "sl", reworked in unit D5P) passed 2026-10-16 about 19:56..19:57 UTC, D5P-1..D5P-6, D5P-8..D5P-10 and MZW-1..MZW-7 about
 19:58..20:13 UTC; M-3 and LP-8 (failed 2026-10-16 about 12:27 and 12:43 UTC) passed in build ux4 after unit UX4; MZ-1..MZ-7 (new with unit MZ 2026-10-16 about 18:30 UTC, added by the orchestrator; user build `build/user-builds/mz/`; kept by the user for further testing about 19:15, STATUS "User directions") passed 2026-10-16 about 19:24 UTC, the user in chat ("MZ is accepted"), with a new report at +1 that is unit MZI (not yet implemented); M-1d (M-1's DOS sentence, split out as its own item 2026-10-16 about 15:10 UTC) passed in build d6d, and M-1
 is counted passed for its Windows part; the sections D5K, UX3 and D5K2 added 2026-10-16 about 13:15 UTC with their user builds, the

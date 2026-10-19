@@ -78,6 +78,23 @@ graphics of *Civilization for DOS* and back at any moment.
 3. Run `civ64.exe`. If it finds no game files, it asks you to locate the game's `civ.exe` or ZIP file
    and remembers your choice.
 
+**Optional extras (new in 1.1)**
+
+* **Windowless play:** window menu > **Display** > **Windowless play** shows the menu bar, the map,
+  the World Map and the Status panel as one picture, like the DOS game's screen, without window
+  frames. It works with both graphics and can be switched at any time.
+* **4:3 DOS gameplay:** **Display** > **4:3 aspect ratio for 320 x 200 DOS gameplay** gives the whole
+  game with the DOS graphics the 4:3 shape of a DOS monitor (the intro screens have their own item).
+* **CRT scanlines:** **Display** > **CRT scanlines** adds the dark lines of a CRT monitor, with sharp
+  pixels and no slowdown.
+* **Your own music and sound effects:** put a `MusicSfx` folder or a `MusicSfx.zip` next to
+  `civ64.exe`, holding WAV files named like the game's own (`OPENING.WAV`, `CANNON.WAV`, ... any of
+  its 24 sound files). Each file you supply is played instead of the game's file of that name; the
+  others stay the game's own. **No music or sound files are included: you supply your own.** The
+  window menu's **Alternative music/soundfx** turns them off and on.
+
+All of these are remembered between runs; the [User Guide](docs/USER-GUIDE.md) has the details.
+
 **Main keys**
 
 | Key or action | What it does |
@@ -87,7 +104,7 @@ graphics of *Civilization for DOS* and back at any moment.
 | Ctrl+Shift+Plus, Ctrl+Shift+Minus | Map zoom in (double size) and out (half size) |
 | Ctrl+Shift+0 or Ctrl+Shift+Home | Normal map zoom |
 | Mouse wheel over the map | Map zoom around the pointer |
-| Click the icon at the left of the title bar, or right-click the title bar | The window menu: Full screen, Display (scaling, filter, 4:3), Map zoom, Graphics, About |
+| Click the icon at the left of the title bar, or right-click the title bar | The window menu: Full screen, Display (windowless play, scaling, filter, CRT scanlines, 4:3), Map zoom, Graphics, Alternative music/soundfx, About |
 | Any key during the opening credits | Skip to the title menu |
 | Alt+F4 or the window's close button | Exit (during a game civ64 asks first; save through the game's File menu) |
 
@@ -113,6 +130,20 @@ map zoom, light and dark title bars, and the DOS graphics profile, which shows t
 pictures, palettes, fonts, menus and screens for the same running game. Save files keep the original
 format: civ64 loads saves of the original game, and the original game loads civ64's saves.
 
+### New in version 1.1
+
+* **Windowless play** (Windows and DOS graphics): the game's menu bar, map, World Map and Status
+  panel form one frameless picture, laid out like the DOS game's screen; dialogs and menus float
+  over it.
+* **4:3 for the DOS gameplay**: the whole DOS-graphics game, not only the intro screens, can take the
+  4:3 shape of a DOS monitor.
+* **CRT scanlines**: an optional CRT scanline effect modelled on DOSBox Pure Unleashed's CRT filter,
+  as sharp as the picture without it.
+* **Alternative music and sound effects**: your own WAV files from a `MusicSfx` folder or
+  `MusicSfx.zip` replace the game's sounds of the same names (none are included).
+* **Fix:** with the DOS graphics, the science advisor's recommendation now stands on the Status
+  window, as in the DOS game, instead of in a second box.
+
 ### Recovery coverage
 
 ![Recovery coverage of civ.exe: summary figures, where every code byte went, every function in address order and the recovery stages](docs/recovery-coverage.svg)
@@ -126,7 +157,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to the [v1.0 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0) as `civ64.exe`. |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`: the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1); the first was [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
 

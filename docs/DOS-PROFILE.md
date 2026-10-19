@@ -108,7 +108,8 @@ art. Picture 137 is never displayed in either profile.
    the core (prompt 5.4). Sources: section 3.4. The DOS game writes index caches into its
    section files (FORMATS 3.3 step 6, Open 3); the port reads the DOS directory only and never
    writes or creates a DOS file (prompt 5.9).
-5. **Sound** is the core's `.wav` calls in both profiles (prompt 5.9); DOS sound is out of scope.
+5. **Sound** is the core's `.wav` calls in both profiles (prompt 5.9); DOS sound is out of scope. Since AMS the host
+   may play the user's own WAV files for those calls in both profiles (FIDELITY F332..F334); the calls are unchanged.
 6. **Pointer.** The DOS pointer is the `TORCH.PIC` sprite with hot spot (0, 0), drawn with the
    current palette (FORMATS 4; PALETTE 5). The DOS program hides it during the intro, Birth and
    while scenes draw (SCENES 7.1, 7.3; SCENES-PLAY 0.1). In play only two shapes are
@@ -154,6 +155,13 @@ art. Picture 137 is never displayed in either profile.
    P13): colour bytes are honoured only in DOS-sourced static text (P5); a core byte of 80h and
    above, or below 20h, is shown by one recorded substitution (for example a fixed fold to 7-bit
    letters, or a placeholder glyph); name entry accepts whatever the core accepts (prompt 5.10).
+9. **In play** (since A43; DESIGN.md 12.13, FIDELITY F326..F328). The DOS profile answers `in_play` (the profile's
+   `PresentProfile.in_play`) from its sequencer's core scene `PDOS_CS_PLAY`: from the setup's end, or a loaded game's
+   start, to the run's end. While it answers 1 the window menu's "4:3 aspect ratio for 320 x 200 DOS gameplay" decides
+   the shape of every frame the profile shows (the A frame and the in-play N scenes alike); otherwise the intro item's
+   UX3 rule applies (320x200 frames, Birth square). The Windows profile has no `in_play`. Windowless play (WL, WL2)
+   and the CRT filter apply to the DOS profile's frames as to the Windows profile's (DESIGN.md 12.12, 12.14); the DOS
+   boxes over two windows show once (F336).
 
 ## 1. Scene table
 

@@ -1,6 +1,6 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.0.
+This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.1.
 civ64 runs the original *Sid Meier's Civilization for Windows* (the 16-bit Windows 3.1 release of
 1992) as a native 64-bit Windows program, on your own copy of the game's files, and can show the
 game with the graphics of *Civilization for DOS* at any moment.
@@ -95,6 +95,27 @@ A file or folder that is found but is not the supported version stops civ64 with
 names it. civ64 refuses to run in a folder whose path ends in `original\CIVWIN`, a safeguard that
 keeps a reference installation from ever being changed.
 
+**Your own music and sound effects** (optional, since 1.1). civ64 can play your own WAV files
+instead of the Windows game's 24 sound files, which are `AIRNUKE.WAV`, `ALEX.WAV`, `CANNON.WAV`,
+`CEAS.WAV`, `ELIZ.WAV`, `FRED.WAV`, `GAND.WAV`, `GENG.WAV`, `HAMA.WAV`, `LINC.WAV`, `LOSE2.WAV`,
+`MAO.WAV`, `MONT.WAV`, `NAPO.WAV`, `OPENING.WAV`, `RAMS.WAV`, `SHAK.WAV`, `STAL.WAV`, `S_BEEP.WAV`,
+`S_LAND.WAV`, `S_NUKE.WAV`, `THEY_DIE.WAV`, `WE_DIE.WAV` and `WINTUNE.WAV`. **civ64 includes no music
+or sound files: you supply your own.**
+
+1. Make a folder named `MusicSfx` next to `civ64.exe`, or a ZIP file named `MusicSfx.zip` there.
+2. Put in it WAV files with any of those 24 names (upper or lower case). In a folder they go at its
+   top level; in a ZIP they may be in any one folder of it. You need not supply all 24.
+3. Start civ64. Each valid file you supplied is played instead of the game's file of that name; every
+   other sound is the game's own. The files are read at the start (a ZIP is never extracted), so a
+   change takes effect at the next start.
+
+civ64 looks, in this order, at the `--music-sfx` option, a `MusicSfx.zip` next to `civ64.exe`, a
+`MusicSfx` folder there, and the location you chose before. A source counts when at least one of the
+24 names in it is a valid WAV file. Without one, the first start asks after the DOS question: **Yes**
+opens the file dialog, where you choose a WAV file (its folder becomes the source) or a ZIP file;
+**No** asks whether to ask again next time. The window menu's **Alternative music/soundfx** (section
+6) is checked when a valid source is in use; uncheck it to hear the game's own sounds again.
+
 ## 4. Starting and ending
 
 **Starting.** civ64 opens its window and plays the opening credits and the intro. Any key skips to
@@ -136,10 +157,28 @@ The picture is scaled into the window by the **Display** choices of the window m
 * **Fit to window**: the picture is as large as the window allows, keeping its proportions, with the
   **Nearest-pixel filter** (pixels repeated) or the **Sharp filter** (only the edges between pixels
   blended).
-* **Correct 320 × 200 to 4:3** (on by default): the DOS graphics' 320x200 screens are shown with the
-  4:3 shape of a DOS monitor, so their pixels are a little taller than wide; off, they keep square
-  pixels. The DOS Birth of Civilization always keeps square pixels. The Windows graphics' pictures
-  always keep square pixels.
+* **4:3 aspect ratio for 320 x 200 DOS intro screens** (on by default; called "Correct 320 × 200 to
+  4:3" in 1.0): the DOS graphics' 320x200 screens before a game (the intro, the title menu, the setup
+  pages, the Hall of Fame, Load) are shown with the 4:3 shape of a DOS monitor, so their pixels are a
+  little taller than wide; off, they keep square pixels. The DOS Birth of Civilization always keeps
+  square pixels.
+* **4:3 aspect ratio for 320 x 200 DOS gameplay** (off by default, since 1.1): the whole game with the
+  DOS graphics takes the DOS screen's 4:3 shape: the menu bar and its menus, the map, the World Map,
+  the Status window, every DOS box and the full-screen DOS scenes (reports, the city screen,
+  Civilopedia ...). The game screen's size and the game itself are unchanged. The Windows graphics'
+  pictures always keep square pixels.
+* **CRT scanlines** (off by default, since 1.1): a CRT monitor's dark scanlines over the picture,
+  after DOSBox Pure Unleashed's CRT filter (scanlines only, normal gaps, sharpest): one dark gap per
+  DOS pixel row with the DOS graphics, per pixel row with the Windows graphics, over the map zoom too.
+  Every pixel stays as sharp as without it, and it costs no noticeable speed.
+
+**Windowless play** (since 1.1). The window menu's **Display > Windowless play** shows the game,
+during play, as one picture without captions, frames, borders or scroll bars, laid out like the DOS
+game's screen: the menu bar across the top, the World Map and the Status panel in a column below it
+on the left, and the map beside them. Menus open under their titles; dialogs, message boxes and the
+DOS boxes float over the picture. It works with both graphics, in a window and in full screen, and can
+be switched on and off at any time. Before a game begins (the intro, the title menu, the setup) the
+screens look as before.
 
 **The game screen fills the window.** The opening credits, intro, title menu, Birth and setup screens
 keep the original's 640x480 picture, with black borders in a wider window. When a game begins (new,
@@ -166,9 +205,12 @@ Alt+Space and F10 belong to the game's own menus.) From the top:
 |---|---|
 | **Restore**, **Move**, **Size**, **Minimize**, **Maximize** | Windows' own window commands. |
 | **Full screen** (Alt+Enter) | Full screen on or off. |
+| **Display** > **Windowless play** | The frameless one-picture layout during play (section 5). |
 | **Display** > **Integer scaling (whole steps)** / **Fit to window** | How the picture fills the window (section 5). |
 | **Display** > **Nearest-pixel filter** / **Sharp filter** | The filter for **Fit to window** (gray under integer scaling, which never filters). |
-| **Display** > **Correct 320 × 200 to 4:3** | The 4:3 shape of the DOS graphics' 320x200 screens (checked by default). |
+| **Display** > **CRT scanlines** | The CRT scanline effect (section 5). |
+| **Display** > **4:3 aspect ratio for 320 x 200 DOS intro screens** | The 4:3 shape of the DOS graphics' 320x200 screens before a game (checked by default). |
+| **Display** > **4:3 aspect ratio for 320 x 200 DOS gameplay** | The 4:3 shape of the whole DOS-graphics game (section 5). |
 | **Map zoom** > **Zoom out (half)** (Ctrl+Shift+Minus) | Map zoom level -1 (section 8). |
 | **Map zoom** > **Normal zoom** (Ctrl+Shift+0, Home) | Map zoom level 0. |
 | **Map zoom** > **Zoom in (double)** (Ctrl+Shift+Plus) | Map zoom level +1; gray while the map window is too small for it. |
@@ -176,6 +218,7 @@ Alt+Space and F10 belong to the game's own menus.) From the top:
 | **Graphics** > **Windows graphics** / **DOS graphics** | Choose the graphics profile (section 7); the radio mark shows the current one. |
 | **Graphics** > **Switch graphics** (Ctrl+Shift+Backspace) | Switch to the other profile. |
 | **Graphics** > **Locate DOS files…** | Choose the DOS game's folder or ZIP; it is checked, remembered and used from the next start. It reads **DOS files present**, gray, while the DOS files are in use. |
+| **Alternative music/soundfx** | Your own music and sound effects on or off (section 3); gray when no source was found. |
 | **About…** | The program's name and version, credits, the repository link and the licence. |
 | **Close** (Alt+F4) | Exit civ64 (section 4); the menu's default item. |
 
@@ -198,7 +241,9 @@ keeps its size. Two quick presses cancel each other. The animation at the top of
 **Switching never changes the game.** Your game, the computer players, the random numbers and your
 saves are the same in both profiles. Only what you see changes, with two deliberate exceptions: with
 the DOS graphics the game continues to the setup as soon as the DOS Birth story ends, and the science
-advisor's recommendation box closes itself as the DOS game's does.
+advisor's recommendation box closes itself as the DOS game's does. Since 1.1 that recommendation stands
+on the Status window, its width the Status window's, as in the DOS game, and it follows the Status
+window when it moves, the map zooms or windowless play is on.
 
 **civ64 remembers** the profile you last switched to and starts in it; without usable DOS files it
 starts with the Windows graphics. If the DOS files are not usable, the first refused switch of a run
@@ -290,7 +335,8 @@ Status windows) inside civ64's window. Some details:
 * **Keyboard.** Typing follows your keyboard layout (characters are passed in Windows-1252;
   characters without a code there are dropped). The numeric keypad gives digits whatever your
   NumLock state. Alt and F10 open the game's menus.
-* **Sound** comes from the game folder's `.wav` files; a missing file is silent.
+* **Sound** comes from the game folder's `.wav` files, or from your own files (section 3); a missing
+  file is silent.
 * **Help** (the original's `.hlp` file) cannot be opened, because Windows 10 and 11 have no viewer
   for it: **Help > Game Help** shows a message that says so.
 * **Timing.** By default (`classic`) the game is paced like the original; world generation and the
@@ -339,7 +385,10 @@ folder.
 after "don't ask again"), the window's place and size (`window=left,top,right,bottom` in screen
 pixels), full screen, the scaling and filter choices, the 4:3 choice (`aspect_4_3`), the graphics
 profile (`graphics=windows` or `dos`), the map zoom level (`zoom=-1`, `0` or `1`), the wheel setting
-(`wheel_zoom=1` or `0`) and the screen size the window layout was saved on (`layout_screen`). Options
+(`wheel_zoom=1` or `0`), the screen size the window layout was saved on (`layout_screen`), and since
+1.1 windowless play (`windowless`), the DOS gameplay 4:3 choice (`aspect_play_4_3`), CRT scanlines
+(`crt_scanlines`), the music and sound effects source (`music_data`, and `music_ask=never` after "don't
+ask again") and the **Alternative music/soundfx** mark (`alt_sounds`). Options
 given on the command line apply to that run only and are not written. civ64 reads no registry key,
 INI file or environment variable; only the Windows file dialog keeps its own list of recent folders.
 
@@ -349,7 +398,8 @@ INI file or environment variable; only the Windows file dialog keeps its own lis
 civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
           [--zoom default|-1|0|+1] [--fullscreen] [--window <W>x<H>]
           [--scale auto|1..8] [--scale-mode integer|fit] [--filter nearest|sharp]
-          [--aspect square|4:3] [--timing classic|host]
+          [--aspect square|4:3|gameplay|both] [--windowless 0|1] [--crt 0|1]
+          [--music-sfx <dir|zip|none>] [--timing classic|host]
 ```
 
 | Option | Meaning |
@@ -363,7 +413,10 @@ civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
 | `--scale auto\|1..8` | The window's first size as a multiple of 640x480; `auto` (the default) uses the remembered size or the largest multiple that fits. |
 | `--scale-mode integer\|fit` | Integer scaling or fit to the window. |
 | `--filter nearest\|sharp` | The filter for `fit`. |
-| `--aspect square\|4:3` | The shape of 320x200 screens for this run. |
+| `--aspect square\|4:3\|gameplay\|both` | The shape of 320x200 screens for this run: `square` or `4:3` for the intro screens; `gameplay` and `both` also turn on the 4:3 DOS gameplay (since 1.1). |
+| `--windowless 0\|1` | Windowless play off or on for this run (since 1.1). |
+| `--crt 0\|1` | CRT scanlines off or on for this run (since 1.1). |
+| `--music-sfx <dir\|zip\|none>` | Your music and sound effects from that folder or ZIP for this run; `none`: not used and not asked for (since 1.1). A source without one valid WAV file of the 24 names stops civ64 with a message. |
 | `--timing classic\|host` | `classic` (the default) paces the game like the original with fixed costs for its internal waits; `host` follows the PC's real clock. In both, world generation and the computer players' turns run at full speed. |
 
 Two further options, `--dump-frames <dir>` and `--dump-presented <dir>`, write every picture to a
@@ -382,6 +435,7 @@ an option for automated tests.
 | The game's windows are placed oddly | Delete `civ.prf` in the game folder for the default layout (it also resets the Game Options). |
 | The window opens in an odd place or size | Delete the `window` line of `%LOCALAPPDATA%\civ64\civ64.cfg`, or start once with `--scale auto`. |
 | The mouse wheel does nothing over the map | Check **Map zoom > Mouse wheel zooms map** in the window menu. |
+| My own music or sound files are not played | Check the file names (the 24 names of section 3, `.wav`), that they are valid WAV files at the top level of the `MusicSfx` folder or in one folder of `MusicSfx.zip`, and that **Alternative music/soundfx** is checked; then restart civ64. |
 | Zoom in is gray | The map window is too small for double size; make it larger. |
 | Help shows a message instead of the help file | Expected: Windows 10 and 11 cannot open the original `.hlp` file. |
 | A message "General protection fault ..." and civ64 ends | An error of the original program that Windows 3.1 would also have stopped on; civ64 ends with exit code 3. Load your last save. |

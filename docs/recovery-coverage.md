@@ -2,7 +2,7 @@
 
 > **Status:** accepted by the user on 2026-10-12.
 >
-> **Publication note:** published in the public repository `Buyukcaglar/Civ1` (the documentation and the `v1.0` release). The summary, tables and the figure hold only function addresses, sizes and counts, no original bytes. The recovered C, the listings and the port's sources are not published (see the repository README). The figure and the generated block below were regenerated with `claude/tools/recovery_coverage.py` on 2026-10-18 (`--check`: COVERAGE_OK).
+> **Publication note:** published in the public repository `Buyukcaglar/Civ64` (the documentation and the releases). The summary, tables and the figure hold only function addresses, sizes and counts, no original bytes. The recovered C, the listings and the port's sources are not published (see the repository README). The figure and the generated block below were regenerated with `claude/tools/recovery_coverage.py` on 2026-10-18 (`--check`: COVERAGE_OK).
 
 The original source code of Sid Meier's Civilization for Windows has never been released, so none
 of it was literally "recovered". What this work has is a reverse-engineered reconstruction of the

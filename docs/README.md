@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.0, a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
+| The result | `civ64.exe` 1.1 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -166,11 +166,22 @@ build and suite clean (TESTS_OK in 1,637 s, EXT_G1 77 runs, no sanitizer report)
 17:38..18:05 UTC; Checked-without-observer TESTS_OK in 343 s; Release TESTS_OK in 304 s. The
 Release `civ64.exe` of 18:08:29 UTC is the program of the `v1.0` release.
 
+**Version 1.1** (session E5, 2026-10-18/19) adds windowless play ([ext-WL-record.md](ext-WL-record.md),
+[ext-WL2-record.md](ext-WL2-record.md)), 4:3 for the DOS gameplay ([ext-A43-record.md](ext-A43-record.md)),
+CRT scanlines ([ext-CRT-record.md](ext-CRT-record.md), [ext-CRT2-record.md](ext-CRT2-record.md)),
+alternative music and sound effects from the player's own files ([ext-AMS-record.md](ext-AMS-record.md))
+and the DOS science advisor's recommendation on the Status window ([ext-D7g3-record.md](ext-D7g3-record.md));
+FIDELITY F322 to F338. Each unit landed with the three-step cycle (build, suite, EXT_G1) ALL_GREEN. The
+closing run of 2026-10-19 (`CLOSE5_ALL_GREEN`): AddressSanitizer build and suite TESTS_OK in 1,561 s with
+EXT_G1 77 runs, Checked-without-observer TESTS_OK in 337 s, Release TESTS_OK in 309 s; the hash check of
+the original game files after the work, 38 of 38 equal ([hashes/20261019T050854Z-after.txt](hashes/20261019T050854Z-after.txt)).
+The Release `civ64.exe` of 2026-10-19 04:23 UTC is the program of the `v1.1` release.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
 
-**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F321) lists every place where
+**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F338) lists every place where
 civ64 does not, or cannot, reproduce the original exactly, every accepted design choice and every
 unknown, with its evidence.
 
@@ -289,10 +300,14 @@ made for the public copy and recorded file by file in an audit:
 
 | Document | Title |
 |---|---|
+| [ext-A43-record.md](ext-A43-record.md) | Extension unit A43 (4:3 for DOS gameplay and the rename) - record |
+| [ext-AMS-record.md](ext-AMS-record.md) | Extension unit AMS (alternative music and sound effects) - record |
 | [ext-BS1-record.md](ext-BS1-record.md) | Extension BS, unit BS1 (Windows Birth assets) - record |
 | [ext-BS2-record.md](ext-BS2-record.md) | Extension BS, unit BS2 (the Windows Birth replica and its shadow mirror) - record |
 | [ext-BS3-record.md](ext-BS3-record.md) | Extension BS, unit BS3 (the warp and the Windows view) - record |
 | [ext-BS4-record.md](ext-BS4-record.md) | Extension BS, unit BS4 (the Windows end and the records) - record |
+| [ext-CRT-record.md](ext-CRT-record.md) | Extension unit CRT (the "CRT scanlines" filter) - record |
+| [ext-CRT2-record.md](ext-CRT2-record.md) | Extension unit CRT2 (the CRT scanlines follow-up: speed and sharpness) - record |
 | [ext-CY-record.md](ext-CY-record.md) | Extension unit CY (a faster build-and-test cycle without dropping any test) - record |
 | [ext-D3a-record.md](ext-D3a-record.md) | Extension phase D3, unit D3a (the observer core) — record |
 | [ext-D3b1-record.md](ext-D3b1-record.md) | Extension phase D3, unit D3b1 (presentation, switching and the P0 runners) — record |
@@ -334,6 +349,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-D7f-record.md](ext-D7f-record.md) | Extension phase D7, unit D7f (the list, entry, production and stack dialogs) - record |
 | [ext-D7g-record.md](ext-D7g-record.md) | Extension phase D7, unit D7g (the science advisor's boxes: the header variant, the research choice, the recommendation in DOS's flow) - record |
 | [ext-D7g2-record.md](ext-D7g2-record.md) | Extension phase D7, unit D7g2 (the rest of D7g's rows: the notes, the government menu, the event boxes, the sale question; the DOS boxes centred on the A canvas) - record |
+| [ext-D7g3-record.md](ext-D7g3-record.md) | Extension unit D7g3: the science advisor's recommendation box (DOS graphics) |
 | [ext-D7h-record.md](ext-D7h-record.md) | Extension phase D7, unit D7h (the Civilopedia) - record |
 | [ext-D7h2-record.md](ext-D7h2-record.md) | Extension phase D7, unit D7h2 (the DOS entry page above the menu boxes; D7h-6's fix) - record |
 | [ext-D7i-record.md](ext-D7i-record.md) | Extension phase D7, unit D7i (the newspaper, New Cabinet, the discoveries and the quiz) - record |
@@ -365,6 +381,8 @@ made for the public copy and recorded file by file in an audit:
 | [ext-UX4b-record.md](ext-UX4b-record.md) | Extension unit UX4b (Ctrl+Shift+Home resets the map zoom) - record |
 | [ext-UX5-record.md](ext-UX5-record.md) | Extension UX5, presentation unit (the 4:3 option on the DOS intro and the DOS title menu) - record |
 | [ext-UX5b-record.md](ext-UX5b-record.md) | Extension UX5b, presentation unit (Birth square from its first picture: no squashed title) - record |
+| [ext-WL-record.md](ext-WL-record.md) | Extension unit WL (windowless play) - record |
+| [ext-WL2-record.md](ext-WL2-record.md) | Extension unit WL2: windowless play revisions (both graphics) |
 | [p47b-record.md](p47b-record.md) | Record: base-track unit P47b (P47-R2 review fixes; the list-dialog stall on exposure) |
 | [p47r2-record.md](p47r2-record.md) | Record: base-track fix RV4 P47-R2 (list dialogs show their border and scroll bar when they open) |
 
@@ -429,6 +447,7 @@ made for the public copy and recorded file by file in an audit:
 | [verify/BRIEF-d6fsc.md](verify/BRIEF-d6fsc.md) | Unit D6fSc: the DOS boxes' line breaks and widths (rework) |
 | [verify/BRIEF-d6fsd.md](verify/BRIEF-d6fsd.md) | Unit D6fSd: the DOS game's own texts and places for the remaining boxes (follow-up of D6fSc) |
 | [verify/BRIEF-d7.md](verify/BRIEF-d7.md) | Brief for the D7 implementers (extension phase D7: every remaining N and R scene) |
+| [verify/BRIEF-e5rev.md](verify/BRIEF-e5rev.md) | Brief: units CRT2, D7g3, WL2 and PUB2 (the user's directions of 2026-10-18 about 23:20 UTC) |
 | [verify/BRIEF-extras.md](verify/BRIEF-extras.md) | Brief: the user's three extra features (after the final Asan pass) |
 | [verify/BRIEF-hm.md](verify/BRIEF-hm.md) | Brief: unit HM, the host window menu with submenus (the user's interim task) |
 | [verify/BRIEF-m.md](verify/BRIEF-m.md) | Brief for the M implementers (extension phase M: map renderer and zoom, Windows profile) |
@@ -701,6 +720,8 @@ made for the public copy and recorded file by file in an audit:
 | [hashes/20261017T072114Z-dos-before.txt](hashes/20261017T072114Z-dos-before.txt) |  |
 | [hashes/20261018T191151Z-after.txt](hashes/20261018T191151Z-after.txt) |  |
 | [hashes/20261018T191151Z-dos-after.txt](hashes/20261018T191151Z-dos-after.txt) |  |
+| [hashes/20261019T050854Z-after.txt](hashes/20261019T050854Z-after.txt) |  |
+| [hashes/20261019T050854Z-dos-after.txt](hashes/20261019T050854Z-dos-after.txt) |  |
 
 ### Screenshots (screenshots/)
 
