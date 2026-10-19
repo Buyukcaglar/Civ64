@@ -172,6 +172,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 ## What this repository holds, and why
 
 | | |
+|---|---|
 | **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`: the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1); the first was [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
