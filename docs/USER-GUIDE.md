@@ -1,6 +1,6 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.1.
+This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.2.
 civ64 runs the original *Sid Meier's Civilization for Windows* (the 16-bit Windows 3.1 release of
 1992) as a native 64-bit Windows program, on your own copy of the game's files, and can show the
 game with the graphics of *Civilization for DOS* at any moment.
@@ -177,7 +177,9 @@ during play, as one picture without captions, frames, borders or scroll bars, la
 game's screen: the menu bar across the top, the World Map and the Status panel in a column below it
 on the left, and the map beside them. Menus open under their titles; dialogs, message boxes and the
 DOS boxes float over the picture. It works with both graphics, in a window and in full screen, and can
-be switched on and off at any time. Before a game begins (the intro, the title menu, the setup) the
+be switched on and off at any time. Since 1.2 the picture fills the whole window, without a black
+border: civ64 makes the game's map window larger by the removed frames and scroll bars (so switching
+windowless play on or off resizes the map window a little). Before a game begins (the intro, the title menu, the setup) the
 screens look as before.
 
 **The game screen fills the window.** The opening credits, intro, title menu, Birth and setup screens

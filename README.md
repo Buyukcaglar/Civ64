@@ -82,7 +82,8 @@ graphics of *Civilization for DOS* and back at any moment.
 
 * **Windowless play:** window menu > **Display** > **Windowless play** shows the menu bar, the map,
   the World Map and the Status panel as one picture, like the DOS game's screen, without window
-  frames. It works with both graphics and can be switched at any time.
+  frames. It works with both graphics and can be switched at any time; since 1.2 the picture fills the
+  whole window, without a black border.
 * **4:3 DOS gameplay:** **Display** > **4:3 aspect ratio for 320 x 200 DOS gameplay** gives the whole
   game with the DOS graphics the 4:3 shape of a DOS monitor (the intro screens have their own item).
 * **CRT scanlines:** **Display** > **CRT scanlines** adds the dark lines of a CRT monitor, with sharp
@@ -129,6 +130,13 @@ screen, scaling with sharp or smooth pixels, a game screen that grows with the w
 map zoom, light and dark title bars, and the DOS graphics profile, which shows the DOS version's
 pictures, palettes, fonts, menus and screens for the same running game. Save files keep the original
 format: civ64 loads saves of the original game, and the original game loads civ64's saves.
+
+### New in version 1.2
+
+* **Windowless play fills the whole window** (Windows and DOS graphics): no black border around the
+  picture any more; the game's map window grows by the removed frames and scroll bars, so the map
+  shows a little more land.
+* The program's version information and its About box say 1.2.
 
 ### New in version 1.1
 

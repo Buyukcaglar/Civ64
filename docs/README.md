@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.1 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
+| The result | `civ64.exe` 1.2 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -176,6 +176,11 @@ closing run of 2026-10-19 (`CLOSE5_ALL_GREEN`): AddressSanitizer build and suite
 EXT_G1 77 runs, Checked-without-observer TESTS_OK in 337 s, Release TESTS_OK in 309 s; the hash check of
 the original game files after the work, 38 of 38 equal ([hashes/20261019T050854Z-after.txt](hashes/20261019T050854Z-after.txt)).
 The Release `civ64.exe` of 2026-10-19 04:23 UTC is the program of the `v1.1` release.
+
+**Version 1.2** (2026-10-19): windowless play fills the whole window in both graphics, without the black
+border ([ext-WL3-record.md](ext-WL3-record.md); FIDELITY F339), and the version information and About box
+say 1.2 (F340). WL3 landed with the three-step cycle ALL_GREEN (`test_wl` 93 checks). The Release
+`civ64.exe` of 2026-10-19 07:27:07 UTC is the program of the `v1.2` release.
 
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
@@ -383,6 +388,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-UX5b-record.md](ext-UX5b-record.md) | Extension UX5b, presentation unit (Birth square from its first picture: no squashed title) - record |
 | [ext-WL-record.md](ext-WL-record.md) | Extension unit WL (windowless play) - record |
 | [ext-WL2-record.md](ext-WL2-record.md) | Extension unit WL2: windowless play revisions (both graphics) |
+| [ext-WL3-record.md](ext-WL3-record.md) | Extension unit WL3: windowless play on the whole window (both graphics), version 1.2 |
 | [p47b-record.md](p47b-record.md) | Record: base-track unit P47b (P47-R2 review fixes; the list-dialog stall on exposure) |
 | [p47r2-record.md](p47r2-record.md) | Record: base-track fix RV4 P47-R2 (list dialogs show their border and scroll bar when they open) |
 

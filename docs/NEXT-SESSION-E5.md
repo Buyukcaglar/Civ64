@@ -166,7 +166,16 @@ checklist section. Times are UTC.
 **The queue now:**
 
 1. If the closing run or the hash check is not green, fix that first.
-2. **PUB2** (`docs/verify/BRIEF-e5rev.md` "Unit PUB2"):
+2. **DONE 2026-10-19 about 05:30 UTC (the user: "perform pub2 now"): PUB2.** Civ1RE `c33c164`; Civ64 `de4229f`;
+   release v1.1 (`civ64.exe` 5,004,800 bytes, SHA-256 `dbf3ef9a...abdd50`); browser check OK. Open from PUB2:
+   * the exe's version resource and About box still say 1.0 (`win64/civ64.rc`): fix with IWC or a v1.1.1;
+   * the new `docs/screenshots/{46AB5B1D-...}.png` (windowless DOS gameplay, 2026-10-19 06:25 UTC): the user,
+     2026-10-19 about 05:40 UTC: "Add the new windowless DOS screenshot (docs/screenshots/{46AB5B1D-...}.png) to the README at the next publication; I'll rename it." So at the next publication (IWC), use the user's renamed file
+     (look in `claude/port/docs/screenshots/` for it; do not rename it yourself) in the README, and make the PUB scripts
+     include it (they currently skip the GUID name). Allow it as a user screenshot in the NODOS rule, like the other
+     seven;
+   * the edits after `c33c164` are uncommitted (pub-stage STATE/audit, RELEASE-NOTES-v1.1, these records).
+   The original PUB2 plan:
    * **The public repository is now `Buyukcaglar/Civ64`**: it was renamed from Civ1 on 2026-10-18, and `gh repo view
      Buyukcaglar/Civ1` redirects to it. Use Civ64 for PUB2 and IWC, and update the README and docs links to it.
    * Civ1RE `main`: one commit of `claude/` (non-force; `claude/tools` force-added; no `claude/work`, no

@@ -2005,7 +2005,7 @@ STATUS.md; gate records `ext-<phase>-acceptance.md`). This section grows phase b
   (`platform/w16/host.h`, next to `host_message`). The host window's title bar (class `Civ64Host`,
   `CreateWindowExW`) is `HOST_CAPTIONW` (it was "Sid Meier's Civilization", and "Civilization" before that). The
   About box's title (`g_about_title`, read through `hw_about_title()`) is `L"About " HOST_CAPTIONW L" v1.0"` =
-  "About Sid Meier's Civilization 64bit v1.0"; **the earlier form "About Sid Meier's Civilization x64 v1.0" of
+  "About Sid Meier's Civilization 64bit v1.0" (v1.2 since WL3, F340); **the earlier form "About Sid Meier's Civilization x64 v1.0" of
   the 20:15 request is superseded** (replaced by the user at 22:00) and is not in the product. The licence note
   (`g_license`, read through `hw_about_license()`) now closes "The licence covers this port's own code (Sid Meier's
   Civilization 64bit). Sid Meier's Civilization, its program and its data belong to their owners; ..."; the MIT
@@ -2019,7 +2019,7 @@ STATUS.md; gate records `ext-<phase>-acceptance.md`). This section grows phase b
   (judged out of scope): the game's own dialogs and everything inside the emulation (`w16_MessageBox`, the
   `rt_exit.c` ErrorMessage), the "Save As" overwrite prompt's caption (named by its action, not the game), the
   file-picker prompts (prompts, not captions) and the boxes' body texts, the test caption "test" and the
-  headless host (it prints the caption it is given). **Version 1.0** (`win64/civ64.rc`, `VERSIONINFO`):
+  headless host (it prints the caption it is given). **Version 1.0** (`win64/civ64.rc`, `VERSIONINFO`; 1.2, 1,2,0,0, since WL3 for the release v1.2, F340):
   `FILEVERSION` and `PRODUCTVERSION` 1,0,0,0, `FILEOS VOS_NT_WINDOWS32`, `FILETYPE VFT_APP`; block `040904B0`
   (English US, Unicode) with `FileVersion` "1.0", `ProductVersion` "1.0", `ProductName` "Sid Meier's Civilization
   64bit", `FileDescription` "Sid Meier's Civilization 64bit (civ64)" (the "64bit" here is an interpretation: the
@@ -8431,12 +8431,12 @@ inputs under `--game-screen view`, by the user's direction. Decision K1 scopes P
   core's call, its return value unchanged. D7g3 reads one more window port through `w16q_*`. In each landing's cycle
   `P0_OK checks 577`, `MIRROR_OK runs 29` and `EXT_G1_OK runs 77 (amended 1)` are unchanged.
 
-### 12.12 Windowless play (WL, WL2; session E5)
+### 12.12 Windowless play (WL, WL2, WL3; session E5)
 
 Records [ext-WL-record.md](ext-WL-record.md) (design note `verify/BRIEF-wl.md` with the orchestrator's answers 1..5 and
 the user's direction of 2026-10-18 about 06:20 UTC; landed 2026-10-18, ALL_GREEN 21:53:07 UTC, `build/wl-status.txt`)
 and [ext-WL2-record.md](ext-WL2-record.md) (`verify/BRIEF-e5rev.md` "Unit WL2"; landed 2026-10-19, ALL_GREEN 03:34:16
-UTC, `build/wl2-status.txt`); FIDELITY F322..F325, F337, F338; D7g3's black rule F336, F324. Display's first item
+UTC, `build/wl2-status.txt`) and [ext-WL3-record.md](ext-WL3-record.md) (the user's direction of 2026-10-19 about 06:40 UTC; landed 2026-10-19, `build/wl3-status.txt`); FIDELITY F322..F325, F337..F340; D7g3's black rule F336, F324. Display's first item
 "Windowless play" (12.2) switches the mode at any time in both graphics.
 
 * **The scene** (`present/wl.c`, `wl.h`, portable C, prefix `pwl_`): read inside the observer's guard at every core
@@ -8459,6 +8459,15 @@ UTC, `build/wl2-status.txt`); FIDELITY F322..F325, F337, F338; D7g3's black rule
   `s_ext` rows are inserted at frame row `s_cut` (`PWL_FOOT` 12 rows above the client's bottom), filled with the band
   of `PWL_BAND` 32 rows above the cut repeated; the rows below the cut and the floats anchored at S below it move down;
   a float over the band moves the cut up in steps of 2 (at most to S's middle). F338.
+* **The whole client** (WL3, F339): `pwl_screen_of` (pure) / `pwl_screen_for_view` give the game screen for a view
+  of vw x vh logical pixels: each side grown by the frame's size minus the canvas's, on a side only while the
+  canvas follows the screen one to one there (the map window's right, or bottom, edge on the screen's edge, so it
+  follows by its size, F110; at the bottom M the tallest piece); `present_game_screen_follow` (`follow_size`)
+  applies it while the option is on, so the map window grows by the chrome, the canvas is the view's size and is
+  laid out without a border (a remainder below one scale step only). The game learns the new screen at its
+  PeekMessage calls as for the player's own window enlarging; `present_game_screen` (the first screen, F105) and
+  the headless host (fixed `--game-screen`) are unchanged. Default layout at a 1280x960 view: screen 667x521,
+  canvas 640x480 at 2x, origin (0, 0).
 * **Floats**: anchored by their centre (W, S, else M; the Windows popups and the DOS drop-downs at B since WL2,
   `PwlScene.flbar`), moved by the anchor's translation and clamped inside the canvas; a float larger than the canvas
   pauses windowless play. A DOS re-skin box is not a window, so no piece's visible region excludes it: since D7g3 a
