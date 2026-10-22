@@ -1,6 +1,6 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.2.
+This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.2.1.
 civ64 runs the original *Sid Meier's Civilization for Windows* (the 16-bit Windows 3.1 release of
 1992) as a native 64-bit Windows program, on your own copy of the game's files, and can show the
 game with the graphics of *Civilization for DOS* at any moment.
@@ -168,9 +168,12 @@ The picture is scaled into the window by the **Display** choices of the window m
   Civilopedia ...). The game screen's size and the game itself are unchanged. The Windows graphics'
   pictures always keep square pixels.
 * **CRT scanlines** (off by default, since 1.1): a CRT monitor's dark scanlines over the picture,
-  after DOSBox Pure Unleashed's CRT filter (scanlines only, normal gaps, sharpest): one dark gap per
-  DOS pixel row with the DOS graphics, per pixel row with the Windows graphics, over the map zoom too.
-  Every pixel stays as sharp as without it, and it costs no noticeable speed.
+  after DOSBox Pure Unleashed's CRT filter (scanlines only, normal gaps, sharpest). Since 1.2.1 they
+  are double-scanned in both graphics, as DOSBox Pure's double-scan: two scanlines per pixel row of the
+  picture, over the map zoom too. Where the screen has too few rows for that, they lie on the screen's
+  own rows (one gap every two), so they show at every size. In a window they are spaced exactly as in
+  full screen on the window's monitor, and during play they are the same as on the intro, title, Birth
+  and setup screens. Every pixel stays as sharp as without it, and it costs no noticeable speed.
 
 **Windowless play** (since 1.1). The window menu's **Display > Windowless play** shows the game,
 during play, as one picture without captions, frames, borders or scroll bars, laid out like the DOS
@@ -180,7 +183,9 @@ DOS boxes float over the picture. It works with both graphics, in a window and i
 be switched on and off at any time. Since 1.2 the picture fills the whole window, without a black
 border: civ64 makes the game's map window larger by the removed frames and scroll bars (so switching
 windowless play on or off resizes the map window a little). Before a game begins (the intro, the title menu, the setup) the
-screens look as before.
+screens look as before. Since 1.2.1, with the Windows graphics, the menu bar across the top is the
+Status window's gray and the menus that drop from it have a seamless stone background (built into
+`civ64.exe`); their unavailable items are drawn in a dark checker so that they stay readable.
 
 **The game screen fills the window.** The opening credits, intro, title menu, Birth and setup screens
 keep the original's 640x480 picture, with black borders in a wider window. When a game begins (new,
@@ -192,7 +197,8 @@ right and bottom edges it touches; the World Map and Status windows stay where t
 around the game's windows is black.
 
 **Full screen.** **Alt+Enter**, or the window menu's **Full screen**, makes the window cover its
-monitor; press it again to return to the window. civ64 remembers it.
+monitor; press it again to return to the window. civ64 remembers it. (Since 1.2.1 the title bar shows
+civ64's icon after every switch, also when civ64 started in full screen.)
 
 **Light and dark mode.** The title bar, the window menu, the About box and civ64's own message boxes
 follow Windows' light or dark app mode (Settings > Personalization > Colors) and change with it at
@@ -226,11 +232,18 @@ Alt+Space and F10 belong to the game's own menus.) From the top:
 
 The marks are current whenever a menu opens. A letter underlined in an open menu chooses its item.
 
+**The game pauses** (since 1.2.1) while the window menu or one of its submenus is open, while the
+window is moved or resized, and while civ64's own boxes (About, the exit question, Locate DOS files)
+are open: the game, its animations, the music and the sounds stand still, and afterwards everything
+goes on where it stopped, without a fast catch-up. The game's own menus and dialogs do not pause it,
+as in the original.
+
 ## 7. The graphics profiles: Windows and DOS
 
 civ64 has two graphics profiles for the same game:
 
-* **Windows graphics**: the game as the Windows 3.1 release shows it.
+* **Windows graphics**: the game as the Windows 3.1 release shows it. Since 1.2.1 the menu bar and
+  an open menu always show the game's torch cursor, also when the pointer comes from the World Map.
 * **DOS graphics**: the game with the pictures, palettes, fonts, menus and mouse pointer of
   *Civilization for DOS* (version 475.01), read from your DOS files.
 

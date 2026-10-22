@@ -629,12 +629,21 @@ title bar to drag it (about two title-bar heights wide, at least half its height
 Windows can give it at its size; otherwise it comes back at that top-left corner, and closing civ64 writes the
 rectangle the window really had back to `window` (F111). `--window` or `--scale k` give the first size
 (the window is then centred as on a first run). The window's title bar reads "Sid Meier's Civilization 64bit"
-(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2" (F108, F340). The title bar, the
+(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.1" (F108, F340; v1.2.1 since PAU1,
+F350), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
 window's system menu and its About box follow Windows' light or dark app
 mode (Settings > Personalization > Colors) and change with it at once (F109); since UX4 so do civ64's own
 message boxes (`hw_message_box`: the host's messages, the overwrite question, the notes and questions about the DOS
 and Windows files, such as the DOS-files refusal of "Locate DOS files…"), with a dark title bar, text area and
 buttons in dark mode.
+
+**The window menu pauses the game** (since PAU1, FIDELITY F349). While the window menu is open (the title bar's
+right click, the icon, Alt+Space, and its submenus Display, Map zoom and Graphics), while the window is moved or sized,
+and while one of civ64's own boxes is open (About, the exit warning, "Locate DOS files…", civ64's messages), the game
+stands completely still in both graphics and every state (intro, Birth, title, setup, play, windowless play, full
+screen): no game time passes, the sound or music pauses, and afterwards everything goes on where it stopped, without
+catching up. The game's own menus and dialogs (its menu bar, its Open and Save dialogs) are the game's and do not
+pause it.
 
 At the start of a game the map, World Map and Status windows take the places saved in the data
 directory's `civ.prf`. When those places do not fit the game screen or there is no `civ.prf`, all
@@ -662,6 +671,15 @@ in a folder its top level, in a ZIP any one folder; each valid file is played in
 (any case), every other sound is the game's own. The files are read into memory at the start (a ZIP is never
 extracted) and a change takes effect at the next start. The window menu's **Alternative music/soundfx** is checked
 when a valid source is found or chosen; your uncheck or check is remembered as the `alt_sounds` key.
+
+**The windowless Windows menus' background** (since WL5, FIDELITY F344; inside civ64.exe since PAU1, F351). The
+user's reworked stone tile `civ-winmenu-bg.png` (512 x 512) replaces the Status window's stone tile behind the drop-down
+menus of windowless play in the Windows graphics (F341); each 4 x 4 block of its pixels becomes one game pixel (128 x
+128 game pixels, repeated from each menu's top-left). Since PAU1 it is a resource of `civ64.exe` itself (`win64/civ64.rc`,
+RCDATA 2, the file `win64/civ-winmenu-bg.png`), read once at the start; no file beside `civ64.exe` is needed or read any
+more (a `civ-winmenu-bg.png` there is ignored). If the resource cannot be used, the game's own tile is shown, without a
+message. The rule that no original or game-derived art goes into civ64.exe or its repository still stands; this single
+tile is an exception to that rule, by the user's decision of 2026-10-22, and the only one.
 
 ## Command line
 
@@ -723,7 +741,8 @@ list: **Integer scaling**, **Scale to fit**, the two filters, **4:3 aspect ratio
 **Windows graphics** and **DOS graphics** (both showing **Ctrl+Shift+Backspace**), **Locate DOS files...**, the zoom
 items (**Normal map zoom** showing **Ctrl+Shift+0, Ctrl+Shift+Home** since UX4b), **Mouse wheel zooms the map**,
 **About...** and, last, since UX1, **Exit Sid Meier's Civilization 64bit**. The window's close button is enabled
-again (until UX1 it was disabled and the menu had no Close, F112). **Alt+Enter** switches full screen on and off. civ64
+again (until UX1 it was disabled and the menu had no Close, F112). **Alt+Enter** switches full screen on and off; the
+title bar shows civ64's icon after every switch, also after a start in full screen (since ICO1). civ64
 remembers these choices in `%LOCALAPPDATA%\civ64\civ64.cfg` (with the game's locations); options on
 the command line apply to that run only. civ64 reads no other registry key, INI file or
 environment variable; the Windows file dialog that asks for the game's location keeps its own

@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.2 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
+| The result | `civ64.exe` 1.2.1 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -182,11 +182,24 @@ border ([ext-WL3-record.md](ext-WL3-record.md); FIDELITY F339), and the version 
 say 1.2 (F340). WL3 landed with the three-step cycle ALL_GREEN (`test_wl` 93 checks). The Release
 `civ64.exe` of 2026-10-19 07:27:07 UTC is the program of the `v1.2` release.
 
+**Version 1.2.1** (2026-10-20..22): CRT scanlines double-scanned in both graphics and shown at every
+size, a window spaced as full screen, the gameplay as the accepted title screens
+([ext-WL4CRT3-record.md](ext-WL4CRT3-record.md), [ext-CRT4-record.md](ext-CRT4-record.md),
+[ext-CRT5-record.md](ext-CRT5-record.md), [ext-CRT6WL6-record.md](ext-CRT6WL6-record.md); F342, F343,
+F345, F346); the windowless Windows menus with the Status gray, the user's stone background (built into
+`civ64.exe`) and readable disabled items ([ext-WL5-record.md](ext-WL5-record.md); F341, F344, F347,
+F351); the torch cursor over the Windows menus ([ext-CUR1-record.md](ext-CUR1-record.md); F348); the
+host pause while the window menu, a move or size or civ64's own boxes are open
+([ext-PAU1-record.md](ext-PAU1-record.md); F349); version 1.2.1 and the Civ64 link (F350); and the
+title bar's icon after a start in full screen ([ext-ICO1-record.md](ext-ICO1-record.md); F352). Each
+unit landed with the three-step cycle ALL_GREEN. The Release `civ64.exe` of 2026-10-22 16:08:36 UTC is the
+program of the `v1.2.1` release.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
 
-**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F338) lists every place where
+**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F352) lists every place where
 civ64 does not, or cannot, reproduce the original exactly, every accepted design choice and every
 unknown, with its evidence.
 
@@ -313,6 +326,10 @@ made for the public copy and recorded file by file in an audit:
 | [ext-BS4-record.md](ext-BS4-record.md) | Extension BS, unit BS4 (the Windows end and the records) - record |
 | [ext-CRT-record.md](ext-CRT-record.md) | Extension unit CRT (the "CRT scanlines" filter) - record |
 | [ext-CRT2-record.md](ext-CRT2-record.md) | Extension unit CRT2 (the CRT scanlines follow-up: speed and sharpness) - record |
+| [ext-CRT4-record.md](ext-CRT4-record.md) | Extension unit CRT4 (the CRT scanlines double-scanned everywhere) - record |
+| [ext-CRT5-record.md](ext-CRT5-record.md) | Extension unit CRT5 (the CRT scanlines at every output scale) - record |
+| [ext-CRT6WL6-record.md](ext-CRT6WL6-record.md) | Extension units CRT6 (the gameplay's scanlines on the accepted base) and WL6 (disabled menu items) - record |
+| [ext-CUR1-record.md](ext-CUR1-record.md) | Extension unit CUR1 (the torch cursor over the Windows graphics' menus) - record |
 | [ext-CY-record.md](ext-CY-record.md) | Extension unit CY (a faster build-and-test cycle without dropping any test) - record |
 | [ext-D3a-record.md](ext-D3a-record.md) | Extension phase D3, unit D3a (the observer core) — record |
 | [ext-D3b1-record.md](ext-D3b1-record.md) | Extension phase D3, unit D3b1 (presentation, switching and the P0 runners) — record |
@@ -368,6 +385,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-DBL-record.md](ext-DBL-record.md) | Extension DBL, presentation unit (the DOS blinks at the DOS game's own pace) - record |
 | [ext-FCE-record.md](ext-FCE-record.md) | Extension unit FCE (Escape on the game's list, modal and name dialogs) - record |
 | [ext-HM-record.md](ext-HM-record.md) | Extension unit HM (the host window menu with submenus) - record |
+| [ext-ICO1-record.md](ext-ICO1-record.md) | Extension unit ICO1 (the title bar's icon after a start in full screen) - record |
 | [ext-LP-record.md](ext-LP-record.md) | Extension unit LP (the low-priority requests) — record |
 | [ext-Ma-record.md](ext-Ma-record.md) | Extension phase M, unit Ma (zoom, layer, in-view source, input, commands) — record |
 | [ext-Mb1-record.md](ext-Mb1-record.md) | Extension phase M, unit Mb1 (snapshots, the Windows rules, the world canvas, the ring) — record |
@@ -376,6 +394,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-MZI-record.md](ext-MZI-record.md) | Extension unit MZI (the centring at map zoom level +1) - record |
 | [ext-MZS-record.md](ext-MZS-record.md) | Extension unit MZS (menus, dialogs and moved windows over the zoomed map) - record |
 | [ext-MZW-record.md](ext-MZW-record.md) | Extension unit MZW (the World Map's rectangle follows the map zoom level) - record |
+| [ext-PAU1-record.md](ext-PAU1-record.md) | Extension unit PAU1 (the window menu pauses the game; version 1.2.1; the Civ64 link; the menu tile inside civ64.exe) - record |
 | [ext-SI-record.md](ext-SI-record.md) | Extension unit SI (civ64 runs as a single instance) - record |
 | [ext-SL-record.md](ext-SL-record.md) | Extension unit SL: the DOS Save/Load slot screens |
 | [ext-TLD-record.md](ext-TLD-record.md) | Extension unit TLD (the title menu behind the Load dialog) - record |
@@ -389,6 +408,8 @@ made for the public copy and recorded file by file in an audit:
 | [ext-WL-record.md](ext-WL-record.md) | Extension unit WL (windowless play) - record |
 | [ext-WL2-record.md](ext-WL2-record.md) | Extension unit WL2: windowless play revisions (both graphics) |
 | [ext-WL3-record.md](ext-WL3-record.md) | Extension unit WL3: windowless play on the whole window (both graphics), version 1.2 |
+| [ext-WL4CRT3-record.md](ext-WL4CRT3-record.md) | Extension units WL4 and CRT3 (the Windows menu skin in windowless play; the double-scanned CRT scanlines) - record |
+| [ext-WL5-record.md](ext-WL5-record.md) | Extension unit WL5 (the user's menu background image in windowless play) - record |
 | [p47b-record.md](p47b-record.md) | Record: base-track unit P47b (P47-R2 review fixes; the list-dialog stall on exposure) |
 | [p47r2-record.md](p47r2-record.md) | Record: base-track fix RV4 P47-R2 (list dialogs show their border and scroll bar when they open) |
 
@@ -739,4 +760,6 @@ made for the public copy and recorded file by file in an audit:
 | [screenshots/Civ64-04-GameSetup-DOS.png](screenshots/Civ64-04-GameSetup-DOS.png) |  |
 | [screenshots/Civ64-05-GamePlay-Windows.png](screenshots/Civ64-05-GamePlay-Windows.png) |  |
 | [screenshots/Civ64-06-GamePlay-DOS.png](screenshots/Civ64-06-GamePlay-DOS.png) |  |
+| [screenshots/Civ64-07-WindowlessPlay-Windows.png](screenshots/Civ64-07-WindowlessPlay-Windows.png) |  |
+| [screenshots/Civ64-08-WindowlessPlay-DOS.png](screenshots/Civ64-08-WindowlessPlay-DOS.png) |  |
 | [screenshots/OnTheFlyGraphicsSwitch.gif](screenshots/OnTheFlyGraphicsSwitch.gif) |  |

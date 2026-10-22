@@ -185,6 +185,56 @@ checklist section. Times are UTC.
      Still no `port/core` and no `claude/src`.
    * Release `v1.1` with notes and `civ64.exe` from the latest Release build.
    * Check in the built-in browser.
-3. **IWC, the last task of all** (`BRIEF-pub.md` "Unit IWC").
+2b. **DONE 2026-10-20 21:36 UTC (RELEASE_OK; F341, F342; user build `build/user-builds/wl4crt3/`, WL4-1..3 and CRT3-1..2 pending the user): WL4 and CRT3 (the user, 2026-10-20 about 00:45 UTC; STATUS "User directions")**: in windowless play with the
+   Windows graphics, the menu bar in the popup/Status gray and its drop-down menus on the Status texture; CRT scanlines
+   matched to DOSBox Pure Unleashed's double-scan. One unit "wl4crt3", one user build `build/user-builds/wl4crt3/`.
+   If it did not land, resume from `build/wl4crt3-stage/STATE.md`. GitHub is updated only when the user says so.
+2c. **DONE 2026-10-20 22:40 UTC (RELEASE_OK; F343, F342 amended; user build `build/user-builds/crt4/`, CRT4-1..3 pending the user; tile in `build/e5rev/status-tile*.png`, 32x32 from 'CvPc' 200 of civdata4.rsc at (1408,140); a later optional `menu-tile.png` next to civ64.exe is sketched in `build/crt4-stage/STATE.md`): CRT4 and the tile export (the user, 2026-10-20 about 22:00 UTC; STATUS "User directions")**: WL4 accepted; export
+   the Status stone tile to `build/e5rev/` for the user's seamless rework (later: use the user's reworked tile); with
+   CRT scanlines on, double-scan everywhere in both graphics. If it did not land, resume from
+   `build/crt4-stage/STATE.md`. GitHub is updated only when the user says so.
+2d. **DONE 2026-10-20 23:52 UTC (RELEASE_OK; F344; user build `build/user-builds/wl5/` with the PNG, WL5-1..3 pending; scale 4 image px = 1 game px; new `res/png.c` reader): WL5 (the user, 2026-10-20 about 23:00 UTC; CRT4 passed)**: the user's seamless `civ-winmenu-bg.png` (512x512, copy in
+   `build/e5rev/`) behind the Windows graphics' windowless drop-down menus. It is loaded at run time from next to
+   civ64.exe, never compiled in or committed (it is derived from the game's art). For a GitHub release, ask the user
+   how to ship it. If it did not land, resume from `build/wl5-stage/STATE.md`.
+2e. **DONE 2026-10-21 07:28 UTC (CRT5 + CRT5b RELEASE_OK; F345; user build `build/user-builds/crt5/`, CRT5-1..4 pending; WL5 passed): CRT5 (the user, 2026-10-21 about 00:00 UTC: "It seems like 'CRT Scanlines' option does not being applied to Windows graphics properly, check and verify.")**: investigate with measured frames and fix; if it did not land, resume from `build/crt5-stage/STATE.md`.
+2f. **DONE 2026-10-22 11:15 UTC (RELEASE_OK; F346, F347; user build `build/user-builds/crt6wl6/`, CRT6-1..5 and WL6-1..2 pending): CRT6 and WL6 (the user, 2026-10-22 about 10:10 UTC; STATUS "User directions")**: gameplay scanlines on the accepted
+   intro/title/Birth/setup base; disabled windowless menu items in a patterned dark gray. One unit "crt6wl6", one user
+   build. If it did not land, resume from `build/crt6wl6-stage/STATE.md`.
+2g. **DONE 2026-10-22 12:51 UTC (RELEASE_OK; F348; user build `build/user-builds/cur1/`, CUR1-1..5 pending; DOS unchanged, DOS map-edge scroll arrows over the DOS bar unverified): CUR1 (the user, 2026-10-22 about 11:40 UTC; crt6wl6 accepted)**: the Windows graphics' menus show the torch cursor, also when
+   a drag from the World Map reaches them. If it did not land, resume from `build/cur1-stage/STATE.md`.
+2h. **PAU1 DONE 2026-10-22 14:19 UTC (RELEASE_OK; user build `build/user-builds/pau1/`, PAU1-1..8; civ64.exe 5,036,032 bytes, SHA-256 17d17cd6...ff219). The user approved it at 2026-10-22 about 14:25 UTC, on condition of the ICO1 fix (the title-bar icon after full screen and Alt+Enter); then PUB4 (state in `build/ico1-stage/STATE.md` and in `build/pub-stage/STATE.md` "PUB4") (the user, 2026-10-22 about 13:10 UTC; CUR1 accepted)**: PAU1 makes the host
+   menu pause the game completely, sets version 1.2.1, points the About link at Civ64 and embeds civ-winmenu-bg.png
+   in civ64.exe (the user, 13:25 UTC; the no-game-art rule still stands, this tile is its single exception); one user build
+   `build/user-builds/pau1/`. Then **wait for the user's approval**. After it, PUB4: update the docs, use the
+   user's `Civ64-07-WindowlessPlay-Windows.png` and `Civ64-08-WindowlessPlay-DOS.png` in the README **in place of the
+   gameplay pair Civ64-05/06** (the user, 2026-10-22 about 13:20 UTC: "Replace the gameplay pair (Civ64-05 and Civ64-06) in the README with Civ64-07 and Civ64-08."), push both
+   repositories, and release v1.2.1 as Latest with notes. If PAU1 did not land, resume from
+   `build/pau1-stage/STATE.md`.
+3. **DONE 2026-10-19 about 07:35 UTC: WL3 and PUB3** (the user: WL2 accepted; a black border around the windowless
+   play area in both graphics; "update Github with the release v1.2"). WL3 landed (RELEASE_OK 07:27:11 UTC; windowless
+   play grows the game screen by the removed chrome, so it fills the window; version resource and About box 1.2;
+   FIDELITY F339, F340, next free **F341**; user build `build/user-builds/wl3/`, WL3-1..4). Civ1RE `2c72fcc`, Civ64
+   `d476d0d`, release v1.2 (civ64.exe 5,005,824 bytes, SHA-256 `92d4c840...2d1a91`), browser check OK. Open: the
+   About box link still points to github.com/Buyukcaglar/Civ1 (fix to Civ64 with IWC); two stray GUID screenshots in
+   `docs/screenshots` are excluded (the user renames the one for the README).
+3. **IWC, the last task of all** **Changed by the user's notes of 2026-10-20 about 00:05 UTC** (verbatim in
+   `BRIEF-pub.md`, section "The user's IWC notes"): the code is fully annotated for human reading and is portable C on
+   SDL 3; the Windows version comes first, then a native macOS binary for the user's Mac mini M4 (macOS Tahoe 26.6.2,
+   Xcode 27.0). That makes IWC a multi-unit project. Split it into briefs, and ask the user the four open points listed
+   there first. **The user answered them on 2026-10-20 about 00:20 UTC** (verbatim in `BRIEF-pub.md`, "The user's
+   answers"): the Win32 civ64.exe stays, and nothing from IWC is published before parity with the recovered
+   implementation; on macOS the menus are native and the window-menu items go in the "civ64" app menu; the Win 3.1
+   dialog and control emulation, the cursors and the sound are carried over; the Mac build runs in a Claude desktop
+   session on the Mac mini; and **the game core is rewritten as a clean open implementation**, so the public code
+   builds a playable game alone. Recommended method: clean room (specifications from the private core, written by
+   agents that never show the recovered C to the core's authors). Start IWC by writing its plan of units.
+   **Method chosen by the user (2026-10-20 about 00:35 UTC): "Ok, if possible 1, if not 4"**: a "bring your own
+   game" recompiler that translates the user's own civ.exe at build time if feasible, otherwise the clean-room
+   rewrite. The first unit is the feasibility study IWC-F (`BRIEF-pub.md`, "The user's choice of method").
+   (`BRIEF-pub.md` "Unit IWC").
 4. The open items of the first part: G-3, the comment-only items, X16, the GetKeyState flake, and the Asan-parallel
    default.
+
+**The user's bulk check (2026-10-22 about 15:20 UTC):** every open checklist item passed. The checklist has 440 items: 437
+passed, 3 superseded, 0 pending. Items added later, from ICO1 on, start pending.

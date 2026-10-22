@@ -18,14 +18,6 @@
     <td align="center"><sub>Game setup, DOS graphics</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/screenshots/Civ64-05-GamePlay-Windows.png" alt="The first turn of a game with the Windows graphics"></td>
-    <td width="50%"><img src="docs/screenshots/Civ64-06-GamePlay-DOS.png" alt="The first turn of a game with the DOS graphics"></td>
-  </tr>
-  <tr>
-    <td align="center"><sub>Game play, Windows graphics</sub></td>
-    <td align="center"><sub>Game play, DOS graphics</sub></td>
-  </tr>
-  <tr>
     <td width="50%"><img src="docs/screenshots/Civ64-07-WindowlessPlay-Windows.png" alt="Windowless play with the Windows graphics"></td>
     <td width="50%"><img src="docs/screenshots/Civ64-08-WindowlessPlay-DOS.png" alt="Windowless play with the DOS graphics"></td>
   </tr>
@@ -91,11 +83,13 @@ graphics of *Civilization for DOS* and back at any moment.
 * **Windowless play:** window menu > **Display** > **Windowless play** shows the menu bar, the map,
   the World Map and the Status panel as one picture, like the DOS game's screen, without window
   frames. It works with both graphics and can be switched at any time; since 1.2 the picture fills the
-  whole window, without a black border.
+  whole window, without a black border, and since 1.2.1 the Windows graphics' menus have a gray bar and a
+  stone background (built into `civ64.exe`, no extra file).
 * **4:3 DOS gameplay:** **Display** > **4:3 aspect ratio for 320 x 200 DOS gameplay** gives the whole
   game with the DOS graphics the 4:3 shape of a DOS monitor (the intro screens have their own item).
 * **CRT scanlines:** **Display** > **CRT scanlines** adds the dark lines of a CRT monitor, with sharp
-  pixels and no slowdown.
+  pixels and no slowdown; since 1.2.1 double-scanned and the same on every screen, at every window size
+  and in full screen.
 * **Your own music and sound effects:** put a `MusicSfx` folder or a `MusicSfx.zip` next to
   `civ64.exe`, holding WAV files named like the game's own (`OPENING.WAV`, `CANNON.WAV`, ... any of
   its 24 sound files). Each file you supply is played instead of the game's file of that name; the
@@ -113,7 +107,7 @@ All of these are remembered between runs; the [User Guide](docs/USER-GUIDE.md) h
 | Ctrl+Shift+Plus, Ctrl+Shift+Minus | Map zoom in (double size) and out (half size) |
 | Ctrl+Shift+0 or Ctrl+Shift+Home | Normal map zoom |
 | Mouse wheel over the map | Map zoom around the pointer |
-| Click the icon at the left of the title bar, or right-click the title bar | The window menu: Full screen, Display (windowless play, scaling, filter, CRT scanlines, 4:3), Map zoom, Graphics, Alternative music/soundfx, About |
+| Click the icon at the left of the title bar, or right-click the title bar | The window menu: Full screen, Display (windowless play, scaling, filter, CRT scanlines, 4:3), Map zoom, Graphics, Alternative music/soundfx, About; the game pauses while it is open |
 | Any key during the opening credits | Skip to the title menu |
 | Alt+F4 or the window's close button | Exit (during a game civ64 asks first; save through the game's File menu) |
 
@@ -138,6 +132,25 @@ screen, scaling with sharp or smooth pixels, a game screen that grows with the w
 map zoom, light and dark title bars, and the DOS graphics profile, which shows the DOS version's
 pictures, palettes, fonts, menus and screens for the same running game. Save files keep the original
 format: civ64 loads saves of the original game, and the original game loads civ64's saves.
+
+### New in version 1.2.1
+
+* **CRT scanlines, reworked:** double-scanned in both graphics (two scanlines per picture row, like
+  DOSBox Pure's double-scan), visible at every window size and full-screen scale (the Windows graphics
+  showed none at some common sizes), spaced in a window exactly as in full screen on its monitor, and
+  the same during play as on the intro, title, Birth and setup screens.
+* **Windowless play, Windows graphics menus:** the menu bar takes the Status window's gray, the menus
+  that drop from it a seamless stone background (built into `civ64.exe`), and their unavailable items
+  stay readable on the stones.
+* **Torch cursor over the menus:** in the Windows graphics the menu bar and an open menu always show
+  the game's torch cursor, also when the pointer comes from the World Map.
+* **The game pauses while the window menu is open** (and while the window is moved or resized, and
+  while civ64's own boxes are open): the game, its animations, music and sounds stand still and go on
+  where they stopped, without a fast catch-up afterwards.
+* **Fix:** started in full screen, the title bar had no icon after Alt+Enter; it now shows civ64's
+  icon in every start mode and after every switch.
+* The program's version information and its About box say 1.2.1; the About box links to this
+  repository.
 
 ### New in version 1.2
 
@@ -173,7 +186,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`: the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1); the first was [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`: the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1); the earlier ones are [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
 

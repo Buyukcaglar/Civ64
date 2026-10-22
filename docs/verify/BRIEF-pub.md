@@ -161,3 +161,120 @@ build/test and hash check. It is the last item of the hand-off's queue.
   recovered core, which is not published, and why. The links to the published code are updated.
 * **Mechanics:** as in PUB. The tree is staged and audited per file, then one commit with the session's co-author
   line, pushed non-force to `main`. Civ1RE gets the same state of `claude/` first.
+
+### The user's IWC notes of 2026-10-20 about 00:05 UTC (verbatim)
+
+> Take the following notes for the IWC task;
+>
+> 1. Code shall be full annotated for human reading
+> 2. Shall be portable C and uses SDL-3
+> 3. After Windows version native macOs binary will be developed and my mac mini m4 which currently runs on tahoe
+> 26.6.2 and having xCode version 27.0 installed
+
+**What these notes change (the orchestrator's reading; settle the open points with the user before coding):**
+
+* IWC is no longer only a publication of the existing files. The published independently written code is:
+  * **fully annotated for human reading**: every file, function and non-obvious block gets explanatory comments,
+    beyond the current density;
+  * **portable C using SDL 3**: the Windows-only host (`win64`, the Win32 host in `platform`, and the Win32 parts of
+    `present`) goes behind an SDL 3 host. That covers the window, the menus, input, timers, audio, file dialogs and
+    the config path. The C stays portable, with no Win32 or MSVC-only constructs in shared code.
+* The user's order: **the Windows version first** (the SDL 3 build on Windows, as good as today's), **then a native
+  macOS binary**. The macOS target is the user's Mac mini M4 (Apple silicon, arm64), with macOS Tahoe 26.6.2 and
+  Xcode 27.0.
+* **Open points to settle with the user (one short question each, at the start):**
+  1. Does the SDL 3 build replace the Win32 civ64.exe, or sit beside it until it reaches parity? A sensible default
+     is beside it, with the release switching only at parity.
+  2. Win32-only features need an SDL equivalent or a stated limit: the window's system-menu items (Display, Map
+     zoom, Graphics), the native Windows 3.1 dialogs and controls of the Windows graphics, the cursor files and the
+     sound path. Native menus on macOS go in the app menu bar.
+  3. Building and testing the macOS binary needs the Mac: how the session reaches it (SSH, or the user runs the
+     build), plus signing and notarization, or a local unsigned build.
+  4. The recovered core (`port/core`, `claude/src`) stays private. So the public code still does not build a
+     playable game alone, and the README says so. The same split applies on macOS.
+* **Tests:** the existing suites must stay green on the Win32 build throughout. The SDL host gets its own headless
+  tests and its own user builds.
+* **Size:** this is a multi-unit project (an SDL 3 host, annotation, the macOS build), not one unit. Split it into
+  bounded units with their own briefs before starting.
+
+### The user's answers to the four open points (2026-10-20 about 00:20 UTC, verbatim)
+
+> 1. civ64.exe will not be replaced and SDL version, and IWC binary will not be published until it matches the current
+> recovered implementation
+> 2. "On macOS, the menus would go in the app's menu bar" - that is accepted and the way it shall be implemented. "the
+> window-menu items" - will be merged to app's menu bar's appname (civ64) menu itself. "the native Windows 3.1 dialogs
+> and controls of the Windows graphics" - this pseudo emulation (other then Windows 3.1 menus) will be carried over.
+> "the cursors and the sound path." - this will be carried over too.
+> 3. Session will build on mac mini m4, Claude desktop installed to mac mini m4 also.
+> 4. Yes "The recovered game core stays private." but whole aim of IWC task is to provide an open source clean
+> implementation so that "the public code will be able to build a playable game on its own, on Windows or macOS".
+> So, recovered game core has to be rewritten also.
+
+**What IWC is now (the orchestrator's reading of the answers):**
+
+* **The goal:** an open-source, clean implementation in portable, fully annotated C on SDL 3. It builds a playable
+  game on its own, on Windows and on macOS, and needs no private code. The game's data still comes from the user's
+  own copy, as civ64 does today; no original or DOS bytes go in the repository.
+* **The rewritten core:** the recovered core (`port/core`, `claude/src`) stays private and is not published. The
+  public core is a new implementation of the same behaviour. That is the largest part of IWC, far larger than the
+  host.
+  * **Recommended method: clean room.** The authors of the new core work from written specifications, not from the
+    recovered C. The specifications are the behaviour contracts: DESIGN, FIDELITY, the records, the reconstruction
+    plan's contracts and the test oracles (the existing harness, the scenarios and the frame or state goldens of
+    the private build).
+  * Agents that read the recovered C write specifications only. Agents that write the public core never see it.
+  * Record the split per unit. This keeps "clean" defensible and matches the user's earlier legal question.
+* **Parity gate:** the Win32 `civ64.exe` stays and is not replaced. Neither the SDL build nor any IWC binary is
+  published until it matches the current recovered implementation. Parity is shown by differential tests against
+  the private build: the same inputs and seeds give the same states and frames. Decide per area how exact it must
+  be; the default is exact.
+* **macOS UI:**
+  * the game's menus go in the macOS menu bar;
+  * the window-menu items (Display, Map zoom, Graphics, and so on) merge into the app menu "civ64";
+  * the emulated Windows 3.1 dialogs and controls of the Windows graphics are carried over, except the Windows 3.1
+    menus, which become the native menu bar;
+  * the cursors and the sound path are carried over.
+* **The Mac build:** done by a Claude desktop session on the user's Mac mini M4 (macOS Tahoe 26.6.2, Xcode 27.0,
+  arm64). The Windows session hands it a brief and a pushed branch, and the Mac session builds, tests and reports.
+* **Order:**
+  1. the clean-room specifications and the plan of units;
+  2. the SDL 3 host and the public core on Windows, until parity;
+  3. the macOS build;
+  4. publication of code and binaries only after parity.
+
+### The user's choice of method (2026-10-20 about 00:35 UTC, verbatim): "Ok, if possible 1, if not 4"
+
+The options as offered to the user in chat:
+1. a "bring your own game" recompiler;
+2. a patch against decompiler output (grey);
+3. asking the rights holder;
+4. a clean-room rewrite.
+
+**IWC's method:** option 1 if it is feasible, otherwise option 4. This supersedes the clean-room-first reading above;
+that reading becomes the fallback.
+
+* **Option 1, the "bring your own game" recompiler.** The public repository contains no game code. It holds:
+  * a translator that turns the user's own `civ.exe` (from their `CIVWIN.zip`) into C at build time;
+  * the independently written layers: w16, rt, present and the DOS profile, the host (on SDL 3);
+  * facts as data: function boundaries, names, types and calling conventions, keyed by segmented address.
+
+  The private core's hand changes (the presentation hooks, the 64-bit fixes, the P0 observers) become replacement
+  or hook functions written independently, keyed by segmented address, and never copied from the recovered C.
+* **First IWC unit: a bounded feasibility study, IWC-F.** It answers:
+  * how much of `civ.exe`'s code translates automatically into the same behaviour as `port/core`, measured by the
+    existing tests and the differential harness;
+  * what cannot translate automatically (computed jumps, self-modifying or overlay code, data mixed with code, FPU
+    or emulator calls, segment arithmetic), and how big the hook layer is;
+  * the estimated effort, compared with option 4.
+
+  The study writes `docs/ext-IWC-F-record.md` with a recommendation. The user then confirms option 1 or switches to
+  option 4.
+* **Unchanged:**
+  * full annotation;
+  * portable C on SDL 3;
+  * Windows first, then macOS (on the Mac mini, by a Claude desktop session there);
+  * the Win32 civ64.exe stays;
+  * nothing published before parity with the recovered implementation;
+  * no original or DOS bytes in the repository.
+
+  The facts-as-data (names, types) are written fresh as data and audited, never copied as C text.
