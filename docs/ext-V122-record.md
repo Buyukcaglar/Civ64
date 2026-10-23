@@ -65,7 +65,15 @@ record's sentence "civ64.exe stays 1.2.1" was true when it was written and is su
   (`hashes/20261023T061622Z-*`).
 * User build `build/user-builds/v122/` (civ64.exe; CAE3540B.SAV, CHIEF.SAV, MusicSfx.zip, CIVWIN.zip, civdos.zip as in
   ico1; WHAT-TO-CHECK.txt with V122-1..V122-3). Checklist items V122-1..V122-3 pending the user's check.
-* Publication (PUB5): see STATUS.
+* Publication (PUB5), 2026-10-23 (UTC): the macOS session pushed `64662bb` and `92d2dc1` (its own Civ64
+  release v1.2.2 for macOS prepared, waiting for the user's approval) while this unit landed; this unit's commit was
+  rebased onto them (STATUS: both user-direction rows kept) and pushed as Civ1RE `e1f6d10`. Civ64: `hand_v122.py`,
+  `build_stage.py` (473 files), `finish_stage.py`, `--check-links` LINKS_OK, `write_audit.py`, `nodos.py --root
+  Civ1` NODOS_OK (474 files, 0 hits); no macOS home paths in the published macOS records; commit `0d60553`
+  (noreply), pushed `866ca9e..0d60553`. Release `v1.2.2` "Sid Meier's Civilization 64bit 1.2.2", Latest,
+  published 06:19:34 UTC, asset civ64.exe 5,037,568 bytes (GitHub digest sha256:a696be52...8fe86ae19), notes
+  `build/pub-stage/RELEASE-NOTES-v1.2.2-windows.md`; the release page checked in a browser.
+* **For the macOS session (PUBM):** the tag `v1.2.2` and its release exist on Civ64 since 2026-10-23 06:19:34 UTC (Latest; asset civ64.exe; target `0d60553`). The Mac's locally prepared Civ64 commit has to be rebased onto `0d60553` (README, docs/README.md and docs/USER-GUIDE.md carry the Windows 1.2.2 text; the macOS records are already published), and on the user's approval the DMG and its `.sha256` are added to that release (`gh release upload v1.2.2 ...`) and its notes extended with the macOS part (`build/pub-stage/RELEASE-NOTES-v1.2.2.md` assumed a macOS-only release with civ64.exe at v1.2.1; the Windows notes are `build/pub-stage/RELEASE-NOTES-v1.2.2-windows.md`), instead of `gh release create`.
 
 ## Not covered
 

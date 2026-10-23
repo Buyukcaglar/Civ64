@@ -86,3 +86,20 @@ I require from you is to prepare and include gameplay pair screenshots of macOS 
   graphics"), and the two files in docs/README.md's screenshot index. (build_stage.py publishes only the seven
   original screenshots; the later ones are copied as they are.)
 * The merge with the user's Windows release text follows the user's Windows publication.
+
+### Merged with the Windows release v1.2.2 (2026-10-23)
+
+The user: "The Windows release is published. Pull Civ64 and merge your macOS notes and screenshots with it."
+
+* The Windows session's unit V122 ([ext-V122-record.md](ext-V122-record.md)) built MACB1's two shared fixes into
+  `civ64.exe`, set it to 1.2.2 and published release `v1.2.2` (Civ64 `0d60553`, `civ64.exe` attached). So
+  `civ64.exe` no longer stays at 1.2.1 (the bullets above describe the state before that), and the macOS image joins
+  the same release instead of a separate macOS release.
+* Civ1RE fast-forwarded to `d1862d9`. The local Civ64 commits of the preparation (`93b1683`, `84d1a4f`) are kept on
+  the local branch `mac-prep`; `main` was reset to `origin/main` (`0d60553`) and the macOS changes applied again:
+  the README (the intro, the Mac shortcut in the switch caption, "Quick start on macOS", a macOS item in "New in
+  version 1.2.2", the image in the release list, the fourth screenshot row), the User Guide (the intro and section
+  15, without the bullet about fixes civ64.exe lacked), docs/README.md (the overview, the macOS paragraph after
+  V122's, the screenshot index) and the documents from `stage_mac.py`.
+* The release notes: `build/pub-stage/RELEASE-NOTES-v1.2.2.md` is now the published Windows text with the macOS
+  parts added (the intro, Download, New in 1.2.2, Requirements, How to start, Known limits, What is not included).

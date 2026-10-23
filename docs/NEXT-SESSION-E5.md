@@ -209,7 +209,8 @@ checklist section. Times are UTC.
 2j. **V122 and PUB5 DONE 2026-10-23 (session on Windows)**: the macOS session's two DOS fixes (MACB1: the windowless
    DOS bar, F353; the DOS play palette after a load, F354) built into the Windows civ64.exe, version 1.2.2 (F355);
    cycle ALL_GREEN, RELEASE_OK 06:14:17 UTC; release v1.2.2 ([ext-V122-record.md](ext-V122-record.md); STATUS).
-   V122-1..3 pending the user's check. The macOS units continue from F356.
+   V122-1..3 pending the user's check. The macOS units continue from F356. Civ1RE `e1f6d10`, Civ64 `0d60553`,
+   release v1.2.2 Latest (civ64.exe only): the macOS DMG is to be added to that same release (STATUS, PUB5 row).
 2h. **PAU1 DONE 2026-10-22 14:19 UTC (RELEASE_OK; user build `build/user-builds/pau1/`, PAU1-1..8; civ64.exe 5,036,032 bytes, SHA-256 17d17cd6...ff219). The user approved it at 2026-10-22 about 14:25 UTC, on condition of the ICO1 fix (the title-bar icon after full screen and Alt+Enter); then PUB4 (state in `build/ico1-stage/STATE.md` and in `build/pub-stage/STATE.md` "PUB4") (the user, 2026-10-22 about 13:10 UTC; CUR1 accepted)**: PAU1 makes the host
    menu pause the game completely, sets version 1.2.1, points the About link at Civ64 and embeds civ-winmenu-bg.png
    in civ64.exe (the user, 13:25 UTC; the no-game-art rule still stands, this tile is its single exception); one user build

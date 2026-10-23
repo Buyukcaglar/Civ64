@@ -25,12 +25,12 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.2.2 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
+| The result | `civ64.exe` 1.2.2 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
 | Additions | resizable window and full screen, integer or fitted scaling, a game screen that fills the window, a three-level map zoom, light and dark mode, the DOS graphics profile of *Civilization for DOS* 475.01 switchable at any moment |
-| Time line | recovery and port base track 2026-10-08 to 2026-10-10; extension sessions E1 to E4 2026-10-10 to 2026-10-18 |
+| Time line | recovery and port base track 2026-10-08 to 2026-10-10; extension sessions E1 to E4 2026-10-10 to 2026-10-22; the macOS session M1 2026-10-22 to 2026-10-23 |
 
 ## 2. Rules the work followed
 
@@ -202,6 +202,19 @@ bar's own titles right of a narrow map window's bar (F353), and the play palette
 BACK palette at the first play state after Load a Saved Game, as DOS's main sets it (F354); version
 1.2.2 (F355). V122 landed with the three-step cycle ALL_GREEN. The Release `civ64.exe` of 2026-10-23 06:14:13 UTC
 is the program of the `v1.2.2` release.
+
+**Version 1.2.2, macOS** (2026-10-22..23, session M1 on a Mac; [verify/BRIEF-mac.md](verify/BRIEF-mac.md)):
+`Civ64.app`, the same portable layers over a native AppKit back end in place of the Win32 one. The headless
+build and the whole test suite moved to macOS first: all 31 sections of the Windows suite, G-1's 77 runs with
+its one recorded amendment, the Asan pass and the Rosetta 2 run of the x86_64 build
+([ext-MAC0-record.md](ext-MAC0-record.md)). The back end and the program, with the macOS differences listed
+([ext-MAC1-record.md](ext-MAC1-record.md)), then the game's menus mirrored in the macOS menu bar (unit MAC3, in
+the same record). The user's checks found four defects ([ext-MACB1-record.md](ext-MACB1-record.md)): Mac
+shortcuts for the graphics switch and the zoom; the two DOS faults of the shared code above; the system arrow
+outside the game picture. A Shift released after Shift+Command+Delete ended the intro
+([ext-MACB2-record.md](ext-MACB2-record.md)). The release build is universal, signed with a Developer ID,
+notarized and stapled ([ext-MAC4-record.md](ext-MAC4-record.md)); `Civ64-1.2.2-macOS.dmg` joins `civ64.exe` in
+the `v1.2.2` release.
 
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
@@ -784,4 +797,6 @@ made for the public copy and recorded file by file in an audit:
 | [screenshots/Civ64-06-GamePlay-DOS.png](screenshots/Civ64-06-GamePlay-DOS.png) |  |
 | [screenshots/Civ64-07-WindowlessPlay-Windows.png](screenshots/Civ64-07-WindowlessPlay-Windows.png) |  |
 | [screenshots/Civ64-08-WindowlessPlay-DOS.png](screenshots/Civ64-08-WindowlessPlay-DOS.png) |  |
+| [screenshots/Civ64-09-GamePlay-macOS-Windows.png](screenshots/Civ64-09-GamePlay-macOS-Windows.png) |  |
+| [screenshots/Civ64-10-GamePlay-macOS-DOS.png](screenshots/Civ64-10-GamePlay-macOS-DOS.png) |  |
 | [screenshots/OnTheFlyGraphicsSwitch.gif](screenshots/OnTheFlyGraphicsSwitch.gif) |  |

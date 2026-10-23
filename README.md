@@ -25,13 +25,21 @@
     <td align="center"><sub>Windowless play, Windows graphics</sub></td>
     <td align="center"><sub>Windowless play, DOS graphics</sub></td>
   </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/Civ64-09-GamePlay-macOS-Windows.png" alt="Play on macOS with the Windows graphics, windowless"></td>
+    <td width="50%"><img src="docs/screenshots/Civ64-10-GamePlay-macOS-DOS.png" alt="Play on macOS with the DOS graphics, windowless"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>On macOS, Windows graphics</sub></td>
+    <td align="center"><sub>On macOS, DOS graphics</sub></td>
+  </tr>
 </table>
 
 <p align="center">
   <img src="docs/screenshots/OnTheFlyGraphicsSwitch.gif" width="100%" alt="Switching between the Windows and DOS graphics while playing">
   <br>
-  <sub><b>On-the-fly graphics switch:</b> press <b>Ctrl+Shift+Backspace</b>, or use the window menu's
-  <b>Graphics</b> submenu, at any moment, and the same game continues with the other graphics.</sub>
+  <sub><b>On-the-fly graphics switch:</b> press <b>Ctrl+Shift+Backspace</b> (on a Mac <b>Shift+Command+Delete</b>),
+  or use the <b>Graphics</b> submenu, at any moment, and the same game continues with the other graphics.</sub>
 </p>
 
 > **AI assistance and disclaimer of liability.** This project was made with the assistance of
@@ -49,12 +57,15 @@
 > release: you need your own copy of the game to play.
 
 **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") runs the original 1992 *Sid Meier's
-Civilization for Windows*, the 16-bit Windows 3.1 release, as a native 64-bit Windows program. It
-needs no DOSBox, no winevdm/OTVDM and no virtual machine. It plays the whole original game, from the
+Civilization for Windows*, the 16-bit Windows 3.1 release, as a native 64-bit Windows program and, since
+1.2.2, as a native macOS application (`Civ64.app`, Apple silicon and Intel). It needs no DOSBox, no
+winevdm/OTVDM, no Wine and no virtual machine. It plays the whole original game, from the
 opening credits to the end games, on your own copy of the game's files, and it can switch to the
 graphics of *Civilization for DOS* and back at any moment.
 
 ## Quick start
+
+The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-start-on-macos).
 
 **Requirements**
 
@@ -115,6 +126,26 @@ The full **[User Guide](docs/USER-GUIDE.md)** covers installation, every menu an
 graphics, the map zoom, the window and full screen, saves, settings, the command line and
 troubleshooting.
 
+### Quick start on macOS
+
+**Requirements:** macOS 13 Ventura or later, Apple silicon or Intel; your own copy of Civilization for
+Windows (the same release as above) and, optionally, of Civilization for DOS 475.01.
+
+1. Download `Civ64-1.2.2-macOS.dmg` from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest), open it and drag `Civ64.app`
+   to Applications or to a folder of its own. civ64 is signed with the developer's Developer ID and
+   notarized by Apple.
+2. Put `CivWin.zip` (and optionally `CivDos.zip`, `MusicSfx.zip`) or the `CivWin` / `CivDos` folders next
+   to `Civ64.app`, or let civ64 ask for them at the first start. Optionally add `vgasys.fon` from a
+   Windows PC (`C:\Windows\Fonts`) for the exact Windows 3.1 font in the game's dialogs.
+3. Start civ64 from where you put it.
+
+On a Mac, Option is Alt. civ64's commands are in the **civ64** menu of the macOS menu bar, the game's
+own menus are both in its window and in the macOS menu bar, and the keys have Mac shortcuts:
+**Shift+Command+Delete** switches the graphics, **Command+=**, **Command+-** and **Command+0** zoom the
+map, **Control+Command+F** is full screen and **Command+Q** quits. The Windows keys work too. Details:
+[User Guide, section 15](docs/USER-GUIDE.md#15-civ64-for-macos).
+
 ## What this project is
 
 civ64 is a faithful port, not a remake. The original `civ.exe`, a 16-bit Borland C++ program, was
@@ -135,13 +166,18 @@ format: civ64 loads saves of the original game, and the original game loads civ6
 
 ### New in version 1.2.2
 
+* **civ64 for macOS:** `Civ64.app`, one universal application for Apple silicon and Intel Macs (macOS 13
+  or later), signed with a Developer ID and notarized by Apple, in a disk image. It runs the same game and
+  both graphics; the game's menus also appear in the macOS menu bar, and civ64's commands are in the
+  application menu with Mac shortcuts. The two fixes below were found while making it.
 * **Fix, DOS graphics, windowless play:** with a narrow map window (for example a 4:3 window), the DOS
   menu bar's CIVILOPEDIA title was cut and a stripe of its letters repeated after it; the bar now shows
   all five DOS titles whole at their DOS places.
 * **Fix, DOS graphics, after Load a Saved Game:** the first advisor report showed the advisor's portrait
   in wrong colours (later views were right); the game's colours are now set as the DOS game sets them
   right after a load.
-* The program's version information and its About box say 1.2.2.
+* The program's version information and its About box say 1.2.2 (on a Mac, the application's version and
+  its About box).
 
 ### New in version 1.2.1
 
@@ -196,13 +232,14 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`: the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2); the earlier ones are [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`, and since v1.2.2 also the macOS application as `Civ64-1.2.2-macOS.dmg`: the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2); the earlier ones are [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
 
 The recovered C and the core translated from it are readings of the copyrighted original program,
 so they are not published. The released `civ64.exe` contains none of the original game's files or
-bytes: it reads your own copy at run time and checks that it is the exact supported release. The
+bytes, and neither does `Civ64.app`: they read your own copy at run time and check that it is the exact
+supported release. The
 documentation describes the work in full; where a record quoted program code, the public copy
 condenses that passage into a description ([audit summary in docs/README.md](docs/README.md#9-how-the-public-copy-was-prepared)).
 
