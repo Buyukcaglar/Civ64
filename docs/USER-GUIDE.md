@@ -1,7 +1,7 @@
 # Sid Meier's Civilization 64bit: User Guide
 
 This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.3: `civ64.exe` for
-Windows (and `Civ64.app` 1.2.2 for macOS). civ64 runs the original *Sid Meier's Civilization for Windows* (the
+Windows and `Civ64.app` for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the game with the graphics of *Civilization for DOS* at any moment.
 
@@ -488,7 +488,7 @@ are shown unchanged.
 
 ## 15. civ64 for macOS
 
-`Civ64.app` (version 1.2.2) is the same program as `civ64.exe`: the same recovered game, the same Windows 3.1
+`Civ64.app` (version 1.2.3) is the same program as `civ64.exe`: the same recovered game, the same Windows 3.1
 environment and the same Windows and DOS graphics, on a native macOS back end. It is signed with the developer's
 Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
 
@@ -503,7 +503,7 @@ Developer ID and notarized by Apple, and is distributed here, not in the Mac App
 
 ### Installation
 
-1. Download `Civ64-1.2.2-macOS.dmg` from the [v1.2.2 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2)
+1. Download `Civ64-1.2.3-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
    and open it.
 2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
    from there, not from the disk image: an application started from the disk image sees no files next to it.

@@ -222,8 +222,9 @@ while the DOS asset store refused it, at every start. The lookup now applies the
 required file at its pinned size and SHA-256) wherever it finds or is given the DOS copy, and names the first
 wrong file (F117); a wrong `CIV.EXE` says "Version 475.05 is required." (the pinned `CIV.EXE` holds the
 CivFanatics FAQ's version-5 bytes); version 1.2.3 (F355). DV landed with the three-step cycle ALL_GREEN. The
-Release `civ64.exe` of 2026-10-23 08:12:53 UTC is the program of the `v1.2.3` release; the macOS application stays at
-1.2.2.
+Release `civ64.exe` of 2026-10-23 08:12:53 UTC is the program of the `v1.2.3` release. The macOS session ported the
+check to the macOS lookup (`ext-DV-record.md`, "The macOS port") and set the macOS application to 1.2.3;
+`Civ64-1.2.3-macOS.dmg` joins `civ64.exe` in the `v1.2.3` release.
 
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are

@@ -218,7 +218,9 @@ checklist section. Times are UTC.
    for Windows ([ext-DV-record.md](ext-DV-record.md); STATUS). DV-1..3 pending the user's check. **For the macOS
    session:** `macos/mac_locate.c` has the same gap (`check_dir` and `open_zip` check CIV.EXE only); it needs the
    same check of every `pdos_pins` req file (and the 475.05 sentences) and a macOS 1.2.3 build; the public README
-   and User Guide point Mac users to the v1.2.2 release for the DMG until then.
+   and User Guide point Mac users to the v1.2.2 release for the DMG until then. Published: Civ64 `6f27f97`, release
+   v1.2.3 Latest 08:32:44 UTC (civ64.exe only; SHA-256 `31f77e96...eaa1e78b`). A macOS 1.2.3 would add its DMG to
+   v1.2.3 (`gh release upload v1.2.3 ...`) and point the README and User Guide's Mac links back to the latest release.
 2h. **PAU1 DONE 2026-10-22 14:19 UTC (RELEASE_OK; user build `build/user-builds/pau1/`, PAU1-1..8; civ64.exe 5,036,032 bytes, SHA-256 17d17cd6...ff219). The user approved it at 2026-10-22 about 14:25 UTC, on condition of the ICO1 fix (the title-bar icon after full screen and Alt+Enter); then PUB4 (state in `build/ico1-stage/STATE.md` and in `build/pub-stage/STATE.md` "PUB4") (the user, 2026-10-22 about 13:10 UTC; CUR1 accepted)**: PAU1 makes the host
    menu pause the game completely, sets version 1.2.1, points the About link at Civ64 and embeds civ-winmenu-bg.png
    in civ64.exe (the user, 13:25 UTC; the no-game-art rule still stands, this tile is its single exception); one user build

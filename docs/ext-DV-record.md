@@ -122,6 +122,52 @@ also be other code, whose tables the DOS graphics locate by offset (`docs/dos/OF
 notarization run on the Mac. Hand-off in `NEXT-SESSION-E5.md` item 2k. The v1.2.3 release is for Windows; the
 public README and User Guide send Mac users to the v1.2.2 release for the DMG.
 
+### The macOS port (session M1, 2026-10-23)
+
+The user: "Windows version published, go ahead" (after: "A bug fix regarding to DOS graphics recognition is being
+developed by the Windows side, I'll notify you to retrieve it and apply it here, then when you are publishing v1.2.3
+you'll update About box on repository.").
+
+* Civ1RE fast-forwarded to `00acd6a`. None of the portable layers changed since the macOS session's last full Checked
+  suite (MACB2: TESTS_OK, EXT_G1_OK runs 77): DV changed `win64/`, `platform/win32/`, `tests/win32/` and documents only.
+* `macos/mac_locate.c`: `dos_files_ok` ported from `win64/civ64_locate.c` (UTF-8 paths, `hm_find_name`; the same
+  pins, rules and sentences), called by `check_dir` and `open_zip` for the DOS version; the CIV.EXE sentences end with
+  "Version 475.05 is required."; `macos/mac_locate.h` notes it.
+* Version 1.2.3: `macos/Info.plist` (CFBundleShortVersionString and CFBundleVersion), `macos/READ-FIRST.txt`; the
+  About box reads Info.plist.
+* Seen on this Mac (agent-observed; the Release application, `--data` a copy of `build/gamedata`, `--graphics dos
+  --music-sfx none --multi-instance`, a test settings folder; each alert captured as its window):
+  * `--dos-data` a copy of `build/dosdata` with KING00.PIC's last byte changed: "In the folder …/king, KING00.PIC is
+    not the file of Civilization for DOS civ64 knows (its size or SHA-256 differs). The DOS graphics need the
+    unchanged files of version 475.05.";
+  * a copy with CIV.EXE changed: "…/exe/CIV.EXE is not the DOS version civ64 knows (its size or SHA-256 differs).
+    Version 475.05 is required.";
+  * a ZIP of the copy without FONTS.CV: "The ZIP file …/nofonts.zip holds no FONTS.CV next to CIV.EXE. civ64 needs
+    every file of Civilization for DOS 475.05 for the DOS graphics.";
+  * an unchanged copy: the DOS intro;
+  * the KING00.PIC copy as the remembered `dos_data` (with `dos_ask=never`): 1.2.2 accepted it and stopped at the
+    store's "KING00.PIC in … is not the file civ64 knows" (the player's loop); 1.2.3 skips it and says "Civilization
+    for DOS was not found (…)". Without `--graphics dos` 1.2.3 starts with the Windows graphics, no question.
+* Not exercised: "Locate DOS Files…" in a running game (the file panel; `mac_locate_dos_choose` runs the same
+  `use_path`/`check_dir`). The store's "not found" sentence (`present/dos/pdos_assets.c`, shared) says "next to
+  civ64.exe" also on macOS, as in 1.2.2.
+* In one of the runs the test settings folder was not given, so the application read the player's real settings
+  folder; it was stopped at its first question and wrote nothing there (`civ64.cfg` last written 08:30 local time,
+  before the run).
+* `package-mac.sh --out build/user-builds/v1.2.3` (2026-10-23 08:42 UTC): PACKAGE_OK; universal (x86_64 arm64);
+  NODOS_OK; Developer ID, hardened runtime; `Civ64-1.2.3-macOS.dmg` notarized (submission
+  `14301e7e-a4bc-432b-aa30-f5b55f51fdf3`: Accepted, no issues) and stapled; Gatekeeper accepts the application and the
+  image, and a copy of the image with a browser's quarantine attribute; SHA-256
+  `5cf5e8b91480b2e0c80a8490ae945b9598e87188a39b459997f920bbe2ad4631`, 4,892,237 bytes. The mounted image holds
+  Civ64.app 1.2.3 (Info.plist; READ-FIRST says 1.2.3); "Version 475.05 is" appears in both architectures' code. With
+  the user's game ZIPs and vgasys.fon, for the user's check.
+* Prepared for publication, waiting for the user's approval: Civ64's README ("Quick start on macOS" downloads
+  `Civ64-1.2.3-macOS.dmg` from the latest release; "New in version 1.2.3" says the macOS application is 1.2.3 with the
+  same check; the release list), the User Guide (1.2.3 for both, section 15's download), docs/README.md (the 1.2.3
+  paragraph); the merged release notes `build/pub-stage/RELEASE-NOTES-v1.2.3.md` (the Windows text as published kept
+  as `RELEASE-NOTES-v1.2.3-windows.md`); the image and its `.sha256` to be added to release `v1.2.3`; and, by the
+  user's direction, the repository's About description: "Sid Meier's Civilization 64bit (civ64): the 1992 Windows Civilization as a native 64-bit program for Windows and macOS, with on-the-fly DOS graphics. Documentation, user guide and releases (needs your own copy of the game)."
+
 ## Publication (PUB6)
 
 The user, 2026-10-23 about 08:20 UTC: "ok publish as latest version and update relevant documentation and release
@@ -132,3 +178,20 @@ hand-written public sources (`build/pub-stage/hand/`, `docs-README.head.md`) wer
 `3f14ed7` before the 1.2.3 edits (`hand_v123.py`), and the generated docs were staged the macOS session's way
 (`stage_mac.py`: new and changed files copied into the clone, nothing deleted), so the macOS text and screenshots
 stay. Release notes `build/pub-stage/RELEASE-NOTES-v1.2.3.md`.
+
+* Civ1RE: `98c48b2` and `74862f2` (the public sources and this hand-off; NODOS_OK over its six files), pushed
+  non-force `8974187..74862f2`.
+* Civ64: `stage_mac.py Civ1` 5 new, 6 changed (FIDELITY, NEXT-SESSION-E5, RUNNING, STATUS, ext-MAC4-record,
+  manual-checklist-ext; new ext-DV-record and the four hash records), 465 the same, applied; README.md and
+  docs/USER-GUIDE.md from `hand/`; `finish_stage.py` (docs/README.md, 478 index rows); `--check-links` LINKS_OK;
+  `nodos.py check --root Civ1` NODOS_OK. Commit `6f27f97` (noreply author and committer, 14 files), pushed
+  `3f14ed7..6f27f97`.
+* Release `v1.2.3` "Sid Meier's Civilization 64bit 1.2.3", Latest, target main `6f27f97`, published 2026-10-23
+  08:32:44 UTC; asset civ64.exe 5,039,104 bytes, GitHub digest
+  sha256:31f77e96aab09bb4981730e15b07cad65cc254f20c15500196a889b8eaa1e78b (equal to the build); `releases/latest`
+  = v1.2.3; notes `RELEASE-NOTES-v1.2.3.md`. Release v1.2.2 keeps civ64.exe 1.2.2 and the macOS DMG.
+* Browser check (the built-in browser): the release page shows Latest, "New since 1.2.2", civ64.exe and its
+  SHA-256; the repository page's README shows "New in version 1.2.3", version 475.05, the macOS download at the
+  v1.2.2 release and "latest release is v1.2.3"; its 10 images load.
+* Not changed: the repository's short description (still "… and the v1.0 release …", as since v1.0); the forum
+  post drafts.
