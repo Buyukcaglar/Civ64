@@ -629,8 +629,8 @@ title bar to drag it (about two title-bar heights wide, at least half its height
 Windows can give it at its size; otherwise it comes back at that top-left corner, and closing civ64 writes the
 rectangle the window really had back to `window` (F111). `--window` or `--scale k` give the first size
 (the window is then centred as on a first run). The window's title bar reads "Sid Meier's Civilization 64bit"
-(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.1" (F108, F340; v1.2.1 since PAU1,
-F350), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
+(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.2" (F108, F340; v1.2.1 since PAU1,
+F350; v1.2.2 since V122, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
 window's system menu and its About box follow Windows' light or dark app
 mode (Settings > Personalization > Colors) and change with it at once (F109); since UX4 so do civ64's own
 message boxes (`hw_message_box`: the host's messages, the overwrite question, the notes and questions about the DOS

@@ -203,6 +203,13 @@ checklist section. Times are UTC.
    build. If it did not land, resume from `build/crt6wl6-stage/STATE.md`.
 2g. **DONE 2026-10-22 12:51 UTC (RELEASE_OK; F348; user build `build/user-builds/cur1/`, CUR1-1..5 pending; DOS unchanged, DOS map-edge scroll arrows over the DOS bar unverified): CUR1 (the user, 2026-10-22 about 11:40 UTC; crt6wl6 accepted)**: the Windows graphics' menus show the torch cursor, also when
    a drag from the World Map reaches them. If it did not land, resume from `build/cur1-stage/STATE.md`.
+2i. **ICO1 and PUB4 DONE 2026-10-22 about 16:12 UTC**: ICO1 (the window carries its icons; F352); Civ1RE `fd2bf7a`, Civ64 `866ca9e`,
+   release v1.2.1 Latest (civ64.exe SHA-256 `4293fea4...953a10`); browser check OK. Open: test_crt's 120 ms wall-clock
+   guard flaked once under parallel load (352 ms); make it informational or raise it.
+2j. **V122 and PUB5 DONE 2026-10-23 (session on Windows)**: the macOS session's two DOS fixes (MACB1: the windowless
+   DOS bar, F353; the DOS play palette after a load, F354) built into the Windows civ64.exe, version 1.2.2 (F355);
+   cycle ALL_GREEN, RELEASE_OK 06:14:17 UTC; release v1.2.2 ([ext-V122-record.md](ext-V122-record.md); STATUS).
+   V122-1..3 pending the user's check. The macOS units continue from F356.
 2h. **PAU1 DONE 2026-10-22 14:19 UTC (RELEASE_OK; user build `build/user-builds/pau1/`, PAU1-1..8; civ64.exe 5,036,032 bytes, SHA-256 17d17cd6...ff219). The user approved it at 2026-10-22 about 14:25 UTC, on condition of the ICO1 fix (the title-bar icon after full screen and Alt+Enter); then PUB4 (state in `build/ico1-stage/STATE.md` and in `build/pub-stage/STATE.md` "PUB4") (the user, 2026-10-22 about 13:10 UTC; CUR1 accepted)**: PAU1 makes the host
    menu pause the game completely, sets version 1.2.1, points the About link at Civ64 and embeds civ-winmenu-bg.png
    in civ64.exe (the user, 13:25 UTC; the no-game-art rule still stands, this tile is its single exception); one user build

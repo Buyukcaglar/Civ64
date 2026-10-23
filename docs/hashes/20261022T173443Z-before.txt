@@ -1,0 +1,41 @@
+# Windows hash check (before) at 20261022T173443Z UTC, session M1 (macOS)
+# method: shasum -a 256 -c on macOS; reference claude/docs/original-hashes-before.txt; source ~/Downloads/CIVWIN.zip (the user's copy), extracted to original/CIVWIN (read-only)
+original/CIVWIN/CAE3540B.SAV: OK
+original/CIVWIN/INSTALL.LOG: OK
+original/CIVWIN/airnuke.wav: OK
+original/CIVWIN/alex.wav: OK
+original/CIVWIN/cannon.wav: OK
+original/CIVWIN/ceas.wav: OK
+original/CIVWIN/civ.exe: OK
+original/CIVWIN/civ.prf: OK
+original/CIVWIN/civdata0.rsc: OK
+original/CIVWIN/civdata1.rsc: OK
+original/CIVWIN/civdata2.rsc: OK
+original/CIVWIN/civdata3.rsc: OK
+original/CIVWIN/civdata4.rsc: OK
+original/CIVWIN/civfonts.fon: OK
+original/CIVWIN/civhelp.hlp: OK
+original/CIVWIN/eliz.wav: OK
+original/CIVWIN/fred.wav: OK
+original/CIVWIN/gand.wav: OK
+original/CIVWIN/geng.wav: OK
+original/CIVWIN/hama.wav: OK
+original/CIVWIN/linc.wav: OK
+original/CIVWIN/lose2.wav: OK
+original/CIVWIN/mao.wav: OK
+original/CIVWIN/mont.wav: OK
+original/CIVWIN/napo.wav: OK
+original/CIVWIN/opening.wav: OK
+original/CIVWIN/rams.wav: OK
+original/CIVWIN/read.me: OK
+original/CIVWIN/s_beep.wav: OK
+original/CIVWIN/s_land.wav: OK
+original/CIVWIN/s_nuke.wav: OK
+original/CIVWIN/setup.exe: OK
+original/CIVWIN/setup.inf: OK
+original/CIVWIN/shak.wav: OK
+original/CIVWIN/stal.wav: OK
+original/CIVWIN/they_die.wav: OK
+original/CIVWIN/we_die.wav: OK
+original/CIVWIN/wintune.wav: OK
+# result: 38 of 38 OK

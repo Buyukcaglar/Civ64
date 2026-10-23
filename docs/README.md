@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.2.1 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
+| The result | `civ64.exe` 1.2.2 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -195,11 +195,19 @@ title bar's icon after a start in full screen ([ext-ICO1-record.md](ext-ICO1-rec
 unit landed with the three-step cycle ALL_GREEN. The Release `civ64.exe` of 2026-10-22 16:08:36 UTC is the
 program of the `v1.2.1` release.
 
+**Version 1.2.2** (2026-10-23): two fixes of the DOS graphics that the macOS work found in the shared
+presentation code (unit MACB1, [ext-MACB1-record.md](ext-MACB1-record.md)), built into the Windows
+`civ64.exe` by unit V122 ([ext-V122-record.md](ext-V122-record.md)): in windowless play the DOS menu
+bar's own titles right of a narrow map window's bar (F353), and the play palette with the government's
+BACK palette at the first play state after Load a Saved Game, as DOS's main sets it (F354); version
+1.2.2 (F355). V122 landed with the three-step cycle ALL_GREEN. The Release `civ64.exe` of 2026-10-23 06:14:13 UTC
+is the program of the `v1.2.2` release.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
 
-**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F352) lists every place where
+**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F355) lists every place where
 civ64 does not, or cannot, reproduce the original exactly, every accepted design choice and every
 unknown, with its evidence.
 
@@ -388,6 +396,11 @@ made for the public copy and recorded file by file in an audit:
 | [ext-ICO1-record.md](ext-ICO1-record.md) | Extension unit ICO1 (the title bar's icon after a start in full screen) - record |
 | [ext-LP-record.md](ext-LP-record.md) | Extension unit LP (the low-priority requests) — record |
 | [ext-Ma-record.md](ext-Ma-record.md) | Extension phase M, unit Ma (zoom, layer, in-view source, input, commands) — record |
+| [ext-MAC0-record.md](ext-MAC0-record.md) | Unit MAC0 (the toolchain and the headless suite on macOS) - record |
+| [ext-MAC1-record.md](ext-MAC1-record.md) | Unit MAC1 (the macOS back end and the program) - record |
+| [ext-MAC4-record.md](ext-MAC4-record.md) | Unit MAC4 (the signed, notarized macOS release build) - record |
+| [ext-MACB1-record.md](ext-MACB1-record.md) | Unit MACB1 (the user's first macOS bug reports) - record |
+| [ext-MACB2-record.md](ext-MACB2-record.md) | Unit MACB2 (the graphics switch ended the intro on macOS) - record |
 | [ext-Mb1-record.md](ext-Mb1-record.md) | Extension phase M, unit Mb1 (snapshots, the Windows rules, the world canvas, the ring) — record |
 | [ext-Mb2-record.md](ext-Mb2-record.md) | Extension phase M, unit Mb2 (mirror checks, ext_mirror.py, ext_zoom.py, agent UI check, gate) — record |
 | [ext-MZ-record.md](ext-MZ-record.md) | Extension unit MZ (the centring at map zoom level -1) - record |
@@ -405,6 +418,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-UX4b-record.md](ext-UX4b-record.md) | Extension unit UX4b (Ctrl+Shift+Home resets the map zoom) - record |
 | [ext-UX5-record.md](ext-UX5-record.md) | Extension UX5, presentation unit (the 4:3 option on the DOS intro and the DOS title menu) - record |
 | [ext-UX5b-record.md](ext-UX5b-record.md) | Extension UX5b, presentation unit (Birth square from its first picture: no squashed title) - record |
+| [ext-V122-record.md](ext-V122-record.md) | Unit V122 (the macOS session's two DOS fixes in the Windows civ64.exe; version 1.2.2) - record |
 | [ext-WL-record.md](ext-WL-record.md) | Extension unit WL (windowless play) - record |
 | [ext-WL2-record.md](ext-WL2-record.md) | Extension unit WL2: windowless play revisions (both graphics) |
 | [ext-WL3-record.md](ext-WL3-record.md) | Extension unit WL3: windowless play on the whole window (both graphics), version 1.2 |
@@ -478,6 +492,7 @@ made for the public copy and recorded file by file in an audit:
 | [verify/BRIEF-extras.md](verify/BRIEF-extras.md) | Brief: the user's three extra features (after the final Asan pass) |
 | [verify/BRIEF-hm.md](verify/BRIEF-hm.md) | Brief: unit HM, the host window menu with submenus (the user's interim task) |
 | [verify/BRIEF-m.md](verify/BRIEF-m.md) | Brief for the M implementers (extension phase M: map renderer and zoom, Windows profile) |
+| [verify/BRIEF-mac.md](verify/BRIEF-mac.md) | Brief: the macOS build of civ64 (unit series MAC), from release v1.2.1 |
 | [verify/BRIEF-p47b.md](verify/BRIEF-p47b.md) | Brief: base-track unit P47b (P47-R2 review fixes; list-dialog stall on exposure) |
 | [verify/BRIEF-p47r2.md](verify/BRIEF-p47r2.md) | Brief: base-track fix RV4 P47-R2 (list dialogs show their scroll bar when they open) |
 | [verify/BRIEF-pub.md](verify/BRIEF-pub.md) | Brief: publication (unit PUB), after the session-end hash check, the STATUS row and the hand-off |
@@ -749,6 +764,13 @@ made for the public copy and recorded file by file in an audit:
 | [hashes/20261018T191151Z-dos-after.txt](hashes/20261018T191151Z-dos-after.txt) |  |
 | [hashes/20261019T050854Z-after.txt](hashes/20261019T050854Z-after.txt) |  |
 | [hashes/20261019T050854Z-dos-after.txt](hashes/20261019T050854Z-dos-after.txt) |  |
+| [hashes/20261022T173443Z-before.txt](hashes/20261022T173443Z-before.txt) |  |
+| [hashes/20261022T173443Z-dos-before.txt](hashes/20261022T173443Z-dos-before.txt) |  |
+| [hashes/20261022T175154Z-dos-before.txt](hashes/20261022T175154Z-dos-before.txt) |  |
+| [hashes/20261023T053431Z-before.txt](hashes/20261023T053431Z-before.txt) |  |
+| [hashes/20261023T053431Z-dos-before.txt](hashes/20261023T053431Z-dos-before.txt) |  |
+| [hashes/20261023T061622Z-after.txt](hashes/20261023T061622Z-after.txt) |  |
+| [hashes/20261023T061622Z-dos-after.txt](hashes/20261023T061622Z-dos-after.txt) |  |
 
 ### Screenshots (screenshots/)
 

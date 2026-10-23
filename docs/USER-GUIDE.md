@@ -1,6 +1,6 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.2.1.
+This guide is for players of **Sid Meier's Civilization 64bit** (`civ64.exe`, "civ64") version 1.2.2.
 civ64 runs the original *Sid Meier's Civilization for Windows* (the 16-bit Windows 3.1 release of
 1992) as a native 64-bit Windows program, on your own copy of the game's files, and can show the
 game with the graphics of *Civilization for DOS* at any moment.
@@ -186,6 +186,9 @@ windowless play on or off resizes the map window a little). Before a game begins
 screens look as before. Since 1.2.1, with the Windows graphics, the menu bar across the top is the
 Status window's gray and the menus that drop from it have a seamless stone background (built into
 `civ64.exe`); their unavailable items are drawn in a dark checker so that they stay readable.
+With the DOS graphics the menu bar shows the DOS game's five titles at their DOS places across the
+whole bar; since 1.2.2 also when the map window is narrower than them (for example in a 4:3 window),
+where 1.2.1 cut CIVILOPEDIA.
 
 **The game screen fills the window.** The opening credits, intro, title menu, Birth and setup screens
 keep the original's 640x480 picture, with black borders in a wider window. When a game begins (new,
@@ -245,7 +248,8 @@ civ64 has two graphics profiles for the same game:
 * **Windows graphics**: the game as the Windows 3.1 release shows it. Since 1.2.1 the menu bar and
   an open menu always show the game's torch cursor, also when the pointer comes from the World Map.
 * **DOS graphics**: the game with the pictures, palettes, fonts, menus and mouse pointer of
-  *Civilization for DOS* (version 475.01), read from your DOS files.
+  *Civilization for DOS* (version 475.01), read from your DOS files. Since 1.2.2, after Load a Saved
+  Game, the advisors' portraits have their right colours from the first report on, as in the DOS game.
 
 **Switching.** Press **Ctrl+Shift+Backspace**, or choose **Graphics > Switch graphics**, **Windows
 graphics** or **DOS graphics** in the window menu, at any moment: during the intro, the title menu,
