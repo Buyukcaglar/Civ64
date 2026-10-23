@@ -103,3 +103,22 @@ The user: "The Windows release is published. Pull Civ64 and merge your macOS not
   V122's, the screenshot index) and the documents from `stage_mac.py`.
 * The release notes: `build/pub-stage/RELEASE-NOTES-v1.2.2.md` is now the published Windows text with the macOS
   parts added (the intro, Download, New in 1.2.2, Requirements, How to start, Known limits, What is not included).
+
+### Published (unit PUBM, 2026-10-23 about 06:50 UTC)
+
+The user: "Approved: push Civ64, add the DMG and its .sha256 to the v1.2.2 release, replace its notes with the merged
+text, and check the published page."
+
+* Civ64 `main` pushed (non-force) `0d60553..3f14ed7`, the noreply identity; no new upstream commit before it.
+* `gh release upload v1.2.2`: `Civ64-1.2.2-macOS.dmg` 4,890,757 bytes, GitHub digest
+  `sha256:8ac137ab153859263898e05ab953d586f28f62ad15200594d67917314782959a` (the image's own, `shasum -c` OK before the
+  upload), and `Civ64-1.2.2-macOS.dmg.sha256`; `civ64.exe` unchanged (digest `a696be52...8fe86ae19`).
+* `gh release edit v1.2.2 --notes-file build/pub-stage/RELEASE-NOTES-v1.2.2.md`: the body equals the file (but the final
+  newline). The release stays Latest, not a draft; the tag stays at `0d60553` (the documents of `3f14ed7` are on
+  `main`).
+* Checked in the built-in browser: the release page (the merged notes, the Mac key table rendered, five assets: the
+  three files and GitHub's two source archives); the repository README (all nine images loaded, the two macOS ones
+  1920 px wide; "On macOS" captions, "Quick start on macOS", the macOS item of "New in version 1.2.2", the downloads
+  linked to the latest release); the User Guide's anchor `#15-civ64-for-macos` and its six subsections.
+* Not done: the repository's About description still says "a native 64-bit Windows program" (a GitHub setting, not a
+  file; left to the user).

@@ -596,7 +596,15 @@ in this order (names compared ignoring case):
 For the DOS version: `--dos-data`, then `CivDos.zip`, `Civ-Dos.zip` or `Civ_Dos.zip` (read, never
 extracted), a `CivDos` folder, the remembered location, and otherwise a question that you can
 answer "not now" or "don't ask again". A file or folder that is found but is not the right version
-stops civ64 with a message that names it. To be asked again after "don't ask again", delete the
+stops civ64 with a message that names it. Since 1.2.3 (unit DV) every file the DOS graphics use is checked
+there, not only `CIV.EXE`: civ64 needs the unchanged files of Civilization for DOS 475.05, and a copy with
+one file changed or missing (a mod, or a file of another release next to a patched `CIV.EXE`) is named
+in the message, file and folder or ZIP, at the start and in **Locate DOS files…**, which refuses it and
+asks again. A remembered location whose files changed since is skipped. A `CIV.EXE` that is not the
+pinned one says "Version 475.05 is required.": the pinned `CIV.EXE` (305,030 bytes, dated 1992-10-13)
+is version 5 of the game (it holds the version-5 bytes of the CivFanatics FAQ's map-editor patch and none
+of versions 1 to 4); its copy's own `INTRO.TXT` still reads "Version 475.01". It is the only `CIV.EXE`
+civ64 knows; another executable is refused. To be asked again after "don't ask again", delete the
 line `dos_ask=never` from `%LOCALAPPDATA%\civ64\civ64.cfg`; or put one of the ZIP files or the
 `CivDos` folder next to `civ64.exe`, or start once with `--dos-data <folder or ZIP>`, which uses it
 without remembering it. While the game runs, the window menu's **Graphics** > **Locate DOS files…** (since HM; before,
@@ -629,8 +637,8 @@ title bar to drag it (about two title-bar heights wide, at least half its height
 Windows can give it at its size; otherwise it comes back at that top-left corner, and closing civ64 writes the
 rectangle the window really had back to `window` (F111). `--window` or `--scale k` give the first size
 (the window is then centred as on a first run). The window's title bar reads "Sid Meier's Civilization 64bit"
-(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.2" (F108, F340; v1.2.1 since PAU1,
-F350; v1.2.2 since V122, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
+(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.3" (F108, F340; v1.2.1 since PAU1,
+F350; v1.2.2 since V122, F355; v1.2.3 since DV, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
 window's system menu and its About box follow Windows' light or dark app
 mode (Settings > Personalization > Colors) and change with it at once (F109); since UX4 so do civ64's own
 message boxes (`hw_message_box`: the host's messages, the overwrite question, the notes and questions about the DOS

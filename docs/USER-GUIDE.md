@@ -1,7 +1,7 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.2: `civ64.exe` for
-Windows and `Civ64.app` for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.3: `civ64.exe` for
+Windows (and `Civ64.app` 1.2.2 for macOS). civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the game with the graphics of *Civilization for DOS* at any moment.
 
@@ -42,7 +42,7 @@ Contents
   installation. civ64 runs exactly one release of the game and checks it at every start:
   `civ.exe` must be 832,512 bytes with SHA-256
   `a66ec64020f10adb81613964f3d08a11ea278b6a5a060c8e49d1ea1fd3ba1788`.
-* **Optional: your own copy of Civilization for DOS, version 475.01** (`CIV.EXE` of 305,030 bytes,
+* **Optional: your own copy of Civilization for DOS, version 475.05** (`CIV.EXE` of 305,030 bytes,
   SHA-256 `22de2748e3089793644c7e501e2a95b553010ddec34a7ff42f4395cf779c9c2a`), for the DOS graphics
   profile. civ64 checks every DOS file it uses. Without the DOS files civ64 plays normally with the
   Windows graphics.
@@ -97,7 +97,11 @@ delete the line `dos_ask=never` from `%LOCALAPPDATA%\civ64\civ64.cfg`, or put a 
 folder next to `civ64.exe`.
 
 A file or folder that is found but is not the supported version stops civ64 with a message that
-names it. civ64 refuses to run in a folder whose path ends in `original\CIVWIN`, a safeguard that
+names it. Since 1.2.3 every DOS file civ64 uses is checked there, not only `CIV.EXE`: a copy with one
+file changed or missing (a mod, or a file of another release next to a patched `CIV.EXE`) is named, file
+and folder or ZIP, at the start and in **Locate DOS files…**, which refuses it and asks again; a
+remembered location whose files changed since is skipped. A wrong `CIV.EXE` says "Version 475.05 is
+required." (the game's own `INTRO.TXT` may still read "Version 475.01"; the `CIV.EXE` is what counts). civ64 refuses to run in a folder whose path ends in `original\CIVWIN`, a safeguard that
 keeps a reference installation from ever being changed.
 
 **Your own music and sound effects** (optional, since 1.1). civ64 can play your own WAV files
@@ -253,7 +257,7 @@ civ64 has two graphics profiles for the same game:
 * **Windows graphics**: the game as the Windows 3.1 release shows it. Since 1.2.1 the menu bar and
   an open menu always show the game's torch cursor, also when the pointer comes from the World Map.
 * **DOS graphics**: the game with the pictures, palettes, fonts, menus and mouse pointer of
-  *Civilization for DOS* (version 475.01), read from your DOS files. Since 1.2.2, after Load a Saved
+  *Civilization for DOS* (version 475.05), read from your DOS files. Since 1.2.2, after Load a Saved
   Game, the advisors' portraits have their right colours from the first report on, as in the DOS game.
 
 **Switching.** Press **Ctrl+Shift+Backspace**, or choose **Graphics > Switch graphics**, **Windows
@@ -453,7 +457,7 @@ an option for automated tests.
 |---|---|
 | civ64 asks where the game is at every start | Choose the game's `civ.exe` or ZIP; civ64 remembers a valid choice. Or put `CivWin.zip` or a `CivWin` folder next to `civ64.exe`. |
 | A message says `civ.exe` is different or missing | civ64 runs only the supported release (section 1). Check the file's size (832,512 bytes) in Explorer. |
-| A message names a DOS file | The DOS files are not version 475.01 or a file is damaged. Use a complete copy of that version, or start with `--dos-data none`. |
+| A message names a DOS file | That file is not the unchanged file of version 475.05: changed by a mod, left from another release, or damaged. Put the file of an unchanged 475.05 copy in its place or use another copy (move a wrong `CivDos` folder or ZIP away from `civ64.exe`, which civ64 finds first), or start with `--dos-data none`. |
 | Ctrl+Shift+Backspace only beeps | The DOS files are not available in this run. Use **Graphics > Locate DOS files…** and restart civ64. |
 | "Sorry! Only one game at a time!" | civ64 is already running; after OK it comes to the front. |
 | The game's windows are placed oddly | Delete `civ.prf` in the game folder for the default layout (it also resets the Game Options). |
@@ -495,11 +499,11 @@ Developer ID and notarized by Apple, and is distributed here, not in the Mac App
   no Windows directory, so the VGA system font is optional: copy `vgasys.fon` (from `C:\Windows\Fonts` of a Windows
   PC) into the game's folder or next to `Civ64.app` for the exact Windows 3.1 font in the game's dialogs. Without it
   civ64 starts anyway and uses the game's own font for that text.
-* **Optional:** your own copy of Civilization for DOS 475.01 for the DOS graphics, as on Windows.
+* **Optional:** your own copy of Civilization for DOS 475.05 for the DOS graphics, as on Windows.
 
 ### Installation
 
-1. Download `Civ64-1.2.2-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+1. Download `Civ64-1.2.2-macOS.dmg` from the [v1.2.2 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2)
    and open it.
 2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
    from there, not from the disk image: an application started from the disk image sees no files next to it.

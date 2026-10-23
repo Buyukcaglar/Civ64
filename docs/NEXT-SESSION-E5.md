@@ -211,6 +211,14 @@ checklist section. Times are UTC.
    cycle ALL_GREEN, RELEASE_OK 06:14:17 UTC; release v1.2.2 ([ext-V122-record.md](ext-V122-record.md); STATUS).
    V122-1..3 pending the user's check. The macOS units continue from F356. Civ1RE `e1f6d10`, Civ64 `0d60553`,
    release v1.2.2 Latest (civ64.exe only): the macOS DMG is to be added to that same release (STATUS, PUB5 row).
+2k. **DV and PUB6 2026-10-23 (session on Windows)**: a player's report, a DOS copy with the right CIV.EXE and one
+   other file changed accepted by the lookup and by Locate while the DOS asset store refused it, at every start;
+   `win64/civ64_locate.c` `dos_files_ok` applies the store's rule at every entry point (F117); "Version 475.05 is
+   required." for a wrong CIV.EXE; version 1.2.3 (F355); cycle ALL_GREEN, RELEASE_OK 08:12:57 UTC; release v1.2.3
+   for Windows ([ext-DV-record.md](ext-DV-record.md); STATUS). DV-1..3 pending the user's check. **For the macOS
+   session:** `macos/mac_locate.c` has the same gap (`check_dir` and `open_zip` check CIV.EXE only); it needs the
+   same check of every `pdos_pins` req file (and the 475.05 sentences) and a macOS 1.2.3 build; the public README
+   and User Guide point Mac users to the v1.2.2 release for the DMG until then.
 2h. **PAU1 DONE 2026-10-22 14:19 UTC (RELEASE_OK; user build `build/user-builds/pau1/`, PAU1-1..8; civ64.exe 5,036,032 bytes, SHA-256 17d17cd6...ff219). The user approved it at 2026-10-22 about 14:25 UTC, on condition of the ICO1 fix (the title-bar icon after full screen and Alt+Enter); then PUB4 (state in `build/ico1-stage/STATE.md` and in `build/pub-stage/STATE.md` "PUB4") (the user, 2026-10-22 about 13:10 UTC; CUR1 accepted)**: PAU1 makes the host
    menu pause the game completely, sets version 1.2.1, points the About link at Civ64 and embeds civ-winmenu-bg.png
    in civ64.exe (the user, 13:25 UTC; the no-game-art rule still stands, this tile is its single exception); one user build

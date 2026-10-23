@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.2.2 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers |
+| The result | `civ64.exe` 1.2.3 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -216,6 +216,15 @@ outside the game picture. A Shift released after Shift+Command+Delete ended the 
 notarized and stapled ([ext-MAC4-record.md](ext-MAC4-record.md)); `Civ64-1.2.2-macOS.dmg` joins `civ64.exe` in
 the `v1.2.2` release.
 
+**Version 1.2.3** (2026-10-23, Windows; unit DV, [ext-DV-record.md](ext-DV-record.md)): a player's report, a
+DOS copy with the right `CIV.EXE` and one other file changed accepted at the start and by "Locate DOS files…"
+while the DOS asset store refused it, at every start. The lookup now applies the store's own rule (every
+required file at its pinned size and SHA-256) wherever it finds or is given the DOS copy, and names the first
+wrong file (F117); a wrong `CIV.EXE` says "Version 475.05 is required." (the pinned `CIV.EXE` holds the
+CivFanatics FAQ's version-5 bytes); version 1.2.3 (F355). DV landed with the three-step cycle ALL_GREEN. The
+Release `civ64.exe` of 2026-10-23 08:12:53 UTC is the program of the `v1.2.3` release; the macOS application stays at
+1.2.2.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
@@ -404,6 +413,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-D7n-record.md](ext-D7n-record.md) | Extension phase D7, unit D7n (the conqueror ending and the nuclear explosion) - record |
 | [ext-D7o-record.md](ext-D7o-record.md) | Extension phase D7, unit D7o (the sweep, the reach and the gate) - record |
 | [ext-DBL-record.md](ext-DBL-record.md) | Extension DBL, presentation unit (the DOS blinks at the DOS game's own pace) - record |
+| [ext-DV-record.md](ext-DV-record.md) | Unit DV (the DOS files a player located again and again) - record |
 | [ext-FCE-record.md](ext-FCE-record.md) | Extension unit FCE (Escape on the game's list, modal and name dialogs) - record |
 | [ext-HM-record.md](ext-HM-record.md) | Extension unit HM (the host window menu with submenus) - record |
 | [ext-ICO1-record.md](ext-ICO1-record.md) | Extension unit ICO1 (the title bar's icon after a start in full screen) - record |
@@ -784,6 +794,10 @@ made for the public copy and recorded file by file in an audit:
 | [hashes/20261023T053431Z-dos-before.txt](hashes/20261023T053431Z-dos-before.txt) |  |
 | [hashes/20261023T061622Z-after.txt](hashes/20261023T061622Z-after.txt) |  |
 | [hashes/20261023T061622Z-dos-after.txt](hashes/20261023T061622Z-dos-after.txt) |  |
+| [hashes/20261023T070929Z-before.txt](hashes/20261023T070929Z-before.txt) |  |
+| [hashes/20261023T070929Z-dos-before.txt](hashes/20261023T070929Z-dos-before.txt) |  |
+| [hashes/20261023T081355Z-after.txt](hashes/20261023T081355Z-after.txt) |  |
+| [hashes/20261023T081355Z-dos-after.txt](hashes/20261023T081355Z-dos-after.txt) |  |
 
 ### Screenshots (screenshots/)
 
