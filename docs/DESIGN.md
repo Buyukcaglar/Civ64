@@ -8108,6 +8108,19 @@ the science advisor's recommendation alone keeps its DOS place (F319). The DOS p
   entered" 670 -> 669 (it varies between landings); NODOS_OK 1,824 -> 1,825 files (the record), 0 hits; unit.log's
   OBS_COST line and sections/times.txt (host timing)).
 
+**Added in ZS (2026-10-24; [ext-ZS-record.md](ext-ZS-record.md), FIDELITY F356).** The user's request adds one level
+between each pair: five levels -2..+2 with the factors z = 1/2, 3/4, 1, 3/2, 2 on the frame's own scale
+(`PMAP_ZOOM_OUT` -2, `PMAP_ZOOM_IN` +2). `pmap_geo_frame` takes nx / dx = q W / (p SW) and ny / dy = q H / (p SH)
+for z = p / q from one table, so -2 and +2 are exactly the former -1 and +1. Everything this section says of +1
+holds for every level in (the clamps inside the view, the active-unit follow, MZI's centring, the 3 x 3 squares
+refusal at that level's size) and of -1 for every level out (the whole view visible, the even origin, the ring and
+the world canvas in both profiles, MZ's centring). `pmap_in_refused` answers for one more step in from the current
+level (1 at +2). The window menu's Map zoom items keep their ids 0x10C0..0x10E0 but are no radio group: "Zoom
+&out" and "Zoom &in" send the chords' one-step commands through `player_zoom` (repeatable, clamped to -2..+2),
+"&Normal zoom" the reset; Normal zoom is checked at 0, Zoom out grayed at -2, Zoom in at +2 and while refused. The
+settings key is `map_zoom` (-2..2); the key `zoom` of earlier builds is read as -1 -> -2, 1 -> +2. `--zoom` and the
+harness take -2..+2; `presentation-diag.log` writes `level_plus2`.
+
 ### 12.10 w16 changes (decision K2)
 
 Every change the extension's design makes outside `present/`, with its reason, phase and guard. The

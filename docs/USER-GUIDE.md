@@ -1,7 +1,7 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.3: `civ64.exe` for
-Windows and `Civ64.app` for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.4: `civ64.exe` for
+Windows (and `Civ64.app` 1.2.3 for macOS). civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the game with the graphics of *Civilization for DOS* at any moment.
 
@@ -231,9 +231,9 @@ Alt+Space and F10 belong to the game's own menus.) From the top:
 | **Display** > **CRT scanlines** | The CRT scanline effect (section 5). |
 | **Display** > **4:3 aspect ratio for 320 x 200 DOS intro screens** | The 4:3 shape of the DOS graphics' 320x200 screens before a game (checked by default). |
 | **Display** > **4:3 aspect ratio for 320 x 200 DOS gameplay** | The 4:3 shape of the whole DOS-graphics game (section 5). |
-| **Map zoom** > **Zoom out (half)** (Ctrl+Shift+Minus) | Map zoom level -1 (section 8). |
-| **Map zoom** > **Normal zoom** (Ctrl+Shift+0, Home) | Map zoom level 0. |
-| **Map zoom** > **Zoom in (double)** (Ctrl+Shift+Plus) | Map zoom level +1; gray while the map window is too small for it. |
+| **Map zoom** > **Zoom out** (Ctrl+Shift+Minus) | The map zoom one level out (section 8); choose it again to go on. Gray at half size. |
+| **Map zoom** > **Normal zoom** (Ctrl+Shift+0, Home) | The map zoom back to normal; checked at normal size. |
+| **Map zoom** > **Zoom in** (Ctrl+Shift+Plus) | The map zoom one level in; choose it again to go on. Gray at double size and while the map window is too small for the next level. |
 | **Map zoom** > **Mouse wheel zooms map** | Checked by default; unchecked, the mouse wheel does nothing over the map. |
 | **Graphics** > **Windows graphics** / **DOS graphics** | Choose the graphics profile (section 7); the radio mark shows the current one. |
 | **Graphics** > **Switch graphics** (Ctrl+Shift+Backspace) | Switch to the other profile. |
@@ -317,8 +317,9 @@ Windows graphics.
 
 ## 8. The map zoom
 
-The map zoom shows the main map window at **half size** (level -1), **normal** (level 0) or **double
-size** (level +1), in both graphics profiles. Only the main map is zoomed; the small World Map, the
+The map zoom shows the main map window at **half size** (level -2), **three quarters** (-1),
+**normal** (0), **one and a half** (+1) or **double size** (+2), in both graphics profiles (since 1.2.4;
+before, half, normal and double were the only levels, numbered -1, 0 and +1). Only the main map is zoomed; the small World Map, the
 Status window and the reports are not. The zoom only changes what you see: the game's own view and
 input stay the same.
 
@@ -327,15 +328,15 @@ input stay the same.
 | **Ctrl+Shift+Plus**, **Ctrl+Shift+Minus** (main row or keypad) | One level in or out. |
 | **Ctrl+Shift+0** or **Ctrl+Shift+Home** | Back to normal. |
 | The mouse wheel over the map | One level per notch, forward zooms in; the point under the pointer stays under it. |
-| The window menu's **Map zoom** submenu | The three levels (zooming about the map's centre) and **Mouse wheel zooms map**. |
-| `--zoom -1`, `0` or `+1` on the command line | The level for this run. |
+| The window menu's **Map zoom** submenu | **Zoom out** and **Zoom in**, one level each time (as the keys), and **Normal zoom**, zooming about the map's centre; and **Mouse wheel zooms map**. |
+| `--zoom -2`, `-1`, `0`, `+1` or `+2` on the command line | The level for this run. |
 
 The plain `=`, `-`, `0` and Home keys still reach the game.
 
-* **At +1 (double size)** the picture follows your active unit, and it centres on the square the
-  game centres on (C, the next unit, a click on the small map, the scroll keys). +1 is refused while
-  the map window is too small to show 3 x 3 squares at double size.
-* **At -1 (half size)** you see the game's whole view surrounded by the rest of the world, drawn from
+* **Zoomed in (one and a half, double)** the picture follows your active unit, and it centres on the
+  square the game centres on (C, the next unit, a click on the small map, the scroll keys). A level in is
+  refused while the map window is too small to show 3 x 3 squares at that size.
+* **Zoomed out (three quarters, half)** you see the game's whole view surrounded by the rest of the world, drawn from
   the game's state with the game's own map rules. A **left click** on a surrounding square centres the
   game's map there, as a click on the small map would.
 * The small World Map's rectangle outlines the area the map window shows at every level.
@@ -412,7 +413,8 @@ folder.
 **civ64.cfg** holds civ64's own choices: the game and DOS locations (`dos_data`, and `dos_ask=never`
 after "don't ask again"), the window's place and size (`window=left,top,right,bottom` in screen
 pixels), full screen, the scaling and filter choices, the 4:3 choice (`aspect_4_3`), the graphics
-profile (`graphics=windows` or `dos`), the map zoom level (`zoom=-1`, `0` or `1`), the wheel setting
+profile (`graphics=windows` or `dos`), the map zoom level (since 1.2.4 `map_zoom=-2` to `2`; before, `zoom=-1`, `0` or `1`, which 1.2.4 reads with
+its meaning when `map_zoom` is absent), the wheel setting
 (`wheel_zoom=1` or `0`), the screen size the window layout was saved on (`layout_screen`), and since
 1.1 windowless play (`windowless`), the DOS gameplay 4:3 choice (`aspect_play_4_3`), CRT scanlines
 (`crt_scanlines`), the music and sound effects source (`music_data`, and `music_ask=never` after "don't
@@ -424,7 +426,7 @@ INI file or environment variable; only the Windows file dialog keeps its own lis
 
 ```
 civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
-          [--zoom default|-1|0|+1] [--fullscreen] [--window <W>x<H>]
+          [--zoom default|-2|-1|0|+1|+2] [--fullscreen] [--window <W>x<H>]
           [--scale auto|1..8] [--scale-mode integer|fit] [--filter nearest|sharp]
           [--aspect square|4:3|gameplay|both] [--windowless 0|1] [--crt 0|1]
           [--music-sfx <dir|zip|none>] [--timing classic|host]
@@ -435,7 +437,7 @@ civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
 | `--data <dir>` | The game folder, with no search. Its `civ.exe` must be the supported release. |
 | `--dos-data <dir\|zip\|none>` | The DOS game's folder or ZIP; `none`: not used and not asked for. |
 | `--graphics windows\|dos` | The profile to start in (not remembered). `dos` without usable DOS files stops civ64 with a message. |
-| `--zoom default\|-1\|0\|+1` | The map zoom level for this run. |
+| `--zoom default\|-2\|-1\|0\|+1\|+2` | The map zoom level for this run (`-2` half, `+2` double size). |
 | `--fullscreen` | Start in full screen. |
 | `--window <W>x<H>` | The window's first client size (at least 640x480), centred. |
 | `--scale auto\|1..8` | The window's first size as a multiple of 640x480; `auto` (the default) uses the remembered size or the largest multiple that fits. |
@@ -464,7 +466,7 @@ an option for automated tests.
 | The window opens in an odd place or size | Delete the `window` line of `%LOCALAPPDATA%\civ64\civ64.cfg`, or start once with `--scale auto`. |
 | The mouse wheel does nothing over the map | Check **Map zoom > Mouse wheel zooms map** in the window menu. |
 | My own music or sound files are not played | Check the file names (the 24 names of section 3, `.wav`), that they are valid WAV files at the top level of the `MusicSfx` folder or in one folder of `MusicSfx.zip`, and that **Alternative music/soundfx** is checked; then restart civ64. |
-| Zoom in is gray | The map window is too small for double size; make it larger. |
+| Zoom in is gray | The map is at double size, or the map window is too small for the next level; make it larger. |
 | Help shows a message instead of the help file | Expected: Windows 10 and 11 cannot open the original `.hlp` file. |
 | A message "General protection fault ..." and civ64 ends | An error of the original program that Windows 3.1 would also have stopped on; civ64 ends with exit code 3. Load your last save. |
 
@@ -488,7 +490,8 @@ are shown unchanged.
 
 ## 15. civ64 for macOS
 
-`Civ64.app` (version 1.2.3) is the same program as `civ64.exe`: the same recovered game, the same Windows 3.1
+`Civ64.app` (version 1.2.3) is the same program as `civ64.exe` 1.2.3 (1.2.4's five zoom levels and its one-step
+**Zoom Out** / **Zoom In** are not in the macOS application yet; it has the three levels half, normal and double): the same recovered game, the same Windows 3.1
 environment and the same Windows and DOS graphics, on a native macOS back end. It is signed with the developer's
 Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
 
@@ -503,7 +506,7 @@ Developer ID and notarized by Apple, and is distributed here, not in the Mac App
 
 ### Installation
 
-1. Download `Civ64-1.2.3-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+1. Download `Civ64-1.2.3-macOS.dmg` from the [v1.2.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3)
    and open it.
 2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
    from there, not from the disk image: an application started from the disk image sees no files next to it.

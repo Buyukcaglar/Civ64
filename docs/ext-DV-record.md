@@ -195,3 +195,22 @@ stay. Release notes `build/pub-stage/RELEASE-NOTES-v1.2.3.md`.
   v1.2.2 release and "latest release is v1.2.3"; its 10 images load.
 * Not changed: the repository's short description (still "… and the v1.0 release …", as since v1.0); the forum
   post drafts.
+
+### Published, macOS (2026-10-23 about 08:50 UTC)
+
+The user: "Approved: push Civ64, add the macOS DMG and .sha256 to v1.2.3, replace its notes with the merged text, update
+the repository description, and check the pages."
+
+* Civ64 `main` pushed (non-force) `6f27f97..1e92cc4`; no new upstream commit before it.
+* `gh release upload v1.2.3`: `Civ64-1.2.3-macOS.dmg` 4,892,237 bytes, GitHub digest
+  `sha256:5cf5e8b91480b2e0c80a8490ae945b9598e87188a39b459997f920bbe2ad4631` (`shasum -c` OK before the upload), and its
+  `.sha256`; `civ64.exe` unchanged (`31f77e96...eaa1e78b`). Release `v1.2.3` stays Latest.
+* `gh release edit v1.2.3 --notes-file build/pub-stage/RELEASE-NOTES-v1.2.3.md`: the body equals the file.
+* `gh repo edit --description`: "Sid Meier's Civilization 64bit (civ64): the 1992 Windows Civilization as a native
+  64-bit program for Windows and macOS, with on-the-fly DOS graphics. Documentation, user guide and releases (needs
+  your own copy of the game)." (before: "... as a native 64-bit Windows program ... and the v1.0 release ...").
+* Checked in the built-in browser: the release page (Latest; the merged notes with the macOS download, its SHA-256 and
+  the macOS upgrade line); the release's asset list (the image, its `.sha256`, `civ64.exe` and the two source
+  archives, with their digests); the repository page (the new About description; the README's macOS download
+  `Civ64-1.2.3-macOS.dmg` linked to the latest release, "The macOS application is 1.2.3 too"; 10 of 10 images
+  loaded).

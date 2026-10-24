@@ -472,7 +472,7 @@ and `--profile-samples` are accepted there.
 | `--switch-every MS` | A toggle request each time a multiple of MS virtual milliseconds has passed, at most one per step; it targets the other profile than the pending request's, else than the visible one. The switch applies at the next tick. |
 | `--profile-samples MS` | At the first tick at or after each multiple of MS virtual milliseconds, a `sample` line in `profiles.log` with the hash of every registered profile's frame (at a zoom level other than 0 also each profile's map layer sample, see `profiles.log` below). |
 | `--dump-presented <dir>` | As civ64's option, in the headless back end: `presented-NNNNN.bmp` while the visible profile shows the core frame, `tick-NNNNN.bmp` at tick and view shows otherwise. Since M, `view-NNNNN.bmp` (24-bit, the whole host view) for each show while the map zoom layer is drawn. |
-| `--zoom default\|-1\|0\|+1` | The map zoom level (DESIGN.md 12.9), requested before the core starts with the centre anchor; `default` and `0` are the same level, and `1` is refused (write `+1`). Without it, level 0. |
+| `--zoom default\|-2\|-1\|0\|+1\|+2` | The map zoom level (DESIGN.md 12.9), requested before the core starts with the centre anchor; `default` and `0` are the same level, and `1` and `2` are refused (write `+1`, `+2`). Since ZS `-2` and `+2` are the half and double levels (before ZS `-1` and `+1`). Without it, level 0. |
 | `--mirror 1` | The mirror checks of M (`key`, `render`, `settled`: the Windows map rules against the core's own drawing), run from the map listener; they read the emulation and draw only on their own memory, so the run is unchanged. Writes `mirror.log`. Until D6a `--mirror 2` was refused with exit code 2. |
 | `--mirror 2` | Since D6a (DESIGN.md 12.9, "As implemented (D6a; area D)"): the checks of `--mirror 1` and also the map display model's Windows rule set (its shadows of the map port, the scratch port and the map client, in the DOS profile's shadow engine) and the present check: at every core present the model's map client against the virtual screen over the client's visible region. It needs `--dos-data` (the model runs in the DOS profile, draft B B19): without it the harness stops with exit code 2 and `harness: --mirror 2 needs --dos-data (the map model runs in the DOS profile)`. Like `--mirror 1` it only reads the emulation; the run is unchanged. Writes `mirror.log`. Since D6c (DESIGN.md 12.9, "As implemented (D6c; area D)") also the dos-settled check: at every settled call (DrawTilesToPort modes 0 and 1, RedrawMapRect) the DOS map port shadow, redrawn by the DOS rules in the core's order, against the shadow the model drew. |
 | `--presented 1` | Writes `presented.log`. `--presented 2` (since UX3) also writes ` layout SWxSH at OX,OY pixel AN/AD` on every show line and ` factors KXxKY` on every cursor line. |
@@ -498,7 +498,7 @@ file's order):
 | `at <ms> profile windows\|dos\|toggle` | Request the profile (applied at the next tick). |
 | `at <ms> policy integer\|fit [nearest\|sharp] [square\|4:3]` | Set the scaling policy; an omitted value keeps its current value. |
 | `at <ms> hostsize WxH` | Resize the host view. |
-| `at <ms> zoom -1\|0\|+1\|reset` | Request the map zoom level with the centre anchor (since M; `zoom 1` is accepted beside `+1`). `reset` goes through the chord's path (`pmap_zoom_command`), the others through `pmap_request_zoom`. Also valid in a `--host-input` file. A refused request (for example "map window too small" for +1) writes `zoom refused <reason>` in `presented.log` and the run goes on. |
+| `at <ms> zoom -2\|-1\|0\|+1\|+2\|reset` | Request the map zoom level with the centre anchor (since M; `zoom 1` and `zoom 2` are accepted beside `+1` and `+2`; -2 and +2 since ZS). `reset` goes through the chord's path (`pmap_zoom_command`), the others through `pmap_request_zoom`. Also valid in a `--host-input` file. A refused request (for example "map window too small" for +1) writes `zoom refused <reason>` in `presented.log` and the run goes on. |
 | `at <ms> burn <d>` | Since D4b2b2, a script line: advances the virtual clock by d ms at that API step with no tick (a long CPU-bound gap, T6); logged `burn virtual_us A to B` in `run.log`. It changes the core's clock, so a run with it is its own scenario and never part of a P0 comparison. |
 
 A `--host-input` file has lines that start with `at <ms>` or `sync <n>` (the n-th input-taking sync)
@@ -638,7 +638,7 @@ Windows can give it at its size; otherwise it comes back at that top-left corner
 rectangle the window really had back to `window` (F111). `--window` or `--scale k` give the first size
 (the window is then centred as on a first run). The window's title bar reads "Sid Meier's Civilization 64bit"
 (F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.3" (F108, F340; v1.2.1 since PAU1,
-F350; v1.2.2 since V122, F355; v1.2.3 since DV, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
+F350; v1.2.2 since V122, F355; v1.2.3 since DV, F355; v1.2.4 since ZS, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
 window's system menu and its About box follow Windows' light or dark app
 mode (Settings > Personalization > Colors) and change with it at once (F109); since UX4 so do civ64's own
 message boxes (`hw_message_box`: the host's messages, the overwrite question, the notes and questions about the DOS
@@ -693,7 +693,7 @@ tile is an exception to that rule, by the user's decision of 2026-10-22, and the
 
 ```
 civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
-          [--zoom default|-1|0|+1] [--fullscreen] [--window <W>x<H>]
+          [--zoom default|-2|-1|0|+1|+2] [--fullscreen] [--window <W>x<H>]
           [--scale auto|1..8] [--scale-mode integer|fit] [--filter nearest|sharp]
           [--aspect square|4:3|gameplay|both] [--windowless 0|1] [--crt 0|1]
           [--music-sfx <dir|zip|none>] [--timing classic|host] [--dump-frames <dir>]
@@ -705,7 +705,7 @@ civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
 | `--data <dir>` | The data directory; no lookup (see above). Its `civ.exe` must be the pinned version (size and SHA-256 are checked). |
 | `--dos-data <dir\|zip\|none>` | The DOS version's folder or ZIP; `none`: not used, not asked. |
 | `--graphics windows\|dos` | The graphics profile to start in. Without it: the profile you last switched to (the `graphics` key of `civ64.cfg`), else `windows`. `dos` needs usable DOS files: without them civ64 stops at once with exit code 2 and the sentence that names the problem, before the window opens. A remembered `dos` that is not usable starts `windows` without a message. The option is never remembered; only a switch you make in the running game is (see "The graphics profiles"). In this version the DOS profile shows the DOS intro and title box and otherwise the Windows picture (see "The graphics profiles"); since D6c the main map window's client in play shows the DOS map. |
-| `--zoom default\|-1\|0\|+1` | The map zoom level for this run (see "The map zoom"): `-1` half size, `0` or `default` normal, `+1` double. Without it: the level you last chose (the `zoom` key of `civ64.cfg`), else `0`. Anything else (`--zoom 1` included) stops civ64 with exit code 2 and the usage. The option is never remembered; only a level you choose in the running game is. A build without the observer (`checked noobs`) refuses `--zoom` with a message box and exit code 2. |
+| `--zoom default\|-2\|-1\|0\|+1\|+2` | The map zoom level for this run (see "The map zoom"): `-2` half size, `-1` three quarters, `0` or `default` normal, `+1` one and a half, `+2` double (since ZS; before, `-1` was half and `+1` double). Without it: the level you last chose (the `map_zoom` key of `civ64.cfg`, else an earlier build's `zoom` key), else `0`. Anything else (`--zoom 1` included) stops civ64 with exit code 2 and the usage. The option is never remembered; only a level you choose in the running game is. A build without the observer (`checked noobs`) refuses `--zoom` with a message box and exit code 2. |
 | `--scale auto\|1..8` | The window's first size: a 640k x 480k client. Default `auto`: the remembered position and size, else the largest k up to 8 whose window fits the work area of the primary monitor (until LP: the monitor that holds the mouse pointer). A number takes the place of the remembered size for this run, and the window is centred in the work area. |
 | `--window <W>x<H>` | The window's first client size instead (at least 640x480; not with `--scale k`); the remembered size is not used for this run, and the window is centred in the primary work area. |
 | `--fullscreen` | Start in full screen. |
@@ -727,9 +727,10 @@ bar, or right-click the title bar). Since HM (2026-10-17) it reads, from the top
 repository link and its licence); and, last, **Close** (shown with **Alt+F4**; the menu's default item, in bold).
 **Display** holds **Integer scaling (whole steps)** or **Fit to window**, the **Nearest-pixel filter** or the **Sharp
 filter** (gray under integer scaling, which never filters) and **Correct 320 × 200 to 4:3** (on by default; DOS Birth
-stays square, and since UX5 the DOS intro and title menu follow it). **Map zoom** holds **Zoom out (half)**, **Normal
-zoom** and **Zoom in (double)**, radio items that mark the level and show **Ctrl+Shift+Minus**, **Ctrl+Shift+0, Home**
-and **Ctrl+Shift+Plus**, and the check item **Mouse wheel zooms map** (checked by default; uncheck it and the mouse
+stays square, and since UX5 the DOS intro and title menu follow it). **Map zoom** holds **Zoom out**, **Normal
+zoom** and **Zoom in**, showing **Ctrl+Shift+Minus**, **Ctrl+Shift+0, Home** and **Ctrl+Shift+Plus** (since ZS,
+2026-10-24: Zoom out and Zoom in go one level each time, as the chords do; Normal zoom is checked at normal size;
+before, **Zoom out (half)** and **Zoom in (double)** were radio items marking one of three levels), and the check item **Mouse wheel zooms map** (checked by default; uncheck it and the mouse
 wheel does nothing over the map; see "The map zoom"). **Graphics** holds **Windows graphics** and **DOS graphics**
 (radio items marking the graphics profile), **Switch graphics** (shown with **Ctrl+Shift+Backspace**, which it does)
 and **Locate DOS files…**, which reads **DOS files present**, gray, while the DOS files are present (see "The graphics
@@ -1057,8 +1058,11 @@ opens for the same Load or Save.
 
 ### The map zoom
 
-The map zoom (DESIGN.md 12.9, FIDELITY F129, F130, F132) shows the map window's picture at half size
-(level -1), as the game draws it (level 0) or at double size (level +1). Only the client of the game's
+The map zoom (DESIGN.md 12.9, FIDELITY F129, F130, F132, F356) shows the map window's picture at half size
+(level -2), three quarters (-1), as the game draws it (level 0), one and a half (+1) or at double size (level +2).
+Since ZS (2026-10-24; the in-between levels are new, half and double were levels -1 and +1 before): in the text
+below, written for the earlier three levels, "+1" stands for both levels in (+1 and +2) and "-1" for both levels out
+(-1 and -2), except where half or double size is named. Only the client of the game's
 map window is zoomed; the small map (the World Map window), the status window and the World Map report are not.
 Since MZW (2026-10-16) the World Map's rectangle follows the level: at -1 and +1 it outlines the area the map window
 shows (larger at -1, smaller at +1; at -1 near a pole it stops at the world's top or bottom edge), in both graphics,
@@ -1077,7 +1081,7 @@ P0).
 |---|---|
 | **Ctrl+Shift+Plus**, **Ctrl+Shift+Minus**, **Ctrl+Shift+0** (main row and keypad); since UX4b also **Ctrl+Shift+Home** (the gray Home key and the keypad's 7 with Num Lock off) | Zoom in one level, zoom out one level, back to normal (Ctrl+Shift+0 and Ctrl+Shift+Home alike). They never reach the game, nor do the Ctrl and Shift presses held for them; the plain `=`, `-`, `0` and Home keys still do, and so do Shift+Home and Ctrl+Home. Since UX4 the keypad's Ctrl+Shift+0 works with Num Lock on and off (before UX4, with Num Lock on, Shift turned keypad 0 into Insert and the keypad reset did not arrive). With Num Lock on the keypad's 7 is the digit 7, and Ctrl+Shift with it is no chord. A keyboard tool running on the PC may take a chord before civ64 sees it (on the user's PC the main row's Ctrl+Shift+0; hence Ctrl+Shift+Home). In the Windows graphics' name boxes Ctrl+Shift+Home therefore resets the zoom instead of selecting the text to its start (Shift+Home still selects; FIDELITY F188). |
 | The mouse wheel over the map | Each full notch (120) is one step, forward zooms in. The point under the pointer stays under it. Over anything else the wheel does nothing. The window menu's **Map zoom** > **Mouse wheel zooms map** (until HM **Mouse wheel zooms the map**; checked by default) switches this off: unchecked, the wheel does nothing anywhere, and the chords, the three zoom items and `--zoom` still work. The wheel never reaches the game, checked or not. Turning the item off or on drops any part of a notch already turned. |
-| The window menu's **Map zoom** submenu (since HM; before, the window menu itself) | **Zoom out (half)**, **Normal zoom** (until HM **Normal map zoom**), **Zoom in (double)**: radio items that mark the level. **Zoom in** is grayed while the level +1 is refused. A level chosen here zooms about the centre of the map. |
+| The window menu's **Map zoom** submenu (since HM; before, the window menu itself) | **Zoom out**, **Normal zoom** (until HM **Normal map zoom**), **Zoom in**: since ZS each choice of Zoom out or Zoom in goes one level, as a chord press does, so choosing it again goes on in the same direction; **Normal zoom** is checked at normal size. **Zoom out** is grayed at half size, **Zoom in** at double size and while the next level in is refused. The menu zooms about the centre of the map. (Before ZS: **Zoom out (half)** and **Zoom in (double)**, radio items that set and marked one of three levels.) |
 | `--zoom` | The level for this run (see "Command line"). |
 
 At +1 the zoomed picture follows the active unit: when one of your units blinks or moves, the picture pans
@@ -1103,11 +1107,12 @@ starts on a surrounding square and is released anywhere leaves no button held. A
 scale that is odd (the 1920x1440 window on a 2560x1600 display is a factor of 3) or 1, the squares line
 up exactly but the pixels inside a square are uneven (F129).
 
-+1 is refused (nothing happens; **Zoom in** is grayed) while the map window is too small to show 3 x 3
-squares at double size, and a resize below that returns the level to normal. The level is kept when a
-map window does not exist yet. civ64 writes the level to the `zoom` key of `civ64.cfg` (`-1`, `0` or
-`1`; anything else reads as absent) whenever you change it with a chord, the wheel or the menu, and
-reads it at the next start unless `--zoom` is given. The state of **Mouse wheel zooms map** (until HM **Mouse wheel
+A level in is refused (nothing happens; **Zoom in** is grayed) while the map window is too small to show 3 x 3
+squares at that level's size, and a resize below that returns the level to normal. The level is kept when a
+map window does not exist yet. civ64 writes the level to the `map_zoom` key of `civ64.cfg` (`-2` to `2`; anything
+else reads as absent) whenever you change it with a chord, the wheel or the menu, and reads it at the next start
+unless `--zoom` is given; without `map_zoom` it reads the `zoom` key of builds before 1.2.4 (`-1` half, `1` double),
+so a remembered zoom keeps its size. The state of **Mouse wheel zooms map** (until HM **Mouse wheel
 zooms the map**) is the
 `wheel_zoom` key of `civ64.cfg` (`1` on, the default; `0` off; absent or anything else is ignored and
 the wheel stays on); it is written only after you change the item and read at the next start. A build

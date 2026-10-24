@@ -116,7 +116,7 @@ All of these are remembered between runs; the [User Guide](docs/USER-GUIDE.md) h
 |---|---|
 | Ctrl+Shift+Backspace | Switch between the Windows and the DOS graphics |
 | Alt+Enter | Full screen on or off |
-| Ctrl+Shift+Plus, Ctrl+Shift+Minus | Map zoom in (double size) and out (half size) |
+| Ctrl+Shift+Plus, Ctrl+Shift+Minus | Map zoom one step in or out (half, three quarters, normal, one and a half, double size) |
 | Ctrl+Shift+0 or Ctrl+Shift+Home | Normal map zoom |
 | Mouse wheel over the map | Map zoom around the pointer |
 | Click the icon at the left of the title bar, or right-click the title bar | The window menu: Full screen, Display (windowless play, scaling, filter, CRT scanlines, 4:3), Map zoom, Graphics, Alternative music/soundfx, About; the game pauses while it is open |
@@ -133,7 +133,7 @@ troubleshooting.
 Windows (the same release as above) and, optionally, of Civilization for DOS 475.05.
 
 1. Download `Civ64-1.2.3-macOS.dmg` from the
-   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest), open it and drag `Civ64.app`
+   [v1.2.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (the macOS application's latest version), open it and drag `Civ64.app`
    to Applications or to a folder of its own. civ64 is signed with the developer's Developer ID and
    notarized by Apple.
 2. Put `CivWin.zip` (and optionally `CivDos.zip`, `MusicSfx.zip`) or the `CivWin` / `CivDos` folders next
@@ -160,10 +160,24 @@ The rules, the computer players, the map generator, the random-number generator,
 the screens are the original's, its bugs included.
 
 Additions only change what you see, never what happens in the game: a resizable window and full
-screen, scaling with sharp or smooth pixels, a game screen that grows with the window, a three-level
+screen, scaling with sharp or smooth pixels, a game screen that grows with the window, a five-level
 map zoom, light and dark title bars, and the DOS graphics profile, which shows the DOS version's
 pictures, palettes, fonts, menus and screens for the same running game. Save files keep the original
 format: civ64 loads saves of the original game, and the original game loads civ64's saves.
+
+### New in version 1.2.4
+
+* **Two more map zoom steps:** the map zoom has five levels now, half, three quarters, normal, one and
+  a half and double size (before: half, normal, double). Ctrl+Shift+Plus, Ctrl+Shift+Minus and the
+  mouse wheel go one level at a time, in both graphics.
+* **Zoom out and Zoom in in the window menu** (were "Zoom out (half)" and "Zoom in (double)") go one
+  level each time you choose them, as the keys do, so choosing one again goes on in the same direction.
+  **Normal zoom** is checked at normal size; Zoom out is gray at half size, Zoom in at double size.
+* A zoom level remembered by an earlier version keeps its size. `--zoom` takes `-2` to `+2` (half is
+  now `-2`, double `+2`).
+* The program's version information and its About box say 1.2.4. This release is for Windows; the
+  macOS application stays at 1.2.3 (in the [v1.2.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3)), with the three
+  zoom levels.
 
 ### New in version 1.2.3
 
@@ -244,7 +258,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`, and since v1.2.2 also the macOS application (`Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3); the earlier ones are [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`, and since v1.2.2 also the macOS application (`Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4); the earlier ones are [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
 

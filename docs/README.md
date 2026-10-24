@@ -226,11 +226,19 @@ Release `civ64.exe` of 2026-10-23 08:12:53 UTC is the program of the `v1.2.3` re
 check to the macOS lookup (`ext-DV-record.md`, "The macOS port") and set the macOS application to 1.2.3;
 `Civ64-1.2.3-macOS.dmg` joins `civ64.exe` in the `v1.2.3` release.
 
+**Version 1.2.4 (unit ZS, 2026-10-24).** The user asked for one more map zoom step between the levels in both
+directions and for the window menu's Zoom out / Zoom in to step, repeatably, as the keys do
+([ext-ZS-record.md](ext-ZS-record.md)): five levels (half, three quarters, normal, one and a half, double; F356),
+the menu's "Zoom out" and "Zoom in" one level each, "Normal zoom" checked at normal size, the remembered level in the
+new key `map_zoom` (an earlier build's `zoom` read with its meaning); version 1.2.4 (F355). The map and Windows host
+tests check the geometry, the refusals, the steps and the menu; the user's check passed. The Release `civ64.exe` of
+2026-10-24 12:15:10 UTC is the program of the `v1.2.4` release (Windows only); the macOS application stays 1.2.3.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
 
-**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F355) lists every place where
+**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F356) lists every place where
 civ64 does not, or cannot, reproduce the original exactly, every accepted design choice and every
 unknown, with its evidence.
 
@@ -425,6 +433,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-MAC4-record.md](ext-MAC4-record.md) | Unit MAC4 (the signed, notarized macOS release build) - record |
 | [ext-MACB1-record.md](ext-MACB1-record.md) | Unit MACB1 (the user's first macOS bug reports) - record |
 | [ext-MACB2-record.md](ext-MACB2-record.md) | Unit MACB2 (the graphics switch ended the intro on macOS) - record |
+| [ext-MACB3-record.md](ext-MACB3-record.md) | Unit MACB3 (the DOS "not found" sentence names Civ64.app on macOS) - record |
 | [ext-Mb1-record.md](ext-Mb1-record.md) | Extension phase M, unit Mb1 (snapshots, the Windows rules, the world canvas, the ring) — record |
 | [ext-Mb2-record.md](ext-Mb2-record.md) | Extension phase M, unit Mb2 (mirror checks, ext_mirror.py, ext_zoom.py, agent UI check, gate) — record |
 | [ext-MZ-record.md](ext-MZ-record.md) | Extension unit MZ (the centring at map zoom level -1) - record |
@@ -448,6 +457,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-WL3-record.md](ext-WL3-record.md) | Extension unit WL3: windowless play on the whole window (both graphics), version 1.2 |
 | [ext-WL4CRT3-record.md](ext-WL4CRT3-record.md) | Extension units WL4 and CRT3 (the Windows menu skin in windowless play; the double-scanned CRT scanlines) - record |
 | [ext-WL5-record.md](ext-WL5-record.md) | Extension unit WL5 (the user's menu background image in windowless play) - record |
+| [ext-ZS-record.md](ext-ZS-record.md) | Unit ZS (two more map zoom steps; Zoom out / Zoom in one step each) - record |
 | [p47b-record.md](p47b-record.md) | Record: base-track unit P47b (P47-R2 review fixes; the list-dialog stall on exposure) |
 | [p47r2-record.md](p47r2-record.md) | Record: base-track fix RV4 P47-R2 (list dialogs show their border and scroll bar when they open) |
 
