@@ -84,3 +84,61 @@ latest release and all relevant documentation."
   from Civ64's published `1e92cc4` (the macOS 1.2.3 text), then `hand_v124.py` (five levels, the menu's steps,
   `--zoom -2..+2`, `map_zoom`; Mac users pointed to the v1.2.3 release for the DMG); release notes
   `RELEASE-NOTES-v1.2.4.md` (Windows only).
+* Civ1RE: `ae2cf07` (32 files, NODOS_OK over a copy), pushed non-force `a5bbb42..ae2cf07`.
+* Civ64: the stage fast-forwarded to the macOS session's `1e92cc4`; `stage_mac.py Civ1 --apply` (2 new: ext-MACB3-record,
+  ext-ZS-record; 8 changed; 468 the same); README.md and docs/USER-GUIDE.md from `hand/`; `finish_stage.py`;
+  `build_stage.py --check-links` LINKS_OK; `nodos.py check --root Civ1` NODOS_OK. Commit `aaa9106` (noreply author
+  and committer, 13 files), pushed `1e92cc4..aaa9106`.
+* Release `v1.2.4` "Sid Meier's Civilization 64bit 1.2.4", Latest, target main (`aaa9106`), published 2026-10-24
+  12:39:12 UTC; asset civ64.exe 5,039,104 bytes, GitHub digest
+  sha256:174ed39bb704215f75d0fe70ebb5e366901bc250e490887cf13242710c81a024 (equal to the build); `releases/latest` =
+  v1.2.4; the body equals `RELEASE-NOTES-v1.2.4.md`. Release v1.2.3 keeps civ64.exe 1.2.3 and the macOS DMG 1.2.3.
+* Browser check (the built-in browser): the release page shows Latest, "New since 1.2.3", civ64.exe and its SHA-256;
+  the repository page's README shows "New in version 1.2.4", "latest release is v1.2.4" and the macOS download at
+  the v1.2.3 release; its 10 images load.
+* Not changed: the repository's short description (it fits 1.2.4); the forum post drafts.
+
+## The macOS port (session on the Mac, 2026-10-24)
+
+The user, 2026-10-24 about 12:45 UTC: "pull the latest civ1re repo and apply changes to macOs application, set the
+version of application v1.2.4 then update relevant documentation, commit and push both repo and update latest release
+on Civ64 repo."
+
+* Civ1RE fast-forwarded `3a0fd6f..b92ec33`, Civ64 `1e92cc4..aaa9106`. ZS's macOS source (`platform/macos/host_macos.m`:
+  "Zoom Out" Command+-, "Normal Zoom" Command+0, "Zoom In" Command+=, one step each through `player_zoom`, Normal Zoom
+  checked at 0, Zoom Out grayed at -2, Zoom In grayed while `pmap_in_refused`; `macos/civ64_mac.m`: `--zoom -2..+2`,
+  the key `map_zoom`, the earlier `zoom` read as half/double) needed no change: it builds as written.
+* Version 1.2.4: `macos/Info.plist` (CFBundleShortVersionString and CFBundleVersion), `macos/READ-FIRST.txt`; the About
+  box reads Info.plist. FIDELITY F355 notes it. The build includes MACB3 (the DOS "not found" sentence names
+  `Civ64.app`), unreleased until now.
+* `build-mac.sh checked`: BUILD_OK (313 portable sources, c11, c17, c99; 64 test programs; the Checked application).
+  `test-mac.sh --section unit Checked`: the 64 programs PASS (`test_map` 367 checks, as on Windows).
+* `package-mac.sh`: `hdiutil create -srcfolder` failed with "Resource busy": the temporary volume's unmount was refused
+  while the iOS Simulator service was shutting down ("Simulators are still shutting down"), also for a one-file test
+  image. The script now falls back to a blank read-write image, `ditto`, `hdiutil detach` (then `-force`) and
+  `hdiutil convert` to UDZO, the same contents. One notarization attempt timed out on the network and one found the
+  keychain profile unavailable (the session locked); the user unlocked it.
+* `package-mac.sh --out build/user-builds/v1.2.4` (2026-10-24 13:47 UTC): PACKAGE_OK; universal (x86_64 arm64);
+  NODOS_OK; Developer ID, hardened runtime; `Civ64-1.2.4-macOS.dmg` notarized (submission
+  `d34446a1-f0f7-40fe-bf0d-36d0024b4195`: Accepted) and stapled; Gatekeeper accepts the application and the image;
+  SHA-256 `63301b099fec048ad68b05a7902f37b19b09b7b0a2c280953009e92ebf395579`, 4,862,200 bytes. The mounted image (made
+  by the fallback) holds Civ64.app 1.2.4 (Info.plist; READ-FIRST says 1.2.4), the Applications link and READ-FIRST;
+  the signature verifies; both architectures hold "next to Civ64.app", "--zoom takes default, -2, ...", "Zoom Out" and
+  "Zoom In".
+* Seen on this Mac (agent-observed): the Release application with `--data` a copy of the game, `--zoom +1`, started and
+  ran for 8 seconds, then stopped.
+
+### Not covered (macOS)
+
+* The Map Zoom menu's steps, its grays and the remembered `map_zoom` were not exercised in a running game on the Mac
+  (no menu interaction); the portable zoom logic is covered by `test_map`, the menu code is the Windows host's
+  pattern. The long harness suites were not run.
+
+### Published, macOS
+
+* Civ64 `README.md` (Quick start on macOS: `Civ64-1.2.4-macOS.dmg` from the latest release; "New in version 1.2.4"
+  says the macOS application is 1.2.4), `docs/USER-GUIDE.md` (the opening, section 15: version 1.2.4, the download,
+  the Map Zoom items), `docs/README.md` (the result row 1.2.4, the 1.2.4 paragraph; the same in
+  `build/pub-stage/docs-README.head.md`); the generated docs by `stage_mac.py`.
+* The merged release notes `build/pub-stage/RELEASE-NOTES-v1.2.4.md` (the Windows text as published kept as
+  `RELEASE-NOTES-v1.2.4-windows.md`).

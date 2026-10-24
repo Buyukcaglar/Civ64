@@ -29,5 +29,5 @@ store's "not found" sentence said "next to civ64.exe").
 ## Not covered
 
 * Not in a published build yet: the published `Civ64-1.2.3-macOS.dmg` keeps "civ64.exe" in this sentence; the change
-  reaches the next macOS release.
+  reaches the next macOS release (it did: `Civ64-1.2.4-macOS.dmg`, `ext-ZS-record.md`, "The macOS port").
 * The Windows build was not rebuilt here (nothing of it changes).

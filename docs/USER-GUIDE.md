@@ -1,7 +1,7 @@
 # Sid Meier's Civilization 64bit: User Guide
 
 This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.4: `civ64.exe` for
-Windows (and `Civ64.app` 1.2.3 for macOS). civ64 runs the original *Sid Meier's Civilization for Windows* (the
+Windows and `Civ64.app` for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the game with the graphics of *Civilization for DOS* at any moment.
 
@@ -490,8 +490,7 @@ are shown unchanged.
 
 ## 15. civ64 for macOS
 
-`Civ64.app` (version 1.2.3) is the same program as `civ64.exe` 1.2.3 (1.2.4's five zoom levels and its one-step
-**Zoom Out** / **Zoom In** are not in the macOS application yet; it has the three levels half, normal and double): the same recovered game, the same Windows 3.1
+`Civ64.app` (version 1.2.4) is the same program as `civ64.exe` 1.2.4: the same recovered game, the same Windows 3.1
 environment and the same Windows and DOS graphics, on a native macOS back end. It is signed with the developer's
 Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
 
@@ -506,7 +505,7 @@ Developer ID and notarized by Apple, and is distributed here, not in the Mac App
 
 ### Installation
 
-1. Download `Civ64-1.2.3-macOS.dmg` from the [v1.2.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3)
+1. Download `Civ64-1.2.4-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
    and open it.
 2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
    from there, not from the disk image: an application started from the disk image sees no files next to it.
@@ -525,8 +524,8 @@ To uninstall, delete `Civ64.app`, your game folder if you no longer want it, and
 ### Menus
 
 * **The civ64 menu** (the application menu in the macOS menu bar) holds what the window menu holds on Windows
-  (section 6): About, Full Screen, Display, Map Zoom, Graphics (with Locate DOS Files), Alternative Music/Soundfx,
-  then Hide civ64 and Quit civ64. The game pauses while a menu is open, as on Windows.
+  (section 6): About, Full Screen, Display, Map Zoom (Zoom Out, Normal Zoom and Zoom In, one level each, as in
+  section 8), Graphics (with Locate DOS Files), Alternative Music/Soundfx, then Hide civ64 and Quit civ64. The game pauses while a menu is open, as on Windows.
 * **The game's own menus** are shown twice: in the game window, as in Windows 3.1, and in the macOS menu bar, where
   you can choose them as well. An item the game has grayed or checked is grayed or checked in both.
 

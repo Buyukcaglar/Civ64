@@ -223,12 +223,15 @@ checklist section. Times are UTC.
    v1.2.3 (`gh release upload v1.2.3 ...`) and point the README and User Guide's Mac links back to the latest release.
 2l. **ZS and PUB7 2026-10-24 (session on Windows)**: the map zoom's five levels (1/2, 3/4, 1, 3/2, 2) and the
    window menu's "Zoom out" / "Zoom in" as one-step, repeatable commands (F356; [ext-ZS-record.md](ext-ZS-record.md));
-   the user's check ZS-1..3 passed; version 1.2.4 (F355); release v1.2.4 for Windows (STATUS). **For the macOS
+   the user's check ZS-1..3 passed; version 1.2.4 (F355); Civ1RE `ae2cf07`, Civ64 `aaa9106`, release v1.2.4 Latest
+   12:39:12 UTC (civ64.exe only; SHA-256 `174ed39b...0c81a024`; README and User Guide point Mac users to v1.2.3). **For the macOS
    session:** ZS also changed `platform/macos/host_macos.m` (the Map Zoom items "Zoom Out" / "Zoom In", one step
    each through `player_zoom`, Normal Zoom checked, the grays) and `macos/civ64_mac.m` (`--zoom -2..+2`, the key
    `map_zoom` with the old `zoom` read as half/double); neither was compiled on a Mac. A macOS 1.2.4 needs that build
    and `macos/Info.plist` / `READ-FIRST.txt` set to 1.2.4; its DMG would join release v1.2.4. The macOS units
-   continue from **F357**.
+   continue from **F357**. **Done 2026-10-24 (session on the Mac):** built and checked on the Mac, version 1.2.4 with
+   MACB3, `Civ64-1.2.4-macOS.dmg` notarized and added to release v1.2.4 ([ext-ZS-record.md](ext-ZS-record.md),
+   "The macOS port"); next free F357.
 2h. **PAU1 DONE 2026-10-22 14:19 UTC (RELEASE_OK; user build `build/user-builds/pau1/`, PAU1-1..8; civ64.exe 5,036,032 bytes, SHA-256 17d17cd6...ff219). The user approved it at 2026-10-22 about 14:25 UTC, on condition of the ICO1 fix (the title-bar icon after full screen and Alt+Enter); then PUB4 (state in `build/ico1-stage/STATE.md` and in `build/pub-stage/STATE.md` "PUB4") (the user, 2026-10-22 about 13:10 UTC; CUR1 accepted)**: PAU1 makes the host
    menu pause the game completely, sets version 1.2.1, points the About link at Civ64 and embeds civ-winmenu-bg.png
    in civ64.exe (the user, 13:25 UTC; the no-game-art rule still stands, this tile is its single exception); one user build
