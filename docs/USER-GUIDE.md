@@ -37,6 +37,13 @@ Contents
 * **Windows 10 (version 1607 or later) or Windows 11, 64-bit.** civ64 uses the per-monitor DPI
   functions of these versions. It needs no installer, no administrator rights and no extra run-time
   libraries; it uses only the standard Windows system libraries.
+* **On Windows 7 SP1, 64-bit: `Civ64-Win7.exe`** (in the release since v1.2.4). It is the same
+  program and version, built so that it also runs on Windows 7: where Windows 7 lacks the per-monitor
+  DPI functions it uses the system DPI, and where it lacks the high-resolution timer it uses the
+  system timer at 1 ms. It runs on Windows 8, 8.1, 10 and 11 too, but there use `civ64.exe`. It has
+  not yet been run on Windows 7 itself; it passed a check that it uses no function Windows 7 lacks
+  and the Windows host tests on Windows 11. Everything in this guide applies to it, with
+  `Civ64-Win7.exe` in place of `civ64.exe`; its settings are the same as civ64.exe's.
 * **Your own copy of Sid Meier's Civilization for Windows** (the Windows 3.1 release) with all of its
   files: `civ.exe`, the `.rsc` and `.wav` files, `civfonts.fon` and the other files of the
   installation. civ64 runs exactly one release of the game and checks it at every start:
@@ -55,7 +62,8 @@ copies, read at run time.
 ## 2. Installation
 
 1. Download `civ64.exe` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
-   and put it in a folder of its own, for example `C:\Games\civ64`.
+   and put it in a folder of its own, for example `C:\Games\civ64`. On Windows 7, download
+   `Civ64-Win7.exe` instead (section 1).
 2. Give civ64 the Windows game, in one of these ways:
    * a ZIP file of your Civilization for Windows files next to `civ64.exe`, named `CivWin.zip`,
      `Civ-Win.zip` or `Civ_Win.zip`; or

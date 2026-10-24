@@ -71,6 +71,10 @@ The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-st
 
 * Windows 10 (version 1607 or later) or Windows 11, 64-bit. No installer, no administrator rights,
   no extra run-time libraries.
+* **On Windows 7** (SP1, 64-bit): use `Civ64-Win7.exe` instead, the same program and version built to
+  run on Windows 7 as well (new in v1.2.4; not yet run on Windows 7 itself, see the
+  [User Guide](docs/USER-GUIDE.md#1-requirements)). Everything below applies to it with
+  `Civ64-Win7.exe` in place of `civ64.exe`.
 * **Your own copy of Sid Meier's Civilization for Windows** (the Windows 3.1 release), with all of
   its files: `civ.exe`, the `.rsc` and `.wav` files, `civfonts.fon` and the others. civ64 accepts
   exactly one release: `civ.exe` of 832,512 bytes with SHA-256
@@ -82,8 +86,8 @@ The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-st
 
 **First run**
 
-1. Download `civ64.exe` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
-   into a folder of its own.
+1. Download `civ64.exe` (on Windows 7: `Civ64-Win7.exe`) from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) into a folder of its own.
 2. Next to it, put a `CivWin` folder holding a copy of your Civilization for Windows files, or a ZIP
    of them named `CivWin.zip` (also `Civ-Win.zip` or `Civ_Win.zip`). For the DOS graphics, add a
    `CivDos` folder or `CivDos.zip` (also `Civ-Dos.zip` or `Civ_Dos.zip`).
@@ -258,7 +262,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe`, and since v1.2.2 also the macOS application (`Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4); the earlier ones are [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (in v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4); the earlier ones are [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
 
