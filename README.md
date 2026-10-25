@@ -136,8 +136,8 @@ troubleshooting.
 **Requirements:** macOS 13 Ventura or later, Apple silicon or Intel; your own copy of Civilization for
 Windows (the same release as above) and, optionally, of Civilization for DOS 475.05.
 
-1. Download `Civ64-1.2.4-macOS.dmg` from the
-   [v1.2.4 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (the macOS application's latest version), open it and drag `Civ64.app`
+1. Download `Civ64-1.2.5-macOS.dmg` from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest), open it and drag `Civ64.app`
    to Applications or to a folder of its own. civ64 is signed with the developer's Developer ID and
    notarized by Apple.
 2. Put `CivWin.zip` (and optionally `CivDos.zip`, `MusicSfx.zip`) or the `CivWin` / `CivDos` folders next
@@ -183,8 +183,8 @@ format: civ64 loads saves of the original game, and the original game loads civ6
 * While it is checked the map zoom goes no further out than normal, and the 4:3 items do not apply;
   the intro, title, Birth and setup screens keep your Integer / Fit choice. Your choice is remembered.
 * The program's version information and its About box say 1.2.5, in `civ64.exe` and
-  `Civ64-Win7.exe`. This release is for Windows; the macOS application stays at 1.2.4 (in the
-  [v1.2.4 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4)), without the 1:1 item.
+  `Civ64-Win7.exe`. The macOS application is 1.2.5 too, with **1:1 Pixels in Gameplay** in the civ64
+  menu's **Display** (one device pixel per pixel on a Retina display).
 
 ### New in version 1.2.4
 

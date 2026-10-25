@@ -78,5 +78,48 @@ user rolled it back (14050b8) before the threshold, so the DOS play screen is dr
   by default and they run with it off.
 * While 1:1 applies the game screen follows the client in host pixels, so the game's windows see a larger desktop
   than at the earlier scales; same-seed comparisons (F105) take the size as an input as before.
-* The macOS application has no "1:1 pixels in gameplay" item yet (the portable `present/` code is shared; the menu
-  item and the key belong to `platform/macos/host_macos.m` and `macos/civ64_mac.m`); NEXT-SESSION-E5 2m.
+* The macOS application had no "1:1 pixels in gameplay" item in PUB8; the session on the Mac added it (below, "The
+  macOS port").
+
+## Publication (PUB8, 2026-10-25, times UTC)
+
+* Civ1RE `cb86729` (version 1.2.5, the documents, the public sources) pushed `c9bb907..cb86729`, with the branch's
+  commits `931e431..32e838a`.
+* Civ64 `3dbe2d5` (README, User Guide, docs/README and the generated docs for 1.2.5) pushed `e43cf20..3dbe2d5`.
+* Release [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) Latest, published 16:29:05:
+  `civ64.exe` 5,042,688 bytes, SHA-256 `99dc7c58...5e5a079d`; `Civ64-Win7.exe` 4,937,728 bytes, SHA-256
+  `f91e3e16...b38cdfaa`. The macOS application stays 1.2.4 in release v1.2.4; the README and User Guide point Mac
+  users there. State: `build/pub-stage/STATE.md` "Unit PUB8".
+
+## The macOS port (session on the Mac, 2026-10-25, times UTC)
+
+The user, about 16:35: "pull latest civ1re repo look for updates and changes, apply them to mcOs app and and update
+latest release for Civ64 repo with v1.2.5 binary"; then "commit & push you changes also".
+
+* Civ1RE fast-forwarded `9b3cc4a..81dadf4`, Civ64 `1edafe8..3dbe2d5`. The portable part of ONE builds unchanged.
+* `platform/macos/host_macos.m`, `host_macos.h`: Display's check item "1:1 Pixels in Gameplay" (`CMD_ONE`, below Fit
+  to Window), checked by `present_one_to_one`; the choice calls `hm_set_one_to_one` (`present_set_one_to_one`, the
+  cursor at the new layout's factors, the menu), then `hm_set_one_to_one_hook`'s hook and the settings hook, as
+  host_win32.c's SC_CIV_ONE. Map Zoom's Zoom Out is grayed at normal while `present_one_to_one_active`.
+* `macos/civ64_mac.m`: the key `one_to_one` ("1" on) read at the start, written after the player's choice; no command
+  line option (as on Windows). `macos/mac_cfg.h` lists the key.
+* The macOS client is in device pixels, so on a Retina display 1:1 is one device pixel per pixel and the threshold
+  (2726 x 1600) counts device pixels: a client of up to 2726 x 1600 device pixels draws at 1, a larger one at the
+  smallest whole step (a 5K display in full screen, 5120 x 2880: k = 2).
+* Version 1.2.5: `macos/Info.plist` (CFBundleShortVersionString and CFBundleVersion), `macos/READ-FIRST.txt`; the About
+  box reads Info.plist (F355).
+* `build-mac.sh`: BUILD_OK (313 portable sources, c11, c17, c99; 64 test programs; Release arm64).
+  `test-mac.sh`: TESTS_OK (31 sections, 0 failed).
+* `package-mac.sh --out build/user-builds/v1.2.5` (16:40): PACKAGE_OK; universal (x86_64 arm64); NODOS_OK; Developer
+  ID, hardened runtime; `Civ64-1.2.5-macOS.dmg` notarized (submission `7b7eab0b-88e0-468d-81ee-ff96497af3dd`:
+  Accepted) and stapled; Gatekeeper accepts the application and the image; SHA-256
+  `f46a4b26d5daf93a230bd3f80b4e6f026cef4cb71607028c4af1d0a05a71996a`, 4,895,146 bytes. Info.plist says 1.2.5; both
+  architectures hold "1:1 Pixels in Gameplay" and "one_to_one".
+* Seen on this Mac (agent-observed): the packaged application started with the player's settings and ran for 8
+  seconds, then was stopped; `civ64.cfg` unchanged.
+
+### Not covered (macOS)
+
+* The 1:1 item, its Zoom Out gray, the threshold and the remembered `one_to_one` were not exercised in a running game
+  on the Mac (no menu interaction); the portable layouts are covered by `test_present`, the menu code is the Windows
+  host's pattern. The long harness suites were not run.

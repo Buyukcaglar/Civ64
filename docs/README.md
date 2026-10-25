@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.2.4 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers |
+| The result | `civ64.exe` 1.2.5 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -244,7 +244,10 @@ frames), the game screen the window's size; beyond the largest game screen (2726
 World Map/Status column) the smallest whole step, so the map never covers more than the whole world; no map zoom out
 beyond normal meanwhile; remembered (`one_to_one`); version 1.2.5 (F355, F357). The presentation and Windows host
 tests check the layouts and the menu; the user's check passed. The Release `civ64.exe` of 2026-10-25 16:24:44 UTC and
-`Civ64-Win7.exe` are the programs of the `v1.2.5` release (Windows only); the macOS application stays 1.2.4.
+`Civ64-Win7.exe` are the programs of the `v1.2.5` release. The macOS session added the item to the macOS host
+(Display's "1:1 Pixels in Gameplay", Zoom Out grayed at normal while 1:1 applies, the key `one_to_one`) and set the
+macOS application to 1.2.5 (`ext-ONE-record.md`, "The macOS port"); `Civ64-1.2.5-macOS.dmg` joins them in the
+`v1.2.5` release.
 
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
