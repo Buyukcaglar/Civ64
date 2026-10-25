@@ -123,3 +123,17 @@ latest release for Civ64 repo with v1.2.5 binary"; then "commit & push you chang
 * The 1:1 item, its Zoom Out gray, the threshold and the remembered `one_to_one` were not exercised in a running game
   on the Mac (no menu interaction); the portable layouts are covered by `test_present`, the menu code is the Windows
   host's pattern. The long harness suites were not run.
+
+### Published, macOS
+
+* Civ64 `README.md` (Quick start on macOS: `Civ64-1.2.5-macOS.dmg` from the latest release; "New in version 1.2.5"
+  says the macOS application is 1.2.5), `docs/USER-GUIDE.md` (the opening, section 15: version 1.2.5, the download, the
+  Display item), `docs/README.md` (the result row 1.2.5, the 1.2.5 paragraph; the same in
+  `build/pub-stage/docs-README.head.md`); the generated docs by `stage_mac.py`. NODOS_OK over the clone (486 files).
+* Civ1RE `181232b` pushed non-force `81dadf4..181232b`. Civ64 `524be88` (noreply author and committer, 7 files)
+  pushed non-force `3dbe2d5..524be88`.
+* `gh release upload v1.2.5`: `Civ64-1.2.5-macOS.dmg` 4,895,146 bytes, GitHub digest
+  `sha256:f46a4b26d5daf93a230bd3f80b4e6f026cef4cb71607028c4af1d0a05a71996a` (`shasum -c` OK before the upload), and
+  its `.sha256`; `civ64.exe` and `Civ64-Win7.exe` unchanged. `gh release edit v1.2.5 --notes-file` the merged notes:
+  the body equals the file. `releases/latest` = v1.2.5; `releases/latest/download/Civ64-1.2.5-macOS.dmg` resolves
+  (200).
