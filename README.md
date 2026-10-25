@@ -137,7 +137,7 @@ troubleshooting.
 Windows (the same release as above) and, optionally, of Civilization for DOS 475.05.
 
 1. Download `Civ64-1.2.4-macOS.dmg` from the
-   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest), open it and drag `Civ64.app`
+   [v1.2.4 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (the macOS application's latest version), open it and drag `Civ64.app`
    to Applications or to a folder of its own. civ64 is signed with the developer's Developer ID and
    notarized by Apple.
 2. Put `CivWin.zip` (and optionally `CivDos.zip`, `MusicSfx.zip`) or the `CivWin` / `CivDos` folders next
@@ -164,10 +164,27 @@ The rules, the computer players, the map generator, the random-number generator,
 the screens are the original's, its bugs included.
 
 Additions only change what you see, never what happens in the game: a resizable window and full
-screen, scaling with sharp or smooth pixels, a game screen that grows with the window, a five-level
-map zoom, light and dark title bars, and the DOS graphics profile, which shows the DOS version's
+screen, scaling with sharp or smooth pixels, a game screen that grows with the window, 1:1 pixels in
+gameplay, a five-level map zoom, light and dark title bars, and the DOS graphics profile, which shows the DOS version's
 pictures, palettes, fonts, menus and screens for the same running game. Save files keep the original
 format: civ64 loads saves of the original game, and the original game loads civ64's saves.
+
+### New in version 1.2.5
+
+* **1:1 pixels in gameplay:** a new item in the window menu's **Display** submenu, below **Fit to
+  window**. Checked, every picture of a game is drawn at its original size, one screen pixel per pixel,
+  in both graphics: the Windows 3.1 desktop with the game's windows, dialogs and menus, the windowless
+  picture, the DOS play screen and the DOS 320 x 200 screens. The game screen takes the window's size,
+  so a large window shows more of the desktop and the map.
+* **Never more than the whole world:** the largest game screen, 2726 x 1600, is the whole world map
+  beside the World Map and Status column. On a larger window (for example 4K full screen) 1:1 gives
+  way to the smallest whole step, 2 x 2 or more, so the picture fills the screen and the map never
+  covers more than the whole world.
+* While it is checked the map zoom goes no further out than normal, and the 4:3 items do not apply;
+  the intro, title, Birth and setup screens keep your Integer / Fit choice. Your choice is remembered.
+* The program's version information and its About box say 1.2.5, in `civ64.exe` and
+  `Civ64-Win7.exe`. This release is for Windows; the macOS application stays at 1.2.4 (in the
+  [v1.2.4 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4)), without the 1:1 item.
 
 ### New in version 1.2.4
 
@@ -262,7 +279,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (in v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4); the earlier ones are [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5); the earlier ones are [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the DOS graphics profile), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, and every file of the original games. |
 

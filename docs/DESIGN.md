@@ -8587,3 +8587,25 @@ ALL_GREEN 00:12:36 UTC, `build/ams-status.txt`); FIDELITY F332..F334.
   a source is valid unless `alt_sounds` is "0". Tests: `w32_test_locate` `test_ams` (47 checks), `w32_test_host_win32`
   (495 checks, 15 top-level items), on synthetic 48-byte WAV files; the question flow is not exercised headless (user
   check AMS-2).
+
+### 12.16 1:1 pixels in gameplay (ONE; 2026-10-25)
+
+Record [ext-ONE-record.md](ext-ONE-record.md); FIDELITY F357. A presentation option (P0: nothing of the core, the
+emulation or the frames changes; the game screen's size is an input of the run, as F105 says).
+
+* **When it applies** (`present.c` `one_active`): the option on and the game in play: `present_game_screen` was asked
+  (the game opened its map window, 12.4), or the visible profile's `in_play` gives 1. Before that the policy chosen.
+* **Layout** (`scale.c`): `PRESENT_ONE` is an integer layout with kx = ky = 1, square whatever the aspect bits, a frame
+  larger than the client by fit; `present_layout_compute_k` the same at the largest whole step up to k that fits.
+  `present.c` `lay` lays out every frame of the view (relayout, relayout_due, the CRT periods and references, the
+  pointer factors) and the map layer (`present_layout_frame`) with it; `relayout_due` also notes a change of
+  `one_active` (`g_lay_one`).
+* **Threshold** (`one_k`): k = max(1, ceil(cw / maxw), ceil(ch / maxh)) with the host's game-screen bounds (2726 x 1600,
+  `W16_SCREEN_MAX_W/H`): beyond the largest game screen, whose map window holds the whole world, 1:1 gives way to the
+  smallest whole step, so the visible map never covers more than the world and the picture fills the client.
+* **Game screen** (12.4): `present_game_screen` and `present_game_screen_follow` take the 640x480 layout at 1:1 (the
+  client / k); the kept scale of F110 (`g_game_sw`, `g_game_sh`) is recorded only from layouts without 1:1, so the
+  option off returns to it.
+* **Zoom** (12.9): `pmap_request_zoom` refuses levels below 0 and `pmap_zoom_command` stops at 0 while
+  `present_one_to_one_active`; `one_zoom_clamp` returns a level out to 0 when 1:1 begins to apply. Display's
+  "&1:1 pixels in gameplay" (SC 0x1150), Map zoom's Zoom out grayed at 0 meanwhile; the key `one_to_one` (12.2).

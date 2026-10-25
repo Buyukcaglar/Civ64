@@ -637,8 +637,8 @@ title bar to drag it (about two title-bar heights wide, at least half its height
 Windows can give it at its size; otherwise it comes back at that top-left corner, and closing civ64 writes the
 rectangle the window really had back to `window` (F111). `--window` or `--scale k` give the first size
 (the window is then centred as on a first run). The window's title bar reads "Sid Meier's Civilization 64bit"
-(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.3" (F108, F340; v1.2.1 since PAU1,
-F350; v1.2.2 since V122, F355; v1.2.3 since DV, F355; v1.2.4 since ZS, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
+(F106) and the About box is titled "About Sid Meier's Civilization 64bit v1.2.5" (F108, F340; v1.2.1 since PAU1,
+F350; v1.2.2 since V122, F355; v1.2.3 since DV, F355; v1.2.4 since ZS, F355; v1.2.5 since ONE, F355), with the link https://github.com/Buyukcaglar/Civ64 (since PAU1; it was the Civ1 repository). The title bar, the
 window's system menu and its About box follow Windows' light or dark app
 mode (Settings > Personalization > Colors) and change with it at once (F109); since UX4 so do civ64's own
 message boxes (`hw_message_box`: the host's messages, the overwrite question, the notes and questions about the DOS
@@ -744,7 +744,14 @@ over it), **Integer scaling (whole steps)**, **Fit to window**, the two filters,
 filter after DOSBox Pure Unleashed's with only scanlines: one dark gap per DOS pixel row in the DOS graphics, per pixel
 row in the Windows graphics, the pixels as sharp as without it since CRT2), **4:3 aspect ratio for 320 x 200 DOS intro
 screens** (A43's name for the former **Correct 320 × 200 to 4:3**) and **4:3 aspect ratio for 320 x 200 DOS gameplay**
-(A43; off by default). Below **Graphics** the top level holds **Alternative music/soundfx** (AMS; checked when a valid
+(A43; off by default). Since ONE (2026-10-25, version 1.2.5; DESIGN.md 12.16, F357) **1:1 pixels in gameplay**
+follows **Fit to window**: a check item, off by default and remembered (the `one_to_one` key); while it is checked
+and a game is in play every picture of both graphics is drawn one screen pixel per pixel (the emulated Windows
+desktop and its windows, the windowless picture, the DOS play screen and the 320 x 200 screens), the game screen is
+the window's size, and on a window larger than 2726 x 1600 the smallest whole step (2 x 2 up to 5452 x 3200) takes
+its place, so the map never covers more than the whole world; the map zoom goes no further out than normal
+meanwhile, and the 4:3 items do not apply. The intro, title menu, Birth and setup keep **Integer scaling** or **Fit
+to window**. Below **Graphics** the top level holds **Alternative music/soundfx** (AMS; checked when a valid
 MusicSfx source is found or chosen, gray without one; uncheck it for the game's own sounds). All four are remembered. Before HM the same choices stood in one
 list: **Integer scaling**, **Scale to fit**, the two filters, **4:3 aspect ratio for 320 x 200 screens**, full screen,
 **Windows graphics** and **DOS graphics** (both showing **Ctrl+Shift+Backspace**), **Locate DOS files...**, the zoom

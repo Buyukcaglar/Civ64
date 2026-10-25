@@ -1,7 +1,7 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.4: `civ64.exe` for
-Windows and `Civ64.app` for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.5: `civ64.exe` for
+Windows (`Civ64-Win7.exe` on Windows 7) and `Civ64.app` 1.2.4 for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the game with the graphics of *Civilization for DOS* at any moment.
 
@@ -174,6 +174,17 @@ The picture is scaled into the window by the **Display** choices of the window m
 * **Fit to window**: the picture is as large as the window allows, keeping its proportions, with the
   **Nearest-pixel filter** (pixels repeated) or the **Sharp filter** (only the edges between pixels
   blended).
+* **1:1 pixels in gameplay** (off by default, since 1.2.5): during a game every picture is drawn at its
+  original size, one screen pixel per pixel, in both graphics: the Windows 3.1 desktop with the game's
+  windows, dialogs and menus, windowless play, the DOS play screen (its DOS art doubled, as always) and
+  the DOS 320 x 200 screens (the city screen, the reports), which then stand in the middle of the
+  window. The game screen takes the window's size, so a larger window shows more of the desktop and
+  the map. The largest game screen, 2726 x 1600, is the whole world map beside the World Map and
+  Status column; on a larger window (for example 4K full screen) the picture is drawn at the smallest
+  whole step instead (2 x 2 up to 5452 x 3200, 3 x 3 beyond), so it fills the window and the map never
+  covers more than the whole world. While it is checked the map zoom goes no further out than normal
+  and the 4:3 items do not apply. The intro, title, Birth and setup screens keep **Integer scaling** or
+  **Fit to window**. Your choice is remembered.
 * **4:3 aspect ratio for 320 x 200 DOS intro screens** (on by default; called "Correct 320 × 200 to
   4:3" in 1.0): the DOS graphics' 320x200 screens before a game (the intro, the title menu, the setup
   pages, the Hall of Fame, Load) are shown with the 4:3 shape of a DOS monitor, so their pixels are a
@@ -235,6 +246,7 @@ Alt+Space and F10 belong to the game's own menus.) From the top:
 | **Full screen** (Alt+Enter) | Full screen on or off. |
 | **Display** > **Windowless play** | The frameless one-picture layout during play (section 5). |
 | **Display** > **Integer scaling (whole steps)** / **Fit to window** | How the picture fills the window (section 5). |
+| **Display** > **1:1 pixels in gameplay** | Every picture of a game at its original size, one screen pixel per pixel (section 5). |
 | **Display** > **Nearest-pixel filter** / **Sharp filter** | The filter for **Fit to window** (gray under integer scaling, which never filters). |
 | **Display** > **CRT scanlines** | The CRT scanline effect (section 5). |
 | **Display** > **4:3 aspect ratio for 320 x 200 DOS intro screens** | The 4:3 shape of the DOS graphics' 320x200 screens before a game (checked by default). |
@@ -426,7 +438,8 @@ its meaning when `map_zoom` is absent), the wheel setting
 (`wheel_zoom=1` or `0`), the screen size the window layout was saved on (`layout_screen`), and since
 1.1 windowless play (`windowless`), the DOS gameplay 4:3 choice (`aspect_play_4_3`), CRT scanlines
 (`crt_scanlines`), the music and sound effects source (`music_data`, and `music_ask=never` after "don't
-ask again") and the **Alternative music/soundfx** mark (`alt_sounds`). Options
+ask again") and the **Alternative music/soundfx** mark (`alt_sounds`), and since 1.2.5 **1:1 pixels in
+gameplay** (`one_to_one`). Options
 given on the command line apply to that run only and are not written. civ64 reads no registry key,
 INI file or environment variable; only the Windows file dialog keeps its own list of recent folders.
 
@@ -498,7 +511,8 @@ are shown unchanged.
 
 ## 15. civ64 for macOS
 
-`Civ64.app` (version 1.2.4) is the same program as `civ64.exe` 1.2.4: the same recovered game, the same Windows 3.1
+`Civ64.app` (version 1.2.4) is the same program as `civ64.exe` 1.2.4 (1.2.5's **1:1 pixels in gameplay** is not in
+the macOS application yet): the same recovered game, the same Windows 3.1
 environment and the same Windows and DOS graphics, on a native macOS back end. It is signed with the developer's
 Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
 
@@ -513,7 +527,7 @@ Developer ID and notarized by Apple, and is distributed here, not in the Mac App
 
 ### Installation
 
-1. Download `Civ64-1.2.4-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+1. Download `Civ64-1.2.4-macOS.dmg` from the [v1.2.4 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4)
    and open it.
 2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
    from there, not from the disk image: an application started from the disk image sees no files next to it.

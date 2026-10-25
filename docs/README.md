@@ -237,11 +237,20 @@ Zoom menu's one-step Zoom Out / Zoom In, `--zoom -2..+2`, `map_zoom`) with MACB3
 `Civ64.app`) and set the macOS application to 1.2.4 (`ext-ZS-record.md`, "The macOS port");
 `Civ64-1.2.4-macOS.dmg` joins `civ64.exe` in the `v1.2.4` release.
 
+**Version 1.2.5 (unit ONE, 2026-10-25).** The user asked for gameplay drawn at the graphics' original size
+([ext-ONE-record.md](ext-ONE-record.md)): Display's "1:1 pixels in gameplay" draws every frame in play one screen
+pixel per pixel in both graphics (the emulated Windows desktop and its windows, the windowless canvas, the DOS
+frames), the game screen the window's size; beyond the largest game screen (2726 x 1600, the whole world and the
+World Map/Status column) the smallest whole step, so the map never covers more than the whole world; no map zoom out
+beyond normal meanwhile; remembered (`one_to_one`); version 1.2.5 (F355, F357). The presentation and Windows host
+tests check the layouts and the menu; the user's check passed. The Release `civ64.exe` of 2026-10-25 16:24:44 UTC and
+`Civ64-Win7.exe` are the programs of the `v1.2.5` release (Windows only); the macOS application stays 1.2.4.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
 
-**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F356) lists every place where
+**The fidelity register** ([FIDELITY.md](FIDELITY.md), entries F1 to F357) lists every place where
 civ64 does not, or cannot, reproduce the original exactly, every accepted design choice and every
 unknown, with its evidence.
 
@@ -443,6 +452,7 @@ made for the public copy and recorded file by file in an audit:
 | [ext-MZI-record.md](ext-MZI-record.md) | Extension unit MZI (the centring at map zoom level +1) - record |
 | [ext-MZS-record.md](ext-MZS-record.md) | Extension unit MZS (menus, dialogs and moved windows over the zoomed map) - record |
 | [ext-MZW-record.md](ext-MZW-record.md) | Extension unit MZW (the World Map's rectangle follows the map zoom level) - record |
+| [ext-ONE-record.md](ext-ONE-record.md) | Unit ONE (1:1 pixels in gameplay) - record |
 | [ext-PAU1-record.md](ext-PAU1-record.md) | Extension unit PAU1 (the window menu pauses the game; version 1.2.1; the Civ64 link; the menu tile inside civ64.exe) - record |
 | [ext-SI-record.md](ext-SI-record.md) | Extension unit SI (civ64 runs as a single instance) - record |
 | [ext-SL-record.md](ext-SL-record.md) | Extension unit SL: the DOS Save/Load slot screens |

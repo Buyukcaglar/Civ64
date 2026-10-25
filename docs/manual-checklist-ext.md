@@ -1547,9 +1547,27 @@ The map zoom has five levels (0.5x, 0.75x, normal, 1.5x, 2x); the window menu's 
 | ZS-2 | Window menu > Map zoom reads "Zoom out Ctrl+Shift+Minus", "Normal zoom Ctrl+Shift+0, Home", "Zoom in Ctrl+Shift+Plus"; choosing Zoom in or Zoom out repeatedly steps as the keys do; Normal zoom checked only at normal size; Zoom out grayed at 0.5x, Zoom in at 2x and while the map window is too small for the next step in. | as ZS-1 | passed 2026-10-24 (the user: "ZS passed user review.") |
 | ZS-3 | At 0.75x and 1.5x the active unit stays in view, the game's centring (C, a World Map click) centres the map, the World Map's rectangle shows the zoomed area, and at 0.75x a click on the world around the view recentres there, as at 0.5x and 2x. | as ZS-1 | passed 2026-10-24 (the user: "ZS passed user review.") |
 
-**Count:** 452 items: 443 passed (D3 10: D3-1..D3-10; D4a 1: D4a-1 (informational); D4 32: D4-1..D4-32; P47 1: P47-2;
+## ONE: 1:1 pixels in gameplay
+
+Unit ONE (STATUS "User directions" 2026-10-25; record `ext-ONE-record.md`). User build `claude/port/build/user-builds/one2one/` (civ64.exe and Civ64-Win7.exe, from version 1.2.4).
+Display's "1:1 pixels in gameplay" draws every frame in play one screen pixel per pixel, in both graphics; beyond
+2726 x 1600 the smallest whole step; no map zoom out beyond normal while it applies; remembered.
+
+| # | What to look at | Decision checked | Status |
+|---|---|---|---|
+| ONE-1 | In a game (Windows graphics) check the item: the windows at their original pixel size, the desktop filling the window; the map, World Map and Status windows can be moved and sized. | STATUS "User directions" 2026-10-25; `ext-ONE-record.md`; `build/user-builds/one2one/WHAT-TO-CHECK.txt` | passed 2026-10-25 (the user: "Accepted") |
+| ONE-2 | DOS graphics with the item checked: the play screen drawn 1:1; a city's 320 x 200 screen at its own size in the middle. | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-3 | Unchecking the item returns to the Integer / Fit scaling; the game screen follows. | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-4 | With the item checked: resizing, full screen, windowless play, zooming in keep 1:1; clicks land under the pointer. | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-5 | With the item checked: no zoom out beyond normal (keys, wheel, menu; Zoom out gray at normal); a level out returns to normal when it is checked. | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-6 | The item reads "1:1 pixels in gameplay". | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-7 | The choice is remembered across starts. | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-8 | On a client larger than 2726 x 1600 the picture fills it at the smallest whole step, in both graphics. | as ONE-1 | passed 2026-10-25 (the user: "Accepted") |
+| ONE-9 | Civ64-Win7.exe shows the same item and behaviour. | as ONE-1 | passed 2026-10-25 (the user: "Accepted"; not run on Windows 7 itself) |
+
+**Count:** 461 items: 452 passed (D3 10: D3-1..D3-10; D4a 1: D4a-1 (informational); D4 32: D4-1..D4-32; P47 1: P47-2;
 UX1 6: UX1-1..UX1-6; BS 6: BS-1..BS-6; D5 22: D5-1..D5-6, D5-8..D5-23; D6 7: D6c-1..D6c-7; M 8: M-1 (the
-Windows part; its DOS sentence is item M-1d), M-1d, M-2..M-7, M-3b; LP 8: LP-1..LP-8; UX2 4: UX2-1..UX2-4; D5K 4: D5K-1..D5K-4; UX3 10: UX3-1..UX3-10; D5K2 3: D5K2-1..D5K2-3; SL 7: SL-1..SL-7; D6d 5: D6d-1..D6d-3, D6d-5, D6d-6; UX4 4: UX4-1..UX4-4; MZ 7: MZ-1..MZ-7; D5P 9: D5P-1..D5P-6, D5P-8..D5P-10; MZW 7: MZW-1..MZW-7; HM 9: HM-1..HM-9; D7l2 4: D7l2-1..D7l2-4; D7h 6: D7h-1..D7h-5, D7h-7; WL 9: WL-1..WL-9; WL2 5: WL2-1..WL2-5; CRT2 3: CRT2-1..CRT2-3; WL4 3: WL4-1..WL4-3; CRT4 3: CRT4-1..CRT4-3; WL5 3: WL5-1..WL5-3; CRT6 5: CRT6-1..CRT6-5; WL6 2: WL6-1..WL6-2; CUR1 5: CUR1-1..CUR1-5; PAU1 8: PAU1-1..PAU1-8; the user's bulk check 2026-10-22 about 15:20 UTC: the 210 items still open, among them D7g2-9, CRT-1 and CRT-4 after their fixes; ICO1 3: ICO1-1..ICO1-3; ZS 3: ZS-1..ZS-3, 2026-10-24), 6 pending (V122 3: V122-1..V122-3, build "v122"; DV 3: DV-1..DV-3, build "dv")
+Windows part; its DOS sentence is item M-1d), M-1d, M-2..M-7, M-3b; LP 8: LP-1..LP-8; UX2 4: UX2-1..UX2-4; D5K 4: D5K-1..D5K-4; UX3 10: UX3-1..UX3-10; D5K2 3: D5K2-1..D5K2-3; SL 7: SL-1..SL-7; D6d 5: D6d-1..D6d-3, D6d-5, D6d-6; UX4 4: UX4-1..UX4-4; MZ 7: MZ-1..MZ-7; D5P 9: D5P-1..D5P-6, D5P-8..D5P-10; MZW 7: MZW-1..MZW-7; HM 9: HM-1..HM-9; D7l2 4: D7l2-1..D7l2-4; D7h 6: D7h-1..D7h-5, D7h-7; WL 9: WL-1..WL-9; WL2 5: WL2-1..WL2-5; CRT2 3: CRT2-1..CRT2-3; WL4 3: WL4-1..WL4-3; CRT4 3: CRT4-1..CRT4-3; WL5 3: WL5-1..WL5-3; CRT6 5: CRT6-1..CRT6-5; WL6 2: WL6-1..WL6-2; CUR1 5: CUR1-1..CUR1-5; PAU1 8: PAU1-1..PAU1-8; the user's bulk check 2026-10-22 about 15:20 UTC: the 210 items still open, among them D7g2-9, CRT-1 and CRT-4 after their fixes; ICO1 3: ICO1-1..ICO1-3; ZS 3: ZS-1..ZS-3, 2026-10-24; ONE 9: ONE-1..ONE-9, 2026-10-25), 6 pending (V122 3: V122-1..V122-3, build "v122"; DV 3: DV-1..DV-3, build "dv")
 (6 checkable: V122-1..V122-3 and DV-1..DV-3, added 2026-10-23; otherwise none open since the user's bulk check of 2026-10-22 about 15:20 UTC; none not yet implemented. By section (history up to the user's bulk check of 2026-10-22 about 15:20 UTC; every item listed passed there): D6 2 (D6-1 and D5-7, rewritten for unit D6f 2026-10-17, failed 2026-10-17 about 06:53..07:00 UTC (the user's D6-1 answer and revision list); D5-7 rewritten for units D6fS-a and D6fS-b and D6-1 rewritten for unit D6fS-b, both pending in build "d6fsb"; D5-7 moved from D5 for a
 named screen and build in D6's user checks), P47 1 (P47-1), D5P 1 (D5P-7, pending in build "d5p"), MZW 1 (MZW-8,
 failed 2026-10-16 about 20:16 UTC: a shadow over the main map when a menu opens at -1 and +1; rework unit MZS, landed 2026-10-17

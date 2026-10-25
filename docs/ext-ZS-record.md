@@ -142,3 +142,9 @@ on Civ64 repo."
   `build/pub-stage/docs-README.head.md`); the generated docs by `stage_mac.py`.
 * The merged release notes `build/pub-stage/RELEASE-NOTES-v1.2.4.md` (the Windows text as published kept as
   `RELEASE-NOTES-v1.2.4-windows.md`).
+* Civ1RE `fd8d0ba` pushed non-force `b92ec33..fd8d0ba`. Civ64 `1edafe8` (noreply author and committer, 8 files;
+  NODOS_OK over the clone, 485 files; its relative links resolve) pushed non-force `aaa9106..1edafe8`.
+* `gh release upload v1.2.4`: `Civ64-1.2.4-macOS.dmg` 4,862,200 bytes, GitHub digest
+  `sha256:63301b099fec048ad68b05a7902f37b19b09b7b0a2c280953009e92ebf395579` (`shasum -c` OK before the upload), and its
+  `.sha256`; `civ64.exe` unchanged (`174ed39b...0c81a024`). `gh release edit v1.2.4 --notes-file` the merged notes: the
+  body equals the file. `releases/latest` = v1.2.4; `releases/latest/download/Civ64-1.2.4-macOS.dmg` resolves (200).
