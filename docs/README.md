@@ -265,7 +265,8 @@ file over the originals, and separately obtained packs in civ64's Modern pack fo
 kit), copied into `GameData` as one archive each; every edition's files and the player's own sounds likewise
 copied, wherever the player chooses them, into one checked archive per edition in the `GameData` folder beside
 `civ64.exe` and used from there, read in memory (the user's direction of 2026-11-14; a location remembered by
-an earlier version is copied in at the next start), and the `Save` folder (the earlier `CivWin.zip`,
+an earlier version is copied in at the next start; at the start civ64 asks only for the Windows game, and only
+when it has none, everything else being chosen by the player on the Options dialog), and the `Save` folder (the earlier `CivWin.zip`,
 `CivDos.zip` and `MusicSfx.zip` names and the extraction to `%LOCALAPPDATA%` dropped);
 and roads and railroads on ocean squares drawn over their own coast in the Windows graphics (F360). Rules,
 computer players, random numbers and saves are unchanged. Each step was built and passed the project's automated

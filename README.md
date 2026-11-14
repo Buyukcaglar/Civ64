@@ -111,23 +111,26 @@ The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-st
 
 1. Download `civ64.exe` (on Windows 7: `Civ64-Win7.exe`) from the
    [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) into a folder of its own.
-2. Run `civ64.exe`. At the first start it asks you to choose the game's `civ.exe` (in your game folder)
-   or a ZIP file of the game, and then whether to locate Civilization for DOS too (optional).
+2. Run `civ64.exe`. At the first start it asks for one thing only: the game's `civ.exe` (in your
+   Civilization for Windows folder) or a ZIP file of the game.
 3. civ64 checks what you chose and **copies the files it needs into a `GameData` folder next to
-   `civ64.exe`**, one archive per edition (`Civ-Windows.zip`, `Civ-DOS.zip`), and from then on uses them
-   from there. Your own files are never changed, and you are not asked again. Your saved games go to a
-   `Save` folder next to `civ64.exe`.
+   `civ64.exe`** as `Civ-Windows.zip`, and from then on uses them from there. Your own files are never
+   changed, and you are not asked again. Your saved games go to a `Save` folder next to `civ64.exe`.
+4. Everything else is up to you, on the window menu's **Options…**: the DOS and other editions' files (a
+   card's **Choose files**), your own sounds and graphics mods. civ64 copies each into `GameData` in the
+   same way and uses it from the next start.
 
 So the folder of `civ64.exe` must be one you can write to (not `C:\Program Files`), with room for the
-copies (a few MB per edition). Every other edition's files, your own sounds and graphics mods are chosen
-on the Options dialog and copied into `GameData` in the same way; you can also put the archives into
-`GameData` yourself ([the file table](docs/USER-GUIDE.md#3-where-civ64-finds-the-game)).
+copies (a few MB per edition). You can also put the archives into `GameData` yourself
+([the file table](docs/USER-GUIDE.md#3-where-civ64-finds-the-game)). Cancel in a file dialog ends the
+choice with nothing changed.
 
 **Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings stay. A game or DOS location you
-chose in an earlier version is copied into `GameData` at the first start of 1.3. Version 1.3 no longer
-looks for `CivWin.zip`, `CivDos.zip` or `MusicSfx.zip` (or the `CivWin`, `CivDos` and `MusicSfx` folders)
-next to `civ64.exe`: when civ64 asks, choose them (for example your old `CivWin.zip`), and civ64 copies them
-into `GameData`. If you played from a `CivWin.zip`, your saves are in `%LOCALAPPDATA%\civ64\CivWin`: copy
+chose in an earlier version that still exists is copied into `GameData` at the first start of 1.3, without
+a question. Version 1.3 no longer looks for `CivWin.zip`, `CivDos.zip` or `MusicSfx.zip` (or the `CivWin`,
+`CivDos` and `MusicSfx` folders) next to `civ64.exe`: when civ64 asks for the Windows game, choose your old
+`CivWin.zip` (or `civ.exe`), and choose the DOS files and your sounds on the Options dialog; civ64 copies
+them into `GameData`. If you played from a `CivWin.zip`, your saves are in `%LOCALAPPDATA%\civ64\CivWin`: copy
 the `.SAV` files into the new `Save` folder
 ([details](docs/USER-GUIDE.md#11-saves-settings-and-the-files-civ64-writes)).
 
@@ -246,8 +249,8 @@ original game loads civ64's saves.
   making such a pack: every picture a pack can replace, with its name, a reference picture made from your
   own game files and pictures of where it is used (the window menu's **Add screen to mod kit** adds the
   current screen), and a check of a pack that lists what is missing or wrong.
-* **GameData and Save folders:** whatever files you choose for an edition (at the first start's questions
-  or on the Options dialog) are checked and copied into a `GameData` folder next to `civ64.exe`, only the
+* **GameData and Save folders:** whatever files you choose for an edition (the Windows game at the first
+  start's only question, everything else on the Options dialog) are checked and copied into a `GameData` folder next to `civ64.exe`, only the
   files civ64 needs, as one archive per edition (`Civ-Windows.zip`, `Civ-DOS.zip`, `Civ-Amiga.zip`,
   `Civ-AtariST.zip`, `Civ-PC98.zip`, `Civ-SNES.zip`, `CustomMusicSfx.zip`; the MT-32 ROMs as
   `MT32-ROMs.zip`, which you put there yourself), and the game uses them from there, read in memory. The
