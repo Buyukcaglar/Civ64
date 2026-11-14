@@ -62,87 +62,99 @@ Contents
   installation; civ64 reads it and never installs a font.
 
 civ64 contains none of the original games' files or bytes, no MT-32 ROM, no music and no graphics mod or
-graphics pack. Everything it shows and plays comes from your own copies, read at run time.
+graphics pack. Everything it shows and plays comes from your own copies: civ64 copies the
+files it needs into its `GameData` folder (section 2) and reads them from there at run time.
 
 ## 2. Installation
 
 1. Download `civ64.exe` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
-   and put it in a folder of its own, for example `C:\Games\civ64`. On Windows 7, download
-   `Civ64-Win7.exe` instead (section 1).
-2. Give civ64 the Windows game, in one of these ways:
-   * a folder named `GameData` next to `civ64.exe`, holding a ZIP file of your Civilization for Windows
-     files named `Civ-Windows.zip`; or
-   * `civ64.exe` placed in the game's own folder, next to `civ.exe`; or
-   * nothing: at the first start civ64 asks you to choose the game's `civ.exe` or ZIP file.
-3. Optionally, put the other editions' files in `GameData` too (section 3): `Civ-DOS.zip` for the DOS
-   game, and `Civ-Amiga.zip`, `Civ-AtariST.zip`, `Civ-PC98.zip`, `Civ-SNES.zip`, `MT32-ROMs.zip` and
-   `CustomMusicSfx.zip`; or choose them later on the Options dialog (section 6).
-4. Run `civ64.exe`.
+   and put it in a folder of its own that you can write to, for example `C:\Games\civ64` (not under
+   `C:\Program Files`). On Windows 7, download `Civ64-Win7.exe` instead (section 1).
+2. Run `civ64.exe`. At the first start it asks you to choose the game's `civ.exe` (in your Civilization
+   for Windows folder) or a ZIP file of the game, and then whether to locate Civilization for DOS too
+   (optional; **not now** or **don't ask again** are fine) and your own music and sound effects
+   (optional).
+3. civ64 checks each choice and **copies the files it needs into the folder `GameData` next to
+   `civ64.exe`**, as one archive per edition (section 3), and from then on uses them from there. It does
+   not ask again.
+4. Optionally, choose the other editions' files later on the Options dialog's Graphics page (section 6):
+   civ64 copies them into `GameData` in the same way and uses them from the next start.
 
-civ64 reads the ZIP files in memory and never extracts or changes them, and it never changes the game's
-own files. Everything the game writes goes to a `Save` folder next to `civ64.exe` (section 11).
+**The game data lives in `GameData`.** Every edition's files, your own sounds and your graphics mods are
+used from the archives in `GameData`, never from where you chose them. Your own files and folders are
+only read, never changed, moved or deleted; after the copy you may move or delete them. The copies take
+a few MB per edition (your own music, and some Modern-style packs, can take much more). You can also make
+the archives yourself and put them into `GameData` (the table in section 3); civ64 checks them at every
+start. Everything the game writes goes to a `Save` folder next to `civ64.exe` (section 11).
 
 **Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings in `%LOCALAPPDATA%\civ64` stay.
-Version 1.3 no longer looks for the earlier names next to `civ64.exe` (`CivWin.zip`, `Civ-Win.zip`,
-`Civ_Win.zip`, `CivDos.zip`, `Civ-Dos.zip`, `Civ_Dos.zip`, `MusicSfx.zip` and the `CivWin`, `CivDos` and
-`MusicSfx` folders), and no longer extracts the Windows game to `%LOCALAPPDATA%\civ64\CivWin`. Move and
-rename your ZIP files into `GameData` (`Civ-Windows.zip`, `Civ-DOS.zip`, `CustomMusicSfx.zip`), or choose
-them again when civ64 asks. A location you chose in an earlier version is still used. If you played from
-a `CivWin.zip`, your saves are in `%LOCALAPPDATA%\civ64\CivWin`: copy the `.SAV` files (and, if you like,
-`famehall.civ` and `civ.prf`) into the new `Save` folder; civ64 neither reads nor deletes that old folder.
 
-To uninstall, delete civ64's folder (with `GameData` and `Save`, after keeping the saves you want), your
-game folder if you no longer want it, and the folder `%LOCALAPPDATA%\civ64` (civ64's settings, and the
-saves when the `Save` folder next to `civ64.exe` could not be written). civ64 writes nothing to the
-registry, `WIN.INI` or the clipboard.
+* A game or DOS location or a music source you chose in an earlier version (at its question or with
+  **Locate DOS files…**) is copied into `GameData` at the first start of 1.3, without a question, and then
+  used from there. If it is no longer there, civ64 uses the archive in `GameData` when there is one, or
+  asks again.
+* Version 1.3 no longer looks for the earlier names next to `civ64.exe` (`CivWin.zip`, `Civ-Win.zip`,
+  `Civ_Win.zip`, `CivDos.zip`, `Civ-Dos.zip`, `Civ_Dos.zip`, `MusicSfx.zip` and the `CivWin`, `CivDos` and
+  `MusicSfx` folders), and no longer extracts the Windows game to `%LOCALAPPDATA%\civ64\CivWin`. When civ64
+  asks, choose them (for example your old `CivWin.zip`), and civ64 copies them into `GameData`.
+* If you played from a `CivWin.zip`, your saves are in `%LOCALAPPDATA%\civ64\CivWin`: copy the `.SAV` files
+  (and, if you like, `famehall.civ` and `civ.prf`) into the new `Save` folder; civ64 neither reads nor
+  deletes that old folder.
+
+To uninstall, delete civ64's folder (with `GameData` and `Save`, after keeping the saves you want), and
+the folder `%LOCALAPPDATA%\civ64` (civ64's settings, and the saves when the `Save` folder next to
+`civ64.exe` could not be written). civ64 writes nothing to the registry, `WIN.INI` or the clipboard.
 
 ## 3. Where civ64 finds the game
 
-civ64 reads each edition's files from a ZIP file in the `GameData` folder next to `civ64.exe`, from a
-folder or ZIP you chose on the Options dialog (section 6) or at a question, or from the command line
-(section 12). Names are compared ignoring case. In a ZIP, the folder that holds the edition's main file
-(`civ.exe`, `CIV.EXE`, `game`, `GAME.PRG`) is the game's folder.
+civ64 uses each edition's files from its archive in the `GameData` folder next to `civ64.exe`. The
+archive holds only the files civ64 reads from that edition, at its root, and is read in memory, never
+extracted. Names are compared ignoring case.
 
-| File in `GameData` | Holds (your own copy) | Used for |
+| Archive in `GameData` | Made from (your own copy) | Used for |
 |---|---|---|
-| `Civ-Windows.zip` | Civilization for Windows: `civ.exe` and the other files of the installation | the game (required) |
-| `Civ-DOS.zip` | Civilization for DOS 475.05, all of its files unchanged | the DOS VGA, DOS EGA and PC-98 graphics, the DOS sounds |
-| `Civ-Amiga.zip` | the Amiga edition's files, extracted from its disks (the folder with its `game` file) | the Amiga graphics and sounds |
-| `Civ-AtariST.zip` | the Atari ST edition's files, extracted from its disks (the folder with its `GAME.PRG`) | the Atari ST graphics and sounds |
-| `Civ-PC98.zip` | the NEC PC-98 edition's files (version 475.02), extracted from its disks: its pictures (`.PIC`), sprites (`.SPC`) and `YSOUND.CVL` | the PC-98 graphics (with `Civ-DOS.zip`) and sounds; `YSOUND.CVL` alone gives the sounds only |
-| `Civ-SNES.zip` | the SNES edition's USA cartridge image (`.sfc` or `.smc`; a copier header is accepted) | the SNES graphics and sounds |
-| `MT32-ROMs.zip` | the Roland MT-32's control ROM 1.07 as `MT32_CONTROL.ROM` and its PCM ROM as `MT32_PCM.ROM` | the DOS game's Roland MT-32 music |
-| `CustomMusicSfx.zip` | your own WAV files (below) | the Custom sound source |
-| `Civ-Modern.zip`, `Mod-<name>.zip` | graphics mods and packs, copied there by **Add mod…** (section 7) | the Custom graphics style |
+| `Civ-Windows.zip` | Civilization for Windows: its folder (choose `civ.exe`) or a ZIP of it | the game (required) |
+| `Civ-DOS.zip` | Civilization for DOS 475.05, all of its files unchanged: its folder (choose `CIV.EXE`) or a ZIP | the DOS VGA, DOS EGA and PC-98 graphics, the DOS sounds |
+| `Civ-Amiga.zip` | the Amiga edition's files, extracted from its disks: the folder with its `game` file, or a ZIP | the Amiga graphics and sounds |
+| `Civ-AtariST.zip` | the Atari ST edition's files, extracted from its disks: the folder with its `GAME.PRG`, or a ZIP | the Atari ST graphics and sounds |
+| `Civ-PC98.zip` | the NEC PC-98 edition's files (version 475.02), extracted from its disks: their folder (choose `YSOUND.CVL`) or a ZIP | the PC-98 graphics (with `Civ-DOS.zip`) and sounds; `YSOUND.CVL` alone gives the sounds only |
+| `Civ-SNES.zip` | the SNES edition's USA cartridge image (`.sfc` or `.smc`; a copier header is removed), or a ZIP holding it | the SNES graphics and sounds |
+| `CustomMusicSfx.zip` | your own WAV files (below): a WAV file of their folder, or a ZIP | the Custom sound source |
+| `MT32-ROMs.zip` | **you make it:** the Roland MT-32's control ROM 1.07 as `MT32_CONTROL.ROM` and its PCM ROM as `MT32_PCM.ROM` | the DOS game's Roland MT-32 music |
+| `Civ-Modern.zip`, `Mod-<name>.zip` | graphics mods and packs, added with **Add mod…** (section 7) | the Custom graphics style |
 
-**The Windows game** (required). Without the `--data` option civ64 uses, in this order: the location you
-chose on the Options dialog; `GameData\Civ-Windows.zip`; the folder of `civ64.exe` itself, when it
-holds `civ.exe`; the location you chose before at the question (remembered in `civ64.cfg`); otherwise
-civ64 asks you to choose the game's `civ.exe` or a ZIP file of the game in the Windows file dialog. A
-valid choice is remembered. A folder is read where it is and never written to.
+**How a copy is made.** Wherever you choose an edition's files (the first start's questions, a card's
+**Choose files** on the Options dialog, **Custom audio files**, **Add mod…**), civ64 first checks them
+(the Windows `civ.exe`, every DOS file, the PC-98 sound driver and the SNES image against the supported
+releases; the Amiga and Atari ST files by opening them). It then writes the archive to a temporary file in
+`GameData`, reads it back and compares it with your files, and only then gives it its name. If anything
+fails (`GameData` cannot be written, the disk is full, the copy does not match), nothing is changed, the
+earlier archive stays, and a message says why. When `GameData` already holds the same files, nothing is
+copied. A different choice for the same edition replaces its archive. A ZIP already inside `GameData`
+under the edition's name is used where it is. A copy made during a game is used from the next start.
 
-**The DOS game** (optional). civ64 looks for `--dos-data`, then the location chosen on the Options
-dialog, `GameData\Civ-DOS.zip`, the remembered location, and otherwise asks. You can answer the question
-with **not now** or **don't ask again**. Later you can choose the DOS files on the Options dialog's
-Graphics page (section 6); the location you choose there is used from the next start. To be asked again
-after "don't ask again", delete the line `dos_ask=never` from `%LOCALAPPDATA%\civ64\civ64.cfg`, or put
-`Civ-DOS.zip` in `GameData`.
+**The Windows game** (required). Without the `--data` option civ64 uses `GameData\Civ-Windows.zip`, or
+`civ.exe` in the folder of `civ64.exe` itself (when you put `civ64.exe` into the game's folder; that
+folder is read where it is). Otherwise it asks you to choose the game's `civ.exe` or a ZIP file of the
+game, and copies it into `GameData`.
 
-A file or folder that is found but is not the supported version stops civ64 with a message that
-names it. Every DOS file civ64 uses is checked, not only `CIV.EXE`: a copy with one file changed or
-missing (a mod, or a file of another release next to a patched `CIV.EXE`) is named, file and folder or
-ZIP, at the start and when you choose it, and refused; a remembered location whose files changed since
-is skipped. A wrong `CIV.EXE` says "Version 475.05 is required." (the game's own `INTRO.TXT` may still
-read "Version 475.01"; the `CIV.EXE` is what counts). civ64 refuses to run in a folder whose path ends
-in `original\CIVWIN`, a safeguard that keeps a reference installation from ever being changed.
+**The DOS game** (optional). Without `--dos-data` civ64 uses `GameData\Civ-DOS.zip`; otherwise it asks at
+the start. You can answer the question with **not now** or **don't ask again**. Later you can choose the
+DOS files on the Options dialog's Graphics page (section 6); they are copied into `GameData` and used from
+the next start. To be asked again after "don't ask again", delete the line `dos_ask=never` from
+`%LOCALAPPDATA%\civ64\civ64.cfg`.
 
-**The other editions** (optional). The Amiga files come from `--amiga-data`, else the location chosen on
-the Options dialog, else `GameData\Civ-Amiga.zip`; the Atari ST files likewise from `--atari-data`, the
-chosen location or `GameData\Civ-AtariST.zip`; the PC-98 files from the chosen location or
-`GameData\Civ-PC98.zip`; the SNES image from the chosen location or `GameData\Civ-SNES.zip` (civ64 accepts
-only the USA edition's image, checked by its SHA-256); the MT-32 ROMs only from `GameData\MT32-ROMs.zip`
-(both checked by size and SHA-256). civ64 does not ask for them at the start: a style or sound source
-whose files are not loaded is simply not available.
+A file or folder that is found but is not the supported version is refused with a message that names
+it. Every DOS file civ64 uses is checked, not only `CIV.EXE`: a copy with one file changed or missing (a
+mod, or a file of another release next to a patched `CIV.EXE`) is named, file and folder or ZIP, and
+refused. A wrong `CIV.EXE` says "Version 475.05 is required." (the game's own `INTRO.TXT` may still read
+"Version 475.01"; the `CIV.EXE` is what counts). civ64 refuses to run in a folder whose path ends in
+`original\CIVWIN`, a safeguard that keeps a reference installation from ever being changed.
+
+**The other editions** (optional). The Amiga, Atari ST, PC-98 and SNES files are used from their archives
+in `GameData`; the MT-32 ROMs only from `GameData\MT32-ROMs.zip` (both checked by size and SHA-256).
+civ64 does not ask for them at the start: a style or sound source whose files are not loaded is simply not
+available, and its card on the Options dialog shows **Choose files**.
 
 **Your own music and sound effects** (optional). civ64 can play your own WAV files instead of the
 Windows game's 24 sound files, which are `AIRNUKE.WAV`, `ALEX.WAV`, `CANNON.WAV`, `CEAS.WAV`, `ELIZ.WAV`,
@@ -151,18 +163,22 @@ Windows game's 24 sound files, which are `AIRNUKE.WAV`, `ALEX.WAV`, `CANNON.WAV`
 `THEY_DIE.WAV`, `WE_DIE.WAV` and `WINTUNE.WAV`. **civ64 includes no music or sound files: you supply your
 own.**
 
-1. Make a ZIP file named `CustomMusicSfx.zip` in `GameData`, or choose a folder or ZIP on the Options
-   dialog's Audio page (**Custom audio files**, **Choose file…**: a WAV file in the folder, or the ZIP).
-2. Put in it WAV files with any of those 24 names (upper or lower case). In a folder they go at its
-   top level; in a ZIP they may be in any one folder of it. You need not supply all 24.
+1. Put WAV files with any of those 24 names (upper or lower case) in a folder, at its top level, or in a
+   ZIP file, in any one folder of it. You need not supply all 24.
+2. Choose them at the first start's question, or on the Options dialog's Audio page (**Custom audio
+   files**, **Choose file…**: a WAV file of the folder, or the ZIP). civ64 copies the valid files into
+   `GameData` as `CustomMusicSfx.zip`.
 3. Choose **Custom** on the Audio page. Each valid file you supplied is played instead of the game's
-   file of that name; every other sound is the Windows game's own. The files are read at the start (a ZIP
-   is never extracted), so a new location takes effect at the next start.
+   file of that name; every other sound is the Windows game's own. New files take effect at the next
+   start.
 
-civ64 looks at the `--music-sfx` option, the location chosen on the Options dialog,
-`GameData\CustomMusicSfx.zip`, and the location you chose before. Without one, the first start asks
-after the DOS question: **Yes** opens the file dialog, where you choose a WAV file (its folder becomes
-the source) or a ZIP file; **No** asks whether to ask again next time.
+Without `CustomMusicSfx.zip`, the first start asks after the DOS question: **Yes** opens the file dialog,
+where you choose a WAV file (its folder becomes the source) or a ZIP file; **No** asks whether to ask
+again next time.
+
+The command-line options `--data`, `--dos-data`, `--amiga-data`, `--atari-data` and `--music-sfx`
+(section 12) are the exception: they read the folder or ZIP you give where it is, for that run only, and
+copy nothing.
 
 ## 4. Starting and ending
 
@@ -325,18 +341,20 @@ where the dialog says so). Every choice is remembered in `civ64.cfg`.
   filter, CRT Scanlines) and **Extras** (the two 4:3 items and **Use mouse wheel to zoom in/out**). All of
   them are described in section 5 and, for the wheel, section 8.
 * **Graphics**: the **Graphics style** cards (Windows, DOS VGA, DOS EGA, Amiga, Atari ST, PC-98, SNES and
-  Custom; section 7), the **Custom graphics mods** list (section 7), and **Graphics file locations**.
+  Custom; section 7), the **Custom graphics mods** list (section 7), and **Graphics game files**.
   Each card says in words whether its style is **Shown now**, **Available**, waits for a restart, or needs
   files: a card that shows **Choose files** opens a file dialog for that edition's files (Windows:
-  `civ.exe` or a ZIP; DOS: `CIV.EXE` or a ZIP; Amiga: the `game` file of the extracted folder; Atari ST:
-  `GAME.PRG`; PC-98: a ZIP or folder of its files; SNES: the cartridge image or a ZIP). civ64 checks the
-  choice, remembers its location and loads it at the next start. A style whose files were refused shows
-  **Files not usable**.
+  `civ.exe` or a ZIP; DOS: `CIV.EXE` or a ZIP; Amiga: the `game` file of the extracted folder or a ZIP;
+  Atari ST: `GAME.PRG` or a ZIP; PC-98: `YSOUND.CVL` or a ZIP of its files; SNES: the cartridge image
+  (`.sfc`, `.smc`) or a ZIP). civ64 checks the choice and copies the files it needs into `GameData` as that
+  edition's archive (section 3); a message names the archive, and the style is available from the next
+  start. A style whose files were refused shows **Files not usable**.
 * **Audio**: the source of the music and sound effects: **Windows** (the game's own WAV files), **DOS IBM
   Sounds** (the PC speaker), **DOS Tandy sounds**, **DOS AdLib/Sound Blaster**, **DOS Roland MT-32 MIDI
   board** (an MT-32 emulated inside civ64, on your own copy of its ROMs), **Amiga**, **Atari ST**,
   **SNES**, **NEC PC-98**, or **Custom** (your own WAV files, section 3), each available when its files
-  are loaded. The sound source is independent of the graphics style. A change applies from the next sound;
+  are loaded. The sound source is independent of the graphics style. A change applies from the next sound.
+  **Custom audio files** (**Choose file…**) copies your WAV files into `GameData` as `CustomMusicSfx.zip`;
   new sound files apply after a restart. A Custom file that cannot be played falls back to the game's own
   sound. The editions' sounds follow the game's events as their own programs played them; they could not
   be compared with recordings of the original editions.
@@ -540,8 +558,9 @@ credits or the Birth. With the DOS graphics the DOS keys of section 7 apply.
 ## 11. Saves, settings and the files civ64 writes
 
 civ64 writes only to the `Save` and `GameData` folders next to `civ64.exe`, to its own folder
-`%LOCALAPPDATA%\civ64`, and to a mod kit folder you choose. It never changes the game's own files or
-the ZIP files you supplied.
+`%LOCALAPPDATA%\civ64`, and to a mod kit folder you choose. It never changes your own game files, the
+folders and ZIP files you chose, or the archives in `GameData` other than by replacing one with a checked
+copy of a new choice.
 
 | File | Where | Written by |
 |---|---|---|
@@ -550,6 +569,7 @@ the ZIP files you supplied.
 | `famehall.civ` | the save folder | the Hall of Fame |
 | `*.rep` | the save folder | the replay at the end of a game, under the name you give |
 | `civ64.cfg` | `%LOCALAPPDATA%\civ64` | civ64's settings |
+| `Civ-Windows.zip`, `Civ-DOS.zip`, `Civ-Amiga.zip`, `Civ-AtariST.zip`, `Civ-PC98.zip`, `Civ-SNES.zip`, `CustomMusicSfx.zip` | `GameData` | a choice of that edition's files at a start question or on the Options dialog (section 3) |
 | `Civ-Modern.zip`, `Mod-<name>.zip` | `GameData` | **Add mod…** (section 7) |
 | `index.html`, `ref\`, `ctx\` | the mod kit folder you chose | **Create mod kit…** and **Add screen to mod kit** |
 
@@ -565,9 +585,9 @@ original formats. Your saves from the original game load in civ64, and civ64's s
 original game. The load and save dialogs, and the DOS graphics' Load and Save screens, list the save
 folder together with the game's folder.
 
-**civ64.cfg** holds civ64's own choices: the locations of the editions' files (`windows_data`,
-`dos_data`, `amiga_data`, `atari_data`, `pc98_data`, `snes_data`, `music_data`, and `dos_ask=never` or
-`music_ask=never` after "don't ask again"), the window's place and size (`window=left,top,right,bottom` in
+**civ64.cfg** holds civ64's own choices: `dos_ask=never` or `music_ask=never` after "don't ask again"
+(the editions' files themselves are in `GameData`; a location remembered by an earlier version is removed
+once it has been copied there), the window's place and size (`window=left,top,right,bottom` in
 screen pixels), full screen, the scaling and filter choices, the 4:3 choices (`aspect_4_3`,
 `aspect_play_4_3`), the graphics style (`graphics`), the sound source (`audio_source`), the map zoom level
 (`map_zoom=-2` to `2`) and the wheel setting (`wheel_zoom`), the screen size the window layout was saved
@@ -591,9 +611,9 @@ civ64.exe [--data <dir|zip>] [--dos-data <dir|zip|none>] [--amiga-data <dir|zip|
 
 | Option | Meaning |
 |---|---|
-| `--data <dir\|zip>` | The Windows game's folder or ZIP, with no search. Its `civ.exe` must be the supported release. |
-| `--dos-data <dir\|zip\|none>` | The DOS game's folder or ZIP; `none`: not used and not asked for. |
-| `--amiga-data <dir\|zip\|none>`, `--atari-data <dir\|zip\|none>` | The Amiga or Atari ST files' folder or ZIP for this run; `none`: not used. |
+| `--data <dir\|zip>` | The Windows game's folder or ZIP for this run, read where it is (not copied), with no search. Its `civ.exe` must be the supported release. |
+| `--dos-data <dir\|zip\|none>` | The DOS game's folder or ZIP for this run, read where it is (not copied); `none`: not used and not asked for. |
+| `--amiga-data <dir\|zip\|none>`, `--atari-data <dir\|zip\|none>` | The Amiga or Atari ST files' folder or ZIP for this run, read where it is (not copied); `none`: not used. |
 | `--graphics windows\|dos\|dos-ega\|dos-pc98\|amiga\|atarist\|snes` | The style to start in (not remembered): `dos` the DOS VGA graphics, `dos-ega` DOS EGA, `dos-pc98` PC-98. `dos` or `snes` without usable files stops civ64 with a message. |
 | `--zoom default\|-2\|-1\|0\|+1\|+2` | The map zoom level for this run (`-2` half, `+2` double size). |
 | `--fullscreen` | Start in full screen. |
@@ -604,7 +624,7 @@ civ64.exe [--data <dir|zip>] [--dos-data <dir|zip|none>] [--amiga-data <dir|zip|
 | `--aspect square\|4:3\|gameplay\|both` | The shape of 320x200 screens for this run: `square` or `4:3` for the intro screens; `gameplay` and `both` also turn on the 4:3 DOS gameplay. |
 | `--windowless 0\|1` | Windowless play off or on for this run. |
 | `--crt 0\|1` | CRT scanlines off or on for this run. |
-| `--music-sfx <dir\|zip\|none>` | Your music and sound effects from that folder or ZIP for this run; `none`: not used and not asked for. A source without one valid WAV file of the 24 names stops civ64 with a message. |
+| `--music-sfx <dir\|zip\|none>` | Your music and sound effects from that folder or ZIP for this run, read where it is (not copied); `none`: not used and not asked for. A source without one valid WAV file of the 24 names stops civ64 with a message. |
 | `--timing classic\|host` | `classic` (the default) paces the game like the original with fixed costs for its internal waits; `host` follows the PC's real clock. In both, world generation and the computer players' turns run at full speed. |
 
 Two further options, `--dump-frames <dir>` and `--dump-presented <dir>`, write every picture to a
@@ -615,12 +635,15 @@ an option for automated tests.
 
 | Problem | What to do |
 |---|---|
-| After an upgrade from 1.2.5, civ64 asks where the game is | Version 1.3 no longer looks for `CivWin.zip` or a `CivWin` folder: put the ZIP in the `GameData` folder as `Civ-Windows.zip` (section 2), or choose the game when asked. |
-| civ64 asks where the game is at every start | Choose the game's `civ.exe` or ZIP; civ64 remembers a valid choice. Or put `Civ-Windows.zip` in the `GameData` folder next to `civ64.exe`. |
+| After an upgrade from 1.2.5, civ64 asks where the game is | Version 1.3 no longer looks for `CivWin.zip` or a `CivWin` folder: choose it (or the game's `civ.exe`) when asked; civ64 copies it into `GameData` (section 2). |
+| civ64 asks where the game is at every start | The copy into `GameData` failed; the message said why. Most often the folder of `civ64.exe` cannot be written (for example under `C:\Program Files`): move civ64 to a folder of your own, such as `C:\Games\civ64`. |
+| "The ... files could not be copied: the GameData folder ... cannot be written" | Move civ64 to a folder you can write to, or make `GameData` writable; nothing was changed. |
+| "The ... files could not be copied ... (the disk may be full)" | Free some space on the drive of civ64's folder (each edition takes a few MB; your own music or a large graphics pack can take much more) and choose the files again. |
+| "The copy of the ... files in GameData ... does not match the files chosen" | The copy could not be read back correctly (for example a failing drive or a file changed during the copy); nothing was changed. Choose the files again. |
 | My saves from 1.2.5 are missing | With a `CivWin.zip` they were kept in `%LOCALAPPDATA%\civ64\CivWin`: copy them into the `Save` folder (section 2). |
 | A message says `civ.exe` is different or missing | civ64 runs only the supported release (section 1). Check the file's size (832,512 bytes) in Explorer. |
 | A message names a DOS file | That file is not the unchanged file of version 475.05: changed by a mod, left from another release, or damaged. Put the file of an unchanged 475.05 copy in its place or use another copy, or start with `--dos-data none`. |
-| A graphics card or sound source is not available | Its files are not loaded: put its ZIP in `GameData` (section 3) or click the card's **Choose files** on the Options dialog, then restart civ64. **Files not usable** means the files were refused. |
+| A graphics card or sound source is not available | Its files are not loaded: click the card's **Choose files** on the Options dialog (civ64 copies them into `GameData`), then restart civ64. For the MT-32, put `MT32-ROMs.zip` into `GameData` yourself (section 3). **Files not usable** means the files were refused. |
 | Ctrl+Shift+Backspace only shows the Windows graphics | No other style's files are loaded in this run (section 3). |
 | The Custom card shows nothing new | A tileset mod shows after a restart; check that it is marked **Selected** in the Custom graphics mods list. |
 | A part of a mod or pack is drawn in the original look | The mod or pack lacks that picture, or civ64 could not use it; the original's picture is drawn instead. |

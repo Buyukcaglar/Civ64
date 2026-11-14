@@ -34,6 +34,14 @@
     <td align="center"><sub>Options, Graphics (new in 1.3)</sub></td>
   </tr>
   <tr>
+    <td width="50%"><img src="docs/screenshots/Civ64-11-GamePlay-Windows-Modern-1to1.png" alt="Play with a Modern-style graphics pack at 1:1"></td>
+    <td width="50%"><img src="docs/screenshots/Civ64-12-GamePlay-Windows-Modern-1to1-Zoomed.png" alt="Play with a Modern-style graphics pack at 1:1, map zoomed in"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>A Modern-style graphics pack (obtained separately, not included), 1:1</sub></td>
+    <td align="center"><sub>The same, map zoomed in</sub></td>
+  </tr>
+  <tr>
     <td width="50%"><img src="docs/screenshots/Civ64-09-GamePlay-macOS-Windows.png" alt="Play on macOS with the Windows graphics, windowless"></td>
     <td width="50%"><img src="docs/screenshots/Civ64-10-GamePlay-macOS-DOS.png" alt="Play on macOS with the DOS graphics, windowless"></td>
   </tr>
@@ -103,18 +111,24 @@ The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-st
 
 1. Download `civ64.exe` (on Windows 7: `Civ64-Win7.exe`) from the
    [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) into a folder of its own.
-2. Next to it, make a folder named `GameData` and put in it a ZIP of your Civilization for Windows files
-   named `Civ-Windows.zip`; for the DOS graphics, add a ZIP of your Civilization for DOS files named
-   `Civ-DOS.zip`. civ64 reads the ZIP files where they are and never extracts them.
-3. Run `civ64.exe`. If it finds no game files, it asks you to locate the game's `civ.exe` or ZIP file
-   and remembers your choice. Your saved games go to a `Save` folder that civ64 makes next to
-   `civ64.exe`.
+2. Run `civ64.exe`. At the first start it asks you to choose the game's `civ.exe` (in your game folder)
+   or a ZIP file of the game, and then whether to locate Civilization for DOS too (optional).
+3. civ64 checks what you chose and **copies the files it needs into a `GameData` folder next to
+   `civ64.exe`**, one archive per edition (`Civ-Windows.zip`, `Civ-DOS.zip`), and from then on uses them
+   from there. Your own files are never changed, and you are not asked again. Your saved games go to a
+   `Save` folder next to `civ64.exe`.
 
-**Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings stay. Version 1.3 no longer looks
-for `CivWin.zip`, `CivDos.zip` or `MusicSfx.zip` (or the `CivWin`, `CivDos` and `MusicSfx` folders) next
-to `civ64.exe`: move and rename them into `GameData` as `Civ-Windows.zip`, `Civ-DOS.zip` and
-`CustomMusicSfx.zip`, or choose them again when civ64 asks. If you played from a `CivWin.zip`, your saves
-are in `%LOCALAPPDATA%\civ64\CivWin`: copy the `.SAV` files into the new `Save` folder
+So the folder of `civ64.exe` must be one you can write to (not `C:\Program Files`), with room for the
+copies (a few MB per edition). Every other edition's files, your own sounds and graphics mods are chosen
+on the Options dialog and copied into `GameData` in the same way; you can also put the archives into
+`GameData` yourself ([the file table](docs/USER-GUIDE.md#3-where-civ64-finds-the-game)).
+
+**Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings stay. A game or DOS location you
+chose in an earlier version is copied into `GameData` at the first start of 1.3. Version 1.3 no longer
+looks for `CivWin.zip`, `CivDos.zip` or `MusicSfx.zip` (or the `CivWin`, `CivDos` and `MusicSfx` folders)
+next to `civ64.exe`: when civ64 asks, choose them (for example your old `CivWin.zip`), and civ64 copies them
+into `GameData`. If you played from a `CivWin.zip`, your saves are in `%LOCALAPPDATA%\civ64\CivWin`: copy
+the `.SAV` files into the new `Save` folder
 ([details](docs/USER-GUIDE.md#11-saves-settings-and-the-files-civ64-writes)).
 
 **Options** (new in 1.3). The window menu's **Options…** opens one dialog with three pages:
@@ -128,7 +142,8 @@ are in `%LOCALAPPDATA%\civ64\CivWin`: copy the `.SAV` files into the new `Save` 
 * **Graphics:** the graphics style: **Windows**, **DOS VGA**, **DOS EGA**, **Amiga**, **Atari ST**,
   **PC-98**, **SNES** or **Custom**; the **Custom graphics mods** (community tileset mods for the Windows
   or DOS graphics, and Modern-style graphics packs that you obtain separately) with **Add mod…** and
-  **Create mod kit…**; and where each edition's files are.
+  **Create mod kit…**; and, on a card that shows **Choose files**, the choice of that edition's files,
+  which civ64 copies into `GameData`.
 * **Audio:** the music and sound effects of **Windows**, the DOS game's **IBM**, **Tandy**,
   **AdLib/Sound Blaster** or **Roland MT-32** sound, **Amiga**, **Atari ST**, **SNES**, **NEC PC-98**, or
   **Custom** (your own WAV files, none included).
@@ -231,11 +246,14 @@ original game loads civ64's saves.
   making such a pack: every picture a pack can replace, with its name, a reference picture made from your
   own game files and pictures of where it is used (the window menu's **Add screen to mod kit** adds the
   current screen), and a check of a pack that lists what is missing or wrong.
-* **GameData and Save folders:** the games' files are read from ZIP files in a `GameData` folder next to
-  `civ64.exe` (`Civ-Windows.zip`, `Civ-DOS.zip`, `Civ-Amiga.zip`, `Civ-AtariST.zip`, `Civ-PC98.zip`,
-  `Civ-SNES.zip`, `MT32-ROMs.zip`, `CustomMusicSfx.zip`), in memory, without extracting them. Saved games,
-  the preferences, the Hall of Fame and the replays go to a `Save` folder next to `civ64.exe` (if it cannot
-  be written, `%LOCALAPPDATA%\civ64\Save`); the game's own files are never changed.
+* **GameData and Save folders:** whatever files you choose for an edition (at the first start's questions
+  or on the Options dialog) are checked and copied into a `GameData` folder next to `civ64.exe`, only the
+  files civ64 needs, as one archive per edition (`Civ-Windows.zip`, `Civ-DOS.zip`, `Civ-Amiga.zip`,
+  `Civ-AtariST.zip`, `Civ-PC98.zip`, `Civ-SNES.zip`, `CustomMusicSfx.zip`; the MT-32 ROMs as
+  `MT32-ROMs.zip`, which you put there yourself), and the game uses them from there, read in memory. The
+  copy is checked before it replaces an archive, the same files are never copied twice, and your own files
+  are never changed. Saved games, the preferences, the Hall of Fame and the replays go to a `Save` folder
+  next to `civ64.exe` (if it cannot be written, `%LOCALAPPDATA%\civ64\Save`).
 * **Fix, Windows graphics:** a road or railroad on an ocean square (the original's well known bug, kept
   playable) is now drawn over that square's own coast, without the land slivers and wrong shores the
   original drew.
@@ -277,8 +295,8 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 The recovered C and the core translated from it are readings of the copyrighted original program,
 so they are not published. The released `civ64.exe` contains none of the original games' files or
 bytes (Windows, DOS, Amiga, Atari ST, PC-98 or SNES), no MT-32 ROM, no music and no graphics pack, and
-neither does `Civ64.app`: they read your own copies at run time and check the Windows and DOS files
-against the exact supported releases. The
+neither does `Civ64.app`: they read your own copies at run time (`civ64.exe` from the archives it copies
+into its `GameData` folder) and check the Windows and DOS files against the exact supported releases. The
 documentation describes the work in full; where a record quoted program code, the public copy
 condenses that passage into a description ([audit summary in docs/README.md](docs/README.md#9-how-the-public-copy-was-prepared)).
 
@@ -297,3 +315,5 @@ libmt32emu 2.8.3 of the [Munt](https://github.com/munt/munt) project (GNU LGPL 2
 adaptation of the font "Chicago 12.1" by kamekku14, after "Chicago 12" by Damien Guard (Creative Commons
 Attribution-ShareAlike 3.0) for the Simulated Apple System 7 window style; the About box shows their
 notices and the LGPL's text.
+
+**Written offer (LGPL).** For at least three years from the release of version 1.3, anyone who has `civ64.exe` or `Civ64-Win7.exe` may ask for the complete source code of the libmt32emu 2.8.3 contained in them, together with the material needed to relink the program with a changed version of that library, as section 6 of the GNU LGPL 2.1 requires. It is given free of charge, apart from any cost of the medium. Ask by opening an issue in this repository: [github.com/Buyukcaglar/Civ64/issues](https://github.com/Buyukcaglar/Civ64/issues). The library's unchanged source is also available from the [Munt](https://github.com/munt/munt) project.

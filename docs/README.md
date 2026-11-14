@@ -262,8 +262,11 @@ unchanged libmt32emu 2.8.3 of Munt, LGPL 2.1 or later; Amiga, Atari ST, SNES, PC
 styles Simulated Apple System 7 and OS native windows and the OS native menu; at 1:1 the popups and the World Map
 and Status windows drawn 1x, 2x or 3x; Custom graphics mods (CivWin and CivDOS tileset mods merged per resource or
 file over the originals, and separately obtained packs in civ64's Modern pack format, with a locally generated mod
-kit), copied into `GameData` as one archive each; the `GameData` ZIP files read in memory and the `Save` folder
-(the earlier `CivWin.zip`, `CivDos.zip` and `MusicSfx.zip` names and the extraction to `%LOCALAPPDATA%` dropped);
+kit), copied into `GameData` as one archive each; every edition's files and the player's own sounds likewise
+copied, wherever the player chooses them, into one checked archive per edition in the `GameData` folder beside
+`civ64.exe` and used from there, read in memory (the user's direction of 2026-11-14; a location remembered by
+an earlier version is copied in at the next start), and the `Save` folder (the earlier `CivWin.zip`,
+`CivDos.zip` and `MusicSfx.zip` names and the extraction to `%LOCALAPPDATA%` dropped);
 and roads and railroads on ocean squares drawn over their own coast in the Windows graphics (F360). Rules,
 computer players, random numbers and saves are unchanged. Each step was built and passed the project's automated
 tests on Windows and was checked by the author on user-test builds; several of the author's checks of the new
@@ -323,7 +326,8 @@ made for the public copy and recorded file by file in an audit:
 * **Private data:** 13 private folder paths were replaced by placeholders; no e-mail address remains.
 * **No DOS bytes:** the published tree was scanned with the project's `nodos` scanner (0 hits). The
   screenshots in [screenshots/](screenshots/) are the only images of the original games' art;
-  they show civ64 running, by the author's choice. The two added for 1.3 show civ64's Options dialog.
+  they show civ64 running, by the author's choice. Of those added for 1.3, two show civ64's Options dialog and two show play
+  with a Modern-style graphics pack, which is obtained separately and not published here.
 
 ## 10. Index of documents
 
@@ -861,6 +865,8 @@ made for the public copy and recorded file by file in an audit:
 | [screenshots/Civ64-08-WindowlessPlay-DOS.png](screenshots/Civ64-08-WindowlessPlay-DOS.png) |  |
 | [screenshots/Civ64-09-GamePlay-macOS-Windows.png](screenshots/Civ64-09-GamePlay-macOS-Windows.png) |  |
 | [screenshots/Civ64-10-GamePlay-macOS-DOS.png](screenshots/Civ64-10-GamePlay-macOS-DOS.png) |  |
+| [screenshots/Civ64-11-GamePlay-Windows-Modern-1to1.png](screenshots/Civ64-11-GamePlay-Windows-Modern-1to1.png) |  |
+| [screenshots/Civ64-12-GamePlay-Windows-Modern-1to1-Zoomed.png](screenshots/Civ64-12-GamePlay-Windows-Modern-1to1-Zoomed.png) |  |
 | [screenshots/Civ64-13-Options-Display.png](screenshots/Civ64-13-Options-Display.png) |  |
 | [screenshots/Civ64-14-Options-Graphics.png](screenshots/Civ64-14-Options-Graphics.png) |  |
 | [screenshots/OnTheFlyGraphicsSwitch.gif](screenshots/OnTheFlyGraphicsSwitch.gif) |  |
