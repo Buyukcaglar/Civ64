@@ -46,8 +46,8 @@
     <td width="50%"><img src="docs/screenshots/Civ64-10-GamePlay-macOS-DOS.png" alt="Play on macOS with the DOS graphics, windowless"></td>
   </tr>
   <tr>
-    <td align="center"><sub>On macOS (1.2.5), Windows graphics</sub></td>
-    <td align="center"><sub>On macOS (1.2.5), DOS graphics</sub></td>
+    <td align="center"><sub>On macOS, Windows graphics</sub></td>
+    <td align="center"><sub>On macOS, DOS graphics</sub></td>
   </tr>
 </table>
 
@@ -172,25 +172,25 @@ troubleshooting.
 
 ### Quick start on macOS
 
-There is no macOS application of version 1.3. The macOS application stays at **1.2.5**: it has the
-Windows and DOS graphics, windowless play, 1:1 pixels and the five map zoom levels, but none of 1.3's
-additions, and it keeps 1.2.5's file names.
+The macOS application `Civ64.app` is version **1.3** too: the Options dialog, every graphics style, the
+editions' sounds, the window styles, the 1:1 popup sizes, graphics mods and the mod kit, as on Windows. Only the
+**OS native** window style is not in it.
 
 **Requirements:** macOS 13 Ventura or later, Apple silicon or Intel; your own copy of Civilization for
-Windows (the same release as above) and, optionally, of Civilization for DOS 475.05.
+Windows (the same release as above) and, optionally, of the other editions.
 
-1. Download `Civ64-1.2.5-macOS.dmg` from the
-   [v1.2.5 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5), open it and drag `Civ64.app`
-   to Applications or to a folder of its own. civ64 is signed with the developer's Developer ID and
-   notarized by Apple.
-2. Put `CivWin.zip` (and optionally `CivDos.zip`, `MusicSfx.zip`) or the `CivWin` / `CivDos` folders next
-   to `Civ64.app`, or let civ64 ask for them at the first start. Optionally add `vgasys.fon` from a
-   Windows PC (`C:\Windows\Fonts`) for the exact Windows 3.1 font in the game's dialogs.
-3. Start civ64 from where you put it.
+1. Download `Civ64-1.3-macOS.dmg` from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest), open it and drag `Civ64.app`
+   to Applications. civ64 is signed with the developer's Developer ID and notarized by Apple.
+2. Start it. At the first start it asks only for the Windows game (its folder, `civ.exe` or a ZIP) and copies
+   the files it needs into `~/Library/Application Support/civ64/GameData`. Optionally add `vgasys.fon` from a
+   Windows PC (`C:\Windows\Fonts`) to the game's folder for the exact Windows 3.1 font in the game's dialogs.
+3. Everything else is on **civ64 > Options…** (Command+,), copied into the same `GameData` folder.
+   Upgrading from 1.2.5: your settings stay, and the files 1.2.5 used are copied in at the first start.
 
 On a Mac, Option is Alt. civ64's commands are in the **civ64** menu of the macOS menu bar, the game's
 own menus are both in its window and in the macOS menu bar, and the keys have Mac shortcuts:
-**Shift+Command+Delete** switches the graphics, **Command+=**, **Command+-** and **Command+0** zoom the
+**Command+,** opens Options, **Shift+Command+Delete** switches the graphics, **Command+=**, **Command+-** and **Command+0** zoom the
 map, **Control+Command+F** is full screen and **Command+Q** quits. The Windows keys work too. Details:
 [User Guide, section 15](docs/USER-GUIDE.md#15-civ64-for-macos).
 
@@ -262,6 +262,8 @@ original game loads civ64's saves.
   original drew.
 * The program's version information and its About box say 1.3, in `civ64.exe` and `Civ64-Win7.exe`; the
   About box also carries the notices of the MT-32 emulation and of the Chicago font.
+* The macOS application is 1.3 as well (`Civ64-1.3-macOS.dmg`), with everything above except the OS native
+  window style; its `GameData` folder is in `~/Library/Application Support/civ64`.
 
 ### Earlier versions
 
@@ -291,7 +293,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and from v1.2.2 to v1.2.5 also the macOS application (`Civ64-1.2.5-macOS.dmg` in v1.2.5, `Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3); the earlier ones are [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) (with the macOS application 1.2.5, the latest for macOS), [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.3-macOS.dmg` in v1.3, `Civ64-1.2.5-macOS.dmg` in v1.2.5, `Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3) (with the macOS application 1.3); the earlier ones are [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) (with the macOS application 1.2.5), [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the graphics profiles), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, every file of the original games, and any graphics mod or graphics pack. |
 
@@ -313,10 +315,10 @@ condenses that passage into a description ([audit summary in docs/README.md](doc
 
 civ64's About box carries its licence: the MIT licence, Copyright (c) 2026 Onur BUYUKCAGLAR, for
 the port's own code. It does not cover Sid Meier's Civilization, its program or its data, which
-belong to their owners. Since 1.3 `civ64.exe` also contains, unchanged, the MT-32 emulation library
+belong to their owners. Since 1.3 `civ64.exe` (and `Civ64.app`) also contains, unchanged, the MT-32 emulation library
 libmt32emu 2.8.3 of the [Munt](https://github.com/munt/munt) project (GNU LGPL 2.1 or later), and an
 adaptation of the font "Chicago 12.1" by kamekku14, after "Chicago 12" by Damien Guard (Creative Commons
 Attribution-ShareAlike 3.0) for the Simulated Apple System 7 window style; the About box shows their
 notices and the LGPL's text.
 
-**Written offer (LGPL).** For at least three years from the release of version 1.3, anyone who has `civ64.exe` or `Civ64-Win7.exe` may ask for the complete source code of the libmt32emu 2.8.3 contained in them, together with the material needed to relink the program with a changed version of that library, as section 6 of the GNU LGPL 2.1 requires. It is given free of charge, apart from any cost of the medium. Ask by opening an issue in this repository: [github.com/Buyukcaglar/Civ64/issues](https://github.com/Buyukcaglar/Civ64/issues). The library's unchanged source is also available from the [Munt](https://github.com/munt/munt) project.
+**Written offer (LGPL).** For at least three years from the release of version 1.3, anyone who has `civ64.exe`, `Civ64-Win7.exe` or `Civ64.app` (in `Civ64-1.3-macOS.dmg`) may ask for the complete source code of the libmt32emu 2.8.3 contained in them, together with the material needed to relink the program with a changed version of that library, as section 6 of the GNU LGPL 2.1 requires. It is given free of charge, apart from any cost of the medium. Ask by opening an issue in this repository: [github.com/Buyukcaglar/Civ64/issues](https://github.com/Buyukcaglar/Civ64/issues). The library's unchanged source is also available from the [Munt](https://github.com/munt/munt) project.

@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.3 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; from 1.2.2 to 1.2.5 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers (the macOS application stays at 1.2.5) |
+| The result | `civ64.exe` 1.3 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers (1.3 since 2026-11-14) |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -272,7 +272,20 @@ and roads and railroads on ocean squares drawn over their own coast in the Windo
 computer players, random numbers and saves are unchanged. Each step was built and passed the project's automated
 tests on Windows and was checked by the author on user-test builds; several of the author's checks of the new
 styles and sound sources were still open at the release. The Release `civ64.exe` and `Civ64-Win7.exe` of
-2026-11-14 are the programs of the `v1.3` release; there is no macOS application of 1.3.
+2026-11-14 are the programs of the `v1.3` release.
+
+**Version 1.3, macOS** (2026-11-14, a session on the Mac). The 1.3 portable layers built on the Mac after four
+fixes that clang found and MSVC had not (two C99-parse and unused-function errors, a missing headless stub, and an
+uninitialised `PdosShape.k` in the DOS replay's page-2 sprites, which MSVC's stack happened to hide); the Amiga
+screen's strings were reordered so the clang string section holds no run of the DOS game's string table
+(`nodos.py`). The macOS host was brought to 1.3: the compose's thread pool on POSIX threads, GAMEDATA-61's copy
+into `~/Library/Application Support/civ64/GameData` with the silent adoption of 1.2.5's locations, the ten audio
+sources on an AudioQueue stream, the DOS VGA/EGA/PC-98 drivers (switched live) and SNES styles, the display model
+(Simulated Windows 3.1 and Apple System 7, windowless, OS native menu), the 1:1 popup and tool-window scales,
+Custom graphics mods, Modern packs and the mod kit, the Options dialog in AppKit, and the About box's third-party
+notices with the LGPL. OS native windows were not ported. All 31 sections of `test-mac.sh` passed (with the new
+`test_mac_gamedata` and `test_mac_mods`); `Civ64-1.3-macOS.dmg` joins the `v1.3` release. The new Mac menus and the
+Options dialog were not checked on screen before the release.
 
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are

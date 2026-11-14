@@ -6,9 +6,9 @@ Windows (`Civ64-Win7.exe` on Windows 7). civ64 runs the original *Sid Meier's Ci
 can show the same running game with the graphics of *Civilization for DOS* and of the Amiga, Atari ST,
 PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
-Sections 1 to 14 describe the Windows program 1.3. **There is no macOS application of version 1.3**: the
-macOS application `Civ64.app` stays at 1.2.5, with 1.2.5's menus and file names. **On a Mac, read
-[section 15](#15-civ64-for-macos)**: it describes the macOS application 1.2.5.
+Sections 1 to 14 describe the Windows program 1.3. The macOS application `Civ64.app` is version 1.3 too, with
+the same Options dialog, graphics styles, sounds and mods; **on a Mac, also read
+[section 15](#15-civ64-for-macos)**: it gives the Mac's download, folders, menus and keys, and its differences.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
 > warranty of any kind; you use it at your own risk, and no liability is accepted for any damage,
@@ -683,49 +683,56 @@ are shown unchanged.
 
 ## 15. civ64 for macOS
 
-`Civ64.app` (version 1.2.5) is the same program as `civ64.exe` 1.2.5: the same recovered game, the same Windows 3.1
-environment and the same Windows and DOS graphics, on a native macOS back end. **It has none of the additions of
-version 1.3** (the Options dialog, the other editions' graphics and sounds, the window styles, the 1:1 popup and
-World Map and Status sizes, graphics mods, the GameData and Save folders); it is described here as it is. It is
-signed with the developer's Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
+`Civ64.app` (version 1.3) is the same program as `civ64.exe` 1.3: the same recovered game, the same Windows 3.1
+environment, the **Options** dialog, the graphics styles (Windows, DOS VGA, DOS EGA, Amiga, Atari ST, PC-98, SNES and
+Custom), the editions' music and sound effects, the window styles, the 1:1 popup and tool-window sizes, graphics mods
+and the mod kit, on a native macOS back end. Sections 1 to 14 apply, with the differences below. It is signed with the
+developer's Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
 
 ### Requirements
 
 * **macOS 13 Ventura or later**, on a Mac with Apple silicon or an Intel processor (one universal application).
 * **Your own copy of Sid Meier's Civilization for Windows**, the same release as on Windows (section 1). A Mac has
   no Windows directory, so the VGA system font is optional: copy `vgasys.fon` (from `C:\Windows\Fonts` of a Windows
-  PC) into the game's folder or next to `Civ64.app` for the exact Windows 3.1 font in the game's dialogs. Without it
-  civ64 starts anyway and uses the game's own font for that text.
-* **Optional:** your own copy of Civilization for DOS 475.05 for the DOS graphics, as on Windows.
+  PC) into the game's folder for the exact Windows 3.1 font in the game's dialogs. Without it civ64 starts anyway and
+  uses the game's own font for that text.
+* **Optional:** your own copies of the other editions' files, as on Windows (section 3).
 
 ### Installation
 
-1. Download `Civ64-1.2.5-macOS.dmg` from the [v1.2.5 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5)
+1. Download `Civ64-1.3-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
    and open it.
-2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
-   from there, not from the disk image: an application started from the disk image sees no files next to it.
-3. Give civ64 the game, in one of these ways (the names of version 1.2.5, compared ignoring case):
-   * `CivWin.zip` (or `Civ-Win.zip`, `Civ_Win.zip`) or a `CivWin` folder next to `Civ64.app`; optionally
-     `CivDos.zip` (or `Civ-Dos.zip`, `Civ_Dos.zip`) or a `CivDos` folder for the DOS graphics, and `MusicSfx.zip`
-     or a `MusicSfx` folder for your own music and sound effects (the 24 WAV names of section 3); or
-   * nothing: at the first start civ64 asks you to choose the game's folder, its `civ.exe` or its ZIP file, and
-     remembers your choice.
-4. Start civ64. A ZIP of the Windows game is extracted to `~/Library/Application Support/civ64/CivWin`, and your
-   saves are kept there.
+2. Drag `Civ64.app` to the Applications folder (or any folder) and start it from there.
+3. At the first start civ64 asks one thing only: the game's folder, its `civ.exe` or a ZIP of the game. It checks
+   your choice and copies the files it needs into **`~/Library/Application Support/civ64/GameData`** as
+   `Civ-Windows.zip`; it does not ask again.
+4. Everything else is on **civ64 > Options…** (Command+,): a card's **Choose files** for the DOS and other editions,
+   **Custom audio files** for your own sounds, **Add mod…** for graphics mods. Each is copied into the same
+   `GameData` folder, as on Windows, and used from the next start. Cancel in a file dialog changes nothing.
 
-To uninstall, delete `Civ64.app`, your game folder if you no longer want it, and the folder
-`~/Library/Application Support/civ64`.
+On a Mac, `GameData` is in `~/Library/Application Support/civ64`, not next to the application: macOS may run a
+downloaded application from a read-only place. The MT-32 ROMs are read from `GameData/MT32-ROMs.zip` there.
+
+**Upgrading from 1.2.5.** Replace `Civ64.app`; your settings stay. At the first start of 1.3 civ64 copies, without a
+question, what 1.2.5 used into `GameData`: the remembered game, DOS, music, Amiga and Atari ST locations, and a
+`CivWin.zip`, `CivDos.zip` or `MusicSfx.zip` (or `CivWin`, `CivDos`, `MusicSfx`, `amiga` or `atarist` folder) next to
+`Civ64.app`. Your saves stay where 1.2.5 kept them (below); saves in an old game folder are copied there too, without
+replacing any file.
+
+To uninstall, delete `Civ64.app` and the folder `~/Library/Application Support/civ64` (which holds your saves).
 
 ### Menus
 
-* **The civ64 menu** (the application menu in the macOS menu bar) holds About, Full Screen, Display (Windowless
-  Play, Integer Scaling, Fit to Window, **1:1 Pixels in Gameplay** below Fit to Window, the filters, CRT Scanlines and
-  the two 4:3 items, as described in section 5; on a Retina display 1:1 is one device pixel per game pixel, and the
-  whole-world limit counts device pixels), Map Zoom (Zoom Out, Normal Zoom and Zoom In, one level each, as in
-  section 8), Graphics (Windows and DOS graphics, Switch Graphics and Locate DOS Files),
-  Alternative Music/Soundfx, then Hide civ64 and Quit civ64. The game pauses while a menu is open, as on Windows.
-* **The game's own menus** are shown twice: in the game window, as in Windows 3.1, and in the macOS menu bar, where
-  you can choose them as well. An item the game has grayed or checked is grayed or checked in both.
+* **The civ64 menu** (the application menu in the macOS menu bar) holds About, **Options…** (Command+,), Full
+  Screen, and quick menus for the same choices as the Options dialog: Display (the window styles Simulated Windows
+  3.1, Simulated Apple System 7 and Windowless, OS Native Menu, Integer Scaling, Fit to Window, 1:1 Pixels in
+  Gameplay, Popup Scale and Tool Window Scale at 1:1, the filters, CRT Scanlines and the two 4:3 items), Map Zoom
+  (Zoom Out, Normal Zoom, Zoom In, Mouse Wheel Zooms Map), Graphics (the graphics styles, Switch Graphics, Choose
+  Files and Graphics Mods with Add Mod…, Remove and Create Mod Kit…), Add Screen to Mod Kit, Audio (the ten sound
+  sources), then Hide civ64 and Quit civ64. The game pauses while a menu or the Options dialog is open.
+* **The game's own menus** are shown in the game window, as in Windows 3.1, and in the macOS menu bar, where you can
+  choose them as well. With **OS native menu** (Windows graphics) the game window's own bar is left out, as on
+  Windows; Option or F10 opens the game's menus as a pop-up menu, Option with a letter opens that menu.
 
 ### Keys
 
@@ -734,7 +741,8 @@ shortcuts with Command, and the Windows keys work too:
 
 | On a Mac | Windows key | What it does |
 |---|---|---|
-| Shift+Command+Delete, or Control+Shift+Delete | Ctrl+Shift+Backspace | Switch between the Windows and the DOS graphics |
+| Command+, | (window menu, Options…) | The Options dialog |
+| Shift+Command+Delete, or Control+Shift+Delete | Ctrl+Shift+Backspace | Switch to the next graphics style whose files are loaded |
 | Control+Command+F, Option+Return or the window's green button | Alt+Enter | Full screen (macOS's own, in a space of its own) |
 | Command+= / Command+- | Ctrl+Shift+Plus / Minus | Map zoom in / out |
 | Command+0 | Ctrl+Shift+0, Ctrl+Shift+Home | Normal map zoom |
@@ -746,21 +754,27 @@ shortcuts does not count as a key press in the game, so a switch during the open
 
 ### Files and settings
 
-civ64 writes only to the game folder and to `~/Library/Application Support/civ64`: `civ64.cfg` (civ64's settings,
-the keys of version 1.2.5, with the window's place as `window_mac`), the extracted `CivWin` folder and its
-`CivWin.manifest` when you use a `CivWin.zip`, and `civ64.lock` / `civ64.owner`, which keep a second civ64 from
-starting (the running one comes to the front). Saves, `civ.prf`, the Hall of Fame and the replays are written to the
-game folder, in the original formats.
+civ64 writes only to `~/Library/Application Support/civ64`: `civ64.cfg` (civ64's settings, the keys of version 1.3,
+with the window's place as `window_mac`), `graphics-mods.cfg` (the mod list, the same file as on Windows),
+`GameData` (the copies), the `CivWin` folder unpacked from `GameData/Civ-Windows.zip` (with its `CivWin.manifest`),
+where the saves, `civ.prf`, the Hall of Fame and the replays are written in the original formats, and
+`civ64.lock` / `civ64.owner`, which keep a second civ64 from starting (the running one comes to the front).
 
-### Differences from the Windows program 1.2.5
+### Differences from the Windows program 1.3
 
+* **OS native windows** (the World Map, Status and dialogs as real windows) are not in the macOS application: the
+  Options dialog shows that window style as not available on macOS. Simulated Windows 3.1, Simulated Apple System 7
+  and windowless play are.
+* `GameData` and the saves are in `~/Library/Application Support/civ64`, not next to the program (above).
 * Full screen is macOS's own: a space of its own with macOS's animation.
 * Moving the window does not pause the game (on Windows it does); the menus, a live resize and civ64's own boxes
   do.
-* civ64's boxes are macOS alerts and follow the system's light or dark appearance.
+* civ64's boxes and the Options dialog are macOS windows and follow the system's light or dark appearance.
 * Only files and folders with plain 8.3 names are listed to the game (Windows also lists the short alias of a long
   name).
 * Cursor pixels that Windows would invert are drawn black, and the hourglass cursor is the arrow (macOS has no
   public hourglass cursor).
-* The command line (section 12, without the options new in 1.3) has the same options when you start
-  `Civ64.app/Contents/MacOS/civ64` from Terminal.
+* A Modern-style pack's own font files are not drawn with the pack's font: their letters come from the pack's
+  picture of the font or the original font.
+* The command line (section 12) has the options of version 1.2.5 when you start `Civ64.app/Contents/MacOS/civ64` from
+  Terminal; `--graphics` also takes `dos-ega`, `dos-pc98` and `snes`.
