@@ -25,7 +25,7 @@ Contents: [1 Overview](#1-overview) · [2 Rules the work followed](#2-rules-the-
 | | |
 |---|---|
 | The original | `civ.exe` of *Sid Meier's Civilization for Windows*: 832,512 bytes, SHA-256 `a66ec640…1788`, a 16-bit Win16 New Executable built with Borland C++ 3.x (large model), 133 segments (69 code, 64 data), 1,065 functions in 416,385 code bytes |
-| The result | `civ64.exe` 1.2.5 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; since 1.2.2 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers |
+| The result | `civ64.exe` 1.3 (first released as 1.0), a native Windows x64 program (MSVC, C17, warnings as errors) that runs the original game on the player's own copy of its files and contains none of its bytes; from 1.2.2 to 1.2.5 also `Civ64.app`, a native macOS application (Apple clang, C17, universal arm64 and x86_64, macOS 13 or later) of the same portable layers (the macOS application stays at 1.2.5) |
 | Recovery | every one of the 1,065 functions recovered as readable C (89 files, about 67,000 lines); 99.93% of the code bytes decoded as instructions or jump tables |
 | Port | the 699 live functions translated into portable C (about 124,000 lines including generated tables), each compared instruction by instruction with the listing: 137,887 of 137,887 instructions, 11 verifier rounds; the 155 Borland run-time functions replaced; 211 dead functions recorded and left out ([TRACE.md](TRACE.md)) |
 | Coverage | 91.5% of the executable's code bytes ported; 100% of the code that can run either ported or replaced ([recovery-coverage.md](recovery-coverage.md)) |
@@ -249,6 +249,27 @@ tests check the layouts and the menu; the user's check passed. The Release `civ6
 macOS application to 1.2.5 (`ext-ONE-record.md`, "The macOS port"); `Civ64-1.2.5-macOS.dmg` joins them in the
 `v1.2.5` release.
 
+**Version 1.3 (2026-10-26 to 2026-11-14, Windows only).** The user directed a larger set of presentation work,
+recorded in unit records that are not part of this public copy (among them `ext-OPTIONS-record.md`,
+`gamedata-record.md`, `dos-gfx-ega-record.md`, `pc98-graphics-record.md`, `snes-graphics-record.md`,
+`amiga-graphics-port.md`, `atarist-graphics-port.md`, the audio records, `system75-record.md`,
+`native-windows-record.md`, `native-menu-record.md`, `ext-POPUP-record.md`, `graphics-mods-record.md` and
+`ext-MODKIT-record.md`): the Options dialog (Display, Graphics, Audio) in place of the window menu's submenus; the
+graphics styles DOS EGA (the DOS game's EGA driver), PC-98, Amiga, Atari ST and SNES beside Windows and DOS VGA,
+each drawn from the player's own copy of that edition at run time, the three DOS drivers switching live; the
+editions' music and sound effects (the DOS IBM, Tandy, AdLib and Roland MT-32 sources, the last through the
+unchanged libmt32emu 2.8.3 of Munt, LGPL 2.1 or later; Amiga, Atari ST, SNES, PC-98; Custom WAV files); the window
+styles Simulated Apple System 7 and OS native windows and the OS native menu; at 1:1 the popups and the World Map
+and Status windows drawn 1x, 2x or 3x; Custom graphics mods (CivWin and CivDOS tileset mods merged per resource or
+file over the originals, and separately obtained packs in civ64's Modern pack format, with a locally generated mod
+kit), copied into `GameData` as one archive each; the `GameData` ZIP files read in memory and the `Save` folder
+(the earlier `CivWin.zip`, `CivDos.zip` and `MusicSfx.zip` names and the extraction to `%LOCALAPPDATA%` dropped);
+and roads and railroads on ocean squares drawn over their own coast in the Windows graphics (F360). Rules,
+computer players, random numbers and saves are unchanged. Each step was built and passed the project's automated
+tests on Windows and was checked by the author on user-test builds; several of the author's checks of the new
+styles and sound sources were still open at the release. The Release `civ64.exe` and `Civ64-Win7.exe` of
+2026-11-14 are the programs of the `v1.3` release; there is no macOS application of 1.3.
+
 **Comparisons with the original** (OTVDM on Windows 11): the original's load-and-save of a save
 file equals civ64's byte for byte; the original loads a civ64 save and both re-saves are
 byte-identical; title-menu and Civilopedia keys behave the same.
@@ -301,8 +322,8 @@ made for the public copy and recorded file by file in an audit:
   description that keeps the names they mention.
 * **Private data:** 13 private folder paths were replaced by placeholders; no e-mail address remains.
 * **No DOS bytes:** the published tree was scanned with the project's `nodos` scanner (0 hits). The
-  seven screenshots in [screenshots/](screenshots/) are the only images of the original games' art;
-  they show civ64 running, by the author's choice.
+  screenshots in [screenshots/](screenshots/) are the only images of the original games' art;
+  they show civ64 running, by the author's choice. The two added for 1.3 show civ64's Options dialog.
 
 ## 10. Index of documents
 
@@ -840,4 +861,6 @@ made for the public copy and recorded file by file in an audit:
 | [screenshots/Civ64-08-WindowlessPlay-DOS.png](screenshots/Civ64-08-WindowlessPlay-DOS.png) |  |
 | [screenshots/Civ64-09-GamePlay-macOS-Windows.png](screenshots/Civ64-09-GamePlay-macOS-Windows.png) |  |
 | [screenshots/Civ64-10-GamePlay-macOS-DOS.png](screenshots/Civ64-10-GamePlay-macOS-DOS.png) |  |
+| [screenshots/Civ64-13-Options-Display.png](screenshots/Civ64-13-Options-Display.png) |  |
+| [screenshots/Civ64-14-Options-Graphics.png](screenshots/Civ64-14-Options-Graphics.png) |  |
 | [screenshots/OnTheFlyGraphicsSwitch.gif](screenshots/OnTheFlyGraphicsSwitch.gif) |  |

@@ -1,13 +1,14 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.2.5: `civ64.exe` for
-Windows (`Civ64-Win7.exe` on Windows 7) and `Civ64.app` 1.2.5 for macOS. civ64 runs the original *Sid Meier's Civilization for Windows* (the
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3: `civ64.exe` for
+Windows (`Civ64-Win7.exe` on Windows 7). civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
-can show the game with the graphics of *Civilization for DOS* at any moment.
+can show the same running game with the graphics of *Civilization for DOS* and of the Amiga, Atari ST,
+PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
-Sections 1 to 14 describe the Windows program. **On a Mac, read [section 15](#15-civ64-for-macos)
-first**: it lists what is different there; everything else (the game, both graphics, the Display
-options, windowless play, the map zoom, saves) is the same.
+Sections 1 to 14 describe the Windows program 1.3. **There is no macOS application of version 1.3**: the
+macOS application `Civ64.app` stays at 1.2.5, with 1.2.5's menus and file names. **On a Mac, read
+[section 15](#15-civ64-for-macos)**: it describes the macOS application 1.2.5.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
 > warranty of any kind; you use it at your own risk, and no liability is accepted for any damage,
@@ -21,8 +22,8 @@ Contents
 3. [Where civ64 finds the game](#3-where-civ64-finds-the-game)
 4. [Starting and ending](#4-starting-and-ending)
 5. [The window, scaling and full screen](#5-the-window-scaling-and-full-screen)
-6. [The window menu](#6-the-window-menu)
-7. [The graphics profiles: Windows and DOS](#7-the-graphics-profiles-windows-and-dos)
+6. [The window menu and the Options dialog](#6-the-window-menu-and-the-options-dialog)
+7. [The graphics styles](#7-the-graphics-styles)
 8. [The map zoom](#8-the-map-zoom)
 9. [Playing the game](#9-playing-the-game)
 10. [Keys](#10-keys)
@@ -41,23 +42,27 @@ Contents
   program and version, built so that it also runs on Windows 7: where Windows 7 lacks the per-monitor
   DPI functions it uses the system DPI, and where it lacks the high-resolution timer it uses the
   system timer at 1 ms. It runs on Windows 8, 8.1, 10 and 11 too, but there use `civ64.exe`. It has
-  not yet been run on Windows 7 itself; it passed a check that it uses no function Windows 7 lacks
-  and the Windows host tests on Windows 11. Everything in this guide applies to it, with
-  `Civ64-Win7.exe` in place of `civ64.exe`; its settings are the same as civ64.exe's.
+  not yet been run on Windows 7 itself; it passed a check that it uses no function Windows 7 lacks.
+  Everything in this guide applies to it, with `Civ64-Win7.exe` in place of `civ64.exe`; its settings
+  are the same as civ64.exe's.
 * **Your own copy of Sid Meier's Civilization for Windows** (the Windows 3.1 release) with all of its
   files: `civ.exe`, the `.rsc` and `.wav` files, `civfonts.fon` and the other files of the
   installation. civ64 runs exactly one release of the game and checks it at every start:
   `civ.exe` must be 832,512 bytes with SHA-256
   `a66ec64020f10adb81613964f3d08a11ea278b6a5a060c8e49d1ea1fd3ba1788`.
 * **Optional: your own copy of Civilization for DOS, version 475.05** (`CIV.EXE` of 305,030 bytes,
-  SHA-256 `22de2748e3089793644c7e501e2a95b553010ddec34a7ff42f4395cf779c9c2a`), for the DOS graphics
-  profile. civ64 checks every DOS file it uses. Without the DOS files civ64 plays normally with the
-  Windows graphics.
+  SHA-256 `22de2748e3089793644c7e501e2a95b553010ddec34a7ff42f4395cf779c9c2a`), for the DOS VGA, DOS EGA
+  and PC-98 graphics and the DOS game's sounds. civ64 checks every DOS file it uses. Without the DOS files
+  civ64 plays normally with the Windows graphics.
+* **Optional: your own copies of the other editions' files**, each for that edition's graphics and
+  sounds (section 3): the Amiga edition, the Atari ST edition, the NEC PC-98 edition (version 475.02, with
+  the DOS files above for its graphics), the SNES edition (the USA cartridge image), and for the DOS
+  game's Roland MT-32 music the Roland MT-32's control ROM 1.07 and PCM ROM.
 * The VGA system font `Fonts\vgasys.fon` of your Windows directory. It is part of every Windows
   installation; civ64 reads it and never installs a font.
 
-civ64 contains none of the original games' files or bytes. Everything it shows comes from your own
-copies, read at run time.
+civ64 contains none of the original games' files or bytes, no MT-32 ROM, no music and no graphics mod or
+graphics pack. Everything it shows and plays comes from your own copies, read at run time.
 
 ## 2. Installation
 
@@ -65,73 +70,99 @@ copies, read at run time.
    and put it in a folder of its own, for example `C:\Games\civ64`. On Windows 7, download
    `Civ64-Win7.exe` instead (section 1).
 2. Give civ64 the Windows game, in one of these ways:
-   * a ZIP file of your Civilization for Windows files next to `civ64.exe`, named `CivWin.zip`,
-     `Civ-Win.zip` or `Civ_Win.zip`; or
-   * a folder named `CivWin` next to `civ64.exe` holding a copy of the game's files; or
+   * a folder named `GameData` next to `civ64.exe`, holding a ZIP file of your Civilization for Windows
+     files named `Civ-Windows.zip`; or
+   * `civ64.exe` placed in the game's own folder, next to `civ.exe`; or
    * nothing: at the first start civ64 asks you to choose the game's `civ.exe` or ZIP file.
-3. Optionally, give civ64 the DOS game for the DOS graphics: a `CivDos.zip` (or `Civ-Dos.zip`,
-   `Civ_Dos.zip`) or a `CivDos` folder next to `civ64.exe`, or choose its location when civ64 asks.
+3. Optionally, put the other editions' files in `GameData` too (section 3): `Civ-DOS.zip` for the DOS
+   game, and `Civ-Amiga.zip`, `Civ-AtariST.zip`, `Civ-PC98.zip`, `Civ-SNES.zip`, `MT32-ROMs.zip` and
+   `CustomMusicSfx.zip`; or choose them later on the Options dialog (section 6).
 4. Run `civ64.exe`.
 
-Use a **copy** of the game: civ64 writes saves, preferences and the Hall of Fame into the game's
-folder (section 11). If you prepare the folder by hand, copy every file of the installation into a
-folder of its own and make the files writable.
+civ64 reads the ZIP files in memory and never extracts or changes them, and it never changes the game's
+own files. Everything the game writes goes to a `Save` folder next to `civ64.exe` (section 11).
 
-To uninstall, delete `civ64.exe`, your game folder if you no longer want it, and the folder
-`%LOCALAPPDATA%\civ64` (civ64's settings and, when you used a ZIP, the extracted game files and the
-saves made there). civ64 writes nothing to the registry, `WIN.INI` or the clipboard.
+**Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings in `%LOCALAPPDATA%\civ64` stay.
+Version 1.3 no longer looks for the earlier names next to `civ64.exe` (`CivWin.zip`, `Civ-Win.zip`,
+`Civ_Win.zip`, `CivDos.zip`, `Civ-Dos.zip`, `Civ_Dos.zip`, `MusicSfx.zip` and the `CivWin`, `CivDos` and
+`MusicSfx` folders), and no longer extracts the Windows game to `%LOCALAPPDATA%\civ64\CivWin`. Move and
+rename your ZIP files into `GameData` (`Civ-Windows.zip`, `Civ-DOS.zip`, `CustomMusicSfx.zip`), or choose
+them again when civ64 asks. A location you chose in an earlier version is still used. If you played from
+a `CivWin.zip`, your saves are in `%LOCALAPPDATA%\civ64\CivWin`: copy the `.SAV` files (and, if you like,
+`famehall.civ` and `civ.prf`) into the new `Save` folder; civ64 neither reads nor deletes that old folder.
+
+To uninstall, delete civ64's folder (with `GameData` and `Save`, after keeping the saves you want), your
+game folder if you no longer want it, and the folder `%LOCALAPPDATA%\civ64` (civ64's settings, and the
+saves when the `Save` folder next to `civ64.exe` could not be written). civ64 writes nothing to the
+registry, `WIN.INI` or the clipboard.
 
 ## 3. Where civ64 finds the game
 
-**The Windows game** (required). Without the `--data` option civ64 looks, in this order (names are
-compared ignoring case):
+civ64 reads each edition's files from a ZIP file in the `GameData` folder next to `civ64.exe`, from a
+folder or ZIP you chose on the Options dialog (section 6) or at a question, or from the command line
+(section 12). Names are compared ignoring case. In a ZIP, the folder that holds the edition's main file
+(`civ.exe`, `CIV.EXE`, `game`, `GAME.PRG`) is the game's folder.
 
-1. A ZIP file next to `civ64.exe` named `CivWin.zip`, `Civ-Win.zip` or `Civ_Win.zip`. civ64 checks
-   its files (those in the ZIP's folder that holds `civ.exe`) and extracts them to
-   `%LOCALAPPDATA%\civ64\CivWin`, which becomes the game folder. If you later replace the ZIP with a
-   changed one, the files you have not changed are updated, and your saves and changed files stay.
-2. A folder `CivWin` next to `civ64.exe`.
-3. The folder of `civ64.exe` itself, when it holds `civ.exe`.
-4. The location you chose before (remembered in `civ64.cfg`).
-5. Otherwise civ64 asks you to choose the game's `civ.exe` or a ZIP file of the game in the Windows
-   file dialog. A valid choice is remembered.
+| File in `GameData` | Holds (your own copy) | Used for |
+|---|---|---|
+| `Civ-Windows.zip` | Civilization for Windows: `civ.exe` and the other files of the installation | the game (required) |
+| `Civ-DOS.zip` | Civilization for DOS 475.05, all of its files unchanged | the DOS VGA, DOS EGA and PC-98 graphics, the DOS sounds |
+| `Civ-Amiga.zip` | the Amiga edition's files, extracted from its disks (the folder with its `game` file) | the Amiga graphics and sounds |
+| `Civ-AtariST.zip` | the Atari ST edition's files, extracted from its disks (the folder with its `GAME.PRG`) | the Atari ST graphics and sounds |
+| `Civ-PC98.zip` | the NEC PC-98 edition's files (version 475.02), extracted from its disks: its pictures (`.PIC`), sprites (`.SPC`) and `YSOUND.CVL` | the PC-98 graphics (with `Civ-DOS.zip`) and sounds; `YSOUND.CVL` alone gives the sounds only |
+| `Civ-SNES.zip` | the SNES edition's USA cartridge image (`.sfc` or `.smc`; a copier header is accepted) | the SNES graphics and sounds |
+| `MT32-ROMs.zip` | the Roland MT-32's control ROM 1.07 as `MT32_CONTROL.ROM` and its PCM ROM as `MT32_PCM.ROM` | the DOS game's Roland MT-32 music |
+| `CustomMusicSfx.zip` | your own WAV files (below) | the Custom sound source |
+| `Civ-Modern.zip`, `Mod-<name>.zip` | graphics mods and packs, copied there by **Add mod…** (section 7) | the Custom graphics style |
 
-**The DOS game** (optional). civ64 looks for `--dos-data`, then for `CivDos.zip`, `Civ-Dos.zip` or
-`Civ_Dos.zip` next to `civ64.exe` (read in place, never extracted or changed), a `CivDos` folder, the
-remembered location, and otherwise asks. You can answer the question with **not now** or **don't ask
-again**. Later you can use the window menu's **Graphics > Locate DOS files…** (section 6); the
-location you choose there is used from the next start. To be asked again after "don't ask again",
-delete the line `dos_ask=never` from `%LOCALAPPDATA%\civ64\civ64.cfg`, or put a DOS ZIP or `CivDos`
-folder next to `civ64.exe`.
+**The Windows game** (required). Without the `--data` option civ64 uses, in this order: the location you
+chose on the Options dialog; `GameData\Civ-Windows.zip`; the folder of `civ64.exe` itself, when it
+holds `civ.exe`; the location you chose before at the question (remembered in `civ64.cfg`); otherwise
+civ64 asks you to choose the game's `civ.exe` or a ZIP file of the game in the Windows file dialog. A
+valid choice is remembered. A folder is read where it is and never written to.
+
+**The DOS game** (optional). civ64 looks for `--dos-data`, then the location chosen on the Options
+dialog, `GameData\Civ-DOS.zip`, the remembered location, and otherwise asks. You can answer the question
+with **not now** or **don't ask again**. Later you can choose the DOS files on the Options dialog's
+Graphics page (section 6); the location you choose there is used from the next start. To be asked again
+after "don't ask again", delete the line `dos_ask=never` from `%LOCALAPPDATA%\civ64\civ64.cfg`, or put
+`Civ-DOS.zip` in `GameData`.
 
 A file or folder that is found but is not the supported version stops civ64 with a message that
-names it. Since 1.2.3 every DOS file civ64 uses is checked there, not only `CIV.EXE`: a copy with one
-file changed or missing (a mod, or a file of another release next to a patched `CIV.EXE`) is named, file
-and folder or ZIP, at the start and in **Locate DOS files…**, which refuses it and asks again; a
-remembered location whose files changed since is skipped. A wrong `CIV.EXE` says "Version 475.05 is
-required." (the game's own `INTRO.TXT` may still read "Version 475.01"; the `CIV.EXE` is what counts). civ64 refuses to run in a folder whose path ends in `original\CIVWIN`, a safeguard that
-keeps a reference installation from ever being changed.
+names it. Every DOS file civ64 uses is checked, not only `CIV.EXE`: a copy with one file changed or
+missing (a mod, or a file of another release next to a patched `CIV.EXE`) is named, file and folder or
+ZIP, at the start and when you choose it, and refused; a remembered location whose files changed since
+is skipped. A wrong `CIV.EXE` says "Version 475.05 is required." (the game's own `INTRO.TXT` may still
+read "Version 475.01"; the `CIV.EXE` is what counts). civ64 refuses to run in a folder whose path ends
+in `original\CIVWIN`, a safeguard that keeps a reference installation from ever being changed.
 
-**Your own music and sound effects** (optional, since 1.1). civ64 can play your own WAV files
-instead of the Windows game's 24 sound files, which are `AIRNUKE.WAV`, `ALEX.WAV`, `CANNON.WAV`,
-`CEAS.WAV`, `ELIZ.WAV`, `FRED.WAV`, `GAND.WAV`, `GENG.WAV`, `HAMA.WAV`, `LINC.WAV`, `LOSE2.WAV`,
-`MAO.WAV`, `MONT.WAV`, `NAPO.WAV`, `OPENING.WAV`, `RAMS.WAV`, `SHAK.WAV`, `STAL.WAV`, `S_BEEP.WAV`,
-`S_LAND.WAV`, `S_NUKE.WAV`, `THEY_DIE.WAV`, `WE_DIE.WAV` and `WINTUNE.WAV`. **civ64 includes no music
-or sound files: you supply your own.**
+**The other editions** (optional). The Amiga files come from `--amiga-data`, else the location chosen on
+the Options dialog, else `GameData\Civ-Amiga.zip`; the Atari ST files likewise from `--atari-data`, the
+chosen location or `GameData\Civ-AtariST.zip`; the PC-98 files from the chosen location or
+`GameData\Civ-PC98.zip`; the SNES image from the chosen location or `GameData\Civ-SNES.zip` (civ64 accepts
+only the USA edition's image, checked by its SHA-256); the MT-32 ROMs only from `GameData\MT32-ROMs.zip`
+(both checked by size and SHA-256). civ64 does not ask for them at the start: a style or sound source
+whose files are not loaded is simply not available.
 
-1. Make a folder named `MusicSfx` next to `civ64.exe`, or a ZIP file named `MusicSfx.zip` there.
+**Your own music and sound effects** (optional). civ64 can play your own WAV files instead of the
+Windows game's 24 sound files, which are `AIRNUKE.WAV`, `ALEX.WAV`, `CANNON.WAV`, `CEAS.WAV`, `ELIZ.WAV`,
+`FRED.WAV`, `GAND.WAV`, `GENG.WAV`, `HAMA.WAV`, `LINC.WAV`, `LOSE2.WAV`, `MAO.WAV`, `MONT.WAV`,
+`NAPO.WAV`, `OPENING.WAV`, `RAMS.WAV`, `SHAK.WAV`, `STAL.WAV`, `S_BEEP.WAV`, `S_LAND.WAV`, `S_NUKE.WAV`,
+`THEY_DIE.WAV`, `WE_DIE.WAV` and `WINTUNE.WAV`. **civ64 includes no music or sound files: you supply your
+own.**
+
+1. Make a ZIP file named `CustomMusicSfx.zip` in `GameData`, or choose a folder or ZIP on the Options
+   dialog's Audio page (**Custom audio files**, **Choose file…**: a WAV file in the folder, or the ZIP).
 2. Put in it WAV files with any of those 24 names (upper or lower case). In a folder they go at its
    top level; in a ZIP they may be in any one folder of it. You need not supply all 24.
-3. Start civ64. Each valid file you supplied is played instead of the game's file of that name; every
-   other sound is the game's own. The files are read at the start (a ZIP is never extracted), so a
-   change takes effect at the next start.
+3. Choose **Custom** on the Audio page. Each valid file you supplied is played instead of the game's
+   file of that name; every other sound is the Windows game's own. The files are read at the start (a ZIP
+   is never extracted), so a new location takes effect at the next start.
 
-civ64 looks, in this order, at the `--music-sfx` option, a `MusicSfx.zip` next to `civ64.exe`, a
-`MusicSfx` folder there, and the location you chose before. A source counts when at least one of the
-24 names in it is a valid WAV file. Without one, the first start asks after the DOS question: **Yes**
-opens the file dialog, where you choose a WAV file (its folder becomes the source) or a ZIP file;
-**No** asks whether to ask again next time. The window menu's **Alternative music/soundfx** (section
-6) is checked when a valid source is in use; uncheck it to hear the game's own sounds again.
+civ64 looks at the `--music-sfx` option, the location chosen on the Options dialog,
+`GameData\CustomMusicSfx.zip`, and the location you chose before. Without one, the first start asks
+after the DOS question: **Yes** opens the file dialog, where you choose a WAV file (its folder becomes
+the source) or a ZIP file; **No** asks whether to ask again next time.
 
 ## 4. Starting and ending
 
@@ -167,56 +198,80 @@ was maximized. A window that would open entirely off-screen (for example after a
 removed) comes back at the top-left corner of the primary screen.
 
 **Resizing.** The window can be resized from a 640x480 client area upwards, maximized and restored.
-The picture is scaled into the window by the **Display** choices of the window menu:
+The picture is scaled into the window by the **Scaling** choices of the Options dialog's Display page
+(section 6):
 
-* **Integer scaling (whole steps)**: the picture is the largest whole multiple that fits, with sharp
-  pixels and black borders. This is the default.
+* **Integer scaling**: the picture is the largest whole multiple that fits, with sharp pixels and black
+  borders. This is the default.
 * **Fit to window**: the picture is as large as the window allows, keeping its proportions, with the
-  **Nearest-pixel filter** (pixels repeated) or the **Sharp filter** (only the edges between pixels
+  **Nearest pixel filter** (pixels repeated) or the **Sharp filter** (only the edges between pixels
   blended).
-* **1:1 pixels in gameplay** (off by default, since 1.2.5): during a game every picture is drawn at its
-  original size, one screen pixel per pixel, in both graphics: the Windows 3.1 desktop with the game's
-  windows, dialogs and menus, windowless play, the DOS play screen (its DOS art doubled, as always) and
-  the DOS 320 x 200 screens (the city screen, the reports), which then stand in the middle of the
-  window. The game screen takes the window's size, so a larger window shows more of the desktop and
-  the map. The largest game screen, 2726 x 1600, is the whole world map beside the World Map and
-  Status column; on a larger window (for example 4K full screen) the picture is drawn at the smallest
+* **Original pixel density (1:1)** (called "1:1 pixels in gameplay" in 1.2.5): during a game every picture
+  is drawn at its original size, one screen pixel per pixel, in every graphics style: the Windows 3.1
+  desktop with the game's windows, dialogs and menus, windowless play, the DOS play screen (its DOS art
+  doubled, as always) and the DOS 320 x 200 screens (the city screen, the reports), which then stand in
+  the middle of the window. The game screen takes the window's size, so a larger window shows more of the
+  desktop and the map. The largest game screen, 2726 x 1600, is the whole world map beside the World Map
+  and Status column; on a larger window (for example 4K full screen) the picture is drawn at the smallest
   whole step instead (2 x 2 up to 5452 x 3200, 3 x 3 beyond), so it fills the window and the map never
-  covers more than the whole world. While it is checked the map zoom goes no further out than normal
-  and the 4:3 items do not apply. The intro, title, Birth and setup screens keep **Integer scaling** or
-  **Fit to window**. Your choice is remembered.
-* **4:3 aspect ratio for 320 x 200 DOS intro screens** (on by default; called "Correct 320 × 200 to
-  4:3" in 1.0): the DOS graphics' 320x200 screens before a game (the intro, the title menu, the setup
-  pages, the Hall of Fame, Load) are shown with the 4:3 shape of a DOS monitor, so their pixels are a
-  little taller than wide; off, they keep square pixels. The DOS Birth of Civilization always keeps
-  square pixels.
-* **4:3 aspect ratio for 320 x 200 DOS gameplay** (off by default, since 1.1): the whole game with the
-  DOS graphics takes the DOS screen's 4:3 shape: the menu bar and its menus, the map, the World Map,
-  the Status window, every DOS box and the full-screen DOS scenes (reports, the city screen,
-  Civilopedia ...). The game screen's size and the game itself are unchanged. The Windows graphics'
-  pictures always keep square pixels.
-* **CRT scanlines** (off by default, since 1.1): a CRT monitor's dark scanlines over the picture,
-  after DOSBox Pure Unleashed's CRT filter (scanlines only, normal gaps, sharpest). Since 1.2.1 they
-  are double-scanned in both graphics, as DOSBox Pure's double-scan: two scanlines per pixel row of the
-  picture, over the map zoom too. Where the screen has too few rows for that, they lie on the screen's
-  own rows (one gap every two), so they show at every size. In a window they are spaced exactly as in
-  full screen on the window's monitor, and during play they are the same as on the intro, title, Birth
-  and setup screens. Every pixel stays as sharp as without it, and it costs no noticeable speed.
+  covers more than the whole world. While it is selected the map zoom goes no further out than normal
+  and the 4:3 items do not apply. Your choice is remembered. Two further choices apply only at 1:1 (they
+  are gray otherwise):
+  * **Draw popup content at: 1x, 2x, 3x** (new in 1.3): every popup over the map, from the Civilopedia
+    to the city view, is shown 2 or 3 times larger, with sharp whole pixels, while the map stays 1:1. When
+    the larger popup does not fit the window, the largest factor that fits is used. The game itself sees
+    no change.
+  * **Draw World Map and Status Windows at: 1x, 2x, 3x** (new in 1.3): the World Map and Status windows
+    (or, in windowless play, their column) are drawn 2 or 3 times larger, in every graphics style.
+* **4:3 aspect for 320x200 DOS intro screens** (on by default): the DOS graphics' 320x200 screens before
+  a game (the intro, the title menu, the setup pages, the Hall of Fame, Load) are shown with the 4:3 shape
+  of a DOS monitor, so their pixels are a little taller than wide; off, they keep square pixels. The DOS
+  Birth of Civilization always keeps square pixels.
+* **4:3 aspect for 320x200 DOS gameplay** (off by default, since 1.1): the whole game with the DOS
+  graphics takes the DOS screen's 4:3 shape: the menu bar and its menus, the map, the World Map, the
+  Status window, every DOS box and the full-screen DOS scenes (reports, the city screen, Civilopedia
+  ...). The game screen's size and the game itself are unchanged. The Windows graphics' pictures always
+  keep square pixels.
+* **CRT Scanlines** (off by default, since 1.1): a CRT monitor's dark scanlines over the picture, after
+  DOSBox Pure Unleashed's CRT filter (scanlines only, normal gaps, sharpest), double-scanned: two
+  scanlines per pixel row of the picture, over the map zoom too. Where the screen has too few rows for
+  that, they lie on the screen's own rows (one gap every two), so they show at every size. In a window
+  they are spaced exactly as in full screen on the window's monitor. Every pixel stays as sharp as
+  without it.
 
-**Windowless play** (since 1.1). The window menu's **Display > Windowless play** shows the game,
-during play, as one picture without captions, frames, borders or scroll bars, laid out like the DOS
-game's screen: the menu bar across the top, the World Map and the Status panel in a column below it
-on the left, and the map beside them. Menus open under their titles; dialogs, message boxes and the
-DOS boxes float over the picture. It works with both graphics, in a window and in full screen, and can
-be switched on and off at any time. Since 1.2 the picture fills the whole window, without a black
-border: civ64 makes the game's map window larger by the removed frames and scroll bars (so switching
-windowless play on or off resizes the map window a little). Before a game begins (the intro, the title menu, the setup) the
-screens look as before. Since 1.2.1, with the Windows graphics, the menu bar across the top is the
-Status window's gray and the menus that drop from it have a seamless stone background (built into
-`civ64.exe`); their unavailable items are drawn in a dark checker so that they stay readable.
-With the DOS graphics the menu bar shows the DOS game's five titles at their DOS places across the
-whole bar; since 1.2.2 also when the map window is narrower than them (for example in a 4:3 window),
-where 1.2.1 cut CIVILOPEDIA.
+The intro, title, Birth and setup screens keep **Integer scaling** or **Fit to window** when 1:1 is
+selected.
+
+**Play style** (the Options dialog's Display page). **Windowed** shows the game's own windows (the map,
+the World Map and the Status windows, the dialogs) in one of three styles:
+
+* **Simulated Windows 3.1**: as the original under Windows 3.1, drawn by civ64. This is the default.
+* **Simulated Apple System 7** (new in 1.3): the same windows, with the same sizes and behaviour, but their
+  frames, title bars, menus, scroll bars and buttons drawn in the style of Apple's System 7, with a Chicago
+  font. The game's own pictures and text are unchanged.
+* **OS native** (new in 1.3): the game's windows become windows of their own with Windows' frames and
+  title bars: the map window "CIVILIZATION" is civ64's main window, and the World Map, the Status window
+  and the dialogs are windows over it, which you can move as usual. With the Amiga and Atari ST graphics,
+  their World Map and Status panels become such windows, in their editions' look.
+
+**Windowless play** (since 1.1) shows the game, during play, as one picture without captions, frames,
+borders or scroll bars, laid out like the DOS game's screen: the menu bar across the top, the World Map
+and the Status panel in a column below it on the left, and the map beside them. Menus open under their
+titles; dialogs, message boxes and the DOS boxes float over the picture. It works with the Windows and the
+DOS graphics, in a window and in full screen, and can be switched on and off at any time. The picture fills the
+whole window: civ64 makes the game's map window larger by the removed frames and scroll bars (so
+switching windowless play on or off resizes the map window a little). Before a game begins (the intro,
+the title menu, the setup) the screens look as before. With the Windows graphics the menu bar across the
+top is the Status window's gray and the menus that drop from it have a seamless stone background (built
+into `civ64.exe`); their unavailable items are drawn in a dark checker so that they stay readable. With
+the DOS graphics the menu bar shows the DOS game's five titles at their DOS places across the whole bar.
+
+**OS native menu** (new in 1.3): with the Windows graphics, the game's menus (File, Edit, Orders, ...)
+are shown in the window's own Windows menu bar instead of the game's emulated bar; the menus, their
+items and their keys stay the game's. With the other graphics styles the game's own menu bar comes back.
+
+Display changes apply at once; windowless play and 1:1 finish switching when you close the Options
+dialog.
 
 **The game screen fills the window.** The opening credits, intro, title menu, Birth and setup screens
 keep the original's 640x480 picture, with black borders in a wider window. When a game begins (new,
@@ -225,84 +280,113 @@ map uses the whole window: a 1920x1080 window at twice the size gives a 960x540 
 640x480. From then on the game screen follows the window: enlarge, shrink, maximize or restore it,
 or switch to full screen, and the game screen grows or shrinks at once. The map window keeps the
 right and bottom edges it touches; the World Map and Status windows stay where they are. The desktop
-around the game's windows is black.
+around the game's windows is black. Every graphics style fills the window in the same way.
 
 **Full screen.** **Alt+Enter**, or the window menu's **Full screen**, makes the window cover its
-monitor; press it again to return to the window. civ64 remembers it. (Since 1.2.1 the title bar shows
-civ64's icon after every switch, also when civ64 started in full screen.)
+monitor; press it again to return to the window. civ64 remembers it.
 
-**Light and dark mode.** The title bar, the window menu, the About box and civ64's own message boxes
-follow Windows' light or dark app mode (Settings > Personalization > Colors) and change with it at
-once.
+**Light and dark mode.** The title bar, the window menu, the Options dialog, the About box and civ64's
+own message boxes follow Windows' light or dark app mode (Settings > Personalization > Colors) and
+change with it at once.
 
-## 6. The window menu
+## 6. The window menu and the Options dialog
 
-Open it by clicking the icon at the left of the title bar, or by right-clicking the title bar. (Alt,
-Alt+Space and F10 belong to the game's own menus.) From the top:
+**The window menu.** Open it by clicking the icon at the left of the title bar, or by right-clicking the
+title bar. (Alt, Alt+Space and F10 belong to the game's own menus.) From the top:
 
 | Item | What it does |
 |---|---|
 | **Restore**, **Move**, **Size**, **Minimize**, **Maximize** | Windows' own window commands. |
 | **Full screen** (Alt+Enter) | Full screen on or off. |
-| **Display** > **Windowless play** | The frameless one-picture layout during play (section 5). |
-| **Display** > **Integer scaling (whole steps)** / **Fit to window** | How the picture fills the window (section 5). |
-| **Display** > **1:1 pixels in gameplay** | Every picture of a game at its original size, one screen pixel per pixel (section 5). |
-| **Display** > **Nearest-pixel filter** / **Sharp filter** | The filter for **Fit to window** (gray under integer scaling, which never filters). |
-| **Display** > **CRT scanlines** | The CRT scanline effect (section 5). |
-| **Display** > **4:3 aspect ratio for 320 x 200 DOS intro screens** | The 4:3 shape of the DOS graphics' 320x200 screens before a game (checked by default). |
-| **Display** > **4:3 aspect ratio for 320 x 200 DOS gameplay** | The 4:3 shape of the whole DOS-graphics game (section 5). |
-| **Map zoom** > **Zoom out** (Ctrl+Shift+Minus) | The map zoom one level out (section 8); choose it again to go on. Gray at half size. |
-| **Map zoom** > **Normal zoom** (Ctrl+Shift+0, Home) | The map zoom back to normal; checked at normal size. |
-| **Map zoom** > **Zoom in** (Ctrl+Shift+Plus) | The map zoom one level in; choose it again to go on. Gray at double size and while the map window is too small for the next level. |
-| **Map zoom** > **Mouse wheel zooms map** | Checked by default; unchecked, the mouse wheel does nothing over the map. |
-| **Graphics** > **Windows graphics** / **DOS graphics** | Choose the graphics profile (section 7); the radio mark shows the current one. |
-| **Graphics** > **Switch graphics** (Ctrl+Shift+Backspace) | Switch to the other profile. |
-| **Graphics** > **Locate DOS files…** | Choose the DOS game's folder or ZIP; it is checked, remembered and used from the next start. It reads **DOS files present**, gray, while the DOS files are in use. |
-| **Alternative music/soundfx** | Your own music and sound effects on or off (section 3); gray when no source was found. |
-| **About…** | The program's name and version, credits, the repository link and the licence. |
+| **Options…** | The Options dialog (below). |
+| **Add screen to mod kit** | Adds the current screen's pictures to your mod kit; makes the kit first when there is none (section 7). |
+| **Zoom out** (Ctrl+Shift+Minus) | The map zoom one level out (section 8); choose it again to go on. Gray at half size. |
+| **Normal zoom** (Ctrl+Shift+0, Home) | The map zoom back to normal; checked at normal size. |
+| **Zoom in** (Ctrl+Shift+Plus) | The map zoom one level in; choose it again to go on. Gray at double size and while the map window is too small for the next level. |
+| **About…** | The program's name and version, credits, the repository link, the licence and the notices of the MT-32 emulation and of the Chicago font. |
 | **Close** (Alt+F4) | Exit civ64 (section 4); the menu's default item. |
 
-The marks are current whenever a menu opens. A letter underlined in an open menu chooses its item.
+Version 1.3 moved the earlier **Display**, **Map zoom** (its **Mouse wheel zooms map**), **Graphics** and
+**Alternative music/soundfx** items of this menu to the Options dialog.
 
-**The game pauses** (since 1.2.1) while the window menu or one of its submenus is open, while the
-window is moved or resized, and while civ64's own boxes (About, the exit question, Locate DOS files)
-are open: the game, its animations, the music and the sounds stand still, and afterwards everything
-goes on where it stopped, without a fast catch-up. The game's own menus and dialogs do not pause it,
-as in the original.
+**The game pauses** while the window menu or one of its submenus is open, while the window is moved or
+resized, and while civ64's own boxes and the Options dialog are open: the game, its animations, the music
+and the sounds stand still, and afterwards everything goes on where it stopped, without a fast catch-up.
+The game's own menus and dialogs do not pause it, as in the original.
 
-## 7. The graphics profiles: Windows and DOS
+**The Options dialog** (new in 1.3) has three pages, **Display**, **Graphics** and **Audio**, and opens
+on Display. Click a page's tab, or use Ctrl+Tab and Ctrl+Shift+Tab. **Done**, Escape or the dialog's close
+button closes it; there is no Cancel, because every change applies as you make it (or at the next start,
+where the dialog says so). Every choice is remembered in `civ64.cfg`.
 
-civ64 has two graphics profiles for the same game:
+* **Display**: **Play style** (Windowed: Simulated Windows 3.1, Simulated Apple System 7 or OS native;
+  Windowless play; OS native menu), **Scaling** (Integer scaling, Fit to window or Original pixel density
+  (1:1), with the popup and World Map and Status sizes at 1:1), **Filter** (Nearest pixel filter, Sharp
+  filter, CRT Scanlines) and **Extras** (the two 4:3 items and **Use mouse wheel to zoom in/out**). All of
+  them are described in section 5 and, for the wheel, section 8.
+* **Graphics**: the **Graphics style** cards (Windows, DOS VGA, DOS EGA, Amiga, Atari ST, PC-98, SNES and
+  Custom; section 7), the **Custom graphics mods** list (section 7), and **Graphics file locations**.
+  Each card says in words whether its style is **Shown now**, **Available**, waits for a restart, or needs
+  files: a card that shows **Choose files** opens a file dialog for that edition's files (Windows:
+  `civ.exe` or a ZIP; DOS: `CIV.EXE` or a ZIP; Amiga: the `game` file of the extracted folder; Atari ST:
+  `GAME.PRG`; PC-98: a ZIP or folder of its files; SNES: the cartridge image or a ZIP). civ64 checks the
+  choice, remembers its location and loads it at the next start. A style whose files were refused shows
+  **Files not usable**.
+* **Audio**: the source of the music and sound effects: **Windows** (the game's own WAV files), **DOS IBM
+  Sounds** (the PC speaker), **DOS Tandy sounds**, **DOS AdLib/Sound Blaster**, **DOS Roland MT-32 MIDI
+  board** (an MT-32 emulated inside civ64, on your own copy of its ROMs), **Amiga**, **Atari ST**,
+  **SNES**, **NEC PC-98**, or **Custom** (your own WAV files, section 3), each available when its files
+  are loaded. The sound source is independent of the graphics style. A change applies from the next sound;
+  new sound files apply after a restart. A Custom file that cannot be played falls back to the game's own
+  sound. The editions' sounds follow the game's events as their own programs played them; they could not
+  be compared with recordings of the original editions.
 
-* **Windows graphics**: the game as the Windows 3.1 release shows it. Since 1.2.1 the menu bar and
-  an open menu always show the game's torch cursor, also when the pointer comes from the World Map.
-* **DOS graphics**: the game with the pictures, palettes, fonts, menus and mouse pointer of
-  *Civilization for DOS* (version 475.05), read from your DOS files. Since 1.2.2, after Load a Saved
-  Game, the advisors' portraits have their right colours from the first report on, as in the DOS game.
+## 7. The graphics styles
 
-**Switching.** Press **Ctrl+Shift+Backspace**, or choose **Graphics > Switch graphics**, **Windows
-graphics** or **DOS graphics** in the window menu, at any moment: during the intro, the title menu,
-the Birth, the setup screens or a turn. The whole picture is redrawn at the next tick, and the window
-keeps its size. Two quick presses cancel each other. The animation at the top of the
+civ64 shows the same game in one of these styles; only what you see changes:
+
+* **Windows**: the game as the Windows 3.1 release shows it. The menu bar and an open menu always show the
+  game's torch cursor.
+* **DOS VGA**: the game with the pictures, palettes, fonts, menus and mouse pointer of *Civilization for
+  DOS* (version 475.05), read from your DOS files, as its VGA driver draws them.
+* **DOS EGA** (new in 1.3): the same DOS game as its own EGA driver draws it: 16 colours, the pictures
+  dithered by their EGA tables, the EGA dissolve and the map's EGA shapes.
+* **PC-98** (new in 1.3): the DOS game with the pictures, sprites and palettes of the NEC PC-98 edition. The text is in English, in the DOS game's Latin font drawn at twice the size,
+  as the PC-98 edition draws its Latin text; it needs both the DOS and the PC-98 files.
+* **Amiga** and **Atari ST** (new in 1.3): the game in those editions' own layouts, art, fonts and pointer,
+  from the intro and Birth to the endings. Their play page draws its
+  own map, World Map and Status panel.
+* **SNES** (new in 1.3): the SNES edition's screens, art, fonts and windows, drawn from your cartridge image.
+  Its intro runs at its own pace and is not kept in step when you switch. As on the SNES, the setup
+  questions come first, in the SNES setup screen, then the Birth with the names you chose. In play the
+  SNES vertical menus are replaced by a menu bar at the top, like the other styles', with the game's
+  menus in the SNES font and windows. As in the SNES edition, the Japanese take the Zulus' place in the
+  SNES graphics (their name, ruler and cities).
+* **Custom** (new in 1.3): the graphics mod or pack selected in the Custom graphics mods list (below).
+
+**Switching.** Press **Ctrl+Shift+Backspace**, or choose a card on the Options dialog's Graphics page, at
+any moment: during the intro, the title menu, the Birth, the setup screens or a turn. Ctrl+Shift+Backspace
+steps through the styles whose files are loaded: Windows, DOS VGA, DOS EGA, PC-98, Amiga, Atari ST, SNES and
+Custom. The whole picture is redrawn at the next tick, and the window keeps its size. The DOS VGA, DOS EGA
+and PC-98 drivers each run from the start, so they too switch live. The animation at the top of the
 [repository README](../README.md) shows a switch during play.
 
 **Switching never changes the game.** Your game, the computer players, the random numbers and your
-saves are the same in both profiles. Only what you see changes, with two deliberate exceptions: with
+saves are the same in every style. Only what you see changes, with two deliberate exceptions: with
 the DOS graphics the game continues to the setup as soon as the DOS Birth story ends, and the science
-advisor's recommendation box closes itself as the DOS game's does. Since 1.1 that recommendation stands
+advisor's recommendation box closes itself as the DOS game's does. That recommendation stands
 on the Status window, its width the Status window's, as in the DOS game, and it follows the Status
 window when it moves, the map zooms or windowless play is on.
 
-**civ64 remembers** the profile you last switched to and starts in it; without usable DOS files it
-starts with the Windows graphics. If the DOS files are not usable, the first refused switch of a run
-shows the reason and points to **Graphics > Locate DOS files…**; later refusals only beep.
+**civ64 remembers** the style you last switched to and starts in it; without usable files for it, it
+starts with the Windows graphics.
 
-**What the DOS graphics show.**
+**What the DOS graphics show** (VGA, EGA and PC-98).
 
 * The DOS intro, with the credits over the panorama, the logo reveal and the dissolve, at the DOS
-  version's own pace. Both intros run on the same clock, so a switch during the intro continues at
-  the same moment. The DOS title box has the DOS version's five items; **Quit** is in the Windows
-  graphics or on the window's close button.
+  version's own pace. The Windows and DOS intros run on the same clock, so a switch during the intro
+  continues at the same moment. The DOS title box has the DOS version's five items; **Quit** is in the
+  Windows graphics or on the window's close button.
 * The Birth of Civilization scenes with their colour cycling. When the DOS files are present, the
   Windows Birth follows the DOS Birth's pictures and captions, so a switch shows the same moment.
 * The setup pages (difficulty, competition, tribe, the name boxes and the introduction text), the
@@ -317,7 +401,7 @@ shows the reason and points to **Graphics > Locate DOS files…**; later refusal
   Fame entry at the end, the conqueror ending and the nuclear explosion.
 * The DOS mouse pointer, drawn with whole-pixel blocks, never blurred.
 
-**Windows-only items** keep their Windows form in the DOS profile: the file dialogs (switch to the
+**Windows-only items** keep their Windows form in the other styles: the file dialogs (switch to the
 Windows graphics at the DOS Load or Save screen to use the Windows file chooser for other files), the
 system message boxes, the About box and Help. The Windows menus EDIT, CITY and HELP exist only in the
 Windows graphics.
@@ -335,20 +419,59 @@ Windows graphics.
 * Reports, scenes and notes close with any key or a left click. **Alt+H** or the right button on a
   list item opens its Civilopedia page where the DOS game offers help.
 
+**The map in the Amiga, Atari ST and SNES styles** is moved as in the original game: a click on a square
+centres the view there, a click on the World Map centres on that square, and the game centres on the
+active unit. There is no scrolling at the screen's edge.
+
+**Custom graphics mods** (new in 1.3). The list under the Graphics page's cards holds your graphics mods;
+the one marked **Selected** is what the **Custom** card shows. civ64 includes no mods or packs. Two kinds
+are accepted:
+
+* **Tileset mods** for the Windows graphics (a mod's `civdata0.rsc` to `civdata4.rsc`) or for the DOS
+  graphics (the DOS game's `.PIC` and `.PAL` files of the same names), such as the community mods for
+  Civilization for Windows. Each picture the mod holds replaces the game's; whatever the mod lacks, or a
+  picture civ64 cannot use (for example a replacement of the EARTH map), is drawn from your original
+  files. The mod's other files (texts, sounds, programs) are never read. A tileset mod shows after a
+  restart.
+* **Modern-style graphics packs**: a pack in civ64's Modern pack format, which you obtain separately (for
+  example, made by someone with the mod kit below). It replaces the Windows graphics' pictures, map tiles,
+  fonts, window parts and pointers with its own, at once; whatever the pack lacks is drawn in the Windows
+  graphics.
+
+The list's buttons:
+
+* **Add mod…**: choose a mod's ZIP, its folder (any file in it), or a pack's ZIP or its `manifest.json`.
+  civ64 checks it and copies it into the `GameData` folder as one archive (`Civ-Modern.zip` for a Modern
+  pack, `Mod-<name>.zip` for a tileset mod); a mod already in the list, judged by its content, is not
+  added twice. A ZIP already in `GameData` is used where it is.
+* **Remove**: the mod leaves the list; its archive stays in `GameData`. Removing the mod the Custom card
+  shows returns to the Windows graphics.
+* **Use this mod**: marks the chosen mod **Selected** for the Custom card.
+
+**The mod kit** (new in 1.3), for making your own Modern-style pack. **Create mod kit…** asks for a folder
+(an empty one is best) and writes a web page, `index.html`, with reference pictures. Open it in a web
+browser: it lists every picture a pack can replace, with its name, a short description, its id, the path
+it has in a pack, its recommended size, a reference picture made from your own game files and, where
+known, pictures of the screens where it is used; it has a search, filters and a coverage table. The window
+menu's **Add screen to mod kit** adds the current screen's pictures to the kit's "where it is used"
+pictures (reload the page to see them). The page's **Check a pack** checks a pack folder or ZIP and lists
+its errors, its missing items and the files no entry names; a missing item is only a warning, because the
+game draws it in the Windows graphics. The kit's pictures are made on your computer from your own files
+and show the original game's art.
+
 ## 8. The map zoom
 
 The map zoom shows the main map window at **half size** (level -2), **three quarters** (-1),
-**normal** (0), **one and a half** (+1) or **double size** (+2), in both graphics profiles (since 1.2.4;
-before, half, normal and double were the only levels, numbered -1, 0 and +1). Only the main map is zoomed; the small World Map, the
-Status window and the reports are not. The zoom only changes what you see: the game's own view and
-input stay the same.
+**normal** (0), **one and a half** (+1) or **double size** (+2), in every graphics style. Only the main
+map is zoomed; the small World Map, the Status window and the reports are not. The zoom only changes
+what you see: the game's own view and input stay the same.
 
 | Way | What it does |
 |---|---|
 | **Ctrl+Shift+Plus**, **Ctrl+Shift+Minus** (main row or keypad) | One level in or out. |
 | **Ctrl+Shift+0** or **Ctrl+Shift+Home** | Back to normal. |
-| The mouse wheel over the map | One level per notch, forward zooms in; the point under the pointer stays under it. |
-| The window menu's **Map zoom** submenu | **Zoom out** and **Zoom in**, one level each time (as the keys), and **Normal zoom**, zooming about the map's centre; and **Mouse wheel zooms map**. |
+| The mouse wheel over the map | One level per notch, forward zooms in; the point under the pointer stays under it (when the Options dialog's **Use mouse wheel to zoom in/out** is checked, the default). |
+| The window menu's **Zoom out**, **Normal zoom** and **Zoom in** | One level each time (as the keys), zooming about the map's centre. |
 | `--zoom -2`, `-1`, `0`, `+1` or `+2` on the command line | The level for this run. |
 
 The plain `=`, `-`, `0` and Home keys still reach the game.
@@ -375,17 +498,22 @@ Status windows) inside civ64's window. Some details:
   J, Disband Unit D), **Advisors** (City Status Ctrl+1 to Science Advisor Ctrl+6), **World** (Wonders
   of the World Ctrl+7, Top Five Cities Ctrl+8, Civilization Score Ctrl+9, World Map Ctrl+0,
   Demographics Ctrl+D, Spaceships Ctrl+P), **Civilopedia**, **City** (on the city screen) and
-  **Help**. **File > Options** holds Instant Advice, Auto Save, End Of Turn, Animations, Sound, Enemy
-  Moves, Civilopedia Text and Palace.
+  **Help**. **File > Options** holds the game's own Instant Advice, Auto Save, End Of Turn, Animations,
+  Sound, Enemy Moves, Civilopedia Text and Palace (civ64's settings are in the window menu's
+  **Options…**, section 6).
 * **Window layout.** At the start of a game the map, World Map and Status windows take the places
-  saved in the game folder's `civ.prf`. When those do not fit the game screen, or there is no
-  `civ.prf`, they take the default layout. A layout saved on a different screen size follows the new
-  size. Delete `civ.prf` to get the default layout back (it also holds the Game Options).
+  saved in `civ.prf` (the one in the `Save` folder, else the game's own). When those do not fit the game
+  screen, or there is no `civ.prf`, they take the default layout. A layout saved on a different screen
+  size follows the new size. Delete `civ.prf` in the `Save` folder to get the default layout back (it also
+  holds the Game Options).
 * **Keyboard.** Typing follows your keyboard layout (characters are passed in Windows-1252;
   characters without a code there are dropped). The numeric keypad gives digits whatever your
   NumLock state. Alt and F10 open the game's menus.
-* **Sound** comes from the game folder's `.wav` files, or from your own files (section 3); a missing
-  file is silent.
+* **Sound** comes from the source chosen on the Options dialog's Audio page (section 6); with the Windows
+  source, from the game's `.wav` files. A missing file is silent.
+* **Roads and railroads on ocean squares.** The original lets units build them there (a well known bug,
+  kept). Since 1.3 the Windows graphics draw such a square as its own coast with the roads over it; the
+  original drew coast pieces chosen by the roads, with land slivers in the open sea.
 * **Help** (the original's `.hlp` file) cannot be opened, because Windows 10 and 11 have no viewer
   for it: **Help > Game Help** shows a message that says so.
 * **Timing.** By default (`classic`) the game is paced like the original; world generation and the
@@ -398,11 +526,11 @@ civ64's own keys never reach the game, nor do the Ctrl, Shift or Alt presses hel
 
 | Key | What it does |
 |---|---|
-| Ctrl+Shift+Backspace | Switch between the Windows and the DOS graphics |
+| Ctrl+Shift+Backspace | Switch to the next graphics style whose files are loaded (section 7) |
 | Alt+Enter | Full screen on or off |
 | Ctrl+Shift+Plus / Ctrl+Shift+Minus | Map zoom in / out |
 | Ctrl+Shift+0, Ctrl+Shift+Home | Normal map zoom |
-| Mouse wheel over the map | Map zoom (when **Mouse wheel zooms map** is checked) |
+| Mouse wheel over the map | Map zoom (when **Use mouse wheel to zoom in/out** is checked) |
 | Alt+F4 | Exit civ64 (with the warning during a game) |
 
 The game's own keys are those of the original: the menu accelerators of section 9, Alt or F10 for
@@ -411,42 +539,50 @@ credits or the Birth. With the DOS graphics the DOS keys of section 7 apply.
 
 ## 11. Saves, settings and the files civ64 writes
 
-civ64 writes only to the game folder and to its own folder `%LOCALAPPDATA%\civ64`.
+civ64 writes only to the `Save` and `GameData` folders next to `civ64.exe`, to its own folder
+`%LOCALAPPDATA%\civ64`, and to a mod kit folder you choose. It never changes the game's own files or
+the ZIP files you supplied.
 
 | File | Where | Written by |
 |---|---|---|
-| saved games (`*.SAV`) | the game folder | **File > Save Game** (the names you choose; the DOS Save screen's empty line saves as `CIVILn.SAV`) |
-| `civ.prf` | the game folder | the game's preferences (Game Options and window places) |
-| `famehall.civ` | the game folder | the Hall of Fame |
-| `*.rep` | the game folder | the replay at the end of a game, under the name you give |
+| saved games (`*.SAV`) | the save folder | **File > Save Game** (the names you choose; the DOS Save screen's empty line saves as `CIVILn.SAV`) |
+| `civ.prf` | the save folder | the game's preferences (Game Options and window places) |
+| `famehall.civ` | the save folder | the Hall of Fame |
+| `*.rep` | the save folder | the replay at the end of a game, under the name you give |
 | `civ64.cfg` | `%LOCALAPPDATA%\civ64` | civ64's settings |
-| `CivWin\` and `CivWin.manifest` | `%LOCALAPPDATA%\civ64` | the extracted game when you use a `CivWin.zip` |
+| `Civ-Modern.zip`, `Mod-<name>.zip` | `GameData` | **Add mod…** (section 7) |
+| `index.html`, `ref\`, `ctx\` | the mod kit folder you chose | **Create mod kit…** and **Add screen to mod kit** |
 
-When you use a `CivWin.zip`, the game folder is `%LOCALAPPDATA%\civ64\CivWin`, so your saves are
-there.
+**The save folder** is `Save` next to `civ64.exe`, made at the first start. When that folder cannot be
+written (for example under `C:\Program Files`), civ64 uses `%LOCALAPPDATA%\civ64\Save`. The game sees one
+folder: a file in the save folder hides the game's file of the same name. Saves in the game's own folder
+(for example an installation's `CIVIL0.SAV`) can still be loaded; saved again, they go to the save
+folder. A game file the game rewrites, such as an installation's `civ.prf`, is copied into the save folder
+first.
 
 **Save compatibility.** Saved games, the Hall of Fame, the preferences and the replays use the
 original formats. Your saves from the original game load in civ64, and civ64's saves load in the
-original game. The load and save dialogs, and the DOS graphics' Load and Save screens, list the game
-folder.
+original game. The load and save dialogs, and the DOS graphics' Load and Save screens, list the save
+folder together with the game's folder.
 
-**civ64.cfg** holds civ64's own choices: the game and DOS locations (`dos_data`, and `dos_ask=never`
-after "don't ask again"), the window's place and size (`window=left,top,right,bottom` in screen
-pixels), full screen, the scaling and filter choices, the 4:3 choice (`aspect_4_3`), the graphics
-profile (`graphics=windows` or `dos`), the map zoom level (since 1.2.4 `map_zoom=-2` to `2`; before, `zoom=-1`, `0` or `1`, which 1.2.4 reads with
-its meaning when `map_zoom` is absent), the wheel setting
-(`wheel_zoom=1` or `0`), the screen size the window layout was saved on (`layout_screen`), and since
-1.1 windowless play (`windowless`), the DOS gameplay 4:3 choice (`aspect_play_4_3`), CRT scanlines
-(`crt_scanlines`), the music and sound effects source (`music_data`, and `music_ask=never` after "don't
-ask again") and the **Alternative music/soundfx** mark (`alt_sounds`), and since 1.2.5 **1:1 pixels in
-gameplay** (`one_to_one`). Options
-given on the command line apply to that run only and are not written. civ64 reads no registry key,
-INI file or environment variable; only the Windows file dialog keeps its own list of recent folders.
+**civ64.cfg** holds civ64's own choices: the locations of the editions' files (`windows_data`,
+`dos_data`, `amiga_data`, `atari_data`, `pc98_data`, `snes_data`, `music_data`, and `dos_ask=never` or
+`music_ask=never` after "don't ask again"), the window's place and size (`window=left,top,right,bottom` in
+screen pixels), full screen, the scaling and filter choices, the 4:3 choices (`aspect_4_3`,
+`aspect_play_4_3`), the graphics style (`graphics`), the sound source (`audio_source`), the map zoom level
+(`map_zoom=-2` to `2`) and the wheel setting (`wheel_zoom`), the screen size the window layout was saved
+on (`layout_screen`), windowless play (`windowless`), the play style, CRT scanlines (`crt_scanlines`), 1:1
+(`one_to_one`) with the popup and World Map and Status sizes (`popup_scale`, `tool_scale`), the OS native
+menu (`native_game_menu`), the places of the Amiga and Atari ST panels as OS native windows
+(`native_panels`), your Custom graphics mods, and the mod kit folder (`mod_kit`). Options given on the
+command line apply to that run only and are not written. civ64 reads no registry key, INI file or
+environment variable; only the Windows file dialog keeps its own list of recent folders.
 
 ## 12. The command line
 
 ```
-civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
+civ64.exe [--data <dir|zip>] [--dos-data <dir|zip|none>] [--amiga-data <dir|zip|none>]
+          [--atari-data <dir|zip|none>] [--graphics windows|dos|dos-ega|dos-pc98|amiga|atarist|snes]
           [--zoom default|-2|-1|0|+1|+2] [--fullscreen] [--window <W>x<H>]
           [--scale auto|1..8] [--scale-mode integer|fit] [--filter nearest|sharp]
           [--aspect square|4:3|gameplay|both] [--windowless 0|1] [--crt 0|1]
@@ -455,19 +591,20 @@ civ64.exe [--data <dir>] [--dos-data <dir|zip|none>] [--graphics windows|dos]
 
 | Option | Meaning |
 |---|---|
-| `--data <dir>` | The game folder, with no search. Its `civ.exe` must be the supported release. |
+| `--data <dir\|zip>` | The Windows game's folder or ZIP, with no search. Its `civ.exe` must be the supported release. |
 | `--dos-data <dir\|zip\|none>` | The DOS game's folder or ZIP; `none`: not used and not asked for. |
-| `--graphics windows\|dos` | The profile to start in (not remembered). `dos` without usable DOS files stops civ64 with a message. |
+| `--amiga-data <dir\|zip\|none>`, `--atari-data <dir\|zip\|none>` | The Amiga or Atari ST files' folder or ZIP for this run; `none`: not used. |
+| `--graphics windows\|dos\|dos-ega\|dos-pc98\|amiga\|atarist\|snes` | The style to start in (not remembered): `dos` the DOS VGA graphics, `dos-ega` DOS EGA, `dos-pc98` PC-98. `dos` or `snes` without usable files stops civ64 with a message. |
 | `--zoom default\|-2\|-1\|0\|+1\|+2` | The map zoom level for this run (`-2` half, `+2` double size). |
 | `--fullscreen` | Start in full screen. |
 | `--window <W>x<H>` | The window's first client size (at least 640x480), centred. |
 | `--scale auto\|1..8` | The window's first size as a multiple of 640x480; `auto` (the default) uses the remembered size or the largest multiple that fits. |
 | `--scale-mode integer\|fit` | Integer scaling or fit to the window. |
 | `--filter nearest\|sharp` | The filter for `fit`. |
-| `--aspect square\|4:3\|gameplay\|both` | The shape of 320x200 screens for this run: `square` or `4:3` for the intro screens; `gameplay` and `both` also turn on the 4:3 DOS gameplay (since 1.1). |
-| `--windowless 0\|1` | Windowless play off or on for this run (since 1.1). |
-| `--crt 0\|1` | CRT scanlines off or on for this run (since 1.1). |
-| `--music-sfx <dir\|zip\|none>` | Your music and sound effects from that folder or ZIP for this run; `none`: not used and not asked for (since 1.1). A source without one valid WAV file of the 24 names stops civ64 with a message. |
+| `--aspect square\|4:3\|gameplay\|both` | The shape of 320x200 screens for this run: `square` or `4:3` for the intro screens; `gameplay` and `both` also turn on the 4:3 DOS gameplay. |
+| `--windowless 0\|1` | Windowless play off or on for this run. |
+| `--crt 0\|1` | CRT scanlines off or on for this run. |
+| `--music-sfx <dir\|zip\|none>` | Your music and sound effects from that folder or ZIP for this run; `none`: not used and not asked for. A source without one valid WAV file of the 24 names stops civ64 with a message. |
 | `--timing classic\|host` | `classic` (the default) paces the game like the original with fixed costs for its internal waits; `host` follows the PC's real clock. In both, world generation and the computer players' turns run at full speed. |
 
 Two further options, `--dump-frames <dir>` and `--dump-presented <dir>`, write every picture to a
@@ -478,15 +615,20 @@ an option for automated tests.
 
 | Problem | What to do |
 |---|---|
-| civ64 asks where the game is at every start | Choose the game's `civ.exe` or ZIP; civ64 remembers a valid choice. Or put `CivWin.zip` or a `CivWin` folder next to `civ64.exe`. |
+| After an upgrade from 1.2.5, civ64 asks where the game is | Version 1.3 no longer looks for `CivWin.zip` or a `CivWin` folder: put the ZIP in the `GameData` folder as `Civ-Windows.zip` (section 2), or choose the game when asked. |
+| civ64 asks where the game is at every start | Choose the game's `civ.exe` or ZIP; civ64 remembers a valid choice. Or put `Civ-Windows.zip` in the `GameData` folder next to `civ64.exe`. |
+| My saves from 1.2.5 are missing | With a `CivWin.zip` they were kept in `%LOCALAPPDATA%\civ64\CivWin`: copy them into the `Save` folder (section 2). |
 | A message says `civ.exe` is different or missing | civ64 runs only the supported release (section 1). Check the file's size (832,512 bytes) in Explorer. |
-| A message names a DOS file | That file is not the unchanged file of version 475.05: changed by a mod, left from another release, or damaged. Put the file of an unchanged 475.05 copy in its place or use another copy (move a wrong `CivDos` folder or ZIP away from `civ64.exe`, which civ64 finds first), or start with `--dos-data none`. |
-| Ctrl+Shift+Backspace only beeps | The DOS files are not available in this run. Use **Graphics > Locate DOS files…** and restart civ64. |
+| A message names a DOS file | That file is not the unchanged file of version 475.05: changed by a mod, left from another release, or damaged. Put the file of an unchanged 475.05 copy in its place or use another copy, or start with `--dos-data none`. |
+| A graphics card or sound source is not available | Its files are not loaded: put its ZIP in `GameData` (section 3) or click the card's **Choose files** on the Options dialog, then restart civ64. **Files not usable** means the files were refused. |
+| Ctrl+Shift+Backspace only shows the Windows graphics | No other style's files are loaded in this run (section 3). |
+| The Custom card shows nothing new | A tileset mod shows after a restart; check that it is marked **Selected** in the Custom graphics mods list. |
+| A part of a mod or pack is drawn in the original look | The mod or pack lacks that picture, or civ64 could not use it; the original's picture is drawn instead. |
 | "Sorry! Only one game at a time!" | civ64 is already running; after OK it comes to the front. |
-| The game's windows are placed oddly | Delete `civ.prf` in the game folder for the default layout (it also resets the Game Options). |
+| The game's windows are placed oddly | Delete `civ.prf` in the save folder for the default layout (it also resets the Game Options). |
 | The window opens in an odd place or size | Delete the `window` line of `%LOCALAPPDATA%\civ64\civ64.cfg`, or start once with `--scale auto`. |
-| The mouse wheel does nothing over the map | Check **Map zoom > Mouse wheel zooms map** in the window menu. |
-| My own music or sound files are not played | Check the file names (the 24 names of section 3, `.wav`), that they are valid WAV files at the top level of the `MusicSfx` folder or in one folder of `MusicSfx.zip`, and that **Alternative music/soundfx** is checked; then restart civ64. |
+| The mouse wheel does nothing over the map | Check **Use mouse wheel to zoom in/out** on the Options dialog's Display page. |
+| My own music or sound files are not played | Check the file names (the 24 names of section 3, `.wav`), that they are valid WAV files at the top level of the folder or in one folder of the ZIP, and that **Custom** is chosen on the Audio page; then restart civ64. |
 | Zoom in is gray | The map is at double size, or the map window is too small for the next level; make it larger. |
 | Help shows a message instead of the help file | Expected: Windows 10 and 11 cannot open the original `.hlp` file. |
 | A message "General protection fault ..." and civ64 ends | An error of the original program that Windows 3.1 would also have stopped on; civ64 ends with exit code 3. Load your last save. |
@@ -505,6 +647,8 @@ are shown unchanged.
   differences are possible.
 * **Same seed:** civ64 seeds its random numbers from its start time, so a game cannot be replayed in
   step with the original. The same seed plays the same game only at the same game screen size.
+* **The other editions:** their graphics and sounds are shown and played over the Windows game's rules,
+  computer players and random numbers; nothing of their own rules or map generation is used.
 * **One game at a time:** as in the original, with the running civ64 brought to the front.
 * The complete list of every place where civ64 does not or cannot reproduce the original exactly is
   the fidelity register, [FIDELITY.md](FIDELITY.md).
@@ -512,8 +656,10 @@ are shown unchanged.
 ## 15. civ64 for macOS
 
 `Civ64.app` (version 1.2.5) is the same program as `civ64.exe` 1.2.5: the same recovered game, the same Windows 3.1
-environment and the same Windows and DOS graphics, on a native macOS back end. It is signed with the developer's
-Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
+environment and the same Windows and DOS graphics, on a native macOS back end. **It has none of the additions of
+version 1.3** (the Options dialog, the other editions' graphics and sounds, the window styles, the 1:1 popup and
+World Map and Status sizes, graphics mods, the GameData and Save folders); it is described here as it is. It is
+signed with the developer's Developer ID and notarized by Apple, and is distributed here, not in the Mac App Store.
 
 ### Requirements
 
@@ -526,14 +672,14 @@ Developer ID and notarized by Apple, and is distributed here, not in the Mac App
 
 ### Installation
 
-1. Download `Civ64-1.2.5-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+1. Download `Civ64-1.2.5-macOS.dmg` from the [v1.2.5 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5)
    and open it.
 2. Drag `Civ64.app` to the Applications folder, or to a folder of its own (for example `~/Games/civ64`). Start it
    from there, not from the disk image: an application started from the disk image sees no files next to it.
-3. Give civ64 the game, in one of these ways (the same names as on Windows, section 3):
+3. Give civ64 the game, in one of these ways (the names of version 1.2.5, compared ignoring case):
    * `CivWin.zip` (or `Civ-Win.zip`, `Civ_Win.zip`) or a `CivWin` folder next to `Civ64.app`; optionally
-     `CivDos.zip` or a `CivDos` folder for the DOS graphics, and `MusicSfx.zip` or a `MusicSfx` folder for your own
-     music and sound effects; or
+     `CivDos.zip` (or `Civ-Dos.zip`, `Civ_Dos.zip`) or a `CivDos` folder for the DOS graphics, and `MusicSfx.zip`
+     or a `MusicSfx` folder for your own music and sound effects (the 24 WAV names of section 3); or
    * nothing: at the first start civ64 asks you to choose the game's folder, its `civ.exe` or its ZIP file, and
      remembers your choice.
 4. Start civ64. A ZIP of the Windows game is extracted to `~/Library/Application Support/civ64/CivWin`, and your
@@ -544,10 +690,12 @@ To uninstall, delete `Civ64.app`, your game folder if you no longer want it, and
 
 ### Menus
 
-* **The civ64 menu** (the application menu in the macOS menu bar) holds what the window menu holds on Windows
-  (section 6): About, Full Screen, Display (with **1:1 Pixels in Gameplay** below Fit to Window; on a Retina display
-  one device pixel per game pixel, and the whole-world limit counts device pixels), Map Zoom (Zoom Out, Normal Zoom and Zoom In, one level each, as in
-  section 8), Graphics (with Locate DOS Files), Alternative Music/Soundfx, then Hide civ64 and Quit civ64. The game pauses while a menu is open, as on Windows.
+* **The civ64 menu** (the application menu in the macOS menu bar) holds About, Full Screen, Display (Windowless
+  Play, Integer Scaling, Fit to Window, **1:1 Pixels in Gameplay** below Fit to Window, the filters, CRT Scanlines and
+  the two 4:3 items, as described in section 5; on a Retina display 1:1 is one device pixel per game pixel, and the
+  whole-world limit counts device pixels), Map Zoom (Zoom Out, Normal Zoom and Zoom In, one level each, as in
+  section 8), Graphics (Windows and DOS graphics, Switch Graphics and Locate DOS Files),
+  Alternative Music/Soundfx, then Hide civ64 and Quit civ64. The game pauses while a menu is open, as on Windows.
 * **The game's own menus** are shown twice: in the game window, as in Windows 3.1, and in the macOS menu bar, where
   you can choose them as well. An item the game has grayed or checked is grayed or checked in both.
 
@@ -571,12 +719,12 @@ shortcuts does not count as a key press in the game, so a switch during the open
 ### Files and settings
 
 civ64 writes only to the game folder and to `~/Library/Application Support/civ64`: `civ64.cfg` (civ64's settings,
-the same keys as on Windows, with the window's place as `window_mac`), the extracted `CivWin` folder and its
+the keys of version 1.2.5, with the window's place as `window_mac`), the extracted `CivWin` folder and its
 `CivWin.manifest` when you use a `CivWin.zip`, and `civ64.lock` / `civ64.owner`, which keep a second civ64 from
 starting (the running one comes to the front). Saves, `civ.prf`, the Hall of Fame and the replays are written to the
-game folder, in the original formats, as on Windows.
+game folder, in the original formats.
 
-### Differences from the Windows program
+### Differences from the Windows program 1.2.5
 
 * Full screen is macOS's own: a space of its own with macOS's animation.
 * Moving the window does not pause the game (on Windows it does); the menus, a live resize and civ64's own boxes
@@ -586,5 +734,5 @@ game folder, in the original formats, as on Windows.
   name).
 * Cursor pixels that Windows would invert are drawn black, and the hourglass cursor is the arrow (macOS has no
   public hourglass cursor).
-* The command line (section 12) has the same options when you start `Civ64.app/Contents/MacOS/civ64` from
-  Terminal.
+* The command line (section 12, without the options new in 1.3) has the same options when you start
+  `Civ64.app/Contents/MacOS/civ64` from Terminal.
