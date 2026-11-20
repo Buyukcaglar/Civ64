@@ -1,13 +1,14 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3: `civ64.exe` for
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3.1: `civ64.exe` for
 Windows (`Civ64-Win7.exe` on Windows 7). civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the same running game with the graphics of *Civilization for DOS* and of the Amiga, Atari ST,
 PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
-Sections 1 to 14 describe the Windows program 1.3. The macOS application `Civ64.app` is version 1.3 too, with
-the same Options dialog, graphics styles, sounds and mods; **on a Mac, also read
+Sections 1 to 14 describe the Windows program 1.3.1. The macOS application `Civ64.app` is at version 1.3, with
+the same Options dialog, graphics styles, sounds and mods, but without the additions of 1.3.1 (the Smooth and
+Scale2x / Scale3x filters, Save States, `units.ini`, the names of every city); **on a Mac, also read
 [section 15](#15-civ64-for-macos)**: it gives the Mac's download, folders, menus and keys, and its differences.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
@@ -67,9 +68,12 @@ files it needs into its `GameData` folder (section 2) and reads them from there 
 
 ## 2. Installation
 
-1. Download `civ64.exe` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
-   and put it in a folder of its own that you can write to, for example `C:\Games\civ64` (not under
-   `C:\Program Files`). On Windows 7, download `Civ64-Win7.exe` instead (section 1).
+1. Download `Civ64-1.3.1-Windows.zip` from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) and unpack it into a folder of its
+   own that you can write to, for example `C:\Games\civ64` (not under `C:\Program Files`). On Windows 7,
+   download `Civ64-1.3.1-Win7.zip` instead (section 1). Since 1.3.1 the download is a ZIP file: it holds
+   `civ64.exe` (or `Civ64-Win7.exe`), `units.ini` and `README-units.txt`, the optional unit rules of
+   section 9; `units.ini` as shipped holds the original values, and civ64 runs the same without it.
 2. Run `civ64.exe`. At the first start it asks one question only, and only when it has no Windows game
    yet: choose the game's `civ.exe` (in your Civilization for Windows folder) or a ZIP file of the game.
    Cancel ends civ64.
@@ -219,9 +223,19 @@ The picture is scaled into the window by the **Scaling** choices of the Options 
 
 * **Integer scaling**: the picture is the largest whole multiple that fits, with sharp pixels and black
   borders. This is the default.
-* **Fit to window**: the picture is as large as the window allows, keeping its proportions, with the
-  **Nearest pixel filter** (pixels repeated) or the **Sharp filter** (only the edges between pixels
-  blended).
+* **Fit to window**: the picture is as large as the window allows, keeping its proportions.
+* The **Filter** list (since 1.3.1; before, two choices that applied to Fit to window only) says how the
+  art's pixels are drawn when they are larger than the screen's:
+  * **Sharp pixels** (the default; "Nearest pixel filter" before): every pixel is a clean block.
+  * **Smooth**: bilinear smoothing of the art's pixels.
+  * **Smooth, crisp edges** ("Sharp filter" before): only the edges between pixels are blended; it differs
+    from Sharp pixels only when the picture is fitted at an uneven scale.
+  * **Scale2x / Scale3x**: stair-steps are rounded without adding colours.
+
+  Smooth and Scale2x / Scale3x apply with every scaling choice and on the zoomed map (section 8), and
+  together with CRT Scanlines. An entry that cannot change the picture shown now is gray and says "no effect
+  now": for example every entry but Sharp pixels with the Windows graphics at 1:1 and normal map zoom, where
+  one art pixel is one screen pixel.
 * **Original pixel density (1:1)** (called "1:1 pixels in gameplay" in 1.2.5): during a game every picture
   is drawn at its original size, one screen pixel per pixel, in every graphics style: the Windows 3.1
   desktop with the game's windows, dialogs and menus, windowless play, the DOS play screen (its DOS art
@@ -316,6 +330,7 @@ title bar. (Alt, Alt+Space and F10 belong to the game's own menus.) From the top
 | **Full screen** (Alt+Enter) | Full screen on or off. |
 | **Options…** | The Options dialog (below). |
 | **Add screen to mod kit** | Adds the current screen's pictures to your mod kit; makes the kit first when there is none (section 7). |
+| **Save State**, **Load State** (since 1.3.1) | Five quick-save slots (section 11); each line shows what the slot holds. Ctrl+F1 to Ctrl+F5 save, Ctrl+Shift+F1 to Ctrl+Shift+F5 load. |
 | **Zoom out** (Ctrl+Shift+Minus) | The map zoom one level out (section 8); choose it again to go on. Gray at half size. |
 | **Normal zoom** (Ctrl+Shift+0, Home) | The map zoom back to normal; checked at normal size. |
 | **Zoom in** (Ctrl+Shift+Plus) | The map zoom one level in; choose it again to go on. Gray at double size and while the map window is too small for the next level. |
@@ -337,8 +352,8 @@ where the dialog says so). Every choice is remembered in `civ64.cfg`.
 
 * **Display**: **Play style** (Windowed: Simulated Windows 3.1, Simulated Apple System 7 or OS native;
   Windowless play; OS native menu), **Scaling** (Integer scaling, Fit to window or Original pixel density
-  (1:1), with the popup and World Map and Status sizes at 1:1), **Filter** (Nearest pixel filter, Sharp
-  filter, CRT Scanlines) and **Extras** (the two 4:3 items and **Use mouse wheel to zoom in/out**). All of
+  (1:1), with the popup and World Map and Status sizes at 1:1), **Filter** (the list Sharp pixels, Smooth,
+  Smooth with crisp edges, Scale2x / Scale3x; CRT Scanlines) and **Extras** (the two 4:3 items and **Use mouse wheel to zoom in/out**). All of
   them are described in section 5 and, for the wheel, section 8.
 * **Graphics**: the **Graphics style** cards (Windows, DOS VGA, DOS EGA, Amiga, Atari ST, PC-98, SNES and
   Custom; section 7), the **Custom graphics mods** list (section 7), and **Graphics game files**.
@@ -442,7 +457,9 @@ centres the view there, a click on the World Map centres on that square, and the
 active unit. There is no scrolling at the screen's edge.
 
 **Custom graphics mods** (new in 1.3). The list under the Graphics page's cards holds your graphics mods;
-the one marked **Selected** is what the **Custom** card shows. civ64 includes no mods or packs. Two kinds
+the one marked **Selected** is what the **Custom** card shows. civ64 includes no mods or packs. Since 1.3.1
+a tileset mod's archive that you put into `GameData` yourself (`Mod-<name>.zip`) is listed at the next start
+without **Add mod…**; one you remove from the list stays removed, and its file stays in `GameData`. Two kinds
 are accepted:
 
 * **Tileset mods** for the Windows graphics (a mod's `civdata0.rsc` to `civdata4.rsc`) or for the DOS
@@ -541,6 +558,15 @@ Status windows) inside civ64's window. Some details:
   computer players' turns run at full speed.
 * A click in the black border around the picture is ignored.
 
+**Unit stats: `units.ini`** (since 1.3.1). An optional text file `units.ini` in the folder of `civ64.exe`
+changes the attack, defense, moves and cost of any unit, one line per unit
+(`Chariot = 3, 1, 2, 30`); units not listed keep their original values. civ64 reads it at the start; the
+values apply to new games (Start a New Game, Play on EARTH, Customize World), and a saved game keeps the
+values it was played with, because the game's own save format stores the unit table. A mistake in the file
+is listed in one message at the start, and that line is ignored. Without the file, or with the file as
+shipped (the original values), civ64 plays with the original rules. `README-units.txt`, which comes with
+the program, has the format, the allowed values and the original table.
+
 ## 10. Keys
 
 civ64's own keys never reach the game, nor do the Ctrl, Shift or Alt presses held for them.
@@ -552,6 +578,8 @@ civ64's own keys never reach the game, nor do the Ctrl, Shift or Alt presses hel
 | Ctrl+Shift+Plus / Ctrl+Shift+Minus | Map zoom in / out |
 | Ctrl+Shift+0, Ctrl+Shift+Home | Normal map zoom |
 | Mouse wheel over the map | Map zoom (when **Use mouse wheel to zoom in/out** is checked) |
+| Ctrl+F1 to Ctrl+F5 | Save State 1 to 5 (section 11) |
+| Ctrl+Shift+F1 to Ctrl+Shift+F5 | Load State 1 to 5 |
 | Alt+F4 | Exit civ64 (with the warning during a game) |
 
 The game's own keys are those of the original: the menu accelerators of section 9, Alt or F10 for
@@ -571,6 +599,7 @@ copy of a new choice.
 | `civ.prf` | the save folder | the game's preferences (Game Options and window places) |
 | `famehall.civ` | the save folder | the Hall of Fame |
 | `*.rep` | the save folder | the replay at the end of a game, under the name you give |
+| `STATE1.SAV` to `STATE5.SAV` | `States` in the save folder | **Save State** (below) |
 | `civ64.cfg` | `%LOCALAPPDATA%\civ64` | civ64's settings |
 | `Civ-Windows.zip`, `Civ-DOS.zip`, `Civ-Amiga.zip`, `Civ-AtariST.zip`, `Civ-PC98.zip`, `Civ-SNES.zip`, `CustomMusicSfx.zip` | `GameData` | a choice of that edition's files at the start (Windows) or on the Options dialog (section 3) |
 | `Civ-Modern.zip`, `Mod-<name>.zip` | `GameData` | **Add mod…** (section 7) |
@@ -582,6 +611,15 @@ folder: a file in the save folder hides the game's file of the same name. Saves 
 (for example an installation's `CIVIL0.SAV`) can still be loaded; saved again, they go to the save
 folder. A game file the game rewrites, such as an installation's `civ.prf`, is copied into the save folder
 first.
+
+**Save States** (since 1.3.1) are five quick-save slots. The window menu's **Save State > 1** to **5**
+(Ctrl+F1 to Ctrl+F5) saves the game at once, without a question; **Load State > 1** to **5** (Ctrl+Shift+F1
+to Ctrl+Shift+F5) brings it back: the screen stays for a few seconds, then the saved game is there. Each menu
+line shows what the slot holds (civilization, leader, year, when saved). The files are
+`Save\States\STATE1.SAV` to `STATE5.SAV`, ordinary saved games that the game's own Load Game opens too. A
+state can be saved wherever the game's own Save Game works (your turn, at the map, no dialog open), not at
+the title; loading works in play and at the title menu. Loading a state is the game's own load: as with any
+loaded game, a unit that had moved has its moves again.
 
 **Save compatibility.** Saved games, the Hall of Fame, the preferences and the replays use the
 original formats. Your saves from the original game load in civ64, and civ64's saves load in the
@@ -598,8 +636,9 @@ on (`layout_screen`), windowless play (`windowless`), the play style, CRT scanli
 (`one_to_one`) with the popup and World Map and Status sizes (`popup_scale`, `tool_scale`), the OS native
 menu (`native_game_menu`), the places of the Amiga and Atari ST panels as OS native windows
 (`native_panels`), your Custom graphics mods, and the mod kit folder (`mod_kit`). Options given on the
-command line apply to that run only and are not written. civ64 reads no registry key, INI file or
-environment variable; only the Windows file dialog keeps its own list of recent folders.
+command line apply to that run only and are not written. The filter is `filter=nearest`, `sharp`, `smooth`
+or `scalenx`. Apart from the optional `units.ini` beside the program (section 9), civ64 reads no registry
+key, INI file or environment variable; only the Windows file dialog keeps its own list of recent folders.
 
 ## 12. The command line
 
@@ -607,7 +646,7 @@ environment variable; only the Windows file dialog keeps its own list of recent 
 civ64.exe [--data <dir|zip>] [--dos-data <dir|zip|none>] [--amiga-data <dir|zip|none>]
           [--atari-data <dir|zip|none>] [--graphics windows|dos|dos-ega|dos-pc98|amiga|atarist|snes]
           [--zoom default|-2|-1|0|+1|+2] [--fullscreen] [--window <W>x<H>]
-          [--scale auto|1..8] [--scale-mode integer|fit] [--filter nearest|sharp]
+          [--scale auto|1..8] [--scale-mode integer|fit] [--filter nearest|sharp|smooth|scalenx]
           [--aspect square|4:3|gameplay|both] [--windowless 0|1] [--crt 0|1]
           [--music-sfx <dir|zip|none>] [--timing classic|host]
 ```
@@ -623,7 +662,7 @@ civ64.exe [--data <dir|zip>] [--dos-data <dir|zip|none>] [--amiga-data <dir|zip|
 | `--window <W>x<H>` | The window's first client size (at least 640x480), centred. |
 | `--scale auto\|1..8` | The window's first size as a multiple of 640x480; `auto` (the default) uses the remembered size or the largest multiple that fits. |
 | `--scale-mode integer\|fit` | Integer scaling or fit to the window. |
-| `--filter nearest\|sharp` | The filter for `fit`. |
+| `--filter nearest\|sharp\|smooth\|scalenx` | The filter for this run: Sharp pixels, Smooth with crisp edges, Smooth, or Scale2x / Scale3x (section 5). |
 | `--aspect square\|4:3\|gameplay\|both` | The shape of 320x200 screens for this run: `square` or `4:3` for the intro screens; `gameplay` and `both` also turn on the 4:3 DOS gameplay. |
 | `--windowless 0\|1` | Windowless play off or on for this run. |
 | `--crt 0\|1` | CRT scanlines off or on for this run. |
@@ -700,7 +739,7 @@ developer's Developer ID and notarized by Apple, and is distributed here, not in
 
 ### Installation
 
-1. Download `Civ64-1.3-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+1. Download `Civ64-1.3-macOS.dmg` from the [v1.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3)
    and open it.
 2. Drag `Civ64.app` to the Applications folder (or any folder) and start it from there.
 3. At the first start civ64 asks one thing only: the game's folder, its `civ.exe` or a ZIP of the game. It checks
@@ -760,8 +799,10 @@ with the window's place as `window_mac`), `graphics-mods.cfg` (the mod list, the
 where the saves, `civ.prf`, the Hall of Fame and the replays are written in the original formats, and
 `civ64.lock` / `civ64.owner`, which keep a second civ64 from starting (the running one comes to the front).
 
-### Differences from the Windows program 1.3
+### Differences from the Windows program
 
+* **The additions of 1.3.1 are not in the macOS application 1.3:** the Filter list has Nearest pixel filter
+  and Sharp filter only, and there are no Save States, no `units.ini`, and at most 32 city names at a time.
 * **OS native windows** (the World Map, Status and dialogs as real windows) are not in the macOS application: the
   Options dialog shows that window style as not available on macOS. Simulated Windows 3.1, Simulated Apple System 7
   and windowless play are.

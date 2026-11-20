@@ -109,8 +109,10 @@ The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-st
 
 **First run**
 
-1. Download `civ64.exe` (on Windows 7: `Civ64-Win7.exe`) from the
-   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) into a folder of its own.
+1. Download `Civ64-1.3.1-Windows.zip` (on Windows 7: `Civ64-1.3.1-Win7.zip`) from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) and unpack it into a folder of its
+   own. It holds `civ64.exe` (`Civ64-Win7.exe`), `units.ini` and `README-units.txt`; the last two are the
+   optional unit rules (below), and `units.ini` as shipped holds the original values.
 2. Run `civ64.exe`. At the first start it asks for one thing only: the game's `civ.exe` (in your
    Civilization for Windows folder) or a ZIP file of the game.
 3. civ64 checks what you chose and **copies the files it needs into a `GameData` folder next to
@@ -124,6 +126,9 @@ So the folder of `civ64.exe` must be one you can write to (not `C:\Program Files
 copies (a few MB per edition). You can also put the archives into `GameData` yourself
 ([the file table](docs/USER-GUIDE.md#3-where-civ64-finds-the-game)). Cancel in a file dialog ends the
 choice with nothing changed.
+
+**Upgrading from 1.3.** Replace `civ64.exe` with the one in the ZIP file; your settings, `GameData` and
+`Save` folders stay. Copy `units.ini` beside it only if you want to change unit stats.
 
 **Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings stay. A game or DOS location you
 chose in an earlier version that still exists is copied into `GameData` at the first start of 1.3, without
@@ -172,15 +177,15 @@ troubleshooting.
 
 ### Quick start on macOS
 
-The macOS application `Civ64.app` is version **1.3** too: the Options dialog, every graphics style, the
-editions' sounds, the window styles, the 1:1 popup sizes, graphics mods and the mod kit, as on Windows. Only the
-**OS native** window style is not in it.
+The macOS application `Civ64.app` is at version **1.3**: the Options dialog, every graphics style, the
+editions' sounds, the window styles, the 1:1 popup sizes, graphics mods and the mod kit, as on Windows. The
+**OS native** window style and the additions of 1.3.1 are not in it.
 
 **Requirements:** macOS 13 Ventura or later, Apple silicon or Intel; your own copy of Civilization for
 Windows (the same release as above) and, optionally, of the other editions.
 
 1. Download `Civ64-1.3-macOS.dmg` from the
-   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest), open it and drag `Civ64.app`
+   [v1.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3), open it and drag `Civ64.app`
    to Applications. civ64 is signed with the developer's Developer ID and notarized by Apple.
 2. Start it. At the first start it asks only for the Windows game (its folder, `civ.exe` or a ZIP) and copies
    the files it needs into `~/Library/Application Support/civ64/GameData`. Optionally add `vgasys.fon` from a
@@ -213,6 +218,30 @@ the other editions of the game for the same running game: the DOS version's pict
 menus and screens (with its VGA, EGA or PC-98 driver), the Amiga, Atari ST and SNES editions' own screens,
 and graphics mods. Save files keep the original format: civ64 loads saves of the original game, and the
 original game loads civ64's saves.
+
+### New in version 1.3.1
+
+Windows only; the macOS application stays at 1.3.
+
+* **Smoothing filters:** the Options dialog's Display page has one **Filter** list: **Sharp pixels** (the
+  default), **Smooth** (bilinear), **Smooth, crisp edges** (the earlier Sharp filter) and **Scale2x / Scale3x**
+  (stair-steps rounded without new colours). They work on the zoomed map too and together with CRT Scanlines;
+  an entry that cannot change the current picture is gray.
+* **Save States:** five quick-save slots on the window menu (**Save State**, **Load State**), **Ctrl+F1** to
+  **Ctrl+F5** to save and **Ctrl+Shift+F1** to **Ctrl+Shift+F5** to load, through the game's own save and
+  load; the files are ordinary saved games in `Save\States`.
+* **Unit stats from `units.ini`:** an optional text file beside `civ64.exe` sets the attack, defense, moves
+  and cost of any unit for new games, with no hex editing; `README-units.txt` explains it. Both files come
+  with the program, so **the downloads are ZIP files from now on**.
+* **City names:** every visible city is named in the Windows and DOS graphics (the original names at most 32
+  at a time, which left cities without a name on large 1:1 screens); with Modern-style packs names no longer
+  flicker over animated water.
+* **Graphics mods list themselves:** a tileset mod's archive placed in `GameData` (`Mod-<name>.zip`) appears
+  in the Custom graphics mods list without **Add mod…**.
+* **Fixes:** DOS EGA draws railroads, city walls and the terrain's shadows black, not magenta; with OS
+  native windows the World Map's and Status window's title strips are no longer cut off on Windows 7, and
+  leaving a DOS or SNES full screen (the city screen, a report) no longer makes the windows jump and flash;
+  the refusal of a SNES cartridge image that is not the USA edition names the edition found.
 
 ### New in version 1.3
 
@@ -293,7 +322,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.3-macOS.dmg` in v1.3, `Civ64-1.2.5-macOS.dmg` in v1.2.5, `Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3) (with the macOS application 1.3); the earlier ones are [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) (with the macOS application 1.2.5), [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.3-macOS.dmg` in v1.3, `Civ64-1.2.5-macOS.dmg` in v1.2.5, `Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.3.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.1) (Windows only; from this version the Windows programs are in ZIP files, `Civ64-1.3.1-Windows.zip` and `Civ64-1.3.1-Win7.zip`, each with `units.ini` and `README-units.txt`); the earlier ones are [v1.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3) (with the macOS application 1.3), [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) (with the macOS application 1.2.5), [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the graphics profiles), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, every file of the original games, and any graphics mod or graphics pack. |
 
