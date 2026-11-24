@@ -1,14 +1,13 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3.1: `civ64.exe` for
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3.2: `civ64.exe` for
 Windows (`Civ64-Win7.exe` on Windows 7). civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the same running game with the graphics of *Civilization for DOS* and of the Amiga, Atari ST,
 PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
-Sections 1 to 14 describe the Windows program 1.3.1. The macOS application `Civ64.app` is at version 1.3, with
-the same Options dialog, graphics styles, sounds and mods, but without the additions of 1.3.1 (the Smooth and
-Scale2x / Scale3x filters, Save States, `units.ini`, the names of every city); **on a Mac, also read
+Sections 1 to 14 describe the Windows program 1.3.2. The macOS application `Civ64.app` is at version 1.3.2 too,
+with the same Options dialog, graphics styles, sounds, mods, filters, Save States and `units.ini`; **on a Mac, also read
 [section 15](#15-civ64-for-macos)**: it gives the Mac's download, folders, menus and keys, and its differences.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
@@ -68,10 +67,10 @@ files it needs into its `GameData` folder (section 2) and reads them from there 
 
 ## 2. Installation
 
-1. Download `Civ64-1.3.1-Windows.zip` from the
+1. Download `Civ64-1.3.2-Windows.zip` from the
    [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) and unpack it into a folder of its
    own that you can write to, for example `C:\Games\civ64` (not under `C:\Program Files`). On Windows 7,
-   download `Civ64-1.3.1-Win7.zip` instead (section 1). Since 1.3.1 the download is a ZIP file: it holds
+   download `Civ64-1.3.2-Win7.zip` instead (section 1). Since 1.3.1 the download is a ZIP file: it holds
    `civ64.exe` (or `Civ64-Win7.exe`), `units.ini` and `README-units.txt`, the optional unit rules of
    section 9; `units.ini` as shipped holds the original values, and civ64 runs the same without it.
 2. Run `civ64.exe`. At the first start it asks one question only, and only when it has no Windows game
@@ -92,6 +91,9 @@ only read, never changed, moved or deleted; after the copy you may move or delet
 a few MB per edition (your own music, and some Modern-style packs, can take much more). You can also make
 the archives yourself and put them into `GameData` (the table in section 3); civ64 checks them at every
 start. Everything the game writes goes to a `Save` folder next to `civ64.exe` (section 11).
+
+**Upgrading from 1.3 or 1.3.1.** Replace `civ64.exe` with the one in the ZIP file; your settings, `GameData` and
+`Save` folders stay.
 
 **Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings in `%LOCALAPPDATA%\civ64` stay.
 
@@ -739,8 +741,8 @@ developer's Developer ID and notarized by Apple, and is distributed here, not in
 
 ### Installation
 
-1. Download `Civ64-1.3-macOS.dmg` from the [v1.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3)
-   and open it.
+1. Download `Civ64-1.3.2-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+   and open it. It also holds `units.ini` and `README-units.txt` (below).
 2. Drag `Civ64.app` to the Applications folder (or any folder) and start it from there.
 3. At the first start civ64 asks one thing only: the game's folder, its `civ.exe` or a ZIP of the game. It checks
    your choice and copies the files it needs into **`~/Library/Application Support/civ64/GameData`** as
@@ -751,6 +753,9 @@ developer's Developer ID and notarized by Apple, and is distributed here, not in
 
 On a Mac, `GameData` is in `~/Library/Application Support/civ64`, not next to the application: macOS may run a
 downloaded application from a read-only place. The MT-32 ROMs are read from `GameData/MT32-ROMs.zip` there.
+
+**Upgrading from 1.3 or 1.3.1.** Drag the new `Civ64.app` over the old one; your settings, `GameData` and saves
+stay.
 
 **Upgrading from 1.2.5.** Replace `Civ64.app`; your settings stay. At the first start of 1.3 civ64 copies, without a
 question, what 1.2.5 used into `GameData`: the remembered game, DOS, music, Amiga and Atari ST locations, and a
@@ -801,8 +806,11 @@ where the saves, `civ.prf`, the Hall of Fame and the replays are written in the 
 
 ### Differences from the Windows program
 
-* **The additions of 1.3.1 are not in the macOS application 1.3:** the Filter list has Nearest pixel filter
-  and Sharp filter only, and there are no Save States, no `units.ini`, and at most 32 city names at a time.
+* **Save States** are in the **civ64** menu, with Mac keys: Control+Command+1 to 5 saves, Control+Option+Command+1
+  to 5 loads (Ctrl+F1 to Ctrl+F5 and Ctrl+Shift+F1 to Ctrl+Shift+F5 also work where macOS leaves those keys to
+  the game). The states are kept in `~/Library/Application Support/civ64/CivWin/States`.
+* **`units.ini`** is read beside `Civ64.app`, else in `~/Library/Application Support/civ64`; the disk image
+  holds the file with the original values and `README-units.txt`.
 * **OS native windows** (the World Map, Status and dialogs as real windows) are not in the macOS application: the
   Options dialog shows that window style as not available on macOS. Simulated Windows 3.1, Simulated Apple System 7
   and windowless play are.
