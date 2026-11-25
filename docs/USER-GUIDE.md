@@ -6,9 +6,10 @@ Windows (`Civ64-Win7.exe` on Windows 7). civ64 runs the original *Sid Meier's Ci
 can show the same running game with the graphics of *Civilization for DOS* and of the Amiga, Atari ST,
 PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
-Sections 1 to 14 describe the Windows program 1.3.3. The macOS application `Civ64.app` is at version 1.3.3 too, with
+Sections 1 to 14 describe the Windows program 1.3.3. The macOS application `Civ64.app` is at version 1.3.4, with
 the same Options dialog, graphics styles, sounds, mods, filters, Save States, `units.ini`, numeric keypad and lower CPU
-use; **on a Mac, also read
+use, plus the additions of 1.3.4 (p for Clean up Pollution in the DOS graphics, the World Map and Status window
+fixes), which the Windows program gets with its own 1.3.4; **on a Mac, also read
 [section 15](#15-civ64-for-macos)**: it gives the Mac's download, folders, menus and keys, and its differences.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
@@ -69,7 +70,8 @@ files it needs into its `GameData` folder (section 2) and reads them from there 
 ## 2. Installation
 
 1. Download `Civ64-1.3.3-Windows.zip` from the
-   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) and unpack it into a folder of its
+   [v1.3.3 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.3) (the Windows ZIP files of 1.3.4
+   follow) and unpack it into a folder of its
    own that you can write to, for example `C:\Games\civ64` (not under `C:\Program Files`). On Windows 7,
    download `Civ64-1.3.3-Win7.zip` instead (section 1). Since 1.3.1 the download is a ZIP file: it holds
    `civ64.exe` (or `Civ64-Win7.exe`), `units.ini` and `README-units.txt`, the optional unit rules of
@@ -452,7 +454,9 @@ Windows graphics.
   chooses it; a press held over the rows moves the highlight and chooses at the release.
 * In play with the map active, **Alt+G**, **Alt+O**, **Alt+A**, **Alt+W** and **Alt+C** open GAME,
   ORDERS, ADVISORS, WORLD and CIVILOPEDIA; **F1**..**F10** open the advisors and the World reports;
-  **Alt+V** switches the sound; **Alt+Q** asks whether to quit.
+  **Alt+V** switches the sound; **Alt+Q** asks whether to quit. The unit orders take the letters the DOS ORDERS box
+  shows: **p** cleans up pollution (since 1.3.4 on macOS; before, p was the Windows game's Pillage) and **Shift+P**
+  pillages; the Windows letters (K for Clean Up Pollution) work too.
 * On the DOS city screen: **i**, **h**, **m** the panels, **v** the city view, **b** buy, **c**
   change production, **r** rename, **1**..**9** specialists; **Escape**, **Return** or EXIT close it.
 * Reports, scenes and notes close with any key or a left click. **Alt+H** or the right button on a
@@ -547,7 +551,9 @@ Status windows) inside civ64's window. Some details:
   **Options…**, section 6).
 * **Window layout.** At the start of a game the map, World Map and Status windows take the places
   saved in `civ.prf` (the one in the `Save` folder, else the game's own). When those do not fit the game
-  screen, or there is no `civ.prf`, they take the default layout. A layout saved on a different screen
+  screen, or there is no `civ.prf`, they take the default layout. So does a `civ.prf` written by the original game
+  whose Status window is larger than civ64's (since 1.3.4 on macOS); civ64 saves its own layout there when it ends.
+  A moved or resized Status window keeps the World Map's width (since 1.3.4 on macOS). A layout saved on a different screen
   size follows the new size. Delete `civ.prf` in the `Save` folder to get the default layout back (it also
   holds the Game Options).
 * **Keyboard.** Typing follows your keyboard layout (characters are passed in Windows-1252;
@@ -750,7 +756,7 @@ developer's Developer ID and notarized by Apple, and is distributed here, not in
 
 ### Installation
 
-1. Download `Civ64-1.3.3-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
+1. Download `Civ64-1.3.4-macOS.dmg` from the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest)
    and open it. It also holds `units.ini` and `README-units.txt` (below).
 2. Drag `Civ64.app` to the Applications folder (or any folder) and start it from there.
 3. At the first start civ64 asks one thing only: the game's folder, its `civ.exe` or a ZIP of the game. It checks
@@ -763,7 +769,7 @@ developer's Developer ID and notarized by Apple, and is distributed here, not in
 On a Mac, `GameData` is in `~/Library/Application Support/civ64`, not next to the application: macOS may run a
 downloaded application from a read-only place. The MT-32 ROMs are read from `GameData/MT32-ROMs.zip` there.
 
-**Upgrading from 1.3, 1.3.1 or 1.3.2.** Drag the new `Civ64.app` over the old one; your settings, `GameData` and saves
+**Upgrading from 1.3, 1.3.1, 1.3.2 or 1.3.3.** Drag the new `Civ64.app` over the old one; your settings, `GameData` and saves
 stay.
 
 **Upgrading from 1.2.5.** Replace `Civ64.app`; your settings stay. At the first start of 1.3 civ64 copies, without a
