@@ -1,15 +1,14 @@
 # Sid Meier's Civilization 64bit: User Guide
 
-This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3.2: `civ64.exe` for
+This guide is for players of **Sid Meier's Civilization 64bit** ("civ64") version 1.3.3: `civ64.exe` for
 Windows (`Civ64-Win7.exe` on Windows 7). civ64 runs the original *Sid Meier's Civilization for Windows* (the
 16-bit Windows 3.1 release of 1992) as a native 64-bit program, on your own copy of the game's files, and
 can show the same running game with the graphics of *Civilization for DOS* and of the Amiga, Atari ST,
 PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
-Sections 1 to 14 describe the Windows program 1.3.2. The macOS application `Civ64.app` is at version 1.3.3, with the
-same Options dialog, graphics styles, sounds, mods, filters, Save States and `units.ini`, plus the additions of 1.3.3
-(the Options dialog in the Windows program's design, the numeric keypad in menus and dialogs, lower CPU use; the
-Windows program gets the last two with its own 1.3.3); **on a Mac, also read
+Sections 1 to 14 describe the Windows program 1.3.3. The macOS application `Civ64.app` is at version 1.3.3 too, with
+the same Options dialog, graphics styles, sounds, mods, filters, Save States, `units.ini`, numeric keypad and lower CPU
+use; **on a Mac, also read
 [section 15](#15-civ64-for-macos)**: it gives the Mac's download, folders, menus and keys, and its differences.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
@@ -69,11 +68,10 @@ files it needs into its `GameData` folder (section 2) and reads them from there 
 
 ## 2. Installation
 
-1. Download `Civ64-1.3.2-Windows.zip` from the
-   [v1.3.2 release](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.2) (the Windows ZIP files of 1.3.3
-   follow) and unpack it into a folder of its
+1. Download `Civ64-1.3.3-Windows.zip` from the
+   [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) and unpack it into a folder of its
    own that you can write to, for example `C:\Games\civ64` (not under `C:\Program Files`). On Windows 7,
-   download `Civ64-1.3.2-Win7.zip` instead (section 1). Since 1.3.1 the download is a ZIP file: it holds
+   download `Civ64-1.3.3-Win7.zip` instead (section 1). Since 1.3.1 the download is a ZIP file: it holds
    `civ64.exe` (or `Civ64-Win7.exe`), `units.ini` and `README-units.txt`, the optional unit rules of
    section 9; `units.ini` as shipped holds the original values, and civ64 runs the same without it.
 2. Run `civ64.exe`. At the first start it asks one question only, and only when it has no Windows game
@@ -95,7 +93,7 @@ a few MB per edition (your own music, and some Modern-style packs, can take much
 the archives yourself and put them into `GameData` (the table in section 3); civ64 checks them at every
 start. Everything the game writes goes to a `Save` folder next to `civ64.exe` (section 11).
 
-**Upgrading from 1.3 or 1.3.1.** Replace `civ64.exe` with the one in the ZIP file; your settings, `GameData` and
+**Upgrading from 1.3, 1.3.1 or 1.3.2.** Replace `civ64.exe` with the one in the ZIP file; your settings, `GameData` and
 `Save` folders stay.
 
 **Upgrading from 1.2.5 or earlier.** Replace `civ64.exe`; your settings in `%LOCALAPPDATA%\civ64` stay.
@@ -350,6 +348,9 @@ resized, and while civ64's own boxes and the Options dialog are open: the game, 
 and the sounds stand still, and afterwards everything goes on where it stopped, without a fast catch-up.
 The game's own menus and dialogs do not pause it, as in the original.
 
+**A minimised window draws nothing** (since 1.3.3): the game keeps running, and when the window comes back it
+shows the current picture.
+
 **The Options dialog** (new in 1.3) has three pages, **Display**, **Graphics** and **Audio**, and opens
 on Display. Click a page's tab, or use Ctrl+Tab and Ctrl+Shift+Tab. **Done**, Escape or the dialog's close
 button closes it; there is no Cancel, because every change applies as you make it (or at the next start,
@@ -551,7 +552,12 @@ Status windows) inside civ64's window. Some details:
   holds the Game Options).
 * **Keyboard.** Typing follows your keyboard layout (characters are passed in Windows-1252;
   characters without a code there are dropped). The numeric keypad gives digits whatever your
-  NumLock state. Alt and F10 open the game's menus.
+  NumLock state, except in menus and dialogs (since 1.3.3): there its 8, 2, 4, 6, 7, 9, 1 and 3 move like
+  the arrow keys, as in the DOS game: the game setup pages, Diplomacy, lists, message boxes, the menu bar
+  and the Save/Load slot screens. On the map it still moves units, in text fields it still types digits,
+  and with Shift, Ctrl or Alt held it gives its digits. With graphics other than Windows, the
+  first-character choice of a list such as "3..7 Civilizations" then takes the digits of the main row, as
+  in the DOS game. Alt and F10 open the game's menus.
 * **Sound** comes from the source chosen on the Options dialog's Audio page (section 6); with the Windows
   source, from the game's `.wav` files. A missing file is silent.
 * **Roads and railroads on ocean squares.** The original lets units build them there (a well known bug,
@@ -825,8 +831,8 @@ where the saves, `civ.prf`, the Hall of Fame and the replays are written in the 
   and windowless play are.
 * `GameData` and the saves are in `~/Library/Application Support/civ64`, not next to the program (above).
 * Full screen is macOS's own: a space of its own with macOS's animation.
-* While the window is minimised civ64 draws nothing (since 1.3.3); the game keeps running, and the Dock shows the
-  picture from the moment it was minimised.
+* While the window is minimised civ64 draws nothing (since 1.3.3, as on Windows); the game keeps running, and the
+  Dock shows the picture from the moment it was minimised.
 * Moving the window does not pause the game (on Windows it does); the menus, a live resize and civ64's own boxes
   do.
 * civ64's boxes are macOS windows and follow the system's light or dark appearance. The Options dialog is a macOS
