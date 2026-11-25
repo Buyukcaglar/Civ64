@@ -8,7 +8,8 @@ PC-98 and SNES editions, and play their music and sound effects, at any moment.
 
 Sections 1 to 14 describe the Windows program 1.3.2. The macOS application `Civ64.app` is at version 1.3.3, with the
 same Options dialog, graphics styles, sounds, mods, filters, Save States and `units.ini`, plus the additions of 1.3.3
-(the numeric keypad in menus and dialogs, lower CPU use; the Windows program gets them with its own 1.3.3); **on a Mac, also read
+(the Options dialog in the Windows program's design, the numeric keypad in menus and dialogs, lower CPU use; the
+Windows program gets the last two with its own 1.3.3); **on a Mac, also read
 [section 15](#15-civ64-for-macos)**: it gives the Mac's download, folders, menus and keys, and its differences.
 
 > civ64 was made with the assistance of Anthropic's Claude AI and is provided "as is", without
@@ -828,7 +829,9 @@ where the saves, `civ.prf`, the Hall of Fame and the replays are written in the 
   picture from the moment it was minimised.
 * Moving the window does not pause the game (on Windows it does); the menus, a live resize and civ64's own boxes
   do.
-* civ64's boxes and the Options dialog are macOS windows and follow the system's light or dark appearance.
+* civ64's boxes are macOS windows and follow the system's light or dark appearance. The Options dialog is a macOS
+  window too, with the Windows program's dark design since 1.3.3 (the same tabs, panels, cards and Done button), whatever
+  the system's appearance; System Settings' Increase Contrast strengthens its borders and secondary text.
 * Only files and folders with plain 8.3 names are listed to the game (Windows also lists the short alias of a long
   name).
 * Cursor pixels that Windows would invert are drawn black, and the hourglass cursor is the arrow (macOS has no

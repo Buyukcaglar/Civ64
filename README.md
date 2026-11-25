@@ -225,6 +225,9 @@ original game loads civ64's saves.
 
 On macOS first; the Windows ZIP files of 1.3.3 follow.
 
+* **macOS: the Options dialog looks like the Windows program's:** the same dark design with its Display, Graphics
+  and Audio tabs, rounded panels, the graphics cards with their platform logos, and Done. It is still a macOS
+  window with macOS's own controls underneath, and its Display page fits a 13-inch screen.
 * **The numeric keypad moves like the arrow keys in menus and dialogs**, as in the DOS game: the game setup
   pages, Diplomacy, the lists, message boxes, the menu bar and the Save/Load slot screens. On the map the keypad
   still moves units, and in text fields it still types digits.
