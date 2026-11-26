@@ -99,6 +99,8 @@ start. Everything the game writes goes to a `Save` folder next to `civ64.exe` (s
 `launcher\setup.ps1 -Game "<your folder>"` from a copy of the repository). You pick your folder of
 Civilization for Windows once (the one that holds `civ.exe` and `civdata0.rsc`), and the launcher starts
 `civ64.exe --data <your folder>` (section 12): the game is read where it is and not copied into `GameData`.
+On a Mac, RecompLauncher installs `Civ64-1.3.4-macOS.zip` and starts `Civ64.app --data <your folder>`; there
+the saved games and the Save States (`States`) are written into that folder, so it must be one you can write to.
 Neither launcher contains or downloads the game. The ZIP file's `recomplauncher.json` is the file
 RecompLauncher reads; civ64 itself does not use it, and you can delete it if you start civ64 yourself. The
 [README](../README.md#playing-through-a-launcher) says more.

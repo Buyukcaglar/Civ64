@@ -179,15 +179,19 @@ troubleshooting.
 
 ### Playing through a launcher
 
-Two launchers can install and start civ64 for you on Windows. Neither contains or downloads the game: both
+Two launchers can install and start civ64 for you, RecompLauncher on Windows and macOS. Neither contains or downloads the game: both
 need your own folder of Civilization for Windows (the 1992 Windows 3.1 release), the one that holds `civ.exe`
 and `civdata0.rsc`.
 
 * **[RecompLauncher](https://recomplauncher.com).** Install civ64 there, pick your game folder once and press
   Play. It starts `civ64.exe --data <your folder>`, so the game is read where it is and nothing is copied.
   Full screen, scaling, the filter, the picture shape and CRT scanlines are settings on the game's page; they
-  are passed on the command line, so civ64's own saved settings are left alone unless you pick one. Your
-  saves are in the `Save` folder beside the program, which the page's Saves button opens.
+  are passed on the command line, so civ64's own saved settings are left alone unless you pick one. On
+  Windows your saves are in the `Save` folder beside the program, which the page's Saves button opens.
+  On a Mac it installs `Civ64-1.3.4-macOS.zip` and starts `Civ64.app` the same way; there the game writes its
+  saved games (and the `States` folder of the Save States) into the game folder you picked, so pick a copy you
+  can write to, not the CD. A scaling, filter or full screen choice made on the page stays in civ64's settings
+  on the Mac.
 * **[sp00nznet's recomp-launcher](https://github.com/sp00nznet/recomp-launcher).** From the next tagged
   version on, the release also carries `Civ64-Installer-windows-x64.exe`: it asks for your game folder,
   downloads civ64's newest Windows release and gives you a Play button. Until then the same setup runs by

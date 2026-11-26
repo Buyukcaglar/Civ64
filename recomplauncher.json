@@ -30,7 +30,9 @@
   },
   "saves": [
     "{install}/Save",
-    "{home}/Library/Application Support/civ64/CivWin"
+    "{input:game}/*.SAV",
+    "{input:game}/*.MAP",
+    "{input:game}/States"
   ],
   "folders": {
     "saves": [
@@ -39,7 +41,7 @@
         "if": "{install}/Save"
       },
       {
-        "path": "{home}/Library/Application Support/civ64/CivWin"
+        "path": "{input:game}"
       }
     ]
   },
