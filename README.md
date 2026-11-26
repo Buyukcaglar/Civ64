@@ -270,6 +270,8 @@ original game loads civ64's saves.
   * in a Windows 3.1 style window, the map's scroll thumb keeps its place after 1:1 is switched on and off;
   * a `Civ-Modern.zip` in `GameData` appears in the graphics mods list by itself, and is selected when no mod
     was, so the Custom card can show it.
+  * on a Mac, the Modern-style pack's cursor is the size of the Windows game's cursor (it was drawn about twice as
+    large).
 
 ### New in version 1.3.3
 
