@@ -230,6 +230,20 @@ original game loads civ64's saves.
     layout;
   * a moved or resized Status window keeps the World Map's width;
   * in DOS graphics without windows, the area beside an open DOS menu shows the map instead of a black block.
+* **Display fixes (the 1.3.4 downloads were replaced on 2026-11-26; download again to get them):**
+  * with a Modern-style pack, without windows: the drop-down menus show the pack's own dark panels and light
+    text instead of grey stone; no strip or rectangle of the classic map beside the sidebar or an open menu; the
+    pack's menu bar is drawn;
+  * with a Modern-style pack at **Original pixel density (1:1)** without windows, the menu bar and its menus
+    are drawn at twice the size, and the map begins below them;
+  * a crash when CRT scanlines were switched off with Sharp pixels in a Modern-style pack is fixed;
+  * with a Modern-style pack: sentried units are greyed at the smallest map zoom too, and the Intelligence
+    Report shows its red and green text and its blue lines again;
+  * Amiga and Atari ST graphics: one Esc closes a menu opened with the mouse (it showed the Windows 3.1 screen
+    until a second Esc);
+  * in a Windows 3.1 style window, the map's scroll thumb keeps its place after 1:1 is switched on and off;
+  * a `Civ-Modern.zip` in `GameData` appears in the graphics mods list by itself, and is selected when no mod
+    was, so the Custom card can show it.
 
 ### New in version 1.3.3
 

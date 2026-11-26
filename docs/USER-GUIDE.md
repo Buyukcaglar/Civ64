@@ -256,6 +256,9 @@ The picture is scaled into the window by the **Scaling** choices of the Options 
     no change.
   * **Draw World Map and Status Windows at: 1x, 2x, 3x** (new in 1.3): the World Map and Status windows
     (or, in windowless play, their column) are drawn 2 or 3 times larger, in every graphics style.
+
+  With a Modern-style pack in windowless play, the menu bar and its menus are drawn at twice the size at
+  1:1 (since the 1.3.4 downloads of 2026-11-26), and the map begins below them. There is no setting for it yet.
 * **4:3 aspect for 320x200 DOS intro screens** (on by default): the DOS graphics' 320x200 screens before
   a game (the intro, the title menu, the setup pages, the Hall of Fame, Load) are shown with the 4:3 shape
   of a DOS monitor, so their pixels are a little taller than wide; off, they keep square pixels. The DOS
@@ -467,7 +470,9 @@ active unit. There is no scrolling at the screen's edge.
 **Custom graphics mods** (new in 1.3). The list under the Graphics page's cards holds your graphics mods;
 the one marked **Selected** is what the **Custom** card shows. civ64 includes no mods or packs. Since 1.3.1
 a tileset mod's archive that you put into `GameData` yourself (`Mod-<name>.zip`) is listed at the next start
-without **Add mod…**; one you remove from the list stays removed, and its file stays in `GameData`. Two kinds
+without **Add mod…**; one you remove from the list stays removed, and its file stays in `GameData`. A Modern
+pack there (`Civ-Modern.zip`) is listed the same way (since the 1.3.4 downloads of 2026-11-26) and becomes the
+selected mod when none was selected. Two kinds
 are accepted:
 
 * **Tileset mods** for the Windows graphics (a mod's `civdata0.rsc` to `civdata4.rsc`) or for the DOS
