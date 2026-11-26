@@ -1,0 +1,28 @@
+{
+  "title": "Sid Meier's Civilization 64bit",
+  "repo": "Buyukcaglar/Civ64",
+  "accent": "#2f6fb5",
+  "note": {
+    "default": "Nothing is compiled: the setup downloads this project's newest Windows release from GitHub (about 5 MB) and points it at your copy. It takes under a minute and needs the folder of Civilization for Windows, the 1992 Windows 3.1 release (the one that holds civ.exe and civdata0.rsc). Windows only."
+  },
+  "game": {
+    "name": "Civilization for Windows",
+    "files": [
+      "civ.exe",
+      "civdata0.rsc"
+    ]
+  },
+  "setup": {
+    "windows": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "launcher\\setup.ps1",
+      "-Game",
+      "{game}"
+    ]
+  },
+  "play": "* (recomp).cmd"
+}

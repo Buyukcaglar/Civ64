@@ -1,0 +1,23 @@
+# Builds this project's installer for sp00nznet's recomp-launcher from launcher/launcher.json.
+# A push that changes the launcher files leaves the installer as a workflow artifact; a v* tag
+# also puts it on that tag's release (Civ64-Installer-windows-x64.exe and SHA256SUMS.txt).
+# The reusable workflow and the launcher it builds are pinned to one reviewed commit.
+name: installer
+
+on:
+  push:
+    branches: [main]
+    paths: ["launcher/**", ".github/workflows/installer.yml"]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  installer:
+    uses: sp00nznet/recomp-launcher/.github/workflows/installer.yml@005639c34bc2fc3096219fce2bd0a5ea13f8ac5b
+    with:
+      name: Civ64-Installer
+      platforms: windows
+      launcher-ref: 005639c34bc2fc3096219fce2bd0a5ea13f8ac5b

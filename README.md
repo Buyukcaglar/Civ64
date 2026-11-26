@@ -1,5 +1,7 @@
 # Sid Meier's Civilization 64bit (civ64)
 
+<a href="https://recomplauncher.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://recomplauncher.com/assets/press/launcher/badge-light.svg"><img alt="Get it on RecompLauncher" src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" height="48"></picture></a>
+
 <table>
   <tr>
     <td width="50%"><img src="docs/screenshots/Civ64-01-TitleMenu-Windows.png" alt="The title menu with the Windows graphics"></td>
@@ -111,8 +113,10 @@ The Windows program is below; **on a Mac**, see [Quick start on macOS](#quick-st
 
 1. Download `Civ64-1.3.4-Windows.zip` (on Windows 7: `Civ64-1.3.4-Win7.zip`) from the
    [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) and unpack it into a folder of its
-   own. It holds `civ64.exe` (`Civ64-Win7.exe`), `units.ini` and `README-units.txt`; the last two are the
-   optional unit rules (below), and `units.ini` as shipped holds the original values.
+   own. It holds `civ64.exe` (`Civ64-Win7.exe`), `units.ini`, `README-units.txt` and `recomplauncher.json`;
+   `units.ini` and `README-units.txt` are the optional unit rules (below), and `units.ini` as shipped holds
+   the original values; `recomplauncher.json` is only read by RecompLauncher
+   ([Playing through a launcher](#playing-through-a-launcher)).
 2. Run `civ64.exe`. At the first start it asks for one thing only: the game's `civ.exe` (in your
    Civilization for Windows folder) or a ZIP file of the game.
 3. civ64 checks what you chose and **copies the files it needs into a `GameData` folder next to
@@ -174,6 +178,26 @@ All of these are remembered between runs; the [User Guide](docs/USER-GUIDE.md) h
 The full **[User Guide](docs/USER-GUIDE.md)** covers installation, every menu, option and key, the
 graphics styles, the map zoom, the window and full screen, saves, settings, the command line and
 troubleshooting.
+
+### Playing through a launcher
+
+Two launchers can install and start civ64 for you on Windows. Neither contains or downloads the game: both
+need your own folder of Civilization for Windows (the 1992 Windows 3.1 release), the one that holds `civ.exe`
+and `civdata0.rsc`.
+
+* **[RecompLauncher](https://recomplauncher.com).** Install civ64 there, pick your game folder once and press
+  Play. It starts `civ64.exe --data <your folder>`, so the game is read where it is and nothing is copied.
+  Full screen, scaling, the filter, the picture shape and CRT scanlines are settings on the game's page; they
+  are passed on the command line, so civ64's own saved settings are left alone unless you pick one. Your
+  saves are in the `Save` folder beside the program, which the page's Saves button opens.
+* **[sp00nznet's recomp-launcher](https://github.com/sp00nznet/recomp-launcher).** From the next tagged
+  version on, the release also carries `Civ64-Installer-windows-x64.exe`: it asks for your game folder,
+  downloads civ64's newest Windows release and gives you a Play button. Until then the same setup runs by
+  hand, from a copy of this repository:
+  `powershell -ExecutionPolicy Bypass -File launcher\setup.ps1 -Game "<your folder>"`. It puts civ64 into
+  `play\` and writes `Civilization (recomp).cmd`, which starts it.
+
+The files of the DOS, Amiga and other editions are still added in the program itself, on **Options…**.
 
 ### Quick start on macOS
 
@@ -375,7 +399,7 @@ evidence and caveats: [docs/recovery-coverage.md](docs/recovery-coverage.md).
 
 | | |
 |---|---|
-| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.3.4-macOS.dmg` in v1.3.4, `Civ64-1.3.3-macOS.dmg` in v1.3.3, `Civ64-1.3.2-macOS.dmg` in v1.3.2, `Civ64-1.3.1-macOS.dmg` in v1.3.1, `Civ64-1.3-macOS.dmg` in v1.3, `Civ64-1.2.5-macOS.dmg` in v1.2.5, `Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.3.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.4) (`Civ64-1.3.4-Windows.zip`, `Civ64-1.3.4-Win7.zip` and the macOS application 1.3.4); the earlier ones are [v1.3.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.3) (`Civ64-1.3.3-Windows.zip`, `Civ64-1.3.3-Win7.zip` and the macOS application 1.3.3), [v1.3.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.2) (`Civ64-1.3.2-Windows.zip`, `Civ64-1.3.2-Win7.zip` and the macOS application 1.3.2), [v1.3.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.1) (from this version the Windows programs are in ZIP files, each with `units.ini` and `README-units.txt`; with the macOS application 1.3.1), [v1.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3) (with the macOS application 1.3), [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) (with the macOS application 1.2.5), [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
+| **Here now** | This README, the [User Guide](docs/USER-GUIDE.md) and the complete project documentation in [docs/](docs/README.md): the design, the fidelity register, the feature list, the DOS-profile tables, the phase and unit records, the reviews, the audits, the measured test results and the screenshots. Since 2026-11-26 also the files two launchers read ([Playing through a launcher](#playing-through-a-launcher)): `recomplauncher.json` for RecompLauncher, which every Windows release ZIP also holds, and `launcher/` and `.github/workflows/installer.yml` for sp00nznet's recomp-launcher. The program itself is attached to each release as `civ64.exe` (since v1.2.4 also `Civ64-Win7.exe`, the build for Windows 7), and since v1.2.2 also the macOS application (`Civ64-1.3.4-macOS.dmg` in v1.3.4, `Civ64-1.3.3-macOS.dmg` in v1.3.3, `Civ64-1.3.2-macOS.dmg` in v1.3.2, `Civ64-1.3.1-macOS.dmg` in v1.3.1, `Civ64-1.3-macOS.dmg` in v1.3, `Civ64-1.2.5-macOS.dmg` in v1.2.5, `Civ64-1.2.4-macOS.dmg` in v1.2.4, `Civ64-1.2.3-macOS.dmg` in v1.2.3, `Civ64-1.2.2-macOS.dmg` in v1.2.2): the [latest release](https://github.com/Buyukcaglar/Civ64/releases/latest) is [v1.3.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.4) (`Civ64-1.3.4-Windows.zip`, `Civ64-1.3.4-Win7.zip` and the macOS application 1.3.4); the earlier ones are [v1.3.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.3) (`Civ64-1.3.3-Windows.zip`, `Civ64-1.3.3-Win7.zip` and the macOS application 1.3.3), [v1.3.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.2) (`Civ64-1.3.2-Windows.zip`, `Civ64-1.3.2-Win7.zip` and the macOS application 1.3.2), [v1.3.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3.1) (from this version the Windows programs are in ZIP files, each with `units.ini` and `README-units.txt`; with the macOS application 1.3.1), [v1.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.3) (with the macOS application 1.3), [v1.2.5](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.5) (with the macOS application 1.2.5), [v1.2.4](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.4) (with the macOS application 1.2.4), [v1.2.3](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.3) (with the macOS application 1.2.3), [v1.2.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.2) (with the macOS application), [v1.2.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2.1), [v1.2](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.2), [v1.1](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.1) and [v1.0](https://github.com/Buyukcaglar/Civ64/releases/tag/v1.0). |
 | **Later** | The independently written code of civ64: the Windows 3.1 emulation layer and the Windows host, the run-time library replacement, the presentation (scaling, map zoom, the graphics profiles), the tests and the build scripts. It will be published here as the last task of the project. On its own it does not build a playable game. |
 | **Not published** | The recovered C of `civ.exe` and the game core translated from it, the disassembly listings, the original game's string inventory, every file of the original games, and any graphics mod or graphics pack. |
 

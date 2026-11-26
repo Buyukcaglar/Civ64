@@ -1,0 +1,209 @@
+{
+  "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+  "format": 1,
+  "name": "Sid Meier's Civilization 64bit",
+  "repo": "Buyukcaglar/Civ64",
+  "inputs": [
+    {
+      "id": "game",
+      "label": "Your folder of Sid Meier's Civilization for Windows (the 1992 Windows 3.1 release): the folder that holds civ.exe and civdata0.rsc.",
+      "formats": [
+        {
+          "type": "folder"
+        }
+      ],
+      "check": {
+        "file": "civdata0.rsc"
+      }
+    }
+  ],
+  "start": {
+    "program": [
+      "civ64.exe",
+      "Civ64-Win7.exe",
+      "Civ64.app"
+    ],
+    "args": [
+      "--data",
+      "{input:game}"
+    ]
+  },
+  "saves": [
+    "{install}/Save",
+    "{home}/Library/Application Support/civ64/CivWin"
+  ],
+  "folders": {
+    "saves": [
+      {
+        "path": "{install}/Save",
+        "if": "{install}/Save"
+      },
+      {
+        "path": "{home}/Library/Application Support/civ64/CivWin"
+      }
+    ]
+  },
+  "settings": [
+    {
+      "id": "fullscreen",
+      "label": "Full screen",
+      "in": "args",
+      "help": "Starts in full screen instead of a window.",
+      "choices": [
+        {
+          "label": "Game's option",
+          "args": []
+        },
+        {
+          "label": "Full screen",
+          "args": [
+            "--fullscreen"
+          ]
+        }
+      ],
+      "group": "Picture"
+    },
+    {
+      "id": "scale",
+      "label": "Scaling",
+      "in": "args",
+      "help": "Whole-number steps keep every pixel the same size; Fit fills the window.",
+      "choices": [
+        {
+          "label": "Game's option",
+          "args": []
+        },
+        {
+          "label": "Whole numbers",
+          "args": [
+            "--scale-mode",
+            "integer"
+          ]
+        },
+        {
+          "label": "Fit the window",
+          "args": [
+            "--scale-mode",
+            "fit"
+          ]
+        }
+      ],
+      "group": "Picture"
+    },
+    {
+      "id": "filter",
+      "label": "Filter",
+      "in": "args",
+      "help": "How the picture is enlarged.",
+      "choices": [
+        {
+          "label": "Game's option",
+          "args": []
+        },
+        {
+          "label": "Nearest",
+          "args": [
+            "--filter",
+            "nearest"
+          ]
+        },
+        {
+          "label": "Sharp",
+          "args": [
+            "--filter",
+            "sharp"
+          ]
+        },
+        {
+          "label": "Smooth",
+          "args": [
+            "--filter",
+            "smooth"
+          ]
+        },
+        {
+          "label": "ScaleNx",
+          "args": [
+            "--filter",
+            "scalenx"
+          ]
+        }
+      ],
+      "group": "Picture"
+    },
+    {
+      "id": "aspect",
+      "label": "Picture shape",
+      "in": "args",
+      "help": "Square pixels, or the 4:3 shape of a monitor of the time.",
+      "choices": [
+        {
+          "label": "Game's option",
+          "args": []
+        },
+        {
+          "label": "Square pixels",
+          "args": [
+            "--aspect",
+            "square"
+          ]
+        },
+        {
+          "label": "4:3",
+          "args": [
+            "--aspect",
+            "4:3"
+          ]
+        }
+      ],
+      "group": "Picture"
+    },
+    {
+      "id": "crt",
+      "label": "CRT scanlines",
+      "in": "args",
+      "help": "Draws the picture with the lines of an old monitor.",
+      "choices": [
+        {
+          "label": "Game's option",
+          "args": []
+        },
+        {
+          "label": "Off",
+          "args": [
+            "--crt",
+            "0"
+          ]
+        },
+        {
+          "label": "On",
+          "args": [
+            "--crt",
+            "1"
+          ]
+        }
+      ],
+      "group": "Picture"
+    }
+  ],
+  "actions": [
+    {
+      "id": "saves",
+      "label": "Saves",
+      "help": "Open the folder your saves are in.",
+      "open": "saves"
+    }
+  ],
+  "exit_codes": {
+    "2": "It couldn't start: civ.exe is missing from your game folder, or it isn't the Windows 3.1 release this needs. Pick your game folder again on the game's page.",
+    "4": "It ran out of memory."
+  },
+  "system": {
+    "windows": {
+      "version": "10"
+    },
+    "macos": {
+      "version": "13"
+    }
+  }
+}

@@ -93,6 +93,16 @@ a few MB per edition (your own music, and some Modern-style packs, can take much
 the archives yourself and put them into `GameData` (the table in section 3); civ64 checks them at every
 start. Everything the game writes goes to a `Save` folder next to `civ64.exe` (section 11).
 
+**Through a launcher.** civ64 can also be installed and started from
+[RecompLauncher](https://recomplauncher.com) or, from the next tagged version on, with the installer of
+[sp00nznet's recomp-launcher](https://github.com/sp00nznet/recomp-launcher) (until then:
+`launcher\setup.ps1 -Game "<your folder>"` from a copy of the repository). You pick your folder of
+Civilization for Windows once (the one that holds `civ.exe` and `civdata0.rsc`), and the launcher starts
+`civ64.exe --data <your folder>` (section 12): the game is read where it is and not copied into `GameData`.
+Neither launcher contains or downloads the game. The ZIP file's `recomplauncher.json` is the file
+RecompLauncher reads; civ64 itself does not use it, and you can delete it if you start civ64 yourself. The
+[README](../README.md#playing-through-a-launcher) says more.
+
 **Upgrading from 1.3, 1.3.1, 1.3.2 or 1.3.3.** Replace `civ64.exe` with the one in the ZIP file; your settings, `GameData` and
 `Save` folders stay.
 
@@ -692,6 +702,9 @@ civ64.exe [--data <dir|zip>] [--dos-data <dir|zip|none>] [--amiga-data <dir|zip|
 Two further options, `--dump-frames <dir>` and `--dump-presented <dir>`, write every picture to a
 folder as BMP files; they are meant for checks and write thousands of files. `--multi-instance` is
 an option for automated tests.
+
+The launchers of section 2 ("Through a launcher") start civ64 with `--data` and, for the settings you pick
+there, with `--fullscreen`, `--scale-mode`, `--filter`, `--aspect` and `--crt`.
 
 ## 13. Troubleshooting
 
